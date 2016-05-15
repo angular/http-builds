@@ -1,6 +1,6 @@
 {
   "name": "@angular/http",
-  "version": "2.0.0-8b1b427",
+  "version": "2.0.0-50c9bed",
   "description": "",
   "main": "index.js",
   "jsnext:main": "esm/index.js",
@@ -9,6 +9,6 @@
   "license": "MIT",
   "peerDependencies": {
     "rxjs": "5.0.0-beta.6",
-    "@angular/core": "2.0.0-8b1b427"
+    "@angular/core": "2.0.0-50c9bed"
   }
 }
