@@ -42,7 +42,8 @@ export class XHRConnection {
                 if (status === 0) {
                     status = body ? 200 : 0;
                 }
-                var responseOptions = new ResponseOptions({ body, status, headers, url });
+                let statusText = _xhr.statusText || 'OK';
+                var responseOptions = new ResponseOptions({ body, status, headers, statusText, url });
                 if (isPresent(baseResponseOptions)) {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }

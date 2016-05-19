@@ -44,7 +44,8 @@ var XHRConnection = (function () {
                 if (status === 0) {
                     status = body ? 200 : 0;
                 }
-                var responseOptions = new base_response_options_1.ResponseOptions({ body: body, status: status, headers: headers, url: url });
+                var statusText = _xhr.statusText || 'OK';
+                var responseOptions = new base_response_options_1.ResponseOptions({ body: body, status: status, headers: headers, statusText: statusText, url: url });
                 if (lang_1.isPresent(baseResponseOptions)) {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }

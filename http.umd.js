@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v2.0.0-0894318
+ * @license AngularJS v2.0.0-3019140
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1303,7 +1303,8 @@ var __extends = (this && this.__extends) || function (d, b) {
                     if (status === 0) {
                         status = body ? 200 : 0;
                     }
-                    var responseOptions = new ResponseOptions({ body: body, status: status, headers: headers, url: url });
+                    var statusText = _xhr.statusText || 'OK';
+                    var responseOptions = new ResponseOptions({ body: body, status: status, headers: headers, statusText: statusText, url: url });
                     if (isPresent(baseResponseOptions)) {
                         responseOptions = baseResponseOptions.merge(responseOptions);
                     }
