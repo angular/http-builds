@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * ```typescript
  * import {Http, HTTP_PROVIDERS} from '@angular/http';
+ * import 'rxjs/add/operator/map'
  * @Component({
  *   selector: 'http-app',
  *   viewProviders: [HTTP_PROVIDERS],
@@ -35,7 +36,7 @@ import { Observable } from 'rxjs/Observable';
  * ### Example
  *
  * ```
- * http.get('people.json').observer({next: (value) => this.people = value});
+ * http.get('people.json').subscribe((res:Response) => this.people = res.json());
  * ```
  *
  * The default construct used to perform requests, `XMLHttpRequest`, is abstracted as a "Backend" (
