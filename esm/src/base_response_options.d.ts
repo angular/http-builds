@@ -1,5 +1,4 @@
 import { Headers } from './headers';
-import { ResponseType } from './enums';
 import { ResponseOptionsArgs } from './interfaces';
 /**
  * Creates a response options object to be optionally provided when instantiating a
@@ -41,14 +40,6 @@ export declare class ResponseOptions {
      * Response {@link Headers headers}
      */
     headers: Headers;
-    /**
-     * @internal
-     */
-    statusText: string;
-    /**
-     * @internal
-     */
-    type: ResponseType;
     url: string;
     constructor({body, status, headers, statusText, type, url}?: ResponseOptionsArgs);
     /**

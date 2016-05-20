@@ -56,5 +56,5 @@ export declare class Request {
      * empty
      * string.
      */
-    text(): String;
+    text(): string;
 }
