@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v2.0.0-0f0a8ad
+ * @license AngularJS v2.0.0-95af14b
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -905,6 +905,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             // Defaults to 'omit', consistent with browser
             // TODO(jeffbcross): implement behavior
             this.headers = new Headers(requestOptions.headers);
+            this.withCredentials = requestOptions.withCredentials;
         }
         /**
          * Returns the request's body as string, assuming that body exists. If body is undefined, return
@@ -1021,7 +1022,7 @@ var __extends = (this && this.__extends) || function (d, b) {
      */
     var RequestOptions = (function () {
         function RequestOptions(_a) {
-            var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search;
+            var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, withCredentials = _b.withCredentials;
             this.method = isPresent(method) ? normalizeMethodName(method) : null;
             this.headers = isPresent(headers) ? headers : null;
             this.body = isPresent(body) ? body : null;
@@ -1029,6 +1030,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.search = isPresent(search) ? (isString(search) ? new URLSearchParams((search)) :
                 (search)) :
                 null;
+            this.withCredentials = isPresent(withCredentials) ? withCredentials : null;
         }
         /**
          * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
@@ -1064,7 +1066,10 @@ var __extends = (this && this.__extends) || function (d, b) {
                 search: isPresent(options) && isPresent(options.search) ?
                     (isString(options.search) ? new URLSearchParams((options.search)) :
                         (options.search).clone()) :
-                    this.search
+                    this.search,
+                withCredentials: isPresent(options) && isPresent(options.withCredentials) ?
+                    options.withCredentials :
+                    this.withCredentials
             });
         };
         return RequestOptions;
@@ -1092,7 +1097,8 @@ var __extends = (this && this.__extends) || function (d, b) {
                 url: providedOpts.url || url,
                 search: providedOpts.search,
                 headers: providedOpts.headers,
-                body: providedOpts.body
+                body: providedOpts.body,
+                withCredentials: providedOpts.withCredentials
             }));
         }
         if (isPresent(method)) {
@@ -1378,6 +1384,9 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.response = new rxjs_Observable.Observable(function (responseObserver) {
                 var _xhr = browserXHR.build();
                 _xhr.open(exports.RequestMethod[req.method].toUpperCase(), req.url);
+                if (isPresent(req.withCredentials)) {
+                    _xhr.withCredentials = req.withCredentials;
+                }
                 // load event handler
                 var onLoad = function () {
                     // responseText is the old-school way of retrieving response (supported by IE8 & 9)

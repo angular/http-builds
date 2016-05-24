@@ -54,6 +54,8 @@ export declare class Request {
     private _body;
     /** Type of the request body **/
     private contentType;
+    /** Enable use credentials */
+    withCredentials: boolean;
     constructor(requestOptions: RequestArgs);
     /**
      * Returns the request's body as string, assuming that body exists. If body is undefined, return

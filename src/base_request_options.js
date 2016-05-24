@@ -36,7 +36,7 @@ var http_utils_1 = require('./http_utils');
  */
 var RequestOptions = (function () {
     function RequestOptions(_a) {
-        var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search;
+        var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, withCredentials = _b.withCredentials;
         this.method = lang_1.isPresent(method) ? http_utils_1.normalizeMethodName(method) : null;
         this.headers = lang_1.isPresent(headers) ? headers : null;
         this.body = lang_1.isPresent(body) ? body : null;
@@ -44,6 +44,7 @@ var RequestOptions = (function () {
         this.search = lang_1.isPresent(search) ? (lang_1.isString(search) ? new url_search_params_1.URLSearchParams((search)) :
             (search)) :
             null;
+        this.withCredentials = lang_1.isPresent(withCredentials) ? withCredentials : null;
     }
     /**
      * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
@@ -79,7 +80,10 @@ var RequestOptions = (function () {
             search: lang_1.isPresent(options) && lang_1.isPresent(options.search) ?
                 (lang_1.isString(options.search) ? new url_search_params_1.URLSearchParams((options.search)) :
                     (options.search).clone()) :
-                this.search
+                this.search,
+            withCredentials: lang_1.isPresent(options) && lang_1.isPresent(options.withCredentials) ?
+                options.withCredentials :
+                this.withCredentials
         });
     };
     return RequestOptions;

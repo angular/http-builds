@@ -65,6 +65,7 @@ var Request = (function () {
         // Defaults to 'omit', consistent with browser
         // TODO(jeffbcross): implement behavior
         this.headers = new headers_1.Headers(requestOptions.headers);
+        this.withCredentials = requestOptions.withCredentials;
     }
     /**
      * Returns the request's body as string, assuming that body exists. If body is undefined, return

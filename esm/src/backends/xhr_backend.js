@@ -23,6 +23,9 @@ export class XHRConnection {
         this.response = new Observable((responseObserver) => {
             let _xhr = browserXHR.build();
             _xhr.open(RequestMethod[req.method].toUpperCase(), req.url);
+            if (isPresent(req.withCredentials)) {
+                _xhr.withCredentials = req.withCredentials;
+            }
             // load event handler
             let onLoad = () => {
                 // responseText is the old-school way of retrieving response (supported by IE8 & 9)

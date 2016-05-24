@@ -29,7 +29,7 @@ import { normalizeMethodName } from './http_utils';
  * ```
  */
 export class RequestOptions {
-    constructor({ method, headers, body, url, search } = {}) {
+    constructor({ method, headers, body, url, search, withCredentials } = {}) {
         this.method = isPresent(method) ? normalizeMethodName(method) : null;
         this.headers = isPresent(headers) ? headers : null;
         this.body = isPresent(body) ? body : null;
@@ -37,6 +37,7 @@ export class RequestOptions {
         this.search = isPresent(search) ? (isString(search) ? new URLSearchParams((search)) :
             (search)) :
             null;
+        this.withCredentials = isPresent(withCredentials) ? withCredentials : null;
     }
     /**
      * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
@@ -72,7 +73,10 @@ export class RequestOptions {
             search: isPresent(options) && isPresent(options.search) ?
                 (isString(options.search) ? new URLSearchParams((options.search)) :
                     (options.search).clone()) :
-                this.search
+                this.search,
+            withCredentials: isPresent(options) && isPresent(options.withCredentials) ?
+                options.withCredentials :
+                this.withCredentials
         });
     }
 }

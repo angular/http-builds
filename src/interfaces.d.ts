@@ -29,6 +29,7 @@ export interface RequestOptionsArgs {
     search?: string | URLSearchParams;
     headers?: Headers;
     body?: any;
+    withCredentials?: boolean;
 }
 /**
  * Required structure when constructing new Request();
