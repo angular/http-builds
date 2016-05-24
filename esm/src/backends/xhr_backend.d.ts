@@ -22,6 +22,7 @@ export declare class XHRConnection implements Connection {
     response: Observable<Response>;
     readyState: ReadyState;
     constructor(req: Request, browserXHR: BrowserXhr, baseResponseOptions?: ResponseOptions);
+    setDetectedContentType(req: any, _xhr: any): void;
 }
 /**
  * Creates {@link XHRConnection} instances.

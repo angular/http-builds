@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v2.0.0-c43636f
+ * @license AngularJS v2.0.0-0f0a8ad
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -687,96 +687,19 @@ var __extends = (this && this.__extends) || function (d, b) {
         ResponseType[ResponseType["Error"] = 3] = "Error";
         ResponseType[ResponseType["Opaque"] = 4] = "Opaque";
     })(exports.ResponseType || (exports.ResponseType = {}));
-    function normalizeMethodName(method) {
-        if (isString(method)) {
-            var originalMethod = method;
-            method = method
-                .replace(/(\w)(\w*)/g, function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); });
-            method = exports.RequestMethod[method];
-            if (typeof method !== 'number')
-                throw makeTypeError("Invalid request method. The method \"" + originalMethod + "\" is not supported.");
-        }
-        return method;
-    }
-    var isSuccess = function (status) { return (status >= 200 && status < 300); };
-    function getResponseURL(xhr) {
-        if ('responseURL' in xhr) {
-            return xhr.responseURL;
-        }
-        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
-            return xhr.getResponseHeader('X-Request-URL');
-        }
-        return;
-    }
-    // TODO(jeffbcross): properly implement body accessors
     /**
-     * Creates `Request` instances from provided values.
-     *
-     * The Request's interface is inspired by the Request constructor defined in the [Fetch
-     * Spec](https://fetch.spec.whatwg.org/#request-class),
-     * but is considered a static value whose body can be accessed many times. There are other
-     * differences in the implementation, but this is the most significant.
-     *
-     * `Request` instances are typically created by higher-level classes, like {@link Http} and
-     * {@link Jsonp}, but it may occasionally be useful to explicitly create `Request` instances.
-     * One such example is when creating services that wrap higher-level services, like {@link Http},
-     * where it may be useful to generate a `Request` with arbitrary headers and search params.
-     *
-     * ```typescript
-     * import {Injectable, Injector} from '@angular/core';
-     * import {HTTP_PROVIDERS, Http, Request, RequestMethod} from '@angular/http';
-     *
-     * @Injectable()
-     * class AutoAuthenticator {
-     *   constructor(public http:Http) {}
-     *   request(url:string) {
-     *     return this.http.request(new Request({
-     *       method: RequestMethod.Get,
-     *       url: url,
-     *       search: 'password=123'
-     *     }));
-     *   }
-     * }
-     *
-     * var injector = Injector.resolveAndCreate([HTTP_PROVIDERS, AutoAuthenticator]);
-     * var authenticator = injector.get(AutoAuthenticator);
-     * authenticator.request('people.json').subscribe(res => {
-     *   //URL should have included '?password=123'
-     *   console.log('people', res.json());
-     * });
-     * ```
+     * Supported content type to be automatically associated with a {@link Request}.
      */
-    var Request = (function () {
-        function Request(requestOptions) {
-            // TODO: assert that url is present
-            var url = requestOptions.url;
-            this.url = requestOptions.url;
-            if (isPresent(requestOptions.search)) {
-                var search = requestOptions.search.toString();
-                if (search.length > 0) {
-                    var prefix = '?';
-                    if (StringWrapper.contains(this.url, '?')) {
-                        prefix = (this.url[this.url.length - 1] == '&') ? '' : '&';
-                    }
-                    // TODO: just delete search-query-looking string in url?
-                    this.url = url + prefix + search;
-                }
-            }
-            this._body = requestOptions.body;
-            this.method = normalizeMethodName(requestOptions.method);
-            // TODO(jeffbcross): implement behavior
-            // Defaults to 'omit', consistent with browser
-            // TODO(jeffbcross): implement behavior
-            this.headers = new Headers(requestOptions.headers);
-        }
-        /**
-         * Returns the request's body as string, assuming that body exists. If body is undefined, return
-         * empty
-         * string.
-         */
-        Request.prototype.text = function () { return isPresent(this._body) ? this._body.toString() : ''; };
-        return Request;
-    }());
+    var ContentType;
+    (function (ContentType) {
+        ContentType[ContentType["NONE"] = 0] = "NONE";
+        ContentType[ContentType["JSON"] = 1] = "JSON";
+        ContentType[ContentType["FORM"] = 2] = "FORM";
+        ContentType[ContentType["FORM_DATA"] = 3] = "FORM_DATA";
+        ContentType[ContentType["TEXT"] = 4] = "TEXT";
+        ContentType[ContentType["BLOB"] = 5] = "BLOB";
+        ContentType[ContentType["ARRAY_BUFFER"] = 6] = "ARRAY_BUFFER";
+    })(ContentType || (ContentType = {}));
     function paramParser(rawParams) {
         if (rawParams === void 0) { rawParams = ''; }
         var map = new Map$1();
@@ -894,12 +817,184 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         URLSearchParams.prototype.toString = function () {
             var paramsList = [];
-            this.paramsMap.forEach(function (values, k) { values.forEach(function (v) { return paramsList.push(k + '=' + v); }); });
+            this.paramsMap.forEach(function (values, k) { values.forEach(function (v) { return paramsList.push(k + '=' + encodeURIComponent(v)); }); });
             return paramsList.join('&');
         };
         URLSearchParams.prototype.delete = function (param) { this.paramsMap.delete(param); };
         return URLSearchParams;
     }());
+    function normalizeMethodName(method) {
+        if (isString(method)) {
+            var originalMethod = method;
+            method = method
+                .replace(/(\w)(\w*)/g, function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); });
+            method = exports.RequestMethod[method];
+            if (typeof method !== 'number')
+                throw makeTypeError("Invalid request method. The method \"" + originalMethod + "\" is not supported.");
+        }
+        return method;
+    }
+    var isSuccess = function (status) { return (status >= 200 && status < 300); };
+    function getResponseURL(xhr) {
+        if ('responseURL' in xhr) {
+            return xhr.responseURL;
+        }
+        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
+            return xhr.getResponseHeader('X-Request-URL');
+        }
+        return;
+    }
+    // TODO(jeffbcross): properly implement body accessors
+    /**
+     * Creates `Request` instances from provided values.
+     *
+     * The Request's interface is inspired by the Request constructor defined in the [Fetch
+     * Spec](https://fetch.spec.whatwg.org/#request-class),
+     * but is considered a static value whose body can be accessed many times. There are other
+     * differences in the implementation, but this is the most significant.
+     *
+     * `Request` instances are typically created by higher-level classes, like {@link Http} and
+     * {@link Jsonp}, but it may occasionally be useful to explicitly create `Request` instances.
+     * One such example is when creating services that wrap higher-level services, like {@link Http},
+     * where it may be useful to generate a `Request` with arbitrary headers and search params.
+     *
+     * ```typescript
+     * import {Injectable, Injector} from '@angular/core';
+     * import {HTTP_PROVIDERS, Http, Request, RequestMethod} from '@angular/http';
+     *
+     * @Injectable()
+     * class AutoAuthenticator {
+     *   constructor(public http:Http) {}
+     *   request(url:string) {
+     *     return this.http.request(new Request({
+     *       method: RequestMethod.Get,
+     *       url: url,
+     *       search: 'password=123'
+     *     }));
+     *   }
+     * }
+     *
+     * var injector = Injector.resolveAndCreate([HTTP_PROVIDERS, AutoAuthenticator]);
+     * var authenticator = injector.get(AutoAuthenticator);
+     * authenticator.request('people.json').subscribe(res => {
+     *   //URL should have included '?password=123'
+     *   console.log('people', res.json());
+     * });
+     * ```
+     */
+    var Request = (function () {
+        function Request(requestOptions) {
+            // TODO: assert that url is present
+            var url = requestOptions.url;
+            this.url = requestOptions.url;
+            if (isPresent(requestOptions.search)) {
+                var search = requestOptions.search.toString();
+                if (search.length > 0) {
+                    var prefix = '?';
+                    if (StringWrapper.contains(this.url, '?')) {
+                        prefix = (this.url[this.url.length - 1] == '&') ? '' : '&';
+                    }
+                    // TODO: just delete search-query-looking string in url?
+                    this.url = url + prefix + search;
+                }
+            }
+            this._body = requestOptions.body;
+            this.contentType = this.detectContentType();
+            this.method = normalizeMethodName(requestOptions.method);
+            // TODO(jeffbcross): implement behavior
+            // Defaults to 'omit', consistent with browser
+            // TODO(jeffbcross): implement behavior
+            this.headers = new Headers(requestOptions.headers);
+        }
+        /**
+         * Returns the request's body as string, assuming that body exists. If body is undefined, return
+         * empty
+         * string.
+         */
+        Request.prototype.text = function () { return isPresent(this._body) ? this._body.toString() : ''; };
+        /**
+         * Returns the request's body as JSON string, assuming that body exists. If body is undefined,
+         * return
+         * empty
+         * string.
+         */
+        Request.prototype.json = function () { return isPresent(this._body) ? JSON.stringify(this._body) : ''; };
+        /**
+         * Returns the request's body as array buffer, assuming that body exists. If body is undefined,
+         * return
+         * null.
+         */
+        Request.prototype.arrayBuffer = function () {
+            if (this._body instanceof ArrayBuffer)
+                return this._body;
+            throw "The request body isn't an array buffer";
+        };
+        /**
+         * Returns the request's body as blob, assuming that body exists. If body is undefined, return
+         * null.
+         */
+        Request.prototype.blob = function () {
+            if (this._body instanceof Blob)
+                return this._body;
+            if (this._body instanceof ArrayBuffer)
+                return new Blob([this._body]);
+            throw "The request body isn't either a blob or an array buffer";
+        };
+        /**
+         * Returns the content type of request's body based on its type.
+         */
+        Request.prototype.detectContentType = function () {
+            if (this._body == null) {
+                return ContentType.NONE;
+            }
+            else if (this._body instanceof URLSearchParams) {
+                return ContentType.FORM;
+            }
+            else if (this._body instanceof FormData) {
+                return ContentType.FORM_DATA;
+            }
+            else if (this._body instanceof Blob) {
+                return ContentType.BLOB;
+            }
+            else if (this._body instanceof ArrayBuffer) {
+                return ContentType.ARRAY_BUFFER;
+            }
+            else if (this._body && typeof this._body == 'object') {
+                return ContentType.JSON;
+            }
+            else {
+                return ContentType.TEXT;
+            }
+        };
+        /**
+         * Returns the request's body according to its type. If body is undefined, return
+         * null.
+         */
+        Request.prototype.getBody = function () {
+            switch (this.contentType) {
+                case ContentType.JSON:
+                    return this.json();
+                case ContentType.FORM:
+                    return this.text();
+                case ContentType.FORM_DATA:
+                    return this._body;
+                case ContentType.TEXT:
+                    return this.text();
+                case ContentType.BLOB:
+                    return this.blob();
+                case ContentType.ARRAY_BUFFER:
+                    return this.arrayBuffer();
+                default:
+                    return null;
+            }
+        };
+        return Request;
+    }());
+    var noop$1 = function () { };
+    var w = typeof window == 'object' ? window : noop$1;
+    var FormData = w['FormData'] || noop$1;
+    var Blob = w['Blob'] || noop$1;
+    var ArrayBuffer = w['ArrayBuffer'] || noop$1;
     /**
      * Creates a request options object to be optionally provided when instantiating a
      * {@link Request}.
@@ -1325,12 +1420,13 @@ var __extends = (this && this.__extends) || function (d, b) {
                     }
                     responseObserver.error(new Response(responseOptions));
                 };
+                _this.setDetectedContentType(req, _xhr);
                 if (isPresent(req.headers)) {
                     req.headers.forEach(function (values, name) { return _xhr.setRequestHeader(name, values.join(',')); });
                 }
                 _xhr.addEventListener('load', onLoad);
                 _xhr.addEventListener('error', onError);
-                _xhr.send(_this.request.text());
+                _xhr.send(_this.request.getBody());
                 return function () {
                     _xhr.removeEventListener('load', onLoad);
                     _xhr.removeEventListener('error', onError);
@@ -1338,6 +1434,32 @@ var __extends = (this && this.__extends) || function (d, b) {
                 };
             });
         }
+        XHRConnection.prototype.setDetectedContentType = function (req, _xhr) {
+            // Skip if a custom Content-Type header is provided
+            if (isPresent(req.headers) && isPresent(req.headers['Content-Type'])) {
+                return;
+            }
+            // Set the detected content type
+            switch (req.contentType) {
+                case ContentType.NONE:
+                    break;
+                case ContentType.JSON:
+                    _xhr.setRequestHeader('Content-Type', 'application/json');
+                    break;
+                case ContentType.FORM:
+                    _xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                    break;
+                case ContentType.TEXT:
+                    _xhr.setRequestHeader('Content-Type', 'text/plain');
+                    break;
+                case ContentType.BLOB:
+                    var blob = req.blob();
+                    if (blob.type) {
+                        _xhr.setRequestHeader('Content-Type', blob.type);
+                    }
+                    break;
+            }
+        };
         return XHRConnection;
     }());
     var XHRBackend = (function () {

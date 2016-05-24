@@ -28,7 +28,7 @@ export interface RequestOptionsArgs {
     method?: string | RequestMethod;
     search?: string | URLSearchParams;
     headers?: Headers;
-    body?: string;
+    body?: any;
 }
 /**
  * Required structure when constructing new Request();

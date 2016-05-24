@@ -39,7 +39,7 @@ export declare class RequestOptions {
     /**
      * Body to be used when creating a {@link Request}.
      */
-    body: string;
+    body: any;
     /**
      * Url with which to perform a {@link Request}.
      */

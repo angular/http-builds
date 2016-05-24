@@ -80,11 +80,11 @@ export declare class Http {
     /**
      * Performs a request with `post` http method.
      */
-    post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response>;
+    post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>;
     /**
      * Performs a request with `put` http method.
      */
-    put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response>;
+    put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>;
     /**
      * Performs a request with `delete` http method.
      */
@@ -92,7 +92,7 @@ export declare class Http {
     /**
      * Performs a request with `patch` http method.
      */
-    patch(url: string, body: string, options?: RequestOptionsArgs): Observable<Response>;
+    patch(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>;
     /**
      * Performs a request with `head` http method.
      */

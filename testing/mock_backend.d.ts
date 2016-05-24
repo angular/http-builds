@@ -94,9 +94,9 @@ export declare class MockBackend implements ConnectionBackend {
      * ### Example
      *
      * ```
-     * import {Http, BaseRequestOptions} from '@angular/http';
+     * import {Http, BaseRequestOptions, Response} from '@angular/http';
      * import {MockBackend} from '@angular/http/testing';
-     * import {Injector} from '@angular/core';
+     * import {Injector, provide} from '@angular/core';
      *
      * it('should get a response', () => {
      *   var connection; //this will be set when a new connection is emitted from the backend.
@@ -105,7 +105,7 @@ export declare class MockBackend implements ConnectionBackend {
      *     MockBackend,
      *     provide(Http, {useFactory: (backend, options) => {
      *       return new Http(backend, options);
-     *     }, deps: [MockBackend, BaseRequestOptions]}]);
+     *     }, deps: [MockBackend, BaseRequestOptions]})]);
      *   var backend = injector.get(MockBackend);
      *   var http = injector.get(Http);
      *   backend.connections.subscribe(c => connection = c);

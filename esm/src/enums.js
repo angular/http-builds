@@ -37,4 +37,17 @@ export var ResponseType;
     ResponseType[ResponseType["Error"] = 3] = "Error";
     ResponseType[ResponseType["Opaque"] = 4] = "Opaque";
 })(ResponseType || (ResponseType = {}));
+/**
+ * Supported content type to be automatically associated with a {@link Request}.
+ */
+export var ContentType;
+(function (ContentType) {
+    ContentType[ContentType["NONE"] = 0] = "NONE";
+    ContentType[ContentType["JSON"] = 1] = "JSON";
+    ContentType[ContentType["FORM"] = 2] = "FORM";
+    ContentType[ContentType["FORM_DATA"] = 3] = "FORM_DATA";
+    ContentType[ContentType["TEXT"] = 4] = "TEXT";
+    ContentType[ContentType["BLOB"] = 5] = "BLOB";
+    ContentType[ContentType["ARRAY_BUFFER"] = 6] = "ARRAY_BUFFER";
+})(ContentType || (ContentType = {}));
 //# sourceMappingURL=enums.js.map
