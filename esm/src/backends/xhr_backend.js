@@ -52,7 +52,8 @@ export class XHRConnection {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }
                 let response = new Response(responseOptions);
-                if (isSuccess(status)) {
+                response.ok = isSuccess(status);
+                if (response.ok) {
                     responseObserver.next(response);
                     // TODO(gdi2290): defer complete if array buffer until done
                     responseObserver.complete();

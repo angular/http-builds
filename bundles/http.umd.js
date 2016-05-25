@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v2.0.0-60a2ba8
+ * @license AngularJS v2.0.0-32b3743
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1413,7 +1413,8 @@ var __extends = (this && this.__extends) || function (d, b) {
                         responseOptions = baseResponseOptions.merge(responseOptions);
                     }
                     var response = new Response(responseOptions);
-                    if (isSuccess(status)) {
+                    response.ok = isSuccess(status);
+                    if (response.ok) {
                         responseObserver.next(response);
                         // TODO(gdi2290): defer complete if array buffer until done
                         responseObserver.complete();

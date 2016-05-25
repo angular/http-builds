@@ -54,7 +54,8 @@ var XHRConnection = (function () {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }
                 var response = new static_response_1.Response(responseOptions);
-                if (http_utils_1.isSuccess(status)) {
+                response.ok = http_utils_1.isSuccess(status);
+                if (response.ok) {
                     responseObserver.next(response);
                     // TODO(gdi2290): defer complete if array buffer until done
                     responseObserver.complete();
