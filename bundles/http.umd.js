@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v2.0.0-1dcb663
+ * @license AngularJS v2.0.0-89f6108
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1273,6 +1273,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         // TODO: ArrayBuffer return type
         Response.prototype.arrayBuffer = function () {
             throw new BaseException('"arrayBuffer()" method not implemented on Response superclass');
+        };
+        Response.prototype.toString = function () {
+            return "Response with status: " + this.status + " " + this.statusText + " for URL: " + this.url;
         };
         return Response;
     }());

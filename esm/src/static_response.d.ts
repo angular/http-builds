@@ -85,4 +85,5 @@ export declare class Response {
      * Not yet implemented
      */
     arrayBuffer(): any;
+    toString(): string;
 }

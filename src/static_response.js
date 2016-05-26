@@ -59,6 +59,9 @@ var Response = (function () {
     Response.prototype.arrayBuffer = function () {
         throw new exceptions_1.BaseException('"arrayBuffer()" method not implemented on Response superclass');
     };
+    Response.prototype.toString = function () {
+        return "Response with status: " + this.status + " " + this.statusText + " for URL: " + this.url;
+    };
     return Response;
 }());
 exports.Response = Response;

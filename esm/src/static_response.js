@@ -58,5 +58,8 @@ export class Response {
     arrayBuffer() {
         throw new BaseException('"arrayBuffer()" method not implemented on Response superclass');
     }
+    toString() {
+        return `Response with status: ${this.status} ${this.statusText} for URL: ${this.url}`;
+    }
 }
 //# sourceMappingURL=static_response.js.map
