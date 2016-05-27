@@ -1,6 +1,6 @@
 "use strict";
-var headers_1 = require('./headers');
 var enums_1 = require('./enums');
+var headers_1 = require('./headers');
 var url_search_params_1 = require('./url_search_params');
 var http_utils_1 = require('./http_utils');
 var lang_1 = require('../src/facade/lang');

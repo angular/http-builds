@@ -1,4 +1,4 @@
-import { RequestMethod, ResponseType } from '../enums';
+import { RequestMethod, ResponseType, ContentType } from '../enums';
 import { Response } from '../static_response';
 import { Headers } from '../headers';
 import { ResponseOptions } from '../base_response_options';
@@ -7,7 +7,6 @@ import { BrowserXhr } from './browser_xhr';
 import { isPresent, isString } from '../../src/facade/lang';
 import { Observable } from 'rxjs/Observable';
 import { isSuccess, getResponseURL } from '../http_utils';
-import { ContentType } from '../enums';
 const XSSI_PREFIX = ')]}\',\n';
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified

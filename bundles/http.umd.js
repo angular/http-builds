@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v2.0.0-307d105
+ * @license AngularJS v2.0.0-ec198b0
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -523,6 +523,58 @@ var __extends = (this && this.__extends) || function (d, b) {
         return Connection;
     }());
     /**
+     * Supported http methods.
+     */
+    exports.RequestMethod;
+    (function (RequestMethod) {
+        RequestMethod[RequestMethod["Get"] = 0] = "Get";
+        RequestMethod[RequestMethod["Post"] = 1] = "Post";
+        RequestMethod[RequestMethod["Put"] = 2] = "Put";
+        RequestMethod[RequestMethod["Delete"] = 3] = "Delete";
+        RequestMethod[RequestMethod["Options"] = 4] = "Options";
+        RequestMethod[RequestMethod["Head"] = 5] = "Head";
+        RequestMethod[RequestMethod["Patch"] = 6] = "Patch";
+    })(exports.RequestMethod || (exports.RequestMethod = {}));
+    /**
+     * All possible states in which a connection can be, based on
+     * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
+     * additional "CANCELLED" state.
+     */
+    exports.ReadyState;
+    (function (ReadyState) {
+        ReadyState[ReadyState["Unsent"] = 0] = "Unsent";
+        ReadyState[ReadyState["Open"] = 1] = "Open";
+        ReadyState[ReadyState["HeadersReceived"] = 2] = "HeadersReceived";
+        ReadyState[ReadyState["Loading"] = 3] = "Loading";
+        ReadyState[ReadyState["Done"] = 4] = "Done";
+        ReadyState[ReadyState["Cancelled"] = 5] = "Cancelled";
+    })(exports.ReadyState || (exports.ReadyState = {}));
+    /**
+     * Acceptable response types to be associated with a {@link Response}, based on
+     * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
+     */
+    exports.ResponseType;
+    (function (ResponseType) {
+        ResponseType[ResponseType["Basic"] = 0] = "Basic";
+        ResponseType[ResponseType["Cors"] = 1] = "Cors";
+        ResponseType[ResponseType["Default"] = 2] = "Default";
+        ResponseType[ResponseType["Error"] = 3] = "Error";
+        ResponseType[ResponseType["Opaque"] = 4] = "Opaque";
+    })(exports.ResponseType || (exports.ResponseType = {}));
+    /**
+     * Supported content type to be automatically associated with a {@link Request}.
+     */
+    var ContentType;
+    (function (ContentType) {
+        ContentType[ContentType["NONE"] = 0] = "NONE";
+        ContentType[ContentType["JSON"] = 1] = "JSON";
+        ContentType[ContentType["FORM"] = 2] = "FORM";
+        ContentType[ContentType["FORM_DATA"] = 3] = "FORM_DATA";
+        ContentType[ContentType["TEXT"] = 4] = "TEXT";
+        ContentType[ContentType["BLOB"] = 5] = "BLOB";
+        ContentType[ContentType["ARRAY_BUFFER"] = 6] = "ARRAY_BUFFER";
+    })(ContentType || (ContentType = {}));
+    /**
      * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
      * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
      *
@@ -651,58 +703,6 @@ var __extends = (this && this.__extends) || function (d, b) {
         Headers.prototype.entries = function () { throw new BaseException('"entries" method is not implemented on Headers class'); };
         return Headers;
     }());
-    /**
-     * Supported http methods.
-     */
-    exports.RequestMethod;
-    (function (RequestMethod) {
-        RequestMethod[RequestMethod["Get"] = 0] = "Get";
-        RequestMethod[RequestMethod["Post"] = 1] = "Post";
-        RequestMethod[RequestMethod["Put"] = 2] = "Put";
-        RequestMethod[RequestMethod["Delete"] = 3] = "Delete";
-        RequestMethod[RequestMethod["Options"] = 4] = "Options";
-        RequestMethod[RequestMethod["Head"] = 5] = "Head";
-        RequestMethod[RequestMethod["Patch"] = 6] = "Patch";
-    })(exports.RequestMethod || (exports.RequestMethod = {}));
-    /**
-     * All possible states in which a connection can be, based on
-     * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
-     * additional "CANCELLED" state.
-     */
-    exports.ReadyState;
-    (function (ReadyState) {
-        ReadyState[ReadyState["Unsent"] = 0] = "Unsent";
-        ReadyState[ReadyState["Open"] = 1] = "Open";
-        ReadyState[ReadyState["HeadersReceived"] = 2] = "HeadersReceived";
-        ReadyState[ReadyState["Loading"] = 3] = "Loading";
-        ReadyState[ReadyState["Done"] = 4] = "Done";
-        ReadyState[ReadyState["Cancelled"] = 5] = "Cancelled";
-    })(exports.ReadyState || (exports.ReadyState = {}));
-    /**
-     * Acceptable response types to be associated with a {@link Response}, based on
-     * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
-     */
-    exports.ResponseType;
-    (function (ResponseType) {
-        ResponseType[ResponseType["Basic"] = 0] = "Basic";
-        ResponseType[ResponseType["Cors"] = 1] = "Cors";
-        ResponseType[ResponseType["Default"] = 2] = "Default";
-        ResponseType[ResponseType["Error"] = 3] = "Error";
-        ResponseType[ResponseType["Opaque"] = 4] = "Opaque";
-    })(exports.ResponseType || (exports.ResponseType = {}));
-    /**
-     * Supported content type to be automatically associated with a {@link Request}.
-     */
-    var ContentType;
-    (function (ContentType) {
-        ContentType[ContentType["NONE"] = 0] = "NONE";
-        ContentType[ContentType["JSON"] = 1] = "JSON";
-        ContentType[ContentType["FORM"] = 2] = "FORM";
-        ContentType[ContentType["FORM_DATA"] = 3] = "FORM_DATA";
-        ContentType[ContentType["TEXT"] = 4] = "TEXT";
-        ContentType[ContentType["BLOB"] = 5] = "BLOB";
-        ContentType[ContentType["ARRAY_BUFFER"] = 6] = "ARRAY_BUFFER";
-    })(ContentType || (ContentType = {}));
     function paramParser(rawParams) {
         if (rawParams === void 0) { rawParams = ''; }
         var map = new Map$1();

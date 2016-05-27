@@ -1,5 +1,5 @@
-import { Headers } from './headers';
 import { ContentType } from './enums';
+import { Headers } from './headers';
 import { URLSearchParams } from './url_search_params';
 import { normalizeMethodName } from './http_utils';
 import { isPresent, StringWrapper } from '../src/facade/lang';

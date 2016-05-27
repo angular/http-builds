@@ -8,7 +8,6 @@ var browser_xhr_1 = require('./browser_xhr');
 var lang_1 = require('../../src/facade/lang');
 var Observable_1 = require('rxjs/Observable');
 var http_utils_1 = require('../http_utils');
-var enums_2 = require('../enums');
 var XSSI_PREFIX = ')]}\',\n';
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified
@@ -92,18 +91,18 @@ var XHRConnection = (function () {
         }
         // Set the detected content type
         switch (req.contentType) {
-            case enums_2.ContentType.NONE:
+            case enums_1.ContentType.NONE:
                 break;
-            case enums_2.ContentType.JSON:
+            case enums_1.ContentType.JSON:
                 _xhr.setRequestHeader('Content-Type', 'application/json');
                 break;
-            case enums_2.ContentType.FORM:
+            case enums_1.ContentType.FORM:
                 _xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
                 break;
-            case enums_2.ContentType.TEXT:
+            case enums_1.ContentType.TEXT:
                 _xhr.setRequestHeader('Content-Type', 'text/plain');
                 break;
-            case enums_2.ContentType.BLOB:
+            case enums_1.ContentType.BLOB:
                 var blob = req.blob();
                 if (blob.type) {
                     _xhr.setRequestHeader('Content-Type', blob.type);
