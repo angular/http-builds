@@ -1,9 +1,11 @@
 "use strict";
+var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var interfaces_1 = require('../interfaces');
 var enums_1 = require('../enums');
 var static_response_1 = require('../static_response');
 var headers_1 = require('../headers');
 var base_response_options_1 = require('../base_response_options');
-var core_1 = require('@angular/core');
 var browser_xhr_1 = require('./browser_xhr');
 var lang_1 = require('../../src/facade/lang');
 var Observable_1 = require('rxjs/Observable');
@@ -113,12 +115,39 @@ var XHRConnection = (function () {
     return XHRConnection;
 }());
 exports.XHRConnection = XHRConnection;
+/**
+ * `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application
+ * using a cookie. See https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF) for more
+ * information on XSRF.
+ *
+ * Applications can configure custom cookie and header names by binding an instance of this class
+ * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
+ * details.
+ */
+var CookieXSRFStrategy = (function () {
+    function CookieXSRFStrategy(_cookieName, _headerName) {
+        if (_cookieName === void 0) { _cookieName = 'XSRF-TOKEN'; }
+        if (_headerName === void 0) { _headerName = 'X-XSRF-TOKEN'; }
+        this._cookieName = _cookieName;
+        this._headerName = _headerName;
+    }
+    CookieXSRFStrategy.prototype.configureRequest = function (req) {
+        var xsrfToken = platform_browser_1.__platform_browser_private__.getDOM().getCookie(this._cookieName);
+        if (xsrfToken && !req.headers.has(this._headerName)) {
+            req.headers.set(this._headerName, xsrfToken);
+        }
+    };
+    return CookieXSRFStrategy;
+}());
+exports.CookieXSRFStrategy = CookieXSRFStrategy;
 var XHRBackend = (function () {
-    function XHRBackend(_browserXHR, _baseResponseOptions) {
+    function XHRBackend(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
         this._browserXHR = _browserXHR;
         this._baseResponseOptions = _baseResponseOptions;
+        this._xsrfStrategy = _xsrfStrategy;
     }
     XHRBackend.prototype.createConnection = function (request) {
+        this._xsrfStrategy.configureRequest(request);
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
     };
     XHRBackend.decorators = [
@@ -127,6 +156,7 @@ var XHRBackend = (function () {
     XHRBackend.ctorParameters = [
         { type: browser_xhr_1.BrowserXhr, },
         { type: base_response_options_1.ResponseOptions, },
+        { type: interfaces_1.XSRFStrategy, },
     ];
     return XHRBackend;
 }());

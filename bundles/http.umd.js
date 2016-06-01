@@ -9,10 +9,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Observable')) :
-        typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Observable'], factory) :
-            (factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}), global.ng.core, global.Rx));
-}(this, function (exports, _angular_core, rxjs_Observable) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/platform-browser'), require('rxjs/Observable')) :
+        typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/platform-browser', 'rxjs/Observable'], factory) :
+            (factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}), global.ng.core, global.ng.platformBrowser, global.Rx));
+}(this, function (exports, _angular_core, _angular_platformBrowser, rxjs_Observable) {
     'use strict';
     var globalScope;
     if (typeof window === 'undefined') {
@@ -521,6 +521,12 @@ var __extends = (this && this.__extends) || function (d, b) {
         function Connection() {
         }
         return Connection;
+    }());
+    /** An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request. */
+    var XSRFStrategy = (function () {
+        function XSRFStrategy() {
+        }
+        return XSRFStrategy;
     }());
     /**
      * Supported http methods.
@@ -1478,12 +1484,38 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         return XHRConnection;
     }());
+    /**
+     * `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application
+     * using a cookie. See https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF) for more
+     * information on XSRF.
+     *
+     * Applications can configure custom cookie and header names by binding an instance of this class
+     * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
+     * details.
+     */
+    var CookieXSRFStrategy = (function () {
+        function CookieXSRFStrategy(_cookieName, _headerName) {
+            if (_cookieName === void 0) { _cookieName = 'XSRF-TOKEN'; }
+            if (_headerName === void 0) { _headerName = 'X-XSRF-TOKEN'; }
+            this._cookieName = _cookieName;
+            this._headerName = _headerName;
+        }
+        CookieXSRFStrategy.prototype.configureRequest = function (req) {
+            var xsrfToken = _angular_platformBrowser.__platform_browser_private__.getDOM().getCookie(this._cookieName);
+            if (xsrfToken && !req.headers.has(this._headerName)) {
+                req.headers.set(this._headerName, xsrfToken);
+            }
+        };
+        return CookieXSRFStrategy;
+    }());
     var XHRBackend = (function () {
-        function XHRBackend(_browserXHR, _baseResponseOptions) {
+        function XHRBackend(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
             this._browserXHR = _browserXHR;
             this._baseResponseOptions = _baseResponseOptions;
+            this._xsrfStrategy = _xsrfStrategy;
         }
         XHRBackend.prototype.createConnection = function (request) {
+            this._xsrfStrategy.configureRequest(request);
             return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
         };
         return XHRBackend;
@@ -1494,6 +1526,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     XHRBackend.ctorParameters = [
         { type: BrowserXhr, },
         { type: ResponseOptions, },
+        { type: XSRFStrategy, },
     ];
     var _nextRequestId = 0;
     var JSONP_HOME = '__ng_jsonp__';
@@ -1709,6 +1742,7 @@ var __extends = (this && this.__extends) || function (d, b) {
      * The providers included in `HTTP_PROVIDERS` include:
      *  * {@link Http}
      *  * {@link XHRBackend}
+     *  * {@link XSRFStrategy} - Bound to {@link CookieXSRFStrategy} class (see below)
      *  * `BrowserXHR` - Private factory to create `XMLHttpRequest` instances
      *  * {@link RequestOptions} - Bound to {@link BaseRequestOptions} class
      *  * {@link ResponseOptions} - Bound to {@link BaseResponseOptions} class
@@ -1772,6 +1806,31 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   }
      * });
      * ```
+     *
+     * `XSRFStrategy` allows customizing how the application protects itself against Cross Site Request
+     * Forgery (XSRF) attacks. By default, Angular will look for a cookie called `'XSRF-TOKEN'`, and set
+     * an HTTP request header called `'X-XSRF-TOKEN'` with the value of the cookie on each request,
+     * allowing the server side to validate that the request comes from its own front end.
+     *
+     * Applications can override the names used by configuring a different `XSRFStrategy` instance. Most
+     * commonly, applications will configure a `CookieXSRFStrategy` with different cookie or header
+     * names, but if needed, they can supply a completely custom implementation.
+     *
+     * See the security documentation for more information.
+     *
+     * ### Example
+     *
+     * ```
+     * import {provide} from '@angular/core';
+     * import {bootstrap} from '@angular/platform-browser/browser';
+     * import {HTTP_PROVIDERS, XSRFStrategy, CookieXSRFStrategy} from '@angular/http';
+     *
+     * bootstrap(
+     *     App,
+     *     [HTTP_PROVIDERS, provide(XSRFStrategy,
+     *         {useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')})])
+     *   .catch(err => console.error(err));
+     * ```
      */
     var HTTP_PROVIDERS = [
         // TODO(pascal): use factory type annotations once supported in DI
@@ -1783,7 +1842,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         BrowserXhr,
         _angular_core.provide(RequestOptions, { useClass: BaseRequestOptions }),
         _angular_core.provide(ResponseOptions, { useClass: BaseResponseOptions }),
-        XHRBackend
+        XHRBackend,
+        _angular_core.provide(XSRFStrategy, { useValue: new CookieXSRFStrategy() }),
     ];
     /**
      * See {@link HTTP_PROVIDERS} instead.
@@ -1924,6 +1984,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     exports.Response = Response;
     exports.Connection = Connection;
     exports.ConnectionBackend = ConnectionBackend;
+    exports.XSRFStrategy = XSRFStrategy;
     exports.BrowserXhr = BrowserXhr;
     exports.BaseRequestOptions = BaseRequestOptions;
     exports.RequestOptions = RequestOptions;
@@ -1931,6 +1992,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     exports.ResponseOptions = ResponseOptions;
     exports.XHRBackend = XHRBackend;
     exports.XHRConnection = XHRConnection;
+    exports.CookieXSRFStrategy = CookieXSRFStrategy;
     exports.JSONPBackend = JSONPBackend;
     exports.JSONPConnection = JSONPConnection;
     exports.Http = Http;

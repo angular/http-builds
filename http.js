@@ -12,14 +12,16 @@ var jsonp_backend_1 = require('./src/backends/jsonp_backend');
 var browser_xhr_1 = require('./src/backends/browser_xhr');
 var browser_jsonp_1 = require('./src/backends/browser_jsonp');
 var base_request_options_1 = require('./src/base_request_options');
+var interfaces_1 = require('./src/interfaces');
 var base_response_options_1 = require('./src/base_response_options');
 var static_request_1 = require('./src/static_request');
 exports.Request = static_request_1.Request;
 var static_response_1 = require('./src/static_response');
 exports.Response = static_response_1.Response;
-var interfaces_1 = require('./src/interfaces');
-exports.Connection = interfaces_1.Connection;
-exports.ConnectionBackend = interfaces_1.ConnectionBackend;
+var interfaces_2 = require('./src/interfaces');
+exports.Connection = interfaces_2.Connection;
+exports.ConnectionBackend = interfaces_2.ConnectionBackend;
+exports.XSRFStrategy = interfaces_2.XSRFStrategy;
 var browser_xhr_2 = require('./src/backends/browser_xhr');
 exports.BrowserXhr = browser_xhr_2.BrowserXhr;
 var base_request_options_2 = require('./src/base_request_options');
@@ -31,6 +33,7 @@ exports.ResponseOptions = base_response_options_2.ResponseOptions;
 var xhr_backend_2 = require('./src/backends/xhr_backend');
 exports.XHRBackend = xhr_backend_2.XHRBackend;
 exports.XHRConnection = xhr_backend_2.XHRConnection;
+exports.CookieXSRFStrategy = xhr_backend_2.CookieXSRFStrategy;
 var jsonp_backend_2 = require('./src/backends/jsonp_backend');
 exports.JSONPBackend = jsonp_backend_2.JSONPBackend;
 exports.JSONPConnection = jsonp_backend_2.JSONPConnection;
@@ -98,6 +101,7 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  * The providers included in `HTTP_PROVIDERS` include:
  *  * {@link Http}
  *  * {@link XHRBackend}
+ *  * {@link XSRFStrategy} - Bound to {@link CookieXSRFStrategy} class (see below)
  *  * `BrowserXHR` - Private factory to create `XMLHttpRequest` instances
  *  * {@link RequestOptions} - Bound to {@link BaseRequestOptions} class
  *  * {@link ResponseOptions} - Bound to {@link BaseResponseOptions} class
@@ -161,6 +165,31 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  *   }
  * });
  * ```
+ *
+ * `XSRFStrategy` allows customizing how the application protects itself against Cross Site Request
+ * Forgery (XSRF) attacks. By default, Angular will look for a cookie called `'XSRF-TOKEN'`, and set
+ * an HTTP request header called `'X-XSRF-TOKEN'` with the value of the cookie on each request,
+ * allowing the server side to validate that the request comes from its own front end.
+ *
+ * Applications can override the names used by configuring a different `XSRFStrategy` instance. Most
+ * commonly, applications will configure a `CookieXSRFStrategy` with different cookie or header
+ * names, but if needed, they can supply a completely custom implementation.
+ *
+ * See the security documentation for more information.
+ *
+ * ### Example
+ *
+ * ```
+ * import {provide} from '@angular/core';
+ * import {bootstrap} from '@angular/platform-browser/browser';
+ * import {HTTP_PROVIDERS, XSRFStrategy, CookieXSRFStrategy} from '@angular/http';
+ *
+ * bootstrap(
+ *     App,
+ *     [HTTP_PROVIDERS, provide(XSRFStrategy,
+ *         {useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')})])
+ *   .catch(err => console.error(err));
+ * ```
  */
 exports.HTTP_PROVIDERS = [
     // TODO(pascal): use factory type annotations once supported in DI
@@ -174,7 +203,8 @@ exports.HTTP_PROVIDERS = [
     browser_xhr_1.BrowserXhr,
     core_1.provide(base_request_options_1.RequestOptions, { useClass: base_request_options_1.BaseRequestOptions }),
     core_1.provide(base_response_options_1.ResponseOptions, { useClass: base_response_options_1.BaseResponseOptions }),
-    xhr_backend_1.XHRBackend
+    xhr_backend_1.XHRBackend,
+    core_1.provide(interfaces_1.XSRFStrategy, { useValue: new xhr_backend_1.CookieXSRFStrategy() }),
 ];
 /**
  * See {@link HTTP_PROVIDERS} instead.

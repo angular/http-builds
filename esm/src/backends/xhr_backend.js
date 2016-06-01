@@ -1,8 +1,10 @@
+import { Injectable } from '@angular/core';
+import { __platform_browser_private__ } from '@angular/platform-browser';
+import { XSRFStrategy } from '../interfaces';
 import { RequestMethod, ResponseType, ContentType } from '../enums';
 import { Response } from '../static_response';
 import { Headers } from '../headers';
 import { ResponseOptions } from '../base_response_options';
-import { Injectable } from '@angular/core';
 import { BrowserXhr } from './browser_xhr';
 import { isPresent, isString } from '../../src/facade/lang';
 import { Observable } from 'rxjs/Observable';
@@ -109,12 +111,35 @@ export class XHRConnection {
         }
     }
 }
+/**
+ * `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application
+ * using a cookie. See https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF) for more
+ * information on XSRF.
+ *
+ * Applications can configure custom cookie and header names by binding an instance of this class
+ * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
+ * details.
+ */
+export class CookieXSRFStrategy {
+    constructor(_cookieName = 'XSRF-TOKEN', _headerName = 'X-XSRF-TOKEN') {
+        this._cookieName = _cookieName;
+        this._headerName = _headerName;
+    }
+    configureRequest(req) {
+        let xsrfToken = __platform_browser_private__.getDOM().getCookie(this._cookieName);
+        if (xsrfToken && !req.headers.has(this._headerName)) {
+            req.headers.set(this._headerName, xsrfToken);
+        }
+    }
+}
 export class XHRBackend {
-    constructor(_browserXHR, _baseResponseOptions) {
+    constructor(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
         this._browserXHR = _browserXHR;
         this._baseResponseOptions = _baseResponseOptions;
+        this._xsrfStrategy = _xsrfStrategy;
     }
     createConnection(request) {
+        this._xsrfStrategy.configureRequest(request);
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
     }
 }
@@ -124,5 +149,6 @@ XHRBackend.decorators = [
 XHRBackend.ctorParameters = [
     { type: BrowserXhr, },
     { type: ResponseOptions, },
+    { type: XSRFStrategy, },
 ];
 //# sourceMappingURL=xhr_backend.js.map
