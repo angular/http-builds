@@ -78,9 +78,9 @@ export declare class MockConnection implements Connection {
  *   var connection;
  *   var injector = Injector.resolveAndCreate([
  *     MockBackend,
- *     provide(Http, {useFactory: (backend, options) => {
+ *     {provide: Http, useFactory: (backend, options) => {
  *       return new Http(backend, options);
- *     }, deps: [MockBackend, BaseRequestOptions]})]);
+ *     }, deps: [MockBackend, BaseRequestOptions]}]);
  *   var http = injector.get(Http);
  *   var backend = injector.get(MockBackend);
  *   //Assign any newly-created connection to local variable
@@ -113,9 +113,9 @@ export declare class MockBackend implements ConnectionBackend {
      *   var text; //this will be set from mock response
      *   var injector = Injector.resolveAndCreate([
      *     MockBackend,
-     *     provide(Http, {useFactory: (backend, options) => {
+     *     {provide: Http, useFactory: (backend, options) => {
      *       return new Http(backend, options);
-     *     }, deps: [MockBackend, BaseRequestOptions]})]);
+     *     }, deps: [MockBackend, BaseRequestOptions]}]);
      *   var backend = injector.get(MockBackend);
      *   var http = injector.get(Http);
      *   backend.connections.subscribe(c => connection = c);

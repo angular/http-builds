@@ -1,11 +1,4 @@
 "use strict";
-/**
- * @module
- * @description
- * The http module provides services to perform http requests. To get started, see the {@link Http}
- * class.
- */
-var core_1 = require('@angular/core');
 var http_1 = require('./src/http');
 var xhr_backend_1 = require('./src/backends/xhr_backend');
 var jsonp_backend_1 = require('./src/backends/jsonp_backend');
@@ -122,7 +115,7 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  *   search: string = 'coreTeam=true';
  * }
  *
- * bootstrap(App, [HTTP_PROVIDERS, provide(RequestOptions, {useClass: MyOptions})])
+ * bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
  *   .catch(err => console.error(err));
  * ```
  *
@@ -142,7 +135,7 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  * var injector = Injector.resolveAndCreate([
  *   HTTP_PROVIDERS,
  *   MockBackend,
- *   provide(XHRBackend, {useExisting: MockBackend})
+ *   {provide: XHRBackend, useExisting: MockBackend}
  * ]);
  * var http = injector.get(Http);
  * var backend = injector.get(MockBackend);
@@ -186,26 +179,24 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  *
  * bootstrap(
  *     App,
- *     [HTTP_PROVIDERS, provide(XSRFStrategy,
- *         {useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')})])
+ *     [HTTP_PROVIDERS, {provide: XSRFStrategy,
+ *         useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')}])
  *   .catch(err => console.error(err));
  * ```
  */
 exports.HTTP_PROVIDERS = [
     // TODO(pascal): use factory type annotations once supported in DI
     // issue: https://github.com/angular/angular/issues/3183
-    core_1.provide(http_1.Http, {
-        useFactory: function (xhrBackend, requestOptions) {
-            return new http_1.Http(xhrBackend, requestOptions);
-        },
-        deps: [xhr_backend_1.XHRBackend, base_request_options_1.RequestOptions]
-    }),
+    { provide: http_1.Http, useFactory: httpFactory, deps: [xhr_backend_1.XHRBackend, base_request_options_1.RequestOptions] },
     browser_xhr_1.BrowserXhr,
-    core_1.provide(base_request_options_1.RequestOptions, { useClass: base_request_options_1.BaseRequestOptions }),
-    core_1.provide(base_response_options_1.ResponseOptions, { useClass: base_response_options_1.BaseResponseOptions }),
+    { provide: base_request_options_1.RequestOptions, useClass: base_request_options_1.BaseRequestOptions },
+    { provide: base_response_options_1.ResponseOptions, useClass: base_response_options_1.BaseResponseOptions },
     xhr_backend_1.XHRBackend,
-    core_1.provide(interfaces_1.XSRFStrategy, { useValue: new xhr_backend_1.CookieXSRFStrategy() }),
+    { provide: interfaces_1.XSRFStrategy, useValue: new xhr_backend_1.CookieXSRFStrategy() },
 ];
+function httpFactory(xhrBackend, requestOptions) {
+    return new http_1.Http(xhrBackend, requestOptions);
+}
 /**
  * See {@link HTTP_PROVIDERS} instead.
  *
@@ -277,7 +268,7 @@ exports.HTTP_BINDINGS = exports.HTTP_PROVIDERS;
  *   search: string = 'coreTeam=true';
  * }
  *
- * bootstrap(App, [JSONP_PROVIDERS, provide(RequestOptions, {useClass: MyOptions})])
+ * bootstrap(App, [JSONP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
  *   .catch(err => console.error(err));
  * ```
  *
@@ -295,7 +286,7 @@ exports.HTTP_BINDINGS = exports.HTTP_PROVIDERS;
  * var injector = Injector.resolveAndCreate([
  *   JSONP_PROVIDERS,
  *   MockBackend,
- *   provide(JSONPBackend, {useExisting: MockBackend})
+ *   {provide: JSONPBackend, useExisting: MockBackend}
  * ]);
  * var jsonp = injector.get(Jsonp);
  * var backend = injector.get(MockBackend);
@@ -322,17 +313,15 @@ exports.HTTP_BINDINGS = exports.HTTP_PROVIDERS;
 exports.JSONP_PROVIDERS = [
     // TODO(pascal): use factory type annotations once supported in DI
     // issue: https://github.com/angular/angular/issues/3183
-    core_1.provide(http_1.Jsonp, {
-        useFactory: function (jsonpBackend, requestOptions) {
-            return new http_1.Jsonp(jsonpBackend, requestOptions);
-        },
-        deps: [jsonp_backend_1.JSONPBackend, base_request_options_1.RequestOptions]
-    }),
+    { provide: http_1.Jsonp, useFactory: jsonpFactory, deps: [jsonp_backend_1.JSONPBackend, base_request_options_1.RequestOptions] },
     browser_jsonp_1.BrowserJsonp,
-    core_1.provide(base_request_options_1.RequestOptions, { useClass: base_request_options_1.BaseRequestOptions }),
-    core_1.provide(base_response_options_1.ResponseOptions, { useClass: base_response_options_1.BaseResponseOptions }),
-    core_1.provide(jsonp_backend_1.JSONPBackend, { useClass: jsonp_backend_1.JSONPBackend_ })
+    { provide: base_request_options_1.RequestOptions, useClass: base_request_options_1.BaseRequestOptions },
+    { provide: base_response_options_1.ResponseOptions, useClass: base_response_options_1.BaseResponseOptions },
+    { provide: jsonp_backend_1.JSONPBackend, useClass: jsonp_backend_1.JSONPBackend_ },
 ];
+function jsonpFactory(jsonpBackend, requestOptions) {
+    return new http_1.Jsonp(jsonpBackend, requestOptions);
+}
 /**
  * See {@link JSONP_PROVIDERS} instead.
  *

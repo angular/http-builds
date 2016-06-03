@@ -93,7 +93,7 @@ export declare class ResponseOptions {
  *   headers:Headers = new Headers({network: 'github'});
  * }
  *
- * bootstrap(App, [HTTP_PROVIDERS, provide(ResponseOptions, {useClass: MyOptions})]);
+ * bootstrap(App, [HTTP_PROVIDERS, {provide: ResponseOptions, useClass: MyOptions}]);
  * ```
  *
  * The options could also be extended when manually creating a {@link Response}

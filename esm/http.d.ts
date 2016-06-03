@@ -84,7 +84,7 @@ export { URLSearchParams } from './src/url_search_params';
  *   search: string = 'coreTeam=true';
  * }
  *
- * bootstrap(App, [HTTP_PROVIDERS, provide(RequestOptions, {useClass: MyOptions})])
+ * bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
  *   .catch(err => console.error(err));
  * ```
  *
@@ -104,7 +104,7 @@ export { URLSearchParams } from './src/url_search_params';
  * var injector = Injector.resolveAndCreate([
  *   HTTP_PROVIDERS,
  *   MockBackend,
- *   provide(XHRBackend, {useExisting: MockBackend})
+ *   {provide: XHRBackend, useExisting: MockBackend}
  * ]);
  * var http = injector.get(Http);
  * var backend = injector.get(MockBackend);
@@ -148,8 +148,8 @@ export { URLSearchParams } from './src/url_search_params';
  *
  * bootstrap(
  *     App,
- *     [HTTP_PROVIDERS, provide(XSRFStrategy,
- *         {useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')})])
+ *     [HTTP_PROVIDERS, {provide: XSRFStrategy,
+ *         useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')}])
  *   .catch(err => console.error(err));
  * ```
  */
@@ -225,7 +225,7 @@ export declare const HTTP_BINDINGS: any[];
  *   search: string = 'coreTeam=true';
  * }
  *
- * bootstrap(App, [JSONP_PROVIDERS, provide(RequestOptions, {useClass: MyOptions})])
+ * bootstrap(App, [JSONP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
  *   .catch(err => console.error(err));
  * ```
  *
@@ -243,7 +243,7 @@ export declare const HTTP_BINDINGS: any[];
  * var injector = Injector.resolveAndCreate([
  *   JSONP_PROVIDERS,
  *   MockBackend,
- *   provide(JSONPBackend, {useExisting: MockBackend})
+ *   {provide: JSONPBackend, useExisting: MockBackend}
  * ]);
  * var jsonp = injector.get(Jsonp);
  * var backend = injector.get(MockBackend);
