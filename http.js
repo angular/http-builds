@@ -197,6 +197,7 @@ exports.HTTP_PROVIDERS = [
 function httpFactory(xhrBackend, requestOptions) {
     return new http_1.Http(xhrBackend, requestOptions);
 }
+exports.httpFactory = httpFactory;
 /**
  * See {@link HTTP_PROVIDERS} instead.
  *

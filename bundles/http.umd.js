@@ -1977,6 +1977,7 @@ var __extends = (this && this.__extends) || function (d, b) {
      */
     var JSON_BINDINGS = JSONP_PROVIDERS;
     exports.HTTP_PROVIDERS = HTTP_PROVIDERS;
+    exports.httpFactory = httpFactory;
     exports.HTTP_BINDINGS = HTTP_BINDINGS;
     exports.JSONP_PROVIDERS = JSONP_PROVIDERS;
     exports.JSON_BINDINGS = JSON_BINDINGS;

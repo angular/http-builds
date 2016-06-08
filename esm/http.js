@@ -171,7 +171,7 @@ export const HTTP_PROVIDERS = [
     XHRBackend,
     { provide: XSRFStrategy, useValue: new CookieXSRFStrategy() },
 ];
-function httpFactory(xhrBackend, requestOptions) {
+export function httpFactory(xhrBackend, requestOptions) {
     return new Http(xhrBackend, requestOptions);
 }
 /**

@@ -1,3 +1,6 @@
+import { Http } from './src/http';
+import { XHRBackend } from './src/backends/xhr_backend';
+import { RequestOptions } from './src/base_request_options';
 export { Request } from './src/static_request';
 export { Response } from './src/static_response';
 export { RequestOptionsArgs, ResponseOptionsArgs, Connection, ConnectionBackend, XSRFStrategy } from './src/interfaces';
@@ -154,6 +157,7 @@ export { URLSearchParams } from './src/url_search_params';
  * ```
  */
 export declare const HTTP_PROVIDERS: any[];
+export declare function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions): Http;
 /**
  * See {@link HTTP_PROVIDERS} instead.
  *
