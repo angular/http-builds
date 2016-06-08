@@ -92,7 +92,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         StringWrapper.replaceAllMapped = function (s, from, cb) {
             return s.replace(from, function () {
-                var matches = [];
+                var matches = []; /** TODO #9100 */
                 for (var _i = 0; _i < arguments.length; _i++) {
                     matches[_i - 0] = arguments[_i];
                 }
@@ -691,7 +691,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             var serializableHeaders = {};
             this._headersMap.forEach(function (values, name) {
                 var list = [];
-                iterateListLike(values, function (val) { return list = ListWrapper.concat(list, val.split(',')); });
+                iterateListLike(values, function (val /** TODO #9100 */) { return list = ListWrapper.concat(list, val.split(',')); });
                 serializableHeaders[name] = list;
             });
             return serializableHeaders;
@@ -1456,7 +1456,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 };
             });
         }
-        XHRConnection.prototype.setDetectedContentType = function (req, _xhr) {
+        XHRConnection.prototype.setDetectedContentType = function (req /** TODO #9100 */, _xhr /** TODO #9100 */) {
             // Skip if a custom Content-Type header is provided
             if (isPresent(req.headers) && isPresent(req.headers['Content-Type'])) {
                 return;

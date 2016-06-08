@@ -113,7 +113,7 @@ var Headers = (function () {
         var serializableHeaders = {};
         this._headersMap.forEach(function (values, name) {
             var list = [];
-            collection_1.iterateListLike(values, function (val) { return list = collection_1.ListWrapper.concat(list, val.split(',')); });
+            collection_1.iterateListLike(values, function (val /** TODO #9100 */) { return list = collection_1.ListWrapper.concat(list, val.split(',')); });
             serializableHeaders[name] = list;
         });
         return serializableHeaders;

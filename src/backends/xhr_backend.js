@@ -86,7 +86,7 @@ var XHRConnection = (function () {
             };
         });
     }
-    XHRConnection.prototype.setDetectedContentType = function (req, _xhr) {
+    XHRConnection.prototype.setDetectedContentType = function (req /** TODO #9100 */, _xhr /** TODO #9100 */) {
         // Skip if a custom Content-Type header is provided
         if (lang_1.isPresent(req.headers) && lang_1.isPresent(req.headers['Content-Type'])) {
             return;

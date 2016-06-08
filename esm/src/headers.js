@@ -105,7 +105,7 @@ export class Headers {
         let serializableHeaders = {};
         this._headersMap.forEach((values, name) => {
             let list = [];
-            iterateListLike(values, val => list = ListWrapper.concat(list, val.split(',')));
+            iterateListLike(values, (val /** TODO #9100 */) => list = ListWrapper.concat(list, val.split(',')));
             serializableHeaders[name] = list;
         });
         return serializableHeaders;
