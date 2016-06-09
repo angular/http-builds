@@ -10,7 +10,7 @@ var browser_xhr_1 = require('./browser_xhr');
 var lang_1 = require('../facade/lang');
 var Observable_1 = require('rxjs/Observable');
 var http_utils_1 = require('../http_utils');
-var XSSI_PREFIX = ')]}\',\n';
+var XSSI_PREFIX = /^\)\]\}',?\n/;
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified
  * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the
@@ -36,9 +36,8 @@ var XHRConnection = (function () {
                 // IE10)
                 var body = lang_1.isPresent(_xhr.response) ? _xhr.response : _xhr.responseText;
                 // Implicitly strip a potential XSSI prefix.
-                if (lang_1.isString(body) && body.startsWith(XSSI_PREFIX)) {
-                    body = body.substring(XSSI_PREFIX.length);
-                }
+                if (lang_1.isString(body))
+                    body = body.replace(XSSI_PREFIX, '');
                 var headers = headers_1.Headers.fromResponseHeaderString(_xhr.getAllResponseHeaders());
                 var url = http_utils_1.getResponseURL(_xhr);
                 // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
