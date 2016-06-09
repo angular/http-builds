@@ -79,8 +79,10 @@ export class BaseResponseOptions extends ResponseOptions {
         super({ status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() });
     }
 }
+/** @nocollapse */
 BaseResponseOptions.decorators = [
     { type: Injectable },
 ];
+/** @nocollapse */
 BaseResponseOptions.ctorParameters = [];
 //# sourceMappingURL=base_response_options.js.map

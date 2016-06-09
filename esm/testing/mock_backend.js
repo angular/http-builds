@@ -113,8 +113,10 @@ export class MockBackend {
         return connection;
     }
 }
+/** @nocollapse */
 MockBackend.decorators = [
     { type: Injectable },
 ];
+/** @nocollapse */
 MockBackend.ctorParameters = [];
 //# sourceMappingURL=mock_backend.js.map

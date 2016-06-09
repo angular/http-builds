@@ -85,8 +85,10 @@ export class BaseRequestOptions extends RequestOptions {
         super({ method: RequestMethod.Get, headers: new Headers() });
     }
 }
+/** @nocollapse */
 BaseRequestOptions.decorators = [
     { type: Injectable },
 ];
+/** @nocollapse */
 BaseRequestOptions.ctorParameters = [];
 //# sourceMappingURL=base_request_options.js.map

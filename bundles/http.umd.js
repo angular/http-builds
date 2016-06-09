@@ -1090,9 +1090,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         return BaseRequestOptions;
     }(RequestOptions));
+    /** @nocollapse */
     BaseRequestOptions.decorators = [
         { type: _angular_core.Injectable },
     ];
+    /** @nocollapse */
     BaseRequestOptions.ctorParameters = [];
     function httpRequest(backend, request) {
         return backend.createConnection(request).response;
@@ -1179,9 +1181,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         return Http;
     }());
+    /** @nocollapse */
     Http.decorators = [
         { type: _angular_core.Injectable },
     ];
+    /** @nocollapse */
     Http.ctorParameters = [
         { type: ConnectionBackend, },
         { type: RequestOptions, },
@@ -1216,9 +1220,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         return Jsonp;
     }(Http));
+    /** @nocollapse */
     Jsonp.decorators = [
         { type: _angular_core.Injectable },
     ];
+    /** @nocollapse */
     Jsonp.ctorParameters = [
         { type: ConnectionBackend, },
         { type: RequestOptions, },
@@ -1366,9 +1372,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         return BaseResponseOptions;
     }(ResponseOptions));
+    /** @nocollapse */
     BaseResponseOptions.decorators = [
         { type: _angular_core.Injectable },
     ];
+    /** @nocollapse */
     BaseResponseOptions.ctorParameters = [];
     var BrowserXhr = (function () {
         function BrowserXhr() {
@@ -1376,9 +1384,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         BrowserXhr.prototype.build = function () { return (new XMLHttpRequest()); };
         return BrowserXhr;
     }());
+    /** @nocollapse */
     BrowserXhr.decorators = [
         { type: _angular_core.Injectable },
     ];
+    /** @nocollapse */
     BrowserXhr.ctorParameters = [];
     var XSSI_PREFIX = /^\)\]\}',?\n/;
     /**
@@ -1519,9 +1529,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         return XHRBackend;
     }());
+    /** @nocollapse */
     XHRBackend.decorators = [
         { type: _angular_core.Injectable },
     ];
+    /** @nocollapse */
     XHRBackend.ctorParameters = [
         { type: BrowserXhr, },
         { type: ResponseOptions, },
@@ -1565,6 +1577,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         return BrowserJsonp;
     }());
+    /** @nocollapse */
     BrowserJsonp.decorators = [
         { type: _angular_core.Injectable },
     ];
@@ -1681,9 +1694,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         return JSONPBackend_;
     }(JSONPBackend));
+    /** @nocollapse */
     JSONPBackend_.decorators = [
         { type: _angular_core.Injectable },
     ];
+    /** @nocollapse */
     JSONPBackend_.ctorParameters = [
         { type: BrowserJsonp, },
         { type: ResponseOptions, },

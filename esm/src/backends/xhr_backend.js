@@ -142,9 +142,11 @@ export class XHRBackend {
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
     }
 }
+/** @nocollapse */
 XHRBackend.decorators = [
     { type: Injectable },
 ];
+/** @nocollapse */
 XHRBackend.ctorParameters = [
     { type: BrowserXhr, },
     { type: ResponseOptions, },

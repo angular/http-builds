@@ -149,9 +149,11 @@ var XHRBackend = (function () {
         this._xsrfStrategy.configureRequest(request);
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
     };
+    /** @nocollapse */
     XHRBackend.decorators = [
         { type: core_1.Injectable },
     ];
+    /** @nocollapse */
     XHRBackend.ctorParameters = [
         { type: browser_xhr_1.BrowserXhr, },
         { type: base_response_options_1.ResponseOptions, },

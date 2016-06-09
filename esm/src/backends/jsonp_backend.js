@@ -107,9 +107,11 @@ export class JSONPBackend_ extends JSONPBackend {
         return new JSONPConnection_(request, this._browserJSONP, this._baseResponseOptions);
     }
 }
+/** @nocollapse */
 JSONPBackend_.decorators = [
     { type: Injectable },
 ];
+/** @nocollapse */
 JSONPBackend_.ctorParameters = [
     { type: BrowserJsonp, },
     { type: ResponseOptions, },

@@ -94,9 +94,11 @@ var Http = (function () {
     Http.prototype.head = function (url, options) {
         return httpRequest(this._backend, new static_request_1.Request(mergeOptions(this._defaultOptions, options, enums_1.RequestMethod.Head, url)));
     };
+    /** @nocollapse */
     Http.decorators = [
         { type: core_1.Injectable },
     ];
+    /** @nocollapse */
     Http.ctorParameters = [
         { type: interfaces_1.ConnectionBackend, },
         { type: base_request_options_1.RequestOptions, },
@@ -132,9 +134,11 @@ var Jsonp = (function (_super) {
         }
         return responseObservable;
     };
+    /** @nocollapse */
     Jsonp.decorators = [
         { type: core_1.Injectable },
     ];
+    /** @nocollapse */
     Jsonp.ctorParameters = [
         { type: interfaces_1.ConnectionBackend, },
         { type: base_request_options_1.RequestOptions, },

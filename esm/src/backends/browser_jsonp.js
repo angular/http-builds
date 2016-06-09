@@ -35,6 +35,7 @@ export class BrowserJsonp {
         }
     }
 }
+/** @nocollapse */
 BrowserJsonp.decorators = [
     { type: Injectable },
 ];

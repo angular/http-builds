@@ -89,9 +89,11 @@ export class Http {
         return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Head, url)));
     }
 }
+/** @nocollapse */
 Http.decorators = [
     { type: Injectable },
 ];
+/** @nocollapse */
 Http.ctorParameters = [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
@@ -124,9 +126,11 @@ export class Jsonp extends Http {
         return responseObservable;
     }
 }
+/** @nocollapse */
 Jsonp.decorators = [
     { type: Injectable },
 ];
+/** @nocollapse */
 Jsonp.ctorParameters = [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
