@@ -1,9 +1,9 @@
 "use strict";
+var lang_1 = require('../src/facade/lang');
 var enums_1 = require('./enums');
 var headers_1 = require('./headers');
-var url_search_params_1 = require('./url_search_params');
 var http_utils_1 = require('./http_utils');
-var lang_1 = require('../src/facade/lang');
+var url_search_params_1 = require('./url_search_params');
 // TODO(jeffbcross): properly implement body accessors
 /**
  * Creates `Request` instances from provided values.
@@ -88,7 +88,7 @@ var Request = (function () {
     Request.prototype.arrayBuffer = function () {
         if (this._body instanceof ArrayBuffer)
             return this._body;
-        throw "The request body isn't an array buffer";
+        throw 'The request body isn\'t an array buffer';
     };
     /**
      * Returns the request's body as blob, assuming that body exists. If body is undefined, return
@@ -99,7 +99,7 @@ var Request = (function () {
             return this._body;
         if (this._body instanceof ArrayBuffer)
             return new Blob([this._body]);
-        throw "The request body isn't either a blob or an array buffer";
+        throw 'The request body isn\'t either a blob or an array buffer';
     };
     /**
      * Returns the content type of request's body based on its type.

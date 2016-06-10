@@ -1,15 +1,15 @@
 "use strict";
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var interfaces_1 = require('../interfaces');
-var enums_1 = require('../enums');
-var static_response_1 = require('../static_response');
-var headers_1 = require('../headers');
-var base_response_options_1 = require('../base_response_options');
-var browser_xhr_1 = require('./browser_xhr');
-var lang_1 = require('../facade/lang');
 var Observable_1 = require('rxjs/Observable');
+var base_response_options_1 = require('../base_response_options');
+var enums_1 = require('../enums');
+var lang_1 = require('../facade/lang');
+var headers_1 = require('../headers');
 var http_utils_1 = require('../http_utils');
+var interfaces_1 = require('../interfaces');
+var static_response_1 = require('../static_response');
+var browser_xhr_1 = require('./browser_xhr');
 var XSSI_PREFIX = /^\)\]\}',?\n/;
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified

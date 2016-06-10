@@ -1,6 +1,6 @@
 import { ContentType, RequestMethod } from './enums';
-import { RequestArgs } from './interfaces';
 import { Headers } from './headers';
+import { RequestArgs } from './interfaces';
 /**
  * Creates `Request` instances from provided values.
  *

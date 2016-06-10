@@ -1,10 +1,10 @@
-import { ConnectionBackend, Connection, XSRFStrategy } from '../interfaces';
+import { Observable } from 'rxjs/Observable';
+import { ResponseOptions } from '../base_response_options';
 import { ReadyState } from '../enums';
+import { Connection, ConnectionBackend, XSRFStrategy } from '../interfaces';
 import { Request } from '../static_request';
 import { Response } from '../static_response';
-import { ResponseOptions } from '../base_response_options';
 import { BrowserXhr } from './browser_xhr';
-import { Observable } from 'rxjs/Observable';
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified
  * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the

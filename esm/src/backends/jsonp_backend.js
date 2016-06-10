@@ -1,12 +1,12 @@
-import { ConnectionBackend } from '../interfaces';
-import { ReadyState, RequestMethod, ResponseType } from '../enums';
-import { Response } from '../static_response';
-import { ResponseOptions } from '../base_response_options';
 import { Injectable } from '@angular/core';
-import { BrowserJsonp } from './browser_jsonp';
+import { Observable } from 'rxjs/Observable';
+import { ResponseOptions } from '../base_response_options';
+import { ReadyState, RequestMethod, ResponseType } from '../enums';
 import { makeTypeError } from '../facade/exceptions';
 import { StringWrapper, isPresent } from '../facade/lang';
-import { Observable } from 'rxjs/Observable';
+import { ConnectionBackend } from '../interfaces';
+import { Response } from '../static_response';
+import { BrowserJsonp } from './browser_jsonp';
 const JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
 const JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**

@@ -1,5 +1,5 @@
+import { ListWrapper, Map, isListLikeIterable } from '../src/facade/collection';
 import { isPresent } from '../src/facade/lang';
-import { Map, ListWrapper, isListLikeIterable } from '../src/facade/collection';
 function paramParser(rawParams = '') {
     var map = new Map();
     if (rawParams.length > 0) {

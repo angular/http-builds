@@ -1,8 +1,8 @@
-import { RequestOptionsArgs, ConnectionBackend } from './interfaces';
+import { Observable } from 'rxjs/Observable';
+import { RequestOptions } from './base_request_options';
+import { ConnectionBackend, RequestOptionsArgs } from './interfaces';
 import { Request } from './static_request';
 import { Response } from './static_response';
-import { RequestOptions } from './base_request_options';
-import { Observable } from 'rxjs/Observable';
 /**
  * Performs http requests using `XMLHttpRequest` as the default backend.
  *

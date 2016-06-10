@@ -1,6 +1,6 @@
+import { ResponseOptions } from './base_response_options';
 import { ResponseType } from './enums';
 import { Headers } from './headers';
-import { ResponseOptions } from './base_response_options';
 /**
  * Creates `Response` instances from provided values.
  *

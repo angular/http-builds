@@ -1,12 +1,12 @@
 "use strict";
 var core_1 = require('@angular/core');
-var static_request_1 = require('../src/static_request');
-var enums_1 = require('../src/enums');
-var lang_1 = require('../src/facade/lang');
-var exceptions_1 = require('../src/facade/exceptions');
-var Subject_1 = require('rxjs/Subject');
 var ReplaySubject_1 = require('rxjs/ReplaySubject');
+var Subject_1 = require('rxjs/Subject');
 var take_1 = require('rxjs/operator/take');
+var enums_1 = require('../src/enums');
+var exceptions_1 = require('../src/facade/exceptions');
+var lang_1 = require('../src/facade/lang');
+var static_request_1 = require('../src/static_request');
 /**
  *
  * Mock Connection to represent a {@link Connection} for tests.
@@ -28,7 +28,8 @@ var MockConnection = (function () {
      * var connection;
      * backend.connections.subscribe(c => connection = c);
      * http.request('data.json').subscribe(res => console.log(res.text()));
-     * connection.mockRespond(new Response(new ResponseOptions({ body: 'fake response' }))); //logs 'fake response'
+     * connection.mockRespond(new Response(new ResponseOptions({ body: 'fake response' }))); //logs
+     * 'fake response'
      * ```
      *
      */
@@ -81,9 +82,7 @@ var MockBackend = (function () {
         var _this = this;
         this.connectionsArray = [];
         this.connections = new Subject_1.Subject();
-        this.connections.subscribe(function (connection) {
-            return _this.connectionsArray.push(connection);
-        });
+        this.connections.subscribe(function (connection) { return _this.connectionsArray.push(connection); });
         this.pendingConnections = new Subject_1.Subject();
     }
     /**

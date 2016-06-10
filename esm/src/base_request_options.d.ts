@@ -1,5 +1,5 @@
-import { Headers } from './headers';
 import { RequestMethod } from './enums';
+import { Headers } from './headers';
 import { RequestOptionsArgs } from './interfaces';
 import { URLSearchParams } from './url_search_params';
 /**

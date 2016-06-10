@@ -6,8 +6,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var core_1 = require('@angular/core');
 var lang_1 = require('../src/facade/lang');
-var headers_1 = require('./headers');
 var enums_1 = require('./enums');
+var headers_1 = require('./headers');
 /**
  * Creates a response options object to be optionally provided when instantiating a
  * {@link Response}.

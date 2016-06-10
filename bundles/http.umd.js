@@ -9,10 +9,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/platform-browser'), require('rxjs/Observable')) :
-        typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/platform-browser', 'rxjs/Observable'], factory) :
-            (factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}), global.ng.core, global.ng.platformBrowser, global.Rx));
-}(this, function (exports, _angular_core, _angular_platformBrowser, rxjs_Observable) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Observable'), require('@angular/platform-browser')) :
+        typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Observable', '@angular/platform-browser'], factory) :
+            (factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}), global.ng.core, global.Rx, global.ng.platformBrowser));
+}(this, function (exports, _angular_core, rxjs_Observable, _angular_platformBrowser) {
     'use strict';
     var globalScope;
     if (typeof window === 'undefined') {
@@ -43,7 +43,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         return obj === undefined || obj === null;
     }
     function isString(obj) {
-        return typeof obj === "string";
+        return typeof obj === 'string';
     }
     function isArray(obj) {
         return Array.isArray(obj);
@@ -117,7 +117,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         return StringWrapper;
     }());
     function isJsObject(o) {
-        return o !== null && (typeof o === "function" || typeof o === "object");
+        return o !== null && (typeof o === 'function' || typeof o === 'object');
     }
     // Can't be all uppercase as our transpiler would think it is a special directive...
     var Json = (function () {
@@ -150,6 +150,112 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         return _symbolIterator;
     }
+    var _nextRequestId = 0;
+    var JSONP_HOME = '__ng_jsonp__';
+    var _jsonpConnections = null;
+    function _getJsonpConnections() {
+        if (_jsonpConnections === null) {
+            _jsonpConnections = global$1[JSONP_HOME] = {};
+        }
+        return _jsonpConnections;
+    }
+    var BrowserJsonp = (function () {
+        function BrowserJsonp() {
+        }
+        // Construct a <script> element with the specified URL
+        BrowserJsonp.prototype.build = function (url) {
+            var node = document.createElement('script');
+            node.src = url;
+            return node;
+        };
+        BrowserJsonp.prototype.nextRequestID = function () { return "__req" + _nextRequestId++; };
+        BrowserJsonp.prototype.requestCallback = function (id) { return JSONP_HOME + "." + id + ".finished"; };
+        BrowserJsonp.prototype.exposeConnection = function (id, connection) {
+            var connections = _getJsonpConnections();
+            connections[id] = connection;
+        };
+        BrowserJsonp.prototype.removeConnection = function (id) {
+            var connections = _getJsonpConnections();
+            connections[id] = null;
+        };
+        // Attach the <script> element to the DOM
+        BrowserJsonp.prototype.send = function (node) { document.body.appendChild((node)); };
+        // Remove <script> element from the DOM
+        BrowserJsonp.prototype.cleanup = function (node) {
+            if (node.parentNode) {
+                node.parentNode.removeChild((node));
+            }
+        };
+        return BrowserJsonp;
+    }());
+    /** @nocollapse */
+    BrowserJsonp.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    var BrowserXhr = (function () {
+        function BrowserXhr() {
+        }
+        BrowserXhr.prototype.build = function () { return (new XMLHttpRequest()); };
+        return BrowserXhr;
+    }());
+    /** @nocollapse */
+    BrowserXhr.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    BrowserXhr.ctorParameters = [];
+    /**
+     * Supported http methods.
+     */
+    exports.RequestMethod;
+    (function (RequestMethod) {
+        RequestMethod[RequestMethod["Get"] = 0] = "Get";
+        RequestMethod[RequestMethod["Post"] = 1] = "Post";
+        RequestMethod[RequestMethod["Put"] = 2] = "Put";
+        RequestMethod[RequestMethod["Delete"] = 3] = "Delete";
+        RequestMethod[RequestMethod["Options"] = 4] = "Options";
+        RequestMethod[RequestMethod["Head"] = 5] = "Head";
+        RequestMethod[RequestMethod["Patch"] = 6] = "Patch";
+    })(exports.RequestMethod || (exports.RequestMethod = {}));
+    /**
+     * All possible states in which a connection can be, based on
+     * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
+     * additional "CANCELLED" state.
+     */
+    exports.ReadyState;
+    (function (ReadyState) {
+        ReadyState[ReadyState["Unsent"] = 0] = "Unsent";
+        ReadyState[ReadyState["Open"] = 1] = "Open";
+        ReadyState[ReadyState["HeadersReceived"] = 2] = "HeadersReceived";
+        ReadyState[ReadyState["Loading"] = 3] = "Loading";
+        ReadyState[ReadyState["Done"] = 4] = "Done";
+        ReadyState[ReadyState["Cancelled"] = 5] = "Cancelled";
+    })(exports.ReadyState || (exports.ReadyState = {}));
+    /**
+     * Acceptable response types to be associated with a {@link Response}, based on
+     * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
+     */
+    exports.ResponseType;
+    (function (ResponseType) {
+        ResponseType[ResponseType["Basic"] = 0] = "Basic";
+        ResponseType[ResponseType["Cors"] = 1] = "Cors";
+        ResponseType[ResponseType["Default"] = 2] = "Default";
+        ResponseType[ResponseType["Error"] = 3] = "Error";
+        ResponseType[ResponseType["Opaque"] = 4] = "Opaque";
+    })(exports.ResponseType || (exports.ResponseType = {}));
+    /**
+     * Supported content type to be automatically associated with a {@link Request}.
+     */
+    var ContentType;
+    (function (ContentType) {
+        ContentType[ContentType["NONE"] = 0] = "NONE";
+        ContentType[ContentType["JSON"] = 1] = "JSON";
+        ContentType[ContentType["FORM"] = 2] = "FORM";
+        ContentType[ContentType["FORM_DATA"] = 3] = "FORM_DATA";
+        ContentType[ContentType["TEXT"] = 4] = "TEXT";
+        ContentType[ContentType["BLOB"] = 5] = "BLOB";
+        ContentType[ContentType["ARRAY_BUFFER"] = 6] = "ARRAY_BUFFER";
+    })(ContentType || (ContentType = {}));
     var Map$1 = global$1.Map;
     var Set = global$1.Set;
     // Safari and Internet Explorer do not support the iterable parameter to the
@@ -492,7 +598,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     var BaseException = (function (_super) {
         __extends(BaseException, _super);
         function BaseException(message) {
-            if (message === void 0) { message = "--"; }
+            if (message === void 0) { message = '--'; }
             _super.call(this, message);
             this.message = message;
             this.stack = (new Error(message)).stack;
@@ -503,83 +609,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     function makeTypeError(message) {
         return new TypeError(message);
     }
-    /**
-     * Abstract class from which real backends are derived.
-     *
-     * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
-     * {@link Request}.
-     */
-    var ConnectionBackend = (function () {
-        function ConnectionBackend() {
-        }
-        return ConnectionBackend;
-    }());
-    /**
-     * Abstract class from which real connections are derived.
-     */
-    var Connection = (function () {
-        function Connection() {
-        }
-        return Connection;
-    }());
-    /** An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request. */
-    var XSRFStrategy = (function () {
-        function XSRFStrategy() {
-        }
-        return XSRFStrategy;
-    }());
-    /**
-     * Supported http methods.
-     */
-    exports.RequestMethod;
-    (function (RequestMethod) {
-        RequestMethod[RequestMethod["Get"] = 0] = "Get";
-        RequestMethod[RequestMethod["Post"] = 1] = "Post";
-        RequestMethod[RequestMethod["Put"] = 2] = "Put";
-        RequestMethod[RequestMethod["Delete"] = 3] = "Delete";
-        RequestMethod[RequestMethod["Options"] = 4] = "Options";
-        RequestMethod[RequestMethod["Head"] = 5] = "Head";
-        RequestMethod[RequestMethod["Patch"] = 6] = "Patch";
-    })(exports.RequestMethod || (exports.RequestMethod = {}));
-    /**
-     * All possible states in which a connection can be, based on
-     * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
-     * additional "CANCELLED" state.
-     */
-    exports.ReadyState;
-    (function (ReadyState) {
-        ReadyState[ReadyState["Unsent"] = 0] = "Unsent";
-        ReadyState[ReadyState["Open"] = 1] = "Open";
-        ReadyState[ReadyState["HeadersReceived"] = 2] = "HeadersReceived";
-        ReadyState[ReadyState["Loading"] = 3] = "Loading";
-        ReadyState[ReadyState["Done"] = 4] = "Done";
-        ReadyState[ReadyState["Cancelled"] = 5] = "Cancelled";
-    })(exports.ReadyState || (exports.ReadyState = {}));
-    /**
-     * Acceptable response types to be associated with a {@link Response}, based on
-     * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
-     */
-    exports.ResponseType;
-    (function (ResponseType) {
-        ResponseType[ResponseType["Basic"] = 0] = "Basic";
-        ResponseType[ResponseType["Cors"] = 1] = "Cors";
-        ResponseType[ResponseType["Default"] = 2] = "Default";
-        ResponseType[ResponseType["Error"] = 3] = "Error";
-        ResponseType[ResponseType["Opaque"] = 4] = "Opaque";
-    })(exports.ResponseType || (exports.ResponseType = {}));
-    /**
-     * Supported content type to be automatically associated with a {@link Request}.
-     */
-    var ContentType;
-    (function (ContentType) {
-        ContentType[ContentType["NONE"] = 0] = "NONE";
-        ContentType[ContentType["JSON"] = 1] = "JSON";
-        ContentType[ContentType["FORM"] = 2] = "FORM";
-        ContentType[ContentType["FORM_DATA"] = 3] = "FORM_DATA";
-        ContentType[ContentType["TEXT"] = 4] = "TEXT";
-        ContentType[ContentType["BLOB"] = 5] = "BLOB";
-        ContentType[ContentType["ARRAY_BUFFER"] = 6] = "ARRAY_BUFFER";
-    })(ContentType || (ContentType = {}));
     /**
      * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
      * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
@@ -709,588 +738,6 @@ var __extends = (this && this.__extends) || function (d, b) {
         Headers.prototype.entries = function () { throw new BaseException('"entries" method is not implemented on Headers class'); };
         return Headers;
     }());
-    function paramParser(rawParams) {
-        if (rawParams === void 0) { rawParams = ''; }
-        var map = new Map$1();
-        if (rawParams.length > 0) {
-            var params = rawParams.split('&');
-            params.forEach(function (param) {
-                var split = param.split('=');
-                var key = split[0];
-                var val = split[1];
-                var list = isPresent(map.get(key)) ? map.get(key) : [];
-                list.push(val);
-                map.set(key, list);
-            });
-        }
-        return map;
-    }
-    /**
-     * Map-like representation of url search parameters, based on
-     * [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams) in the url living standard,
-     * with several extensions for merging URLSearchParams objects:
-     *   - setAll()
-     *   - appendAll()
-     *   - replaceAll()
-     */
-    var URLSearchParams = (function () {
-        function URLSearchParams(rawParams) {
-            if (rawParams === void 0) { rawParams = ''; }
-            this.rawParams = rawParams;
-            this.paramsMap = paramParser(rawParams);
-        }
-        URLSearchParams.prototype.clone = function () {
-            var clone = new URLSearchParams();
-            clone.appendAll(this);
-            return clone;
-        };
-        URLSearchParams.prototype.has = function (param) { return this.paramsMap.has(param); };
-        URLSearchParams.prototype.get = function (param) {
-            var storedParam = this.paramsMap.get(param);
-            if (isListLikeIterable(storedParam)) {
-                return ListWrapper.first(storedParam);
-            }
-            else {
-                return null;
-            }
-        };
-        URLSearchParams.prototype.getAll = function (param) {
-            var mapParam = this.paramsMap.get(param);
-            return isPresent(mapParam) ? mapParam : [];
-        };
-        URLSearchParams.prototype.set = function (param, val) {
-            var mapParam = this.paramsMap.get(param);
-            var list = isPresent(mapParam) ? mapParam : [];
-            ListWrapper.clear(list);
-            list.push(val);
-            this.paramsMap.set(param, list);
-        };
-        // A merge operation
-        // For each name-values pair in `searchParams`, perform `set(name, values[0])`
-        //
-        // E.g: "a=[1,2,3], c=[8]" + "a=[4,5,6], b=[7]" = "a=[4], c=[8], b=[7]"
-        //
-        // TODO(@caitp): document this better
-        URLSearchParams.prototype.setAll = function (searchParams) {
-            var _this = this;
-            searchParams.paramsMap.forEach(function (value, param) {
-                var mapParam = _this.paramsMap.get(param);
-                var list = isPresent(mapParam) ? mapParam : [];
-                ListWrapper.clear(list);
-                list.push(value[0]);
-                _this.paramsMap.set(param, list);
-            });
-        };
-        URLSearchParams.prototype.append = function (param, val) {
-            var mapParam = this.paramsMap.get(param);
-            var list = isPresent(mapParam) ? mapParam : [];
-            list.push(val);
-            this.paramsMap.set(param, list);
-        };
-        // A merge operation
-        // For each name-values pair in `searchParams`, perform `append(name, value)`
-        // for each value in `values`.
-        //
-        // E.g: "a=[1,2], c=[8]" + "a=[3,4], b=[7]" = "a=[1,2,3,4], c=[8], b=[7]"
-        //
-        // TODO(@caitp): document this better
-        URLSearchParams.prototype.appendAll = function (searchParams) {
-            var _this = this;
-            searchParams.paramsMap.forEach(function (value, param) {
-                var mapParam = _this.paramsMap.get(param);
-                var list = isPresent(mapParam) ? mapParam : [];
-                for (var i = 0; i < value.length; ++i) {
-                    list.push(value[i]);
-                }
-                _this.paramsMap.set(param, list);
-            });
-        };
-        // A merge operation
-        // For each name-values pair in `searchParams`, perform `delete(name)`,
-        // followed by `set(name, values)`
-        //
-        // E.g: "a=[1,2,3], c=[8]" + "a=[4,5,6], b=[7]" = "a=[4,5,6], c=[8], b=[7]"
-        //
-        // TODO(@caitp): document this better
-        URLSearchParams.prototype.replaceAll = function (searchParams) {
-            var _this = this;
-            searchParams.paramsMap.forEach(function (value, param) {
-                var mapParam = _this.paramsMap.get(param);
-                var list = isPresent(mapParam) ? mapParam : [];
-                ListWrapper.clear(list);
-                for (var i = 0; i < value.length; ++i) {
-                    list.push(value[i]);
-                }
-                _this.paramsMap.set(param, list);
-            });
-        };
-        URLSearchParams.prototype.toString = function () {
-            var paramsList = [];
-            this.paramsMap.forEach(function (values, k) { values.forEach(function (v) { return paramsList.push(k + '=' + encodeURIComponent(v)); }); });
-            return paramsList.join('&');
-        };
-        URLSearchParams.prototype.delete = function (param) { this.paramsMap.delete(param); };
-        return URLSearchParams;
-    }());
-    function normalizeMethodName(method) {
-        if (isString(method)) {
-            var originalMethod = method;
-            method = method
-                .replace(/(\w)(\w*)/g, function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); });
-            method = exports.RequestMethod[method];
-            if (typeof method !== 'number')
-                throw makeTypeError("Invalid request method. The method \"" + originalMethod + "\" is not supported.");
-        }
-        return method;
-    }
-    var isSuccess = function (status) { return (status >= 200 && status < 300); };
-    function getResponseURL(xhr) {
-        if ('responseURL' in xhr) {
-            return xhr.responseURL;
-        }
-        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
-            return xhr.getResponseHeader('X-Request-URL');
-        }
-        return;
-    }
-    // TODO(jeffbcross): properly implement body accessors
-    /**
-     * Creates `Request` instances from provided values.
-     *
-     * The Request's interface is inspired by the Request constructor defined in the [Fetch
-     * Spec](https://fetch.spec.whatwg.org/#request-class),
-     * but is considered a static value whose body can be accessed many times. There are other
-     * differences in the implementation, but this is the most significant.
-     *
-     * `Request` instances are typically created by higher-level classes, like {@link Http} and
-     * {@link Jsonp}, but it may occasionally be useful to explicitly create `Request` instances.
-     * One such example is when creating services that wrap higher-level services, like {@link Http},
-     * where it may be useful to generate a `Request` with arbitrary headers and search params.
-     *
-     * ```typescript
-     * import {Injectable, Injector} from '@angular/core';
-     * import {HTTP_PROVIDERS, Http, Request, RequestMethod} from '@angular/http';
-     *
-     * @Injectable()
-     * class AutoAuthenticator {
-     *   constructor(public http:Http) {}
-     *   request(url:string) {
-     *     return this.http.request(new Request({
-     *       method: RequestMethod.Get,
-     *       url: url,
-     *       search: 'password=123'
-     *     }));
-     *   }
-     * }
-     *
-     * var injector = Injector.resolveAndCreate([HTTP_PROVIDERS, AutoAuthenticator]);
-     * var authenticator = injector.get(AutoAuthenticator);
-     * authenticator.request('people.json').subscribe(res => {
-     *   //URL should have included '?password=123'
-     *   console.log('people', res.json());
-     * });
-     * ```
-     */
-    var Request = (function () {
-        function Request(requestOptions) {
-            // TODO: assert that url is present
-            var url = requestOptions.url;
-            this.url = requestOptions.url;
-            if (isPresent(requestOptions.search)) {
-                var search = requestOptions.search.toString();
-                if (search.length > 0) {
-                    var prefix = '?';
-                    if (StringWrapper.contains(this.url, '?')) {
-                        prefix = (this.url[this.url.length - 1] == '&') ? '' : '&';
-                    }
-                    // TODO: just delete search-query-looking string in url?
-                    this.url = url + prefix + search;
-                }
-            }
-            this._body = requestOptions.body;
-            this.contentType = this.detectContentType();
-            this.method = normalizeMethodName(requestOptions.method);
-            // TODO(jeffbcross): implement behavior
-            // Defaults to 'omit', consistent with browser
-            // TODO(jeffbcross): implement behavior
-            this.headers = new Headers(requestOptions.headers);
-            this.withCredentials = requestOptions.withCredentials;
-        }
-        /**
-         * Returns the request's body as string, assuming that body exists. If body is undefined, return
-         * empty
-         * string.
-         */
-        Request.prototype.text = function () { return isPresent(this._body) ? this._body.toString() : ''; };
-        /**
-         * Returns the request's body as JSON string, assuming that body exists. If body is undefined,
-         * return
-         * empty
-         * string.
-         */
-        Request.prototype.json = function () { return isPresent(this._body) ? JSON.stringify(this._body) : ''; };
-        /**
-         * Returns the request's body as array buffer, assuming that body exists. If body is undefined,
-         * return
-         * null.
-         */
-        Request.prototype.arrayBuffer = function () {
-            if (this._body instanceof ArrayBuffer)
-                return this._body;
-            throw "The request body isn't an array buffer";
-        };
-        /**
-         * Returns the request's body as blob, assuming that body exists. If body is undefined, return
-         * null.
-         */
-        Request.prototype.blob = function () {
-            if (this._body instanceof Blob)
-                return this._body;
-            if (this._body instanceof ArrayBuffer)
-                return new Blob([this._body]);
-            throw "The request body isn't either a blob or an array buffer";
-        };
-        /**
-         * Returns the content type of request's body based on its type.
-         */
-        Request.prototype.detectContentType = function () {
-            if (this._body == null) {
-                return ContentType.NONE;
-            }
-            else if (this._body instanceof URLSearchParams) {
-                return ContentType.FORM;
-            }
-            else if (this._body instanceof FormData) {
-                return ContentType.FORM_DATA;
-            }
-            else if (this._body instanceof Blob) {
-                return ContentType.BLOB;
-            }
-            else if (this._body instanceof ArrayBuffer) {
-                return ContentType.ARRAY_BUFFER;
-            }
-            else if (this._body && typeof this._body == 'object') {
-                return ContentType.JSON;
-            }
-            else {
-                return ContentType.TEXT;
-            }
-        };
-        /**
-         * Returns the request's body according to its type. If body is undefined, return
-         * null.
-         */
-        Request.prototype.getBody = function () {
-            switch (this.contentType) {
-                case ContentType.JSON:
-                    return this.json();
-                case ContentType.FORM:
-                    return this.text();
-                case ContentType.FORM_DATA:
-                    return this._body;
-                case ContentType.TEXT:
-                    return this.text();
-                case ContentType.BLOB:
-                    return this.blob();
-                case ContentType.ARRAY_BUFFER:
-                    return this.arrayBuffer();
-                default:
-                    return null;
-            }
-        };
-        return Request;
-    }());
-    var noop$1 = function () { };
-    var w = typeof window == 'object' ? window : noop$1;
-    var FormData = w['FormData'] || noop$1;
-    var Blob = w['Blob'] || noop$1;
-    var ArrayBuffer = w['ArrayBuffer'] || noop$1;
-    /**
-     * Creates a request options object to be optionally provided when instantiating a
-     * {@link Request}.
-     *
-     * This class is based on the `RequestInit` description in the [Fetch
-     * Spec](https://fetch.spec.whatwg.org/#requestinit).
-     *
-     * All values are null by default. Typical defaults can be found in the {@link BaseRequestOptions}
-     * class, which sub-classes `RequestOptions`.
-     *
-     * ### Example ([live demo](http://plnkr.co/edit/7Wvi3lfLq41aQPKlxB4O?p=preview))
-     *
-     * ```typescript
-     * import {RequestOptions, Request, RequestMethod} from '@angular/http';
-     *
-     * var options = new RequestOptions({
-     *   method: RequestMethod.Post,
-     *   url: 'https://google.com'
-     * });
-     * var req = new Request(options);
-     * console.log('req.method:', RequestMethod[req.method]); // Post
-     * console.log('options.url:', options.url); // https://google.com
-     * ```
-     */
-    var RequestOptions = (function () {
-        function RequestOptions(_a) {
-            var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, withCredentials = _b.withCredentials;
-            this.method = isPresent(method) ? normalizeMethodName(method) : null;
-            this.headers = isPresent(headers) ? headers : null;
-            this.body = isPresent(body) ? body : null;
-            this.url = isPresent(url) ? url : null;
-            this.search = isPresent(search) ? (isString(search) ? new URLSearchParams((search)) :
-                (search)) :
-                null;
-            this.withCredentials = isPresent(withCredentials) ? withCredentials : null;
-        }
-        /**
-         * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
-         * existing values. This method will not change the values of the instance on which it is being
-         * called.
-         *
-         * Note that `headers` and `search` will override existing values completely if present in
-         * the `options` object. If these values should be merged, it should be done prior to calling
-         * `merge` on the `RequestOptions` instance.
-         *
-         * ### Example ([live demo](http://plnkr.co/edit/6w8XA8YTkDRcPYpdB9dk?p=preview))
-         *
-         * ```typescript
-         * import {RequestOptions, Request, RequestMethod} from '@angular/http';
-         *
-         * var options = new RequestOptions({
-         *   method: RequestMethod.Post
-         * });
-         * var req = new Request(options.merge({
-         *   url: 'https://google.com'
-         * }));
-         * console.log('req.method:', RequestMethod[req.method]); // Post
-         * console.log('options.url:', options.url); // null
-         * console.log('req.url:', req.url); // https://google.com
-         * ```
-         */
-        RequestOptions.prototype.merge = function (options) {
-            return new RequestOptions({
-                method: isPresent(options) && isPresent(options.method) ? options.method : this.method,
-                headers: isPresent(options) && isPresent(options.headers) ? options.headers : this.headers,
-                body: isPresent(options) && isPresent(options.body) ? options.body : this.body,
-                url: isPresent(options) && isPresent(options.url) ? options.url : this.url,
-                search: isPresent(options) && isPresent(options.search) ?
-                    (isString(options.search) ? new URLSearchParams((options.search)) :
-                        (options.search).clone()) :
-                    this.search,
-                withCredentials: isPresent(options) && isPresent(options.withCredentials) ?
-                    options.withCredentials :
-                    this.withCredentials
-            });
-        };
-        return RequestOptions;
-    }());
-    var BaseRequestOptions = (function (_super) {
-        __extends(BaseRequestOptions, _super);
-        function BaseRequestOptions() {
-            _super.call(this, { method: exports.RequestMethod.Get, headers: new Headers() });
-        }
-        return BaseRequestOptions;
-    }(RequestOptions));
-    /** @nocollapse */
-    BaseRequestOptions.decorators = [
-        { type: _angular_core.Injectable },
-    ];
-    /** @nocollapse */
-    BaseRequestOptions.ctorParameters = [];
-    function httpRequest(backend, request) {
-        return backend.createConnection(request).response;
-    }
-    function mergeOptions(defaultOpts, providedOpts, method, url) {
-        var newOptions = defaultOpts;
-        if (isPresent(providedOpts)) {
-            // Hack so Dart can used named parameters
-            return newOptions.merge(new RequestOptions({
-                method: providedOpts.method || method,
-                url: providedOpts.url || url,
-                search: providedOpts.search,
-                headers: providedOpts.headers,
-                body: providedOpts.body,
-                withCredentials: providedOpts.withCredentials
-            }));
-        }
-        if (isPresent(method)) {
-            return newOptions.merge(new RequestOptions({ method: method, url: url }));
-        }
-        else {
-            return newOptions.merge(new RequestOptions({ url: url }));
-        }
-    }
-    var Http = (function () {
-        function Http(_backend, _defaultOptions) {
-            this._backend = _backend;
-            this._defaultOptions = _defaultOptions;
-        }
-        /**
-         * Performs any type of http request. First argument is required, and can either be a url or
-         * a {@link Request} instance. If the first argument is a url, an optional {@link RequestOptions}
-         * object can be provided as the 2nd argument. The options object will be merged with the values
-         * of {@link BaseRequestOptions} before performing the request.
-         */
-        Http.prototype.request = function (url, options) {
-            var responseObservable;
-            if (isString(url)) {
-                responseObservable = httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Get, url)));
-            }
-            else if (url instanceof Request) {
-                responseObservable = httpRequest(this._backend, url);
-            }
-            else {
-                throw makeTypeError('First argument must be a url string or Request instance.');
-            }
-            return responseObservable;
-        };
-        /**
-         * Performs a request with `get` http method.
-         */
-        Http.prototype.get = function (url, options) {
-            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Get, url)));
-        };
-        /**
-         * Performs a request with `post` http method.
-         */
-        Http.prototype.post = function (url, body, options) {
-            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, exports.RequestMethod.Post, url)));
-        };
-        /**
-         * Performs a request with `put` http method.
-         */
-        Http.prototype.put = function (url, body, options) {
-            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, exports.RequestMethod.Put, url)));
-        };
-        /**
-         * Performs a request with `delete` http method.
-         */
-        Http.prototype.delete = function (url, options) {
-            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Delete, url)));
-        };
-        /**
-         * Performs a request with `patch` http method.
-         */
-        Http.prototype.patch = function (url, body, options) {
-            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, exports.RequestMethod.Patch, url)));
-        };
-        /**
-         * Performs a request with `head` http method.
-         */
-        Http.prototype.head = function (url, options) {
-            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Head, url)));
-        };
-        return Http;
-    }());
-    /** @nocollapse */
-    Http.decorators = [
-        { type: _angular_core.Injectable },
-    ];
-    /** @nocollapse */
-    Http.ctorParameters = [
-        { type: ConnectionBackend, },
-        { type: RequestOptions, },
-    ];
-    var Jsonp = (function (_super) {
-        __extends(Jsonp, _super);
-        function Jsonp(backend, defaultOptions) {
-            _super.call(this, backend, defaultOptions);
-        }
-        /**
-         * Performs any type of http request. First argument is required, and can either be a url or
-         * a {@link Request} instance. If the first argument is a url, an optional {@link RequestOptions}
-         * object can be provided as the 2nd argument. The options object will be merged with the values
-         * of {@link BaseRequestOptions} before performing the request.
-         */
-        Jsonp.prototype.request = function (url, options) {
-            var responseObservable;
-            if (isString(url)) {
-                url =
-                    new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Get, url));
-            }
-            if (url instanceof Request) {
-                if (url.method !== exports.RequestMethod.Get) {
-                    makeTypeError('JSONP requests must use GET request method.');
-                }
-                responseObservable = httpRequest(this._backend, url);
-            }
-            else {
-                throw makeTypeError('First argument must be a url string or Request instance.');
-            }
-            return responseObservable;
-        };
-        return Jsonp;
-    }(Http));
-    /** @nocollapse */
-    Jsonp.decorators = [
-        { type: _angular_core.Injectable },
-    ];
-    /** @nocollapse */
-    Jsonp.ctorParameters = [
-        { type: ConnectionBackend, },
-        { type: RequestOptions, },
-    ];
-    /**
-     * Creates `Response` instances from provided values.
-     *
-     * Though this object isn't
-     * usually instantiated by end-users, it is the primary object interacted with when it comes time to
-     * add data to a view.
-     *
-     * ### Example
-     *
-     * ```
-     * http.request('my-friends.txt').subscribe(response => this.friends = response.text());
-     * ```
-     *
-     * The Response's interface is inspired by the Response constructor defined in the [Fetch
-     * Spec](https://fetch.spec.whatwg.org/#response-class), but is considered a static value whose body
-     * can be accessed many times. There are other differences in the implementation, but this is the
-     * most significant.
-     */
-    var Response = (function () {
-        function Response(responseOptions) {
-            this._body = responseOptions.body;
-            this.status = responseOptions.status;
-            this.ok = (this.status >= 200 && this.status <= 299);
-            this.statusText = responseOptions.statusText;
-            this.headers = responseOptions.headers;
-            this.type = responseOptions.type;
-            this.url = responseOptions.url;
-        }
-        /**
-         * Not yet implemented
-         */
-        // TODO: Blob return type
-        Response.prototype.blob = function () { throw new BaseException('"blob()" method not implemented on Response superclass'); };
-        /**
-         * Attempts to return body as parsed `JSON` object, or raises an exception.
-         */
-        Response.prototype.json = function () {
-            var jsonResponse;
-            if (isJsObject(this._body)) {
-                jsonResponse = this._body;
-            }
-            else if (isString(this._body)) {
-                jsonResponse = Json.parse(this._body);
-            }
-            return jsonResponse;
-        };
-        /**
-         * Returns the body as a string, presuming `toString()` can be called on the response body.
-         */
-        Response.prototype.text = function () { return this._body.toString(); };
-        /**
-         * Not yet implemented
-         */
-        // TODO: ArrayBuffer return type
-        Response.prototype.arrayBuffer = function () {
-            throw new BaseException('"arrayBuffer()" method not implemented on Response superclass');
-        };
-        Response.prototype.toString = function () {
-            return "Response with status: " + this.status + " " + this.statusText + " for URL: " + this.url;
-        };
-        return Response;
-    }());
     /**
      * Creates a response options object to be optionally provided when instantiating a
      * {@link Response}.
@@ -1378,18 +825,236 @@ var __extends = (this && this.__extends) || function (d, b) {
     ];
     /** @nocollapse */
     BaseResponseOptions.ctorParameters = [];
-    var BrowserXhr = (function () {
-        function BrowserXhr() {
+    /**
+     * Abstract class from which real backends are derived.
+     *
+     * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
+     * {@link Request}.
+     */
+    var ConnectionBackend = (function () {
+        function ConnectionBackend() {
         }
-        BrowserXhr.prototype.build = function () { return (new XMLHttpRequest()); };
-        return BrowserXhr;
+        return ConnectionBackend;
     }());
+    /**
+     * Abstract class from which real connections are derived.
+     */
+    var Connection = (function () {
+        function Connection() {
+        }
+        return Connection;
+    }());
+    /** An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request. */
+    var XSRFStrategy = (function () {
+        function XSRFStrategy() {
+        }
+        return XSRFStrategy;
+    }());
+    function normalizeMethodName(method) {
+        if (isString(method)) {
+            var originalMethod = method;
+            method = method
+                .replace(/(\w)(\w*)/g, function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); });
+            method = exports.RequestMethod[method];
+            if (typeof method !== 'number')
+                throw makeTypeError("Invalid request method. The method \"" + originalMethod + "\" is not supported.");
+        }
+        return method;
+    }
+    var isSuccess = function (status) { return (status >= 200 && status < 300); };
+    function getResponseURL(xhr) {
+        if ('responseURL' in xhr) {
+            return xhr.responseURL;
+        }
+        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
+            return xhr.getResponseHeader('X-Request-URL');
+        }
+        return;
+    }
+    /**
+     * Creates `Response` instances from provided values.
+     *
+     * Though this object isn't
+     * usually instantiated by end-users, it is the primary object interacted with when it comes time to
+     * add data to a view.
+     *
+     * ### Example
+     *
+     * ```
+     * http.request('my-friends.txt').subscribe(response => this.friends = response.text());
+     * ```
+     *
+     * The Response's interface is inspired by the Response constructor defined in the [Fetch
+     * Spec](https://fetch.spec.whatwg.org/#response-class), but is considered a static value whose body
+     * can be accessed many times. There are other differences in the implementation, but this is the
+     * most significant.
+     */
+    var Response = (function () {
+        function Response(responseOptions) {
+            this._body = responseOptions.body;
+            this.status = responseOptions.status;
+            this.ok = (this.status >= 200 && this.status <= 299);
+            this.statusText = responseOptions.statusText;
+            this.headers = responseOptions.headers;
+            this.type = responseOptions.type;
+            this.url = responseOptions.url;
+        }
+        /**
+         * Not yet implemented
+         */
+        // TODO: Blob return type
+        Response.prototype.blob = function () { throw new BaseException('"blob()" method not implemented on Response superclass'); };
+        /**
+         * Attempts to return body as parsed `JSON` object, or raises an exception.
+         */
+        Response.prototype.json = function () {
+            var jsonResponse;
+            if (isJsObject(this._body)) {
+                jsonResponse = this._body;
+            }
+            else if (isString(this._body)) {
+                jsonResponse = Json.parse(this._body);
+            }
+            return jsonResponse;
+        };
+        /**
+         * Returns the body as a string, presuming `toString()` can be called on the response body.
+         */
+        Response.prototype.text = function () { return this._body.toString(); };
+        /**
+         * Not yet implemented
+         */
+        // TODO: ArrayBuffer return type
+        Response.prototype.arrayBuffer = function () {
+            throw new BaseException('"arrayBuffer()" method not implemented on Response superclass');
+        };
+        Response.prototype.toString = function () {
+            return "Response with status: " + this.status + " " + this.statusText + " for URL: " + this.url;
+        };
+        return Response;
+    }());
+    var JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
+    var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
+    /**
+     * Abstract base class for an in-flight JSONP request.
+     */
+    var JSONPConnection = (function () {
+        function JSONPConnection() {
+        }
+        return JSONPConnection;
+    }());
+    var JSONPConnection_ = (function (_super) {
+        __extends(JSONPConnection_, _super);
+        function JSONPConnection_(req, _dom, baseResponseOptions) {
+            var _this = this;
+            _super.call(this);
+            this._dom = _dom;
+            this.baseResponseOptions = baseResponseOptions;
+            this._finished = false;
+            if (req.method !== exports.RequestMethod.Get) {
+                throw makeTypeError(JSONP_ERR_WRONG_METHOD);
+            }
+            this.request = req;
+            this.response = new rxjs_Observable.Observable(function (responseObserver) {
+                _this.readyState = exports.ReadyState.Loading;
+                var id = _this._id = _dom.nextRequestID();
+                _dom.exposeConnection(id, _this);
+                // Workaround Dart
+                // url = url.replace(/=JSONP_CALLBACK(&|$)/, `generated method`);
+                var callback = _dom.requestCallback(_this._id);
+                var url = req.url;
+                if (url.indexOf('=JSONP_CALLBACK&') > -1) {
+                    url = StringWrapper.replace(url, '=JSONP_CALLBACK&', "=" + callback + "&");
+                }
+                else if (url.lastIndexOf('=JSONP_CALLBACK') === url.length - '=JSONP_CALLBACK'.length) {
+                    url = url.substring(0, url.length - '=JSONP_CALLBACK'.length) + ("=" + callback);
+                }
+                var script = _this._script = _dom.build(url);
+                var onLoad = function (event) {
+                    if (_this.readyState === exports.ReadyState.Cancelled)
+                        return;
+                    _this.readyState = exports.ReadyState.Done;
+                    _dom.cleanup(script);
+                    if (!_this._finished) {
+                        var responseOptions_1 = new ResponseOptions({ body: JSONP_ERR_NO_CALLBACK, type: exports.ResponseType.Error, url: url });
+                        if (isPresent(baseResponseOptions)) {
+                            responseOptions_1 = baseResponseOptions.merge(responseOptions_1);
+                        }
+                        responseObserver.error(new Response(responseOptions_1));
+                        return;
+                    }
+                    var responseOptions = new ResponseOptions({ body: _this._responseData, url: url });
+                    if (isPresent(_this.baseResponseOptions)) {
+                        responseOptions = _this.baseResponseOptions.merge(responseOptions);
+                    }
+                    responseObserver.next(new Response(responseOptions));
+                    responseObserver.complete();
+                };
+                var onError = function (error) {
+                    if (_this.readyState === exports.ReadyState.Cancelled)
+                        return;
+                    _this.readyState = exports.ReadyState.Done;
+                    _dom.cleanup(script);
+                    var responseOptions = new ResponseOptions({ body: error.message, type: exports.ResponseType.Error });
+                    if (isPresent(baseResponseOptions)) {
+                        responseOptions = baseResponseOptions.merge(responseOptions);
+                    }
+                    responseObserver.error(new Response(responseOptions));
+                };
+                script.addEventListener('load', onLoad);
+                script.addEventListener('error', onError);
+                _dom.send(script);
+                return function () {
+                    _this.readyState = exports.ReadyState.Cancelled;
+                    script.removeEventListener('load', onLoad);
+                    script.removeEventListener('error', onError);
+                    if (isPresent(script)) {
+                        _this._dom.cleanup(script);
+                    }
+                };
+            });
+        }
+        JSONPConnection_.prototype.finished = function (data) {
+            // Don't leak connections
+            this._finished = true;
+            this._dom.removeConnection(this._id);
+            if (this.readyState === exports.ReadyState.Cancelled)
+                return;
+            this._responseData = data;
+        };
+        return JSONPConnection_;
+    }(JSONPConnection));
+    /**
+     * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
+     */
+    var JSONPBackend = (function (_super) {
+        __extends(JSONPBackend, _super);
+        function JSONPBackend() {
+            _super.apply(this, arguments);
+        }
+        return JSONPBackend;
+    }(ConnectionBackend));
+    var JSONPBackend_ = (function (_super) {
+        __extends(JSONPBackend_, _super);
+        function JSONPBackend_(_browserJSONP, _baseResponseOptions) {
+            _super.call(this);
+            this._browserJSONP = _browserJSONP;
+            this._baseResponseOptions = _baseResponseOptions;
+        }
+        JSONPBackend_.prototype.createConnection = function (request) {
+            return new JSONPConnection_(request, this._browserJSONP, this._baseResponseOptions);
+        };
+        return JSONPBackend_;
+    }(JSONPBackend));
     /** @nocollapse */
-    BrowserXhr.decorators = [
+    JSONPBackend_.decorators = [
         { type: _angular_core.Injectable },
     ];
     /** @nocollapse */
-    BrowserXhr.ctorParameters = [];
+    JSONPBackend_.ctorParameters = [
+        { type: BrowserJsonp, },
+        { type: ResponseOptions, },
+    ];
     var XSSI_PREFIX = /^\)\]\}',?\n/;
     /**
      * Creates connections using `XMLHttpRequest`. Given a fully-qualified
@@ -1539,169 +1204,504 @@ var __extends = (this && this.__extends) || function (d, b) {
         { type: ResponseOptions, },
         { type: XSRFStrategy, },
     ];
-    var _nextRequestId = 0;
-    var JSONP_HOME = '__ng_jsonp__';
-    var _jsonpConnections = null;
-    function _getJsonpConnections() {
-        if (_jsonpConnections === null) {
-            _jsonpConnections = global$1[JSONP_HOME] = {};
-        }
-        return _jsonpConnections;
-    }
-    var BrowserJsonp = (function () {
-        function BrowserJsonp() {
-        }
-        // Construct a <script> element with the specified URL
-        BrowserJsonp.prototype.build = function (url) {
-            var node = document.createElement('script');
-            node.src = url;
-            return node;
-        };
-        BrowserJsonp.prototype.nextRequestID = function () { return "__req" + _nextRequestId++; };
-        BrowserJsonp.prototype.requestCallback = function (id) { return JSONP_HOME + "." + id + ".finished"; };
-        BrowserJsonp.prototype.exposeConnection = function (id, connection) {
-            var connections = _getJsonpConnections();
-            connections[id] = connection;
-        };
-        BrowserJsonp.prototype.removeConnection = function (id) {
-            var connections = _getJsonpConnections();
-            connections[id] = null;
-        };
-        // Attach the <script> element to the DOM
-        BrowserJsonp.prototype.send = function (node) { document.body.appendChild((node)); };
-        // Remove <script> element from the DOM
-        BrowserJsonp.prototype.cleanup = function (node) {
-            if (node.parentNode) {
-                node.parentNode.removeChild((node));
-            }
-        };
-        return BrowserJsonp;
-    }());
-    /** @nocollapse */
-    BrowserJsonp.decorators = [
-        { type: _angular_core.Injectable },
-    ];
-    var JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
-    var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
-    /**
-     * Abstract base class for an in-flight JSONP request.
-     */
-    var JSONPConnection = (function () {
-        function JSONPConnection() {
-        }
-        return JSONPConnection;
-    }());
-    var JSONPConnection_ = (function (_super) {
-        __extends(JSONPConnection_, _super);
-        function JSONPConnection_(req, _dom, baseResponseOptions) {
-            var _this = this;
-            _super.call(this);
-            this._dom = _dom;
-            this.baseResponseOptions = baseResponseOptions;
-            this._finished = false;
-            if (req.method !== exports.RequestMethod.Get) {
-                throw makeTypeError(JSONP_ERR_WRONG_METHOD);
-            }
-            this.request = req;
-            this.response = new rxjs_Observable.Observable(function (responseObserver) {
-                _this.readyState = exports.ReadyState.Loading;
-                var id = _this._id = _dom.nextRequestID();
-                _dom.exposeConnection(id, _this);
-                // Workaround Dart
-                // url = url.replace(/=JSONP_CALLBACK(&|$)/, `generated method`);
-                var callback = _dom.requestCallback(_this._id);
-                var url = req.url;
-                if (url.indexOf('=JSONP_CALLBACK&') > -1) {
-                    url = StringWrapper.replace(url, '=JSONP_CALLBACK&', "=" + callback + "&");
-                }
-                else if (url.lastIndexOf('=JSONP_CALLBACK') === url.length - '=JSONP_CALLBACK'.length) {
-                    url = url.substring(0, url.length - '=JSONP_CALLBACK'.length) + ("=" + callback);
-                }
-                var script = _this._script = _dom.build(url);
-                var onLoad = function (event) {
-                    if (_this.readyState === exports.ReadyState.Cancelled)
-                        return;
-                    _this.readyState = exports.ReadyState.Done;
-                    _dom.cleanup(script);
-                    if (!_this._finished) {
-                        var responseOptions_1 = new ResponseOptions({ body: JSONP_ERR_NO_CALLBACK, type: exports.ResponseType.Error, url: url });
-                        if (isPresent(baseResponseOptions)) {
-                            responseOptions_1 = baseResponseOptions.merge(responseOptions_1);
-                        }
-                        responseObserver.error(new Response(responseOptions_1));
-                        return;
-                    }
-                    var responseOptions = new ResponseOptions({ body: _this._responseData, url: url });
-                    if (isPresent(_this.baseResponseOptions)) {
-                        responseOptions = _this.baseResponseOptions.merge(responseOptions);
-                    }
-                    responseObserver.next(new Response(responseOptions));
-                    responseObserver.complete();
-                };
-                var onError = function (error) {
-                    if (_this.readyState === exports.ReadyState.Cancelled)
-                        return;
-                    _this.readyState = exports.ReadyState.Done;
-                    _dom.cleanup(script);
-                    var responseOptions = new ResponseOptions({ body: error.message, type: exports.ResponseType.Error });
-                    if (isPresent(baseResponseOptions)) {
-                        responseOptions = baseResponseOptions.merge(responseOptions);
-                    }
-                    responseObserver.error(new Response(responseOptions));
-                };
-                script.addEventListener('load', onLoad);
-                script.addEventListener('error', onError);
-                _dom.send(script);
-                return function () {
-                    _this.readyState = exports.ReadyState.Cancelled;
-                    script.removeEventListener('load', onLoad);
-                    script.removeEventListener('error', onError);
-                    if (isPresent(script)) {
-                        _this._dom.cleanup(script);
-                    }
-                };
+    function paramParser(rawParams) {
+        if (rawParams === void 0) { rawParams = ''; }
+        var map = new Map$1();
+        if (rawParams.length > 0) {
+            var params = rawParams.split('&');
+            params.forEach(function (param) {
+                var split = param.split('=');
+                var key = split[0];
+                var val = split[1];
+                var list = isPresent(map.get(key)) ? map.get(key) : [];
+                list.push(val);
+                map.set(key, list);
             });
         }
-        JSONPConnection_.prototype.finished = function (data) {
-            // Don't leak connections
-            this._finished = true;
-            this._dom.removeConnection(this._id);
-            if (this.readyState === exports.ReadyState.Cancelled)
-                return;
-            this._responseData = data;
-        };
-        return JSONPConnection_;
-    }(JSONPConnection));
+        return map;
+    }
     /**
-     * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
+     * Map-like representation of url search parameters, based on
+     * [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams) in the url living standard,
+     * with several extensions for merging URLSearchParams objects:
+     *   - setAll()
+     *   - appendAll()
+     *   - replaceAll()
      */
-    var JSONPBackend = (function (_super) {
-        __extends(JSONPBackend, _super);
-        function JSONPBackend() {
-            _super.apply(this, arguments);
+    var URLSearchParams = (function () {
+        function URLSearchParams(rawParams) {
+            if (rawParams === void 0) { rawParams = ''; }
+            this.rawParams = rawParams;
+            this.paramsMap = paramParser(rawParams);
         }
-        return JSONPBackend;
-    }(ConnectionBackend));
-    var JSONPBackend_ = (function (_super) {
-        __extends(JSONPBackend_, _super);
-        function JSONPBackend_(_browserJSONP, _baseResponseOptions) {
-            _super.call(this);
-            this._browserJSONP = _browserJSONP;
-            this._baseResponseOptions = _baseResponseOptions;
-        }
-        JSONPBackend_.prototype.createConnection = function (request) {
-            return new JSONPConnection_(request, this._browserJSONP, this._baseResponseOptions);
+        URLSearchParams.prototype.clone = function () {
+            var clone = new URLSearchParams();
+            clone.appendAll(this);
+            return clone;
         };
-        return JSONPBackend_;
-    }(JSONPBackend));
+        URLSearchParams.prototype.has = function (param) { return this.paramsMap.has(param); };
+        URLSearchParams.prototype.get = function (param) {
+            var storedParam = this.paramsMap.get(param);
+            if (isListLikeIterable(storedParam)) {
+                return ListWrapper.first(storedParam);
+            }
+            else {
+                return null;
+            }
+        };
+        URLSearchParams.prototype.getAll = function (param) {
+            var mapParam = this.paramsMap.get(param);
+            return isPresent(mapParam) ? mapParam : [];
+        };
+        URLSearchParams.prototype.set = function (param, val) {
+            var mapParam = this.paramsMap.get(param);
+            var list = isPresent(mapParam) ? mapParam : [];
+            ListWrapper.clear(list);
+            list.push(val);
+            this.paramsMap.set(param, list);
+        };
+        // A merge operation
+        // For each name-values pair in `searchParams`, perform `set(name, values[0])`
+        //
+        // E.g: "a=[1,2,3], c=[8]" + "a=[4,5,6], b=[7]" = "a=[4], c=[8], b=[7]"
+        //
+        // TODO(@caitp): document this better
+        URLSearchParams.prototype.setAll = function (searchParams) {
+            var _this = this;
+            searchParams.paramsMap.forEach(function (value, param) {
+                var mapParam = _this.paramsMap.get(param);
+                var list = isPresent(mapParam) ? mapParam : [];
+                ListWrapper.clear(list);
+                list.push(value[0]);
+                _this.paramsMap.set(param, list);
+            });
+        };
+        URLSearchParams.prototype.append = function (param, val) {
+            var mapParam = this.paramsMap.get(param);
+            var list = isPresent(mapParam) ? mapParam : [];
+            list.push(val);
+            this.paramsMap.set(param, list);
+        };
+        // A merge operation
+        // For each name-values pair in `searchParams`, perform `append(name, value)`
+        // for each value in `values`.
+        //
+        // E.g: "a=[1,2], c=[8]" + "a=[3,4], b=[7]" = "a=[1,2,3,4], c=[8], b=[7]"
+        //
+        // TODO(@caitp): document this better
+        URLSearchParams.prototype.appendAll = function (searchParams) {
+            var _this = this;
+            searchParams.paramsMap.forEach(function (value, param) {
+                var mapParam = _this.paramsMap.get(param);
+                var list = isPresent(mapParam) ? mapParam : [];
+                for (var i = 0; i < value.length; ++i) {
+                    list.push(value[i]);
+                }
+                _this.paramsMap.set(param, list);
+            });
+        };
+        // A merge operation
+        // For each name-values pair in `searchParams`, perform `delete(name)`,
+        // followed by `set(name, values)`
+        //
+        // E.g: "a=[1,2,3], c=[8]" + "a=[4,5,6], b=[7]" = "a=[4,5,6], c=[8], b=[7]"
+        //
+        // TODO(@caitp): document this better
+        URLSearchParams.prototype.replaceAll = function (searchParams) {
+            var _this = this;
+            searchParams.paramsMap.forEach(function (value, param) {
+                var mapParam = _this.paramsMap.get(param);
+                var list = isPresent(mapParam) ? mapParam : [];
+                ListWrapper.clear(list);
+                for (var i = 0; i < value.length; ++i) {
+                    list.push(value[i]);
+                }
+                _this.paramsMap.set(param, list);
+            });
+        };
+        URLSearchParams.prototype.toString = function () {
+            var paramsList = [];
+            this.paramsMap.forEach(function (values, k) { values.forEach(function (v) { return paramsList.push(k + '=' + encodeURIComponent(v)); }); });
+            return paramsList.join('&');
+        };
+        URLSearchParams.prototype.delete = function (param) { this.paramsMap.delete(param); };
+        return URLSearchParams;
+    }());
+    /**
+     * Creates a request options object to be optionally provided when instantiating a
+     * {@link Request}.
+     *
+     * This class is based on the `RequestInit` description in the [Fetch
+     * Spec](https://fetch.spec.whatwg.org/#requestinit).
+     *
+     * All values are null by default. Typical defaults can be found in the {@link BaseRequestOptions}
+     * class, which sub-classes `RequestOptions`.
+     *
+     * ### Example ([live demo](http://plnkr.co/edit/7Wvi3lfLq41aQPKlxB4O?p=preview))
+     *
+     * ```typescript
+     * import {RequestOptions, Request, RequestMethod} from '@angular/http';
+     *
+     * var options = new RequestOptions({
+     *   method: RequestMethod.Post,
+     *   url: 'https://google.com'
+     * });
+     * var req = new Request(options);
+     * console.log('req.method:', RequestMethod[req.method]); // Post
+     * console.log('options.url:', options.url); // https://google.com
+     * ```
+     */
+    var RequestOptions = (function () {
+        function RequestOptions(_a) {
+            var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, withCredentials = _b.withCredentials;
+            this.method = isPresent(method) ? normalizeMethodName(method) : null;
+            this.headers = isPresent(headers) ? headers : null;
+            this.body = isPresent(body) ? body : null;
+            this.url = isPresent(url) ? url : null;
+            this.search = isPresent(search) ?
+                (isString(search) ? new URLSearchParams((search)) : (search)) :
+                null;
+            this.withCredentials = isPresent(withCredentials) ? withCredentials : null;
+        }
+        /**
+         * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
+         * existing values. This method will not change the values of the instance on which it is being
+         * called.
+         *
+         * Note that `headers` and `search` will override existing values completely if present in
+         * the `options` object. If these values should be merged, it should be done prior to calling
+         * `merge` on the `RequestOptions` instance.
+         *
+         * ### Example ([live demo](http://plnkr.co/edit/6w8XA8YTkDRcPYpdB9dk?p=preview))
+         *
+         * ```typescript
+         * import {RequestOptions, Request, RequestMethod} from '@angular/http';
+         *
+         * var options = new RequestOptions({
+         *   method: RequestMethod.Post
+         * });
+         * var req = new Request(options.merge({
+         *   url: 'https://google.com'
+         * }));
+         * console.log('req.method:', RequestMethod[req.method]); // Post
+         * console.log('options.url:', options.url); // null
+         * console.log('req.url:', req.url); // https://google.com
+         * ```
+         */
+        RequestOptions.prototype.merge = function (options) {
+            return new RequestOptions({
+                method: isPresent(options) && isPresent(options.method) ? options.method : this.method,
+                headers: isPresent(options) && isPresent(options.headers) ? options.headers : this.headers,
+                body: isPresent(options) && isPresent(options.body) ? options.body : this.body,
+                url: isPresent(options) && isPresent(options.url) ? options.url : this.url,
+                search: isPresent(options) && isPresent(options.search) ?
+                    (isString(options.search) ? new URLSearchParams((options.search)) :
+                        (options.search).clone()) :
+                    this.search,
+                withCredentials: isPresent(options) && isPresent(options.withCredentials) ?
+                    options.withCredentials :
+                    this.withCredentials
+            });
+        };
+        return RequestOptions;
+    }());
+    var BaseRequestOptions = (function (_super) {
+        __extends(BaseRequestOptions, _super);
+        function BaseRequestOptions() {
+            _super.call(this, { method: exports.RequestMethod.Get, headers: new Headers() });
+        }
+        return BaseRequestOptions;
+    }(RequestOptions));
     /** @nocollapse */
-    JSONPBackend_.decorators = [
+    BaseRequestOptions.decorators = [
         { type: _angular_core.Injectable },
     ];
     /** @nocollapse */
-    JSONPBackend_.ctorParameters = [
-        { type: BrowserJsonp, },
-        { type: ResponseOptions, },
+    BaseRequestOptions.ctorParameters = [];
+    // TODO(jeffbcross): properly implement body accessors
+    /**
+     * Creates `Request` instances from provided values.
+     *
+     * The Request's interface is inspired by the Request constructor defined in the [Fetch
+     * Spec](https://fetch.spec.whatwg.org/#request-class),
+     * but is considered a static value whose body can be accessed many times. There are other
+     * differences in the implementation, but this is the most significant.
+     *
+     * `Request` instances are typically created by higher-level classes, like {@link Http} and
+     * {@link Jsonp}, but it may occasionally be useful to explicitly create `Request` instances.
+     * One such example is when creating services that wrap higher-level services, like {@link Http},
+     * where it may be useful to generate a `Request` with arbitrary headers and search params.
+     *
+     * ```typescript
+     * import {Injectable, Injector} from '@angular/core';
+     * import {HTTP_PROVIDERS, Http, Request, RequestMethod} from '@angular/http';
+     *
+     * @Injectable()
+     * class AutoAuthenticator {
+     *   constructor(public http:Http) {}
+     *   request(url:string) {
+     *     return this.http.request(new Request({
+     *       method: RequestMethod.Get,
+     *       url: url,
+     *       search: 'password=123'
+     *     }));
+     *   }
+     * }
+     *
+     * var injector = Injector.resolveAndCreate([HTTP_PROVIDERS, AutoAuthenticator]);
+     * var authenticator = injector.get(AutoAuthenticator);
+     * authenticator.request('people.json').subscribe(res => {
+     *   //URL should have included '?password=123'
+     *   console.log('people', res.json());
+     * });
+     * ```
+     */
+    var Request = (function () {
+        function Request(requestOptions) {
+            // TODO: assert that url is present
+            var url = requestOptions.url;
+            this.url = requestOptions.url;
+            if (isPresent(requestOptions.search)) {
+                var search = requestOptions.search.toString();
+                if (search.length > 0) {
+                    var prefix = '?';
+                    if (StringWrapper.contains(this.url, '?')) {
+                        prefix = (this.url[this.url.length - 1] == '&') ? '' : '&';
+                    }
+                    // TODO: just delete search-query-looking string in url?
+                    this.url = url + prefix + search;
+                }
+            }
+            this._body = requestOptions.body;
+            this.contentType = this.detectContentType();
+            this.method = normalizeMethodName(requestOptions.method);
+            // TODO(jeffbcross): implement behavior
+            // Defaults to 'omit', consistent with browser
+            // TODO(jeffbcross): implement behavior
+            this.headers = new Headers(requestOptions.headers);
+            this.withCredentials = requestOptions.withCredentials;
+        }
+        /**
+         * Returns the request's body as string, assuming that body exists. If body is undefined, return
+         * empty
+         * string.
+         */
+        Request.prototype.text = function () { return isPresent(this._body) ? this._body.toString() : ''; };
+        /**
+         * Returns the request's body as JSON string, assuming that body exists. If body is undefined,
+         * return
+         * empty
+         * string.
+         */
+        Request.prototype.json = function () { return isPresent(this._body) ? JSON.stringify(this._body) : ''; };
+        /**
+         * Returns the request's body as array buffer, assuming that body exists. If body is undefined,
+         * return
+         * null.
+         */
+        Request.prototype.arrayBuffer = function () {
+            if (this._body instanceof ArrayBuffer)
+                return this._body;
+            throw 'The request body isn\'t an array buffer';
+        };
+        /**
+         * Returns the request's body as blob, assuming that body exists. If body is undefined, return
+         * null.
+         */
+        Request.prototype.blob = function () {
+            if (this._body instanceof Blob)
+                return this._body;
+            if (this._body instanceof ArrayBuffer)
+                return new Blob([this._body]);
+            throw 'The request body isn\'t either a blob or an array buffer';
+        };
+        /**
+         * Returns the content type of request's body based on its type.
+         */
+        Request.prototype.detectContentType = function () {
+            if (this._body == null) {
+                return ContentType.NONE;
+            }
+            else if (this._body instanceof URLSearchParams) {
+                return ContentType.FORM;
+            }
+            else if (this._body instanceof FormData) {
+                return ContentType.FORM_DATA;
+            }
+            else if (this._body instanceof Blob) {
+                return ContentType.BLOB;
+            }
+            else if (this._body instanceof ArrayBuffer) {
+                return ContentType.ARRAY_BUFFER;
+            }
+            else if (this._body && typeof this._body == 'object') {
+                return ContentType.JSON;
+            }
+            else {
+                return ContentType.TEXT;
+            }
+        };
+        /**
+         * Returns the request's body according to its type. If body is undefined, return
+         * null.
+         */
+        Request.prototype.getBody = function () {
+            switch (this.contentType) {
+                case ContentType.JSON:
+                    return this.json();
+                case ContentType.FORM:
+                    return this.text();
+                case ContentType.FORM_DATA:
+                    return this._body;
+                case ContentType.TEXT:
+                    return this.text();
+                case ContentType.BLOB:
+                    return this.blob();
+                case ContentType.ARRAY_BUFFER:
+                    return this.arrayBuffer();
+                default:
+                    return null;
+            }
+        };
+        return Request;
+    }());
+    var noop$1 = function () { };
+    var w = typeof window == 'object' ? window : noop$1;
+    var FormData = w['FormData'] || noop$1;
+    var Blob = w['Blob'] || noop$1;
+    var ArrayBuffer = w['ArrayBuffer'] || noop$1;
+    function httpRequest(backend, request) {
+        return backend.createConnection(request).response;
+    }
+    function mergeOptions(defaultOpts, providedOpts, method, url) {
+        var newOptions = defaultOpts;
+        if (isPresent(providedOpts)) {
+            // Hack so Dart can used named parameters
+            return newOptions.merge(new RequestOptions({
+                method: providedOpts.method || method,
+                url: providedOpts.url || url,
+                search: providedOpts.search,
+                headers: providedOpts.headers,
+                body: providedOpts.body,
+                withCredentials: providedOpts.withCredentials
+            }));
+        }
+        if (isPresent(method)) {
+            return newOptions.merge(new RequestOptions({ method: method, url: url }));
+        }
+        else {
+            return newOptions.merge(new RequestOptions({ url: url }));
+        }
+    }
+    var Http = (function () {
+        function Http(_backend, _defaultOptions) {
+            this._backend = _backend;
+            this._defaultOptions = _defaultOptions;
+        }
+        /**
+         * Performs any type of http request. First argument is required, and can either be a url or
+         * a {@link Request} instance. If the first argument is a url, an optional {@link RequestOptions}
+         * object can be provided as the 2nd argument. The options object will be merged with the values
+         * of {@link BaseRequestOptions} before performing the request.
+         */
+        Http.prototype.request = function (url, options) {
+            var responseObservable;
+            if (isString(url)) {
+                responseObservable = httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Get, url)));
+            }
+            else if (url instanceof Request) {
+                responseObservable = httpRequest(this._backend, url);
+            }
+            else {
+                throw makeTypeError('First argument must be a url string or Request instance.');
+            }
+            return responseObservable;
+        };
+        /**
+         * Performs a request with `get` http method.
+         */
+        Http.prototype.get = function (url, options) {
+            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Get, url)));
+        };
+        /**
+         * Performs a request with `post` http method.
+         */
+        Http.prototype.post = function (url, body, options) {
+            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, exports.RequestMethod.Post, url)));
+        };
+        /**
+         * Performs a request with `put` http method.
+         */
+        Http.prototype.put = function (url, body, options) {
+            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, exports.RequestMethod.Put, url)));
+        };
+        /**
+         * Performs a request with `delete` http method.
+         */
+        Http.prototype.delete = function (url, options) {
+            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Delete, url)));
+        };
+        /**
+         * Performs a request with `patch` http method.
+         */
+        Http.prototype.patch = function (url, body, options) {
+            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, exports.RequestMethod.Patch, url)));
+        };
+        /**
+         * Performs a request with `head` http method.
+         */
+        Http.prototype.head = function (url, options) {
+            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Head, url)));
+        };
+        return Http;
+    }());
+    /** @nocollapse */
+    Http.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    Http.ctorParameters = [
+        { type: ConnectionBackend, },
+        { type: RequestOptions, },
+    ];
+    var Jsonp = (function (_super) {
+        __extends(Jsonp, _super);
+        function Jsonp(backend, defaultOptions) {
+            _super.call(this, backend, defaultOptions);
+        }
+        /**
+         * Performs any type of http request. First argument is required, and can either be a url or
+         * a {@link Request} instance. If the first argument is a url, an optional {@link RequestOptions}
+         * object can be provided as the 2nd argument. The options object will be merged with the values
+         * of {@link BaseRequestOptions} before performing the request.
+         */
+        Jsonp.prototype.request = function (url, options) {
+            var responseObservable;
+            if (isString(url)) {
+                url =
+                    new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Get, url));
+            }
+            if (url instanceof Request) {
+                if (url.method !== exports.RequestMethod.Get) {
+                    makeTypeError('JSONP requests must use GET request method.');
+                }
+                responseObservable = httpRequest(this._backend, url);
+            }
+            else {
+                throw makeTypeError('First argument must be a url string or Request instance.');
+            }
+            return responseObservable;
+        };
+        return Jsonp;
+    }(Http));
+    /** @nocollapse */
+    Jsonp.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    Jsonp.ctorParameters = [
+        { type: ConnectionBackend, },
+        { type: RequestOptions, },
     ];
     /**
      * Provides a basic set of injectables to use the {@link Http} service in any application.
@@ -1995,23 +1995,23 @@ var __extends = (this && this.__extends) || function (d, b) {
     exports.HTTP_BINDINGS = HTTP_BINDINGS;
     exports.JSONP_PROVIDERS = JSONP_PROVIDERS;
     exports.JSON_BINDINGS = JSON_BINDINGS;
-    exports.Request = Request;
-    exports.Response = Response;
-    exports.Connection = Connection;
-    exports.ConnectionBackend = ConnectionBackend;
-    exports.XSRFStrategy = XSRFStrategy;
     exports.BrowserXhr = BrowserXhr;
+    exports.JSONPBackend = JSONPBackend;
+    exports.JSONPConnection = JSONPConnection;
+    exports.CookieXSRFStrategy = CookieXSRFStrategy;
+    exports.XHRBackend = XHRBackend;
+    exports.XHRConnection = XHRConnection;
     exports.BaseRequestOptions = BaseRequestOptions;
     exports.RequestOptions = RequestOptions;
     exports.BaseResponseOptions = BaseResponseOptions;
     exports.ResponseOptions = ResponseOptions;
-    exports.XHRBackend = XHRBackend;
-    exports.XHRConnection = XHRConnection;
-    exports.CookieXSRFStrategy = CookieXSRFStrategy;
-    exports.JSONPBackend = JSONPBackend;
-    exports.JSONPConnection = JSONPConnection;
+    exports.Headers = Headers;
     exports.Http = Http;
     exports.Jsonp = Jsonp;
-    exports.Headers = Headers;
+    exports.Connection = Connection;
+    exports.ConnectionBackend = ConnectionBackend;
+    exports.XSRFStrategy = XSRFStrategy;
+    exports.Request = Request;
+    exports.Response = Response;
     exports.URLSearchParams = URLSearchParams;
 }));

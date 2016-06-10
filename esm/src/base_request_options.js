@@ -1,9 +1,9 @@
-import { isPresent, isString } from '../src/facade/lang';
-import { Headers } from './headers';
-import { RequestMethod } from './enums';
 import { Injectable } from '@angular/core';
-import { URLSearchParams } from './url_search_params';
+import { isPresent, isString } from '../src/facade/lang';
+import { RequestMethod } from './enums';
+import { Headers } from './headers';
 import { normalizeMethodName } from './http_utils';
+import { URLSearchParams } from './url_search_params';
 /**
  * Creates a request options object to be optionally provided when instantiating a
  * {@link Request}.
@@ -34,8 +34,8 @@ export class RequestOptions {
         this.headers = isPresent(headers) ? headers : null;
         this.body = isPresent(body) ? body : null;
         this.url = isPresent(url) ? url : null;
-        this.search = isPresent(search) ? (isString(search) ? new URLSearchParams((search)) :
-            (search)) :
+        this.search = isPresent(search) ?
+            (isString(search) ? new URLSearchParams((search)) : (search)) :
             null;
         this.withCredentials = isPresent(withCredentials) ? withCredentials : null;
     }

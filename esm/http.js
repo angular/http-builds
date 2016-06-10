@@ -1,22 +1,22 @@
-import { Http, Jsonp } from './src/http';
-import { XHRBackend, CookieXSRFStrategy } from './src/backends/xhr_backend';
-import { JSONPBackend, JSONPBackend_ } from './src/backends/jsonp_backend';
-import { BrowserXhr } from './src/backends/browser_xhr';
 import { BrowserJsonp } from './src/backends/browser_jsonp';
+import { BrowserXhr } from './src/backends/browser_xhr';
+import { JSONPBackend, JSONPBackend_ } from './src/backends/jsonp_backend';
+import { CookieXSRFStrategy, XHRBackend } from './src/backends/xhr_backend';
 import { BaseRequestOptions, RequestOptions } from './src/base_request_options';
-import { XSRFStrategy } from './src/interfaces';
 import { BaseResponseOptions, ResponseOptions } from './src/base_response_options';
-export { Request } from './src/static_request';
-export { Response } from './src/static_response';
-export { Connection, ConnectionBackend, XSRFStrategy } from './src/interfaces';
+import { Http, Jsonp } from './src/http';
+import { XSRFStrategy } from './src/interfaces';
 export { BrowserXhr } from './src/backends/browser_xhr';
+export { JSONPBackend, JSONPConnection } from './src/backends/jsonp_backend';
+export { CookieXSRFStrategy, XHRBackend, XHRConnection } from './src/backends/xhr_backend';
 export { BaseRequestOptions, RequestOptions } from './src/base_request_options';
 export { BaseResponseOptions, ResponseOptions } from './src/base_response_options';
-export { XHRBackend, XHRConnection, CookieXSRFStrategy } from './src/backends/xhr_backend';
-export { JSONPBackend, JSONPConnection } from './src/backends/jsonp_backend';
-export { Http, Jsonp } from './src/http';
+export { ReadyState, RequestMethod, ResponseType } from './src/enums';
 export { Headers } from './src/headers';
-export { ResponseType, ReadyState, RequestMethod } from './src/enums';
+export { Http, Jsonp } from './src/http';
+export { Connection, ConnectionBackend, XSRFStrategy } from './src/interfaces';
+export { Request } from './src/static_request';
+export { Response } from './src/static_response';
 export { URLSearchParams } from './src/url_search_params';
 /**
  * Provides a basic set of injectables to use the {@link Http} service in any application.

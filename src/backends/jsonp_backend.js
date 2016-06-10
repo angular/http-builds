@@ -4,15 +4,15 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var interfaces_1 = require('../interfaces');
-var enums_1 = require('../enums');
-var static_response_1 = require('../static_response');
-var base_response_options_1 = require('../base_response_options');
 var core_1 = require('@angular/core');
-var browser_jsonp_1 = require('./browser_jsonp');
+var Observable_1 = require('rxjs/Observable');
+var base_response_options_1 = require('../base_response_options');
+var enums_1 = require('../enums');
 var exceptions_1 = require('../facade/exceptions');
 var lang_1 = require('../facade/lang');
-var Observable_1 = require('rxjs/Observable');
+var interfaces_1 = require('../interfaces');
+var static_response_1 = require('../static_response');
+var browser_jsonp_1 = require('./browser_jsonp');
 var JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
 var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**

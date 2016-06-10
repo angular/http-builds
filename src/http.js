@@ -4,13 +4,13 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var lang_1 = require('../src/facade/lang');
-var exceptions_1 = require('../src/facade/exceptions');
 var core_1 = require('@angular/core');
-var interfaces_1 = require('./interfaces');
-var static_request_1 = require('./static_request');
+var exceptions_1 = require('../src/facade/exceptions');
+var lang_1 = require('../src/facade/lang');
 var base_request_options_1 = require('./base_request_options');
 var enums_1 = require('./enums');
+var interfaces_1 = require('./interfaces');
+var static_request_1 = require('./static_request');
 function httpRequest(backend, request) {
     return backend.createConnection(request).response;
 }

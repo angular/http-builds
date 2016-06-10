@@ -4,12 +4,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var lang_1 = require('../src/facade/lang');
-var headers_1 = require('./headers');
-var enums_1 = require('./enums');
 var core_1 = require('@angular/core');
-var url_search_params_1 = require('./url_search_params');
+var lang_1 = require('../src/facade/lang');
+var enums_1 = require('./enums');
+var headers_1 = require('./headers');
 var http_utils_1 = require('./http_utils');
+var url_search_params_1 = require('./url_search_params');
 /**
  * Creates a request options object to be optionally provided when instantiating a
  * {@link Request}.
@@ -41,8 +41,8 @@ var RequestOptions = (function () {
         this.headers = lang_1.isPresent(headers) ? headers : null;
         this.body = lang_1.isPresent(body) ? body : null;
         this.url = lang_1.isPresent(url) ? url : null;
-        this.search = lang_1.isPresent(search) ? (lang_1.isString(search) ? new url_search_params_1.URLSearchParams((search)) :
-            (search)) :
+        this.search = lang_1.isPresent(search) ?
+            (lang_1.isString(search) ? new url_search_params_1.URLSearchParams((search)) : (search)) :
             null;
         this.withCredentials = lang_1.isPresent(withCredentials) ? withCredentials : null;
     }

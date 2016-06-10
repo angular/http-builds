@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { __platform_browser_private__ } from '@angular/platform-browser';
-import { XSRFStrategy } from '../interfaces';
-import { RequestMethod, ResponseType, ContentType } from '../enums';
-import { Response } from '../static_response';
-import { Headers } from '../headers';
-import { ResponseOptions } from '../base_response_options';
-import { BrowserXhr } from './browser_xhr';
-import { isPresent, isString } from '../facade/lang';
 import { Observable } from 'rxjs/Observable';
-import { isSuccess, getResponseURL } from '../http_utils';
+import { ResponseOptions } from '../base_response_options';
+import { ContentType, RequestMethod, ResponseType } from '../enums';
+import { isPresent, isString } from '../facade/lang';
+import { Headers } from '../headers';
+import { getResponseURL, isSuccess } from '../http_utils';
+import { XSRFStrategy } from '../interfaces';
+import { Response } from '../static_response';
+import { BrowserXhr } from './browser_xhr';
 const XSSI_PREFIX = /^\)\]\}',?\n/;
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified

@@ -1,8 +1,8 @@
+import { StringWrapper, isPresent } from '../src/facade/lang';
 import { ContentType } from './enums';
 import { Headers } from './headers';
-import { URLSearchParams } from './url_search_params';
 import { normalizeMethodName } from './http_utils';
-import { isPresent, StringWrapper } from '../src/facade/lang';
+import { URLSearchParams } from './url_search_params';
 // TODO(jeffbcross): properly implement body accessors
 /**
  * Creates `Request` instances from provided values.
@@ -87,7 +87,7 @@ export class Request {
     arrayBuffer() {
         if (this._body instanceof ArrayBuffer)
             return this._body;
-        throw "The request body isn't an array buffer";
+        throw 'The request body isn\'t an array buffer';
     }
     /**
      * Returns the request's body as blob, assuming that body exists. If body is undefined, return
@@ -98,7 +98,7 @@ export class Request {
             return this._body;
         if (this._body instanceof ArrayBuffer)
             return new Blob([this._body]);
-        throw "The request body isn't either a blob or an array buffer";
+        throw 'The request body isn\'t either a blob or an array buffer';
     }
     /**
      * Returns the content type of request's body based on its type.

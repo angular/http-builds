@@ -1,10 +1,10 @@
-import { isString, isPresent } from '../src/facade/lang';
-import { makeTypeError } from '../src/facade/exceptions';
 import { Injectable } from '@angular/core';
-import { ConnectionBackend } from './interfaces';
-import { Request } from './static_request';
+import { makeTypeError } from '../src/facade/exceptions';
+import { isPresent, isString } from '../src/facade/lang';
 import { RequestOptions } from './base_request_options';
 import { RequestMethod } from './enums';
+import { ConnectionBackend } from './interfaces';
+import { Request } from './static_request';
 function httpRequest(backend, request) {
     return backend.createConnection(request).response;
 }

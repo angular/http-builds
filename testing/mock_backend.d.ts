@@ -1,8 +1,8 @@
-import { Request } from '../src/static_request';
-import { Response } from '../src/static_response';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ReadyState } from '../src/enums';
 import { Connection, ConnectionBackend } from '../src/interfaces';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Request } from '../src/static_request';
+import { Response } from '../src/static_response';
 /**
  *
  * Mock Connection to represent a {@link Connection} for tests.
@@ -34,7 +34,8 @@ export declare class MockConnection implements Connection {
      * var connection;
      * backend.connections.subscribe(c => connection = c);
      * http.request('data.json').subscribe(res => console.log(res.text()));
-     * connection.mockRespond(new Response(new ResponseOptions({ body: 'fake response' }))); //logs 'fake response'
+     * connection.mockRespond(new Response(new ResponseOptions({ body: 'fake response' }))); //logs
+     * 'fake response'
      * ```
      *
      */
