@@ -1132,7 +1132,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         XHRConnection.prototype.setDetectedContentType = function (req /** TODO #9100 */, _xhr /** TODO #9100 */) {
             // Skip if a custom Content-Type header is provided
-            if (isPresent(req.headers) && isPresent(req.headers['Content-Type'])) {
+            if (isPresent(req.headers) && isPresent(req.headers.get('Content-Type'))) {
                 return;
             }
             // Set the detected content type

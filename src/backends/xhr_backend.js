@@ -87,7 +87,7 @@ var XHRConnection = (function () {
     }
     XHRConnection.prototype.setDetectedContentType = function (req /** TODO #9100 */, _xhr /** TODO #9100 */) {
         // Skip if a custom Content-Type header is provided
-        if (lang_1.isPresent(req.headers) && lang_1.isPresent(req.headers['Content-Type'])) {
+        if (lang_1.isPresent(req.headers) && lang_1.isPresent(req.headers.get('Content-Type'))) {
             return;
         }
         // Set the detected content type
