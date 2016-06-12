@@ -92,7 +92,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         StringWrapper.replaceAllMapped = function (s, from, cb) {
             return s.replace(from, function () {
-                var matches = []; /** TODO #9100 */
+                var matches = [];
                 for (var _i = 0; _i < arguments.length; _i++) {
                     matches[_i - 0] = arguments[_i];
                 }
