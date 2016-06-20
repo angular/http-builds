@@ -1110,7 +1110,12 @@ var __extends = (this && this.__extends) || function (d, b) {
                 };
                 // error event handler
                 var onError = function (err) {
-                    var responseOptions = new ResponseOptions({ body: err, type: exports.ResponseType.Error });
+                    var responseOptions = new ResponseOptions({
+                        body: err,
+                        type: exports.ResponseType.Error,
+                        status: _xhr.status,
+                        statusText: _xhr.statusText,
+                    });
                     if (isPresent(baseResponseOptions)) {
                         responseOptions = baseResponseOptions.merge(responseOptions);
                     }
