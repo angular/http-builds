@@ -14,6 +14,13 @@ var __extends = (this && this.__extends) || function (d, b) {
             (factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}), global.ng.core, global.Rx, global.ng.platformBrowser));
 }(this, function (exports, _angular_core, rxjs_Observable, _angular_platformBrowser) {
     'use strict';
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
     var globalScope;
     if (typeof window === 'undefined') {
         if (typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope) {
@@ -204,6 +211,13 @@ var __extends = (this && this.__extends) || function (d, b) {
     ];
     /** @nocollapse */
     BrowserXhr.ctorParameters = [];
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
     /**
      * Supported http methods.
      */
@@ -825,6 +839,13 @@ var __extends = (this && this.__extends) || function (d, b) {
     ];
     /** @nocollapse */
     BaseResponseOptions.ctorParameters = [];
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
     /**
      * Abstract class from which real backends are derived.
      *

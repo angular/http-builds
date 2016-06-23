@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 import { BrowserJsonp } from './src/backends/browser_jsonp';
 import { BrowserXhr } from './src/backends/browser_xhr';
 import { JSONPBackend, JSONPBackend_ } from './src/backends/jsonp_backend';
