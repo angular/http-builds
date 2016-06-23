@@ -112,7 +112,9 @@ export class URLSearchParams {
     }
     toString() {
         var paramsList = [];
-        this.paramsMap.forEach((values, k) => { values.forEach(v => paramsList.push(k + '=' + encodeURIComponent(v))); });
+        this.paramsMap.forEach((values, k) => {
+            values.forEach(v => paramsList.push(encodeURIComponent(k) + '=' + encodeURIComponent(v)));
+        });
         return paramsList.join('&');
     }
     delete(param) { this.paramsMap.delete(param); }

@@ -1326,7 +1326,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         URLSearchParams.prototype.toString = function () {
             var paramsList = [];
-            this.paramsMap.forEach(function (values, k) { values.forEach(function (v) { return paramsList.push(k + '=' + encodeURIComponent(v)); }); });
+            this.paramsMap.forEach(function (values, k) {
+                values.forEach(function (v) { return paramsList.push(encodeURIComponent(k) + '=' + encodeURIComponent(v)); });
+            });
             return paramsList.join('&');
         };
         URLSearchParams.prototype.delete = function (param) { this.paramsMap.delete(param); };
