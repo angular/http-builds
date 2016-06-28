@@ -11,8 +11,6 @@
  *
  * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
  * {@link Request}.
- *
- * @experimental
  */
 var ConnectionBackend = (function () {
     function ConnectionBackend() {
@@ -22,8 +20,6 @@ var ConnectionBackend = (function () {
 exports.ConnectionBackend = ConnectionBackend;
 /**
  * Abstract class from which real connections are derived.
- *
- * @experimental
  */
 var Connection = (function () {
     function Connection() {
@@ -31,11 +27,7 @@ var Connection = (function () {
     return Connection;
 }());
 exports.Connection = Connection;
-/**
- * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
- *
- * @experimental
- */
+/** An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request. */
 var XSRFStrategy = (function () {
     function XSRFStrategy() {
     }

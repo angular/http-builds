@@ -61,8 +61,7 @@ import { Response } from './static_response';
  * http.get('request-from-mock-backend.json').subscribe((res:Response) => doSomething(res));
  * ```
  *
- * @experimental
- */
+ **/
 export declare class Http {
     protected _backend: ConnectionBackend;
     protected _defaultOptions: RequestOptions;
@@ -99,9 +98,6 @@ export declare class Http {
      */
     head(url: string, options?: RequestOptionsArgs): Observable<Response>;
 }
-/**
- * @experimental
- */
 export declare class Jsonp extends Http {
     constructor(backend: ConnectionBackend, defaultOptions: RequestOptions);
     /**

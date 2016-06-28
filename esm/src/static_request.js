@@ -47,8 +47,6 @@ import { URLSearchParams } from './url_search_params';
  *   console.log('people', res.json());
  * });
  * ```
- *
- * @experimental
  */
 export class Request {
     constructor(requestOptions) {

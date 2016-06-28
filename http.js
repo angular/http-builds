@@ -190,8 +190,6 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  *         useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')}])
  *   .catch(err => console.error(err));
  * ```
- *
- * @experimental
  */
 exports.HTTP_PROVIDERS = [
     // TODO(pascal): use factory type annotations once supported in DI
@@ -203,9 +201,6 @@ exports.HTTP_PROVIDERS = [
     xhr_backend_1.XHRBackend,
     { provide: interfaces_1.XSRFStrategy, useValue: new xhr_backend_1.CookieXSRFStrategy() },
 ];
-/**
- * @experimental
- */
 function httpFactory(xhrBackend, requestOptions) {
     return new http_1.Http(xhrBackend, requestOptions);
 }
@@ -322,8 +317,6 @@ exports.HTTP_BINDINGS = exports.HTTP_PROVIDERS;
  *   }
  * });
  * ```
- *
- * @experimental
  */
 exports.JSONP_PROVIDERS = [
     // TODO(pascal): use factory type annotations once supported in DI

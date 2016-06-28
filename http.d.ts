@@ -155,13 +155,8 @@ export { URLSearchParams } from './src/url_search_params';
  *         useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')}])
  *   .catch(err => console.error(err));
  * ```
- *
- * @experimental
  */
 export declare const HTTP_PROVIDERS: any[];
-/**
- * @experimental
- */
 export declare function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions): Http;
 /**
  * See {@link HTTP_PROVIDERS} instead.
@@ -275,8 +270,6 @@ export declare const HTTP_BINDINGS: any[];
  *   }
  * });
  * ```
- *
- * @experimental
  */
 export declare const JSONP_PROVIDERS: any[];
 /**

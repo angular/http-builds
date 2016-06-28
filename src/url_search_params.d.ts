@@ -5,8 +5,6 @@
  *   - setAll()
  *   - appendAll()
  *   - replaceAll()
- *
- * @experimental
  */
 export declare class URLSearchParams {
     rawParams: string;

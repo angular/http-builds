@@ -220,7 +220,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      */
     /**
      * Supported http methods.
-     * @experimental
      */
     exports.RequestMethod;
     (function (RequestMethod) {
@@ -236,7 +235,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      * All possible states in which a connection can be, based on
      * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
      * additional "CANCELLED" state.
-     * @experimental
      */
     exports.ReadyState;
     (function (ReadyState) {
@@ -250,7 +248,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     /**
      * Acceptable response types to be associated with a {@link Response}, based on
      * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
-     * @experimental
      */
     exports.ResponseType;
     (function (ResponseType) {
@@ -262,7 +259,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     })(exports.ResponseType || (exports.ResponseType = {}));
     /**
      * Supported content type to be automatically associated with a {@link Request}.
-     * @experimental
      */
     var ContentType;
     (function (ContentType) {
@@ -652,8 +648,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      * var thirdHeaders = new Headers(secondHeaders);
      * console.log(thirdHeaders.get('X-My-Custom-Header')); //'Angular'
      * ```
-     *
-     * @experimental
      */
     var Headers = (function () {
         function Headers(headers) {
@@ -783,8 +777,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *
      * console.log('res.json():', res.json()); // Object {name: "Jeff"}
      * ```
-     *
-     * @experimental
      */
     var ResponseOptions = (function () {
         function ResponseOptions(_a) {
@@ -859,8 +851,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *
      * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
      * {@link Request}.
-     *
-     * @experimental
      */
     var ConnectionBackend = (function () {
         function ConnectionBackend() {
@@ -869,19 +859,13 @@ var __extends = (this && this.__extends) || function (d, b) {
     }());
     /**
      * Abstract class from which real connections are derived.
-     *
-     * @experimental
      */
     var Connection = (function () {
         function Connection() {
         }
         return Connection;
     }());
-    /**
-     * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
-     *
-     * @experimental
-     */
+    /** An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request. */
     var XSRFStrategy = (function () {
         function XSRFStrategy() {
         }
@@ -925,8 +909,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      * Spec](https://fetch.spec.whatwg.org/#response-class), but is considered a static value whose body
      * can be accessed many times. There are other differences in the implementation, but this is the
      * most significant.
-     *
-     * @experimental
      */
     var Response = (function () {
         function Response(responseOptions) {
@@ -976,8 +958,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
     /**
      * Abstract base class for an in-flight JSONP request.
-     *
-     * @experimental
      */
     var JSONPConnection = (function () {
         function JSONPConnection() {
@@ -1067,8 +1047,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     }(JSONPConnection));
     /**
      * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
-     *
-     * @experimental
      */
     var JSONPBackend = (function (_super) {
         __extends(JSONPBackend, _super);
@@ -1106,8 +1084,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *
      * This class would typically not be created or interacted with directly inside applications, though
      * the {@link MockConnection} may be interacted with in tests.
-     *
-     * @experimental
      */
     var XHRConnection = (function () {
         function XHRConnection(req, browserXHR, baseResponseOptions) {
@@ -1216,8 +1192,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      * Applications can configure custom cookie and header names by binding an instance of this class
      * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
      * details.
-     *
-     * @experimental
      */
     var CookieXSRFStrategy = (function () {
         function CookieXSRFStrategy(_cookieName, _headerName) {
@@ -1279,8 +1253,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   - setAll()
      *   - appendAll()
      *   - replaceAll()
-     *
-     * @experimental
      */
     var URLSearchParams = (function () {
         function URLSearchParams(rawParams) {
@@ -1406,8 +1378,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      * console.log('req.method:', RequestMethod[req.method]); // Post
      * console.log('options.url:', options.url); // https://google.com
      * ```
-     *
-     * @experimental
      */
     var RequestOptions = (function () {
         function RequestOptions(_a) {
@@ -1513,8 +1483,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   console.log('people', res.json());
      * });
      * ```
-     *
-     * @experimental
      */
     var Request = (function () {
         function Request(requestOptions) {
@@ -1905,8 +1873,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *         useValue: new CookieXSRFStrategy('MY-XSRF-COOKIE-NAME', 'X-MY-XSRF-HEADER-NAME')}])
      *   .catch(err => console.error(err));
      * ```
-     *
-     * @experimental
      */
     var HTTP_PROVIDERS = [
         // TODO(pascal): use factory type annotations once supported in DI
@@ -1918,9 +1884,6 @@ var __extends = (this && this.__extends) || function (d, b) {
         XHRBackend,
         { provide: XSRFStrategy, useValue: new CookieXSRFStrategy() },
     ];
-    /**
-     * @experimental
-     */
     function httpFactory(xhrBackend, requestOptions) {
         return new Http(xhrBackend, requestOptions);
     }
@@ -2036,8 +1999,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   }
      * });
      * ```
-     *
-     * @experimental
      */
     var JSONP_PROVIDERS = [
         // TODO(pascal): use factory type annotations once supported in DI

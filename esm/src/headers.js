@@ -33,8 +33,6 @@ import { isListLikeIterable, iterateListLike, Map, MapWrapper, StringMapWrapper,
  * var thirdHeaders = new Headers(secondHeaders);
  * console.log(thirdHeaders.get('X-My-Custom-Header')); //'Angular'
  * ```
- *
- * @experimental
  */
 export class Headers {
     constructor(headers) {

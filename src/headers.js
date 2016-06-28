@@ -34,8 +34,6 @@ var collection_1 = require('../src/facade/collection');
  * var thirdHeaders = new Headers(secondHeaders);
  * console.log(thirdHeaders.get('X-My-Custom-Header')); //'Angular'
  * ```
- *
- * @experimental
  */
 var Headers = (function () {
     function Headers(headers) {

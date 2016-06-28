@@ -31,8 +31,6 @@ function paramParser(rawParams) {
  *   - setAll()
  *   - appendAll()
  *   - replaceAll()
- *
- * @experimental
  */
 var URLSearchParams = (function () {
     function URLSearchParams(rawParams) {

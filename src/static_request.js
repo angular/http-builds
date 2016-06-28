@@ -48,8 +48,6 @@ var url_search_params_1 = require('./url_search_params');
  *   console.log('people', res.json());
  * });
  * ```
- *
- * @experimental
  */
 var Request = (function () {
     function Request(requestOptions) {

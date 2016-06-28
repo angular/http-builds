@@ -26,8 +26,6 @@ var http_utils_1 = require('./http_utils');
  * Spec](https://fetch.spec.whatwg.org/#response-class), but is considered a static value whose body
  * can be accessed many times. There are other differences in the implementation, but this is the
  * most significant.
- *
- * @experimental
  */
 var Response = (function () {
     function Response(responseOptions) {
