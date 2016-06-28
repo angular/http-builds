@@ -29,6 +29,8 @@ function paramParser(rawParams = '') {
  *   - setAll()
  *   - appendAll()
  *   - replaceAll()
+ *
+ * @experimental
  */
 export class URLSearchParams {
     constructor(rawParams = '') {

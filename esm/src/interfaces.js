@@ -10,15 +10,23 @@
  *
  * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
  * {@link Request}.
+ *
+ * @experimental
  */
 export class ConnectionBackend {
 }
 /**
  * Abstract class from which real connections are derived.
+ *
+ * @experimental
  */
 export class Connection {
 }
-/** An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request. */
+/**
+ * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
+ *
+ * @experimental
+ */
 export class XSRFStrategy {
 }
 //# sourceMappingURL=interfaces.js.map

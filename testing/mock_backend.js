@@ -18,7 +18,8 @@ var static_request_1 = require('../src/static_request');
  *
  * Mock Connection to represent a {@link Connection} for tests.
  *
- **/
+ * @experimental
+ */
 var MockConnection = (function () {
     function MockConnection(req) {
         this.response = take_1.take.call(new ReplaySubject_1.ReplaySubject(1), 1);

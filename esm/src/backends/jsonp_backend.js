@@ -18,6 +18,8 @@ const JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
 const JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
  * Abstract base class for an in-flight JSONP request.
+ *
+ * @experimental
  */
 export class JSONPConnection {
 }
@@ -101,6 +103,8 @@ export class JSONPConnection_ extends JSONPConnection {
 }
 /**
  * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
+ *
+ * @experimental
  */
 export class JSONPBackend extends ConnectionBackend {
 }

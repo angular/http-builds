@@ -40,6 +40,8 @@ var url_search_params_1 = require('./url_search_params');
  * console.log('req.method:', RequestMethod[req.method]); // Post
  * console.log('options.url:', options.url); // https://google.com
  * ```
+ *
+ * @experimental
  */
 var RequestOptions = (function () {
     function RequestOptions(_a) {

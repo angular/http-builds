@@ -34,6 +34,8 @@ import { Headers } from './headers';
  *
  * console.log('res.json():', res.json()); // Object {name: "Jeff"}
  * ```
+ *
+ * @experimental
  */
 export class ResponseOptions {
     constructor({ body, status, headers, statusText, type, url } = {}) {
