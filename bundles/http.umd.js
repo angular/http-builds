@@ -1262,7 +1262,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         if (rawParams.length > 0) {
             var params = rawParams.split('&');
             params.forEach(function (param) {
-                var split = param.split('=');
+                var split = param.split('=', 2);
                 var key = split[0];
                 var val = split[1];
                 var list = isPresent(map.get(key)) ? map.get(key) : [];
@@ -1273,6 +1273,28 @@ var __extends = (this && this.__extends) || function (d, b) {
         return map;
     }
     /**
+     * @experimental
+     **/
+    var QueryEncoder = (function () {
+        function QueryEncoder() {
+        }
+        QueryEncoder.prototype.encodeKey = function (k) { return standardEncoding(k); };
+        QueryEncoder.prototype.encodeValue = function (v) { return standardEncoding(v); };
+        return QueryEncoder;
+    }());
+    function standardEncoding(v) {
+        return encodeURIComponent(v)
+            .replace(/%40/gi, '@')
+            .replace(/%3A/gi, ':')
+            .replace(/%24/gi, '$')
+            .replace(/%2C/gi, ',')
+            .replace(/%3B/gi, ';')
+            .replace(/%2B/gi, '+')
+            .replace(/%3D/gi, ';')
+            .replace(/%3F/gi, '?')
+            .replace(/%2F/gi, '/');
+    }
+    /**
      * Map-like representation of url search parameters, based on
      * [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams) in the url living standard,
      * with several extensions for merging URLSearchParams objects:
@@ -1280,12 +1302,39 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   - appendAll()
      *   - replaceAll()
      *
+     * This class accepts an optional second parameter of ${@link QueryEncoder},
+     * which is used to serialize parameters before making a request. By default,
+     * `QueryEncoder` encodes keys and values of parameters using `encodeURIComponent`,
+     * and then un-encodes certain characters that are allowed to be part of the query
+     * according to IETF RFC 3986: https://tools.ietf.org/html/rfc3986.
+     *
+     * These are the characters that are not encoded: `! $ \' ( ) * + , ; A 9 - . _ ~ ? /`
+     *
+     * If the set of allowed query characters is not acceptable for a particular backend,
+     * `QueryEncoder` can be subclassed and provided as the 2nd argument to URLSearchParams.
+     *
+     * ```
+     * import {URLSearchParams, QueryEncoder} from '@angular/http';
+     * class MyQueryEncoder extends QueryEncoder {
+     *   encodeKey(k: string): string {
+     *     return myEncodingFunction(k);
+     *   }
+     *
+     *   encodeValue(v: string): string {
+     *     return myEncodingFunction(v);
+     *   }
+     * }
+     *
+     * let params = new URLSearchParams('', new MyQueryEncoder());
+     * ```
      * @experimental
      */
     var URLSearchParams = (function () {
-        function URLSearchParams(rawParams) {
+        function URLSearchParams(rawParams, queryEncoder) {
             if (rawParams === void 0) { rawParams = ''; }
+            if (queryEncoder === void 0) { queryEncoder = new QueryEncoder(); }
             this.rawParams = rawParams;
+            this.queryEncoder = queryEncoder;
             this.paramsMap = paramParser(rawParams);
         }
         URLSearchParams.prototype.clone = function () {
@@ -1374,9 +1423,10 @@ var __extends = (this && this.__extends) || function (d, b) {
             });
         };
         URLSearchParams.prototype.toString = function () {
+            var _this = this;
             var paramsList = [];
             this.paramsMap.forEach(function (values, k) {
-                values.forEach(function (v) { return paramsList.push(encodeURIComponent(k) + '=' + encodeURIComponent(v)); });
+                values.forEach(function (v) { return paramsList.push(_this.queryEncoder.encodeKey(k) + '=' + _this.queryEncoder.encodeValue(v)); });
             });
             return paramsList.join('&');
         };
@@ -2080,5 +2130,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     exports.XSRFStrategy = XSRFStrategy;
     exports.Request = Request;
     exports.Response = Response;
+    exports.QueryEncoder = QueryEncoder;
     exports.URLSearchParams = URLSearchParams;
 }));

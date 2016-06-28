@@ -47,6 +47,7 @@ exports.Request = static_request_1.Request;
 var static_response_1 = require('./src/static_response');
 exports.Response = static_response_1.Response;
 var url_search_params_1 = require('./src/url_search_params');
+exports.QueryEncoder = url_search_params_1.QueryEncoder;
 exports.URLSearchParams = url_search_params_1.URLSearchParams;
 /**
  * Provides a basic set of injectables to use the {@link Http} service in any application.
