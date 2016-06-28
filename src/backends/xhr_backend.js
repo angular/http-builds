@@ -25,6 +25,8 @@ var XSSI_PREFIX = /^\)\]\}',?\n/;
  *
  * This class would typically not be created or interacted with directly inside applications, though
  * the {@link MockConnection} may be interacted with in tests.
+ *
+ * @experimental
  */
 var XHRConnection = (function () {
     function XHRConnection(req, browserXHR, baseResponseOptions) {
@@ -134,6 +136,8 @@ exports.XHRConnection = XHRConnection;
  * Applications can configure custom cookie and header names by binding an instance of this class
  * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
  * details.
+ *
+ * @experimental
  */
 var CookieXSRFStrategy = (function () {
     function CookieXSRFStrategy(_cookieName, _headerName) {

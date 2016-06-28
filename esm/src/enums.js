@@ -7,6 +7,7 @@
  */
 /**
  * Supported http methods.
+ * @experimental
  */
 export var RequestMethod;
 (function (RequestMethod) {
@@ -22,6 +23,7 @@ export var RequestMethod;
  * All possible states in which a connection can be, based on
  * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
  * additional "CANCELLED" state.
+ * @experimental
  */
 export var ReadyState;
 (function (ReadyState) {
@@ -35,6 +37,7 @@ export var ReadyState;
 /**
  * Acceptable response types to be associated with a {@link Response}, based on
  * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
+ * @experimental
  */
 export var ResponseType;
 (function (ResponseType) {
@@ -46,6 +49,7 @@ export var ResponseType;
 })(ResponseType || (ResponseType = {}));
 /**
  * Supported content type to be automatically associated with a {@link Request}.
+ * @experimental
  */
 export var ContentType;
 (function (ContentType) {

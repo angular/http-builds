@@ -17,7 +17,8 @@ import { Request } from '../src/static_request';
  *
  * Mock Connection to represent a {@link Connection} for tests.
  *
- **/
+ * @experimental
+ */
 export class MockConnection {
     constructor(req) {
         this.response = take.call(new ReplaySubject(1), 1);

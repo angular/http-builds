@@ -40,6 +40,8 @@ var headers_1 = require('./headers');
  *
  * console.log('res.json():', res.json()); // Object {name: "Jeff"}
  * ```
+ *
+ * @experimental
  */
 var ResponseOptions = (function () {
     function ResponseOptions(_a) {
