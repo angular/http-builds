@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { __platform_browser_private__ } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { ResponseOptions } from '../base_response_options';
-import { ContentType, RequestMethod, ResponseType } from '../enums';
+import { ContentType, RequestMethod, ResponseContentType, ResponseType } from '../enums';
 import { isPresent, isString } from '../facade/lang';
 import { Headers } from '../headers';
 import { getResponseURL, isSuccess } from '../http_utils';
@@ -86,6 +86,22 @@ export class XHRConnection {
             this.setDetectedContentType(req, _xhr);
             if (isPresent(req.headers)) {
                 req.headers.forEach((values, name) => _xhr.setRequestHeader(name, values.join(',')));
+            }
+            // Select the correct buffer type to store the response
+            if (isPresent(req.responseType) && isPresent(_xhr.responseType)) {
+                switch (req.responseType) {
+                    case ResponseContentType.ArrayBuffer:
+                        _xhr.responseType = 'arraybuffer';
+                        break;
+                    case ResponseContentType.Json:
+                        _xhr.responseType = 'json';
+                        break;
+                    case ResponseContentType.Text:
+                        _xhr.responseType = 'text';
+                        break;
+                    default:
+                        throw new Error('The selected responseType is not supported');
+                }
             }
             _xhr.addEventListener('load', onLoad);
             _xhr.addEventListener('error', onError);

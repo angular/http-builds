@@ -32,6 +32,7 @@ exports.ResponseOptions = base_response_options_2.ResponseOptions;
 var enums_1 = require('./src/enums');
 exports.ReadyState = enums_1.ReadyState;
 exports.RequestMethod = enums_1.RequestMethod;
+exports.ResponseContentType = enums_1.ResponseContentType;
 exports.ResponseType = enums_1.ResponseType;
 var headers_1 = require('./src/headers');
 exports.Headers = headers_1.Headers;

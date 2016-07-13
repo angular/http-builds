@@ -62,4 +62,14 @@ var ResponseType = exports.ResponseType;
     ContentType[ContentType["ARRAY_BUFFER"] = 6] = "ARRAY_BUFFER";
 })(exports.ContentType || (exports.ContentType = {}));
 var ContentType = exports.ContentType;
+/**
+ * Define which buffer to use to store the response
+ * @experimental
+ */
+(function (ResponseContentType) {
+    ResponseContentType[ResponseContentType["ArrayBuffer"] = 0] = "ArrayBuffer";
+    ResponseContentType[ResponseContentType["Json"] = 1] = "Json";
+    ResponseContentType[ResponseContentType["Text"] = 2] = "Text";
+})(exports.ResponseContentType || (exports.ResponseContentType = {}));
+var ResponseContentType = exports.ResponseContentType;
 //# sourceMappingURL=enums.js.map

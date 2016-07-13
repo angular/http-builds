@@ -61,4 +61,14 @@ export var ContentType;
     ContentType[ContentType["BLOB"] = 5] = "BLOB";
     ContentType[ContentType["ARRAY_BUFFER"] = 6] = "ARRAY_BUFFER";
 })(ContentType || (ContentType = {}));
+/**
+ * Define which buffer to use to store the response
+ * @experimental
+ */
+export var ResponseContentType;
+(function (ResponseContentType) {
+    ResponseContentType[ResponseContentType["ArrayBuffer"] = 0] = "ArrayBuffer";
+    ResponseContentType[ResponseContentType["Json"] = 1] = "Json";
+    ResponseContentType[ResponseContentType["Text"] = 2] = "Text";
+})(ResponseContentType || (ResponseContentType = {}));
 //# sourceMappingURL=enums.js.map

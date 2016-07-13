@@ -89,6 +89,22 @@ var XHRConnection = (function () {
             if (lang_1.isPresent(req.headers)) {
                 req.headers.forEach(function (values, name) { return _xhr.setRequestHeader(name, values.join(',')); });
             }
+            // Select the correct buffer type to store the response
+            if (lang_1.isPresent(req.responseType) && lang_1.isPresent(_xhr.responseType)) {
+                switch (req.responseType) {
+                    case enums_1.ResponseContentType.ArrayBuffer:
+                        _xhr.responseType = 'arraybuffer';
+                        break;
+                    case enums_1.ResponseContentType.Json:
+                        _xhr.responseType = 'json';
+                        break;
+                    case enums_1.ResponseContentType.Text:
+                        _xhr.responseType = 'text';
+                        break;
+                    default:
+                        throw new Error('The selected responseType is not supported');
+                }
+            }
             _xhr.addEventListener('load', onLoad);
             _xhr.addEventListener('error', onError);
             _xhr.send(_this.request.getBody());

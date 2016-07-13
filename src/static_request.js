@@ -6,7 +6,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var lang_1 = require('../src/facade/lang');
+var body_1 = require('./body');
 var enums_1 = require('./enums');
 var headers_1 = require('./headers');
 var http_utils_1 = require('./http_utils');
@@ -51,8 +57,10 @@ var url_search_params_1 = require('./url_search_params');
  *
  * @experimental
  */
-var Request = (function () {
+var Request = (function (_super) {
+    __extends(Request, _super);
     function Request(requestOptions) {
+        _super.call(this);
         // TODO: assert that url is present
         var url = requestOptions.url;
         this.url = requestOptions.url;
@@ -75,41 +83,8 @@ var Request = (function () {
         // TODO(jeffbcross): implement behavior
         this.headers = new headers_1.Headers(requestOptions.headers);
         this.withCredentials = requestOptions.withCredentials;
+        this.responseType = requestOptions.responseType;
     }
-    /**
-     * Returns the request's body as string, assuming that body exists. If body is undefined, return
-     * empty
-     * string.
-     */
-    Request.prototype.text = function () { return lang_1.isPresent(this._body) ? this._body.toString() : ''; };
-    /**
-     * Returns the request's body as JSON string, assuming that body exists. If body is undefined,
-     * return
-     * empty
-     * string.
-     */
-    Request.prototype.json = function () { return lang_1.isPresent(this._body) ? JSON.stringify(this._body) : ''; };
-    /**
-     * Returns the request's body as array buffer, assuming that body exists. If body is undefined,
-     * return
-     * null.
-     */
-    Request.prototype.arrayBuffer = function () {
-        if (this._body instanceof ArrayBuffer)
-            return this._body;
-        throw 'The request body isn\'t an array buffer';
-    };
-    /**
-     * Returns the request's body as blob, assuming that body exists. If body is undefined, return
-     * null.
-     */
-    Request.prototype.blob = function () {
-        if (this._body instanceof Blob)
-            return this._body;
-        if (this._body instanceof ArrayBuffer)
-            return new Blob([this._body]);
-        throw 'The request body isn\'t either a blob or an array buffer';
-    };
     /**
      * Returns the content type of request's body based on its type.
      */
@@ -159,7 +134,7 @@ var Request = (function () {
         }
     };
     return Request;
-}());
+}(body_1.Body));
 exports.Request = Request;
 var noop = function () { };
 var w = typeof window == 'object' ? window : noop;

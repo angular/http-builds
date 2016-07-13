@@ -6,6 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { StringWrapper, isPresent } from '../src/facade/lang';
+import { Body } from './body';
 import { ContentType } from './enums';
 import { Headers } from './headers';
 import { normalizeMethodName } from './http_utils';
@@ -50,8 +51,9 @@ import { URLSearchParams } from './url_search_params';
  *
  * @experimental
  */
-export class Request {
+export class Request extends Body {
     constructor(requestOptions) {
+        super();
         // TODO: assert that url is present
         let url = requestOptions.url;
         this.url = requestOptions.url;
@@ -74,40 +76,7 @@ export class Request {
         // TODO(jeffbcross): implement behavior
         this.headers = new Headers(requestOptions.headers);
         this.withCredentials = requestOptions.withCredentials;
-    }
-    /**
-     * Returns the request's body as string, assuming that body exists. If body is undefined, return
-     * empty
-     * string.
-     */
-    text() { return isPresent(this._body) ? this._body.toString() : ''; }
-    /**
-     * Returns the request's body as JSON string, assuming that body exists. If body is undefined,
-     * return
-     * empty
-     * string.
-     */
-    json() { return isPresent(this._body) ? JSON.stringify(this._body) : ''; }
-    /**
-     * Returns the request's body as array buffer, assuming that body exists. If body is undefined,
-     * return
-     * null.
-     */
-    arrayBuffer() {
-        if (this._body instanceof ArrayBuffer)
-            return this._body;
-        throw 'The request body isn\'t an array buffer';
-    }
-    /**
-     * Returns the request's body as blob, assuming that body exists. If body is undefined, return
-     * null.
-     */
-    blob() {
-        if (this._body instanceof Blob)
-            return this._body;
-        if (this._body instanceof ArrayBuffer)
-            return new Blob([this._body]);
-        throw 'The request body isn\'t either a blob or an array buffer';
+        this.responseType = requestOptions.responseType;
     }
     /**
      * Returns the content type of request's body based on its type.

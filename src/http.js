@@ -31,7 +31,8 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
             search: providedOpts.search,
             headers: providedOpts.headers,
             body: providedOpts.body,
-            withCredentials: providedOpts.withCredentials
+            withCredentials: providedOpts.withCredentials,
+            responseType: providedOpts.responseType
         }));
     }
     if (lang_1.isPresent(method)) {
