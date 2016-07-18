@@ -1687,7 +1687,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         Request.prototype.getBody = function () {
             switch (this.contentType) {
                 case ContentType.JSON:
-                    return this.json();
+                    return this.text();
                 case ContentType.FORM:
                     return this.text();
                 case ContentType.FORM_DATA:

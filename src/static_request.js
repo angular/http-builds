@@ -118,7 +118,7 @@ var Request = (function (_super) {
     Request.prototype.getBody = function () {
         switch (this.contentType) {
             case enums_1.ContentType.JSON:
-                return this.json();
+                return this.text();
             case enums_1.ContentType.FORM:
                 return this.text();
             case enums_1.ContentType.FORM_DATA:
