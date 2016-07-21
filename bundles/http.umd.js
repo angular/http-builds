@@ -280,9 +280,10 @@ var __extends = (this && this.__extends) || function (d, b) {
      */
     exports.ResponseContentType;
     (function (ResponseContentType) {
-        ResponseContentType[ResponseContentType["ArrayBuffer"] = 0] = "ArrayBuffer";
+        ResponseContentType[ResponseContentType["Text"] = 0] = "Text";
         ResponseContentType[ResponseContentType["Json"] = 1] = "Json";
-        ResponseContentType[ResponseContentType["Text"] = 2] = "Text";
+        ResponseContentType[ResponseContentType["ArrayBuffer"] = 2] = "ArrayBuffer";
+        ResponseContentType[ResponseContentType["Blob"] = 3] = "Blob";
     })(exports.ResponseContentType || (exports.ResponseContentType = {}));
     var Map$1 = global$1.Map;
     var Set = global$1.Set;
@@ -1399,6 +1400,9 @@ var __extends = (this && this.__extends) || function (d, b) {
                             break;
                         case exports.ResponseContentType.Text:
                             _xhr.responseType = 'text';
+                            break;
+                        case exports.ResponseContentType.Blob:
+                            _xhr.responseType = 'blob';
                             break;
                         default:
                             throw new Error('The selected responseType is not supported');

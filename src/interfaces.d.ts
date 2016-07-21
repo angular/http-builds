@@ -66,7 +66,7 @@ export interface RequestArgs extends RequestOptionsArgs {
  * @experimental
  */
 export declare type ResponseOptionsArgs = {
-    body?: string | Object | FormData | ArrayBuffer;
+    body?: string | Object | FormData | ArrayBuffer | Blob;
     status?: number;
     statusText?: string;
     headers?: Headers;

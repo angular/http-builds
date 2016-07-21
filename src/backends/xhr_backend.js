@@ -101,6 +101,9 @@ var XHRConnection = (function () {
                     case enums_1.ResponseContentType.Text:
                         _xhr.responseType = 'text';
                         break;
+                    case enums_1.ResponseContentType.Blob:
+                        _xhr.responseType = 'blob';
+                        break;
                     default:
                         throw new Error('The selected responseType is not supported');
                 }
