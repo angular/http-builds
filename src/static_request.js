@@ -76,19 +76,39 @@ var Request = (function (_super) {
             }
         }
         this._body = requestOptions.body;
-        this.contentType = this.detectContentType();
         this.method = http_utils_1.normalizeMethodName(requestOptions.method);
         // TODO(jeffbcross): implement behavior
         // Defaults to 'omit', consistent with browser
         // TODO(jeffbcross): implement behavior
         this.headers = new headers_1.Headers(requestOptions.headers);
+        this.contentType = this.detectContentType();
         this.withCredentials = requestOptions.withCredentials;
         this.responseType = requestOptions.responseType;
     }
     /**
-     * Returns the content type of request's body based on its type.
+     * Returns the content type enum based on header options.
      */
     Request.prototype.detectContentType = function () {
+        switch (this.headers.get('content-type')) {
+            case 'application/json':
+                return enums_1.ContentType.JSON;
+            case 'application/x-www-form-urlencoded':
+                return enums_1.ContentType.FORM;
+            case 'multipart/form-data':
+                return enums_1.ContentType.FORM_DATA;
+            case 'text/plain':
+            case 'text/html':
+                return enums_1.ContentType.TEXT;
+            case 'application/octet-stream':
+                return enums_1.ContentType.BLOB;
+            default:
+                return this.detectContentTypeFromBody();
+        }
+    };
+    /**
+     * Returns the content type of request's body based on its type.
+     */
+    Request.prototype.detectContentTypeFromBody = function () {
         if (this._body == null) {
             return enums_1.ContentType.NONE;
         }

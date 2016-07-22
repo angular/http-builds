@@ -1649,19 +1649,39 @@ var __extends = (this && this.__extends) || function (d, b) {
                 }
             }
             this._body = requestOptions.body;
-            this.contentType = this.detectContentType();
             this.method = normalizeMethodName(requestOptions.method);
             // TODO(jeffbcross): implement behavior
             // Defaults to 'omit', consistent with browser
             // TODO(jeffbcross): implement behavior
             this.headers = new Headers(requestOptions.headers);
+            this.contentType = this.detectContentType();
             this.withCredentials = requestOptions.withCredentials;
             this.responseType = requestOptions.responseType;
         }
         /**
-         * Returns the content type of request's body based on its type.
+         * Returns the content type enum based on header options.
          */
         Request.prototype.detectContentType = function () {
+            switch (this.headers.get('content-type')) {
+                case 'application/json':
+                    return ContentType.JSON;
+                case 'application/x-www-form-urlencoded':
+                    return ContentType.FORM;
+                case 'multipart/form-data':
+                    return ContentType.FORM_DATA;
+                case 'text/plain':
+                case 'text/html':
+                    return ContentType.TEXT;
+                case 'application/octet-stream':
+                    return ContentType.BLOB;
+                default:
+                    return this.detectContentTypeFromBody();
+            }
+        };
+        /**
+         * Returns the content type of request's body based on its type.
+         */
+        Request.prototype.detectContentTypeFromBody = function () {
             if (this._body == null) {
                 return ContentType.NONE;
             }
