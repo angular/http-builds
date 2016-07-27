@@ -2018,7 +2018,7 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   .catch(err => console.error(err));
      * ```
      *
-     * @experimental
+     * @deprecated
      */
     var HTTP_PROVIDERS = [
         // TODO(pascal): use factory type annotations once supported in DI
@@ -2028,8 +2028,14 @@ var __extends = (this && this.__extends) || function (d, b) {
         { provide: RequestOptions, useClass: BaseRequestOptions },
         { provide: ResponseOptions, useClass: BaseResponseOptions },
         XHRBackend,
-        { provide: XSRFStrategy, useValue: new CookieXSRFStrategy() },
+        { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
     ];
+    /**
+     * @experimental
+     */
+    function _createDefaultCookieXSRFStrategy() {
+        return new CookieXSRFStrategy();
+    }
     /**
      * @experimental
      */
@@ -2169,11 +2175,32 @@ var __extends = (this && this.__extends) || function (d, b) {
      * @deprecated
      */
     var JSON_BINDINGS = JSONP_PROVIDERS;
+    var HttpModule = (function () {
+        function HttpModule() {
+        }
+        return HttpModule;
+    }());
+    /** @nocollapse */
+    HttpModule.decorators = [
+        { type: _angular_core.NgModule, args: [{ providers: HTTP_PROVIDERS },] },
+    ];
+    var JsonpModule = (function () {
+        function JsonpModule() {
+        }
+        return JsonpModule;
+    }());
+    /** @nocollapse */
+    JsonpModule.decorators = [
+        { type: _angular_core.NgModule, args: [{ providers: JSONP_PROVIDERS },] },
+    ];
     exports.HTTP_PROVIDERS = HTTP_PROVIDERS;
+    exports._createDefaultCookieXSRFStrategy = _createDefaultCookieXSRFStrategy;
     exports.httpFactory = httpFactory;
     exports.HTTP_BINDINGS = HTTP_BINDINGS;
     exports.JSONP_PROVIDERS = JSONP_PROVIDERS;
     exports.JSON_BINDINGS = JSON_BINDINGS;
+    exports.HttpModule = HttpModule;
+    exports.JsonpModule = JsonpModule;
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
     exports.JSONPConnection = JSONPConnection;
