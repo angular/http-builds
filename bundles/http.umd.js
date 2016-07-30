@@ -673,29 +673,29 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
             // headers instanceof StringMap
             StringMapWrapper.forEach(headers, function (v, k) {
-                _this._headersMap.set(k, isListLikeIterable(v) ? v : [v]);
+                _this._headersMap.set(normalize(k), isListLikeIterable(v) ? v : [v]);
             });
         }
         /**
          * Returns a new Headers instance from the given DOMString of Response Headers
          */
         Headers.fromResponseHeaderString = function (headersString) {
-            return headersString.trim()
-                .split('\n')
-                .map(function (val) { return val.split(':'); })
-                .map(function (_a) {
-                var key = _a[0], parts = _a.slice(1);
-                return ([key.trim(), parts.join(':').trim()]);
-            })
-                .reduce(function (headers, _a) {
-                var key = _a[0], value = _a[1];
-                return !headers.set(key, value) && headers;
-            }, new Headers());
+            var headers = new Headers();
+            headersString.split('\n').forEach(function (line) {
+                var index = line.indexOf(':');
+                if (index > 0) {
+                    var key = line.substring(0, index);
+                    var value = line.substring(index + 1).trim();
+                    headers.set(key, value);
+                }
+            });
+            return headers;
         };
         /**
          * Appends a header to existing list of header values for a given header name.
          */
         Headers.prototype.append = function (name, value) {
+            name = normalize(name);
             var mapName = this._headersMap.get(name);
             var list = isListLikeIterable(mapName) ? mapName : [];
             list.push(value);
@@ -704,18 +704,18 @@ var __extends = (this && this.__extends) || function (d, b) {
         /**
          * Deletes all header values for the given name.
          */
-        Headers.prototype.delete = function (name) { this._headersMap.delete(name); };
+        Headers.prototype.delete = function (name) { this._headersMap.delete(normalize(name)); };
         Headers.prototype.forEach = function (fn) {
             this._headersMap.forEach(fn);
         };
         /**
          * Returns first header that matches given name.
          */
-        Headers.prototype.get = function (header) { return ListWrapper.first(this._headersMap.get(header)); };
+        Headers.prototype.get = function (header) { return ListWrapper.first(this._headersMap.get(normalize(header))); };
         /**
          * Check for existence of header by given name.
          */
-        Headers.prototype.has = function (header) { return this._headersMap.has(header); };
+        Headers.prototype.has = function (header) { return this._headersMap.has(normalize(header)); };
         /**
          * Provides names of set headers
          */
@@ -732,7 +732,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             else {
                 list.push(value);
             }
-            this._headersMap.set(header, list);
+            this._headersMap.set(normalize(header), list);
         };
         /**
          * Returns values of all headers.
@@ -746,7 +746,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this._headersMap.forEach(function (values, name) {
                 var list = [];
                 iterateListLike(values, function (val /** TODO #9100 */) { return list = ListWrapper.concat(list, val.split(',')); });
-                serializableHeaders[name] = list;
+                serializableHeaders[normalize(name)] = list;
             });
             return serializableHeaders;
         };
@@ -754,7 +754,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * Returns list of header values for a given name.
          */
         Headers.prototype.getAll = function (header) {
-            var headers = this._headersMap.get(header);
+            var headers = this._headersMap.get(normalize(header));
             return isListLikeIterable(headers) ? headers : [];
         };
         /**
@@ -763,6 +763,13 @@ var __extends = (this && this.__extends) || function (d, b) {
         Headers.prototype.entries = function () { throw new BaseException('"entries" method is not implemented on Headers class'); };
         return Headers;
     }());
+    // "HTTP character sets are identified by case-insensitive tokens"
+    // Spec at https://tools.ietf.org/html/rfc2616
+    // This implementation is same as NodeJS.
+    // see https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_message_headers
+    function normalize(name) {
+        return name.toLowerCase();
+    }
     /**
      * Creates a response options object to be optionally provided when instantiating a
      * {@link Response}.
@@ -1428,18 +1435,18 @@ var __extends = (this && this.__extends) || function (d, b) {
                 case ContentType.NONE:
                     break;
                 case ContentType.JSON:
-                    _xhr.setRequestHeader('Content-Type', 'application/json');
+                    _xhr.setRequestHeader('content-type', 'application/json');
                     break;
                 case ContentType.FORM:
-                    _xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                    _xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
                     break;
                 case ContentType.TEXT:
-                    _xhr.setRequestHeader('Content-Type', 'text/plain');
+                    _xhr.setRequestHeader('content-type', 'text/plain');
                     break;
                 case ContentType.BLOB:
                     var blob = req.blob();
                     if (blob.type) {
-                        _xhr.setRequestHeader('Content-Type', blob.type);
+                        _xhr.setRequestHeader('content-type', blob.type);
                     }
                     break;
             }
