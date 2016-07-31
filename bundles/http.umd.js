@@ -1009,7 +1009,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.paramsMap = paramParser(rawParams);
         }
         URLSearchParams.prototype.clone = function () {
-            var clone = new URLSearchParams();
+            var clone = new URLSearchParams('', this.queryEncoder);
             clone.appendAll(this);
             return clone;
         };

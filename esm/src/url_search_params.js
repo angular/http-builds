@@ -83,7 +83,7 @@ export class URLSearchParams {
         this.paramsMap = paramParser(rawParams);
     }
     clone() {
-        var clone = new URLSearchParams();
+        var clone = new URLSearchParams('', this.queryEncoder);
         clone.appendAll(this);
         return clone;
     }
