@@ -933,10 +933,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         if (rawParams.length > 0) {
             var params = rawParams.split('&');
             params.forEach(function (param) {
-                var split = param.split('=', 2);
-                var key = split[0];
-                var val = split[1];
-                var list = isPresent(map.get(key)) ? map.get(key) : [];
+                var eqIdx = param.indexOf('=');
+                var _a = eqIdx == -1 ? [param, ''] : [param.slice(0, eqIdx), param.slice(eqIdx + 1)], key = _a[0], val = _a[1];
+                var list = map.get(key) || [];
                 list.push(val);
                 map.set(key, list);
             });
