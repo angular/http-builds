@@ -1823,6 +1823,12 @@ var __extends = (this && this.__extends) || function (d, b) {
         Http.prototype.head = function (url, options) {
             return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Head, url)));
         };
+        /**
+         * Performs a request with `options` http method.
+         */
+        Http.prototype.options = function (url, options) {
+            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Options, url)));
+        };
         return Http;
     }());
     /** @nocollapse */
