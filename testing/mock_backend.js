@@ -11,7 +11,6 @@ var ReplaySubject_1 = require('rxjs/ReplaySubject');
 var Subject_1 = require('rxjs/Subject');
 var take_1 = require('rxjs/operator/take');
 var enums_1 = require('../src/enums');
-var exceptions_1 = require('../src/facade/exceptions');
 var lang_1 = require('../src/facade/lang');
 var static_request_1 = require('../src/static_request');
 /**
@@ -43,7 +42,7 @@ var MockConnection = (function () {
      */
     MockConnection.prototype.mockRespond = function (res) {
         if (this.readyState === enums_1.ReadyState.Done || this.readyState === enums_1.ReadyState.Cancelled) {
-            throw new exceptions_1.BaseException('Connection has already been resolved');
+            throw new core_1.BaseException('Connection has already been resolved');
         }
         this.readyState = enums_1.ReadyState.Done;
         this.response.next(res);
@@ -102,7 +101,7 @@ var MockBackend = (function () {
         var pending = 0;
         this.pendingConnections.subscribe(function (c) { return pending++; });
         if (pending > 0)
-            throw new exceptions_1.BaseException(pending + " pending connections to be resolved");
+            throw new core_1.BaseException(pending + " pending connections to be resolved");
     };
     /**
      * Can be used in conjunction with `verifyNoPendingRequests` to resolve any not-yet-resolve
@@ -119,7 +118,7 @@ var MockBackend = (function () {
      */
     MockBackend.prototype.createConnection = function (req) {
         if (!lang_1.isPresent(req) || !(req instanceof static_request_1.Request)) {
-            throw new exceptions_1.BaseException("createConnection requires an instance of Request, got " + req);
+            throw new core_1.BaseException("createConnection requires an instance of Request, got " + req);
         }
         var connection = new MockConnection(req);
         this.connections.next(connection);

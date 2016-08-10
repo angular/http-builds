@@ -616,23 +616,6 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
     })();
     /**
-     * @stable
-     */
-    var BaseException = (function (_super) {
-        __extends(BaseException, _super);
-        function BaseException(message) {
-            if (message === void 0) { message = '--'; }
-            _super.call(this, message);
-            this.message = message;
-            this.stack = (new Error(message)).stack;
-        }
-        BaseException.prototype.toString = function () { return this.message; };
-        return BaseException;
-    }(Error));
-    function makeTypeError(message) {
-        return new TypeError(message);
-    }
-    /**
      * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
      * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
      *
@@ -760,7 +743,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         /**
          * This method is not implemented.
          */
-        Headers.prototype.entries = function () { throw new BaseException('"entries" method is not implemented on Headers class'); };
+        Headers.prototype.entries = function () { throw new _angular_core.BaseException('"entries" method is not implemented on Headers class'); };
         return Headers;
     }());
     // "HTTP character sets are identified by case-insensitive tokens"
@@ -859,6 +842,9 @@ var __extends = (this && this.__extends) || function (d, b) {
     ];
     /** @nocollapse */
     BaseResponseOptions.ctorParameters = [];
+    function makeTypeError(message) {
+        return new TypeError(message);
+    }
     /**
      * @license
      * Copyright Google Inc. All Rights Reserved.
