@@ -842,9 +842,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     ];
     /** @nocollapse */
     BaseResponseOptions.ctorParameters = [];
-    function makeTypeError(message) {
-        return new TypeError(message);
-    }
     /**
      * @license
      * Copyright Google Inc. All Rights Reserved.
@@ -885,6 +882,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         return XSRFStrategy;
     }());
+    function makeTypeError(message) {
+        return new TypeError(message);
+    }
     function normalizeMethodName(method) {
         if (isString(method)) {
             var originalMethod = method;
@@ -1204,7 +1204,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.baseResponseOptions = baseResponseOptions;
             this._finished = false;
             if (req.method !== exports.RequestMethod.Get) {
-                throw makeTypeError(JSONP_ERR_WRONG_METHOD);
+                throw new TypeError(JSONP_ERR_WRONG_METHOD);
             }
             this.request = req;
             this.response = new rxjs_Observable.Observable(function (responseObserver) {
