@@ -38,6 +38,9 @@ var Body = (function () {
         if (this._body instanceof ArrayBuffer) {
             return String.fromCharCode.apply(null, new Uint16Array(this._body));
         }
+        if (this._body === null) {
+            return '';
+        }
         if (http_utils_1.isJsObject(this._body)) {
             return lang_1.Json.stringify(this._body);
         }

@@ -616,23 +616,6 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
     })();
     /**
-     * @stable
-     */
-    var BaseException = (function (_super) {
-        __extends(BaseException, _super);
-        function BaseException(message) {
-            if (message === void 0) { message = '--'; }
-            _super.call(this, message);
-            this.message = message;
-            this.stack = (new Error(message)).stack;
-        }
-        BaseException.prototype.toString = function () { return this.message; };
-        return BaseException;
-    }(Error));
-    function makeTypeError(message) {
-        return new TypeError(message);
-    }
-    /**
      * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
      * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
      *
@@ -760,7 +743,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         /**
          * This method is not implemented.
          */
-        Headers.prototype.entries = function () { throw new BaseException('"entries" method is not implemented on Headers class'); };
+        Headers.prototype.entries = function () { throw new _angular_core.BaseException('"entries" method is not implemented on Headers class'); };
         return Headers;
     }());
     // "HTTP character sets are identified by case-insensitive tokens"
@@ -899,6 +882,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         return XSRFStrategy;
     }());
+    function makeTypeError(message) {
+        return new TypeError(message);
+    }
     function normalizeMethodName(method) {
         if (isString(method)) {
             var originalMethod = method;
@@ -1132,6 +1118,9 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (this._body instanceof ArrayBuffer) {
                 return String.fromCharCode.apply(null, new Uint16Array(this._body));
             }
+            if (this._body === null) {
+                return '';
+            }
             if (isJsObject(this._body)) {
                 return Json.stringify(this._body);
             }
@@ -1218,7 +1207,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.baseResponseOptions = baseResponseOptions;
             this._finished = false;
             if (req.method !== exports.RequestMethod.Get) {
-                throw makeTypeError(JSONP_ERR_WRONG_METHOD);
+                throw new TypeError(JSONP_ERR_WRONG_METHOD);
             }
             this.request = req;
             this.response = new rxjs_Observable.Observable(function (responseObserver) {
@@ -2178,6 +2167,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         { provide: ResponseOptions, useClass: BaseResponseOptions },
         { provide: JSONPBackend, useClass: JSONPBackend_ },
     ];
+    /**
+     * @experimental
+     */
     function jsonpFactory(jsonpBackend, requestOptions) {
         return new Jsonp(jsonpBackend, requestOptions);
     }
@@ -2210,6 +2202,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     exports.httpFactory = httpFactory;
     exports.HTTP_BINDINGS = HTTP_BINDINGS;
     exports.JSONP_PROVIDERS = JSONP_PROVIDERS;
+    exports.jsonpFactory = jsonpFactory;
     exports.JSON_BINDINGS = JSON_BINDINGS;
     exports.HttpModule = HttpModule;
     exports.JsonpModule = JsonpModule;

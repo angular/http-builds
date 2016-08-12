@@ -1,6 +1,7 @@
+import { JSONPBackend } from './src/backends/jsonp_backend';
 import { CookieXSRFStrategy, XHRBackend } from './src/backends/xhr_backend';
 import { RequestOptions } from './src/base_request_options';
-import { Http } from './src/http';
+import { Http, Jsonp } from './src/http';
 export { BrowserXhr } from './src/backends/browser_xhr';
 export { JSONPBackend, JSONPConnection } from './src/backends/jsonp_backend';
 export { CookieXSRFStrategy, XHRBackend, XHRConnection } from './src/backends/xhr_backend';
@@ -283,6 +284,10 @@ export declare const HTTP_BINDINGS: any[];
  * @experimental
  */
 export declare const JSONP_PROVIDERS: any[];
+/**
+ * @experimental
+ */
+export declare function jsonpFactory(jsonpBackend: JSONPBackend, requestOptions: RequestOptions): Jsonp;
 /**
  * See {@link JSONP_PROVIDERS} instead.
  *
