@@ -1118,9 +1118,6 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (this._body instanceof ArrayBuffer) {
                 return String.fromCharCode.apply(null, new Uint16Array(this._body));
             }
-            if (this._body === null) {
-                return '';
-            }
             if (isJsObject(this._body)) {
                 return Json.stringify(this._body);
             }
