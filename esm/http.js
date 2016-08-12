@@ -317,7 +317,10 @@ export const JSONP_PROVIDERS = [
     { provide: ResponseOptions, useClass: BaseResponseOptions },
     { provide: JSONPBackend, useClass: JSONPBackend_ },
 ];
-function jsonpFactory(jsonpBackend, requestOptions) {
+/**
+ * @experimental
+ */
+export function jsonpFactory(jsonpBackend, requestOptions) {
     return new Jsonp(jsonpBackend, requestOptions);
 }
 /**

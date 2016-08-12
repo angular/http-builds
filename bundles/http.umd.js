@@ -2167,6 +2167,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         { provide: ResponseOptions, useClass: BaseResponseOptions },
         { provide: JSONPBackend, useClass: JSONPBackend_ },
     ];
+    /**
+     * @experimental
+     */
     function jsonpFactory(jsonpBackend, requestOptions) {
         return new Jsonp(jsonpBackend, requestOptions);
     }
@@ -2199,6 +2202,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     exports.httpFactory = httpFactory;
     exports.HTTP_BINDINGS = HTTP_BINDINGS;
     exports.JSONP_PROVIDERS = JSONP_PROVIDERS;
+    exports.jsonpFactory = jsonpFactory;
     exports.JSON_BINDINGS = JSON_BINDINGS;
     exports.HttpModule = HttpModule;
     exports.JsonpModule = JsonpModule;
