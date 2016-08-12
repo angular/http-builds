@@ -6,8 +6,8 @@
  * found in the LICENSE file at https://angular.io/license
  */
 "use strict";
-var core_1 = require('@angular/core');
 var collection_1 = require('../src/facade/collection');
+var exceptions_1 = require('../src/facade/exceptions');
 var lang_1 = require('../src/facade/lang');
 /**
  * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
@@ -137,7 +137,7 @@ var Headers = (function () {
     /**
      * This method is not implemented.
      */
-    Headers.prototype.entries = function () { throw new core_1.BaseException('"entries" method is not implemented on Headers class'); };
+    Headers.prototype.entries = function () { throw new exceptions_1.BaseException('"entries" method is not implemented on Headers class'); };
     return Headers;
 }());
 exports.Headers = Headers;

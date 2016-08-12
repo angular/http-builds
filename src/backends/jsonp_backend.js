@@ -15,6 +15,7 @@ var core_1 = require('@angular/core');
 var Observable_1 = require('rxjs/Observable');
 var base_response_options_1 = require('../base_response_options');
 var enums_1 = require('../enums');
+var exceptions_1 = require('../facade/exceptions');
 var lang_1 = require('../facade/lang');
 var interfaces_1 = require('../interfaces');
 var static_response_1 = require('../static_response');
@@ -41,7 +42,7 @@ var JSONPConnection_ = (function (_super) {
         this.baseResponseOptions = baseResponseOptions;
         this._finished = false;
         if (req.method !== enums_1.RequestMethod.Get) {
-            throw new TypeError(JSONP_ERR_WRONG_METHOD);
+            throw exceptions_1.makeTypeError(JSONP_ERR_WRONG_METHOD);
         }
         this.request = req;
         this.response = new Observable_1.Observable(function (responseObserver) {

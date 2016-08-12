@@ -350,13 +350,9 @@ exports.JSONP_PROVIDERS = [
     { provide: base_response_options_1.ResponseOptions, useClass: base_response_options_1.BaseResponseOptions },
     { provide: jsonp_backend_1.JSONPBackend, useClass: jsonp_backend_1.JSONPBackend_ },
 ];
-/**
- * @experimental
- */
 function jsonpFactory(jsonpBackend, requestOptions) {
     return new http_1.Jsonp(jsonpBackend, requestOptions);
 }
-exports.jsonpFactory = jsonpFactory;
 /**
  * See {@link JSONP_PROVIDERS} instead.
  *
