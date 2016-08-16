@@ -60,9 +60,13 @@ export declare class Request extends Body {
     responseType: ResponseContentType;
     constructor(requestOptions: RequestArgs);
     /**
-     * Returns the content type of request's body based on its type.
+     * Returns the content type enum based on header options.
      */
     detectContentType(): ContentType;
+    /**
+     * Returns the content type of request's body based on its type.
+     */
+    detectContentTypeFromBody(): ContentType;
     /**
      * Returns the request's body according to its type. If body is undefined, return
      * null.

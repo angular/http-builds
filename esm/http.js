@@ -5,6 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+import { NgModule } from '@angular/core';
 import { BrowserJsonp } from './src/backends/browser_jsonp';
 import { BrowserXhr } from './src/backends/browser_xhr';
 import { JSONPBackend, JSONPBackend_ } from './src/backends/jsonp_backend';
@@ -66,9 +67,6 @@ export { QueryEncoder, URLSearchParams } from './src/url_search_params';
  *     this.active = !this.active;
  *   }
  * }
- *
- * bootstrap(App)
- *   .catch(err => console.error(err));
  * ```
  *
  * The primary public API included in `HTTP_PROVIDERS` is the {@link Http} class.
@@ -99,8 +97,11 @@ export { QueryEncoder, URLSearchParams } from './src/url_search_params';
  *   search: string = 'coreTeam=true';
  * }
  *
- * bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
- *   .catch(err => console.error(err));
+ * @NgModule({
+ *   imports: [HttpModule],
+ *   providers: [{provide: RequestOptions, useClass: MyOptions}]
+ * })
+ * class MyModule {}
  * ```
  *
  * Likewise, to use a mock backend for unit tests, the {@link XHRBackend}
@@ -168,7 +169,7 @@ export { QueryEncoder, URLSearchParams } from './src/url_search_params';
  *   .catch(err => console.error(err));
  * ```
  *
- * @experimental
+ * @deprecated
  */
 export const HTTP_PROVIDERS = [
     // TODO(pascal): use factory type annotations once supported in DI
@@ -178,8 +179,14 @@ export const HTTP_PROVIDERS = [
     { provide: RequestOptions, useClass: BaseRequestOptions },
     { provide: ResponseOptions, useClass: BaseResponseOptions },
     XHRBackend,
-    { provide: XSRFStrategy, useValue: new CookieXSRFStrategy() },
+    { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
 ];
+/**
+ * @experimental
+ */
+export function _createDefaultCookieXSRFStrategy() {
+    return new CookieXSRFStrategy();
+}
 /**
  * @experimental
  */
@@ -310,7 +317,10 @@ export const JSONP_PROVIDERS = [
     { provide: ResponseOptions, useClass: BaseResponseOptions },
     { provide: JSONPBackend, useClass: JSONPBackend_ },
 ];
-function jsonpFactory(jsonpBackend, requestOptions) {
+/**
+ * @experimental
+ */
+export function jsonpFactory(jsonpBackend, requestOptions) {
     return new Jsonp(jsonpBackend, requestOptions);
 }
 /**
@@ -319,4 +329,16 @@ function jsonpFactory(jsonpBackend, requestOptions) {
  * @deprecated
  */
 export const JSON_BINDINGS = JSONP_PROVIDERS;
+export class HttpModule {
+}
+/** @nocollapse */
+HttpModule.decorators = [
+    { type: NgModule, args: [{ providers: HTTP_PROVIDERS },] },
+];
+export class JsonpModule {
+}
+/** @nocollapse */
+JsonpModule.decorators = [
+    { type: NgModule, args: [{ providers: JSONP_PROVIDERS },] },
+];
 //# sourceMappingURL=http.js.map

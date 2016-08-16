@@ -1,6 +1,7 @@
-import { XHRBackend } from './src/backends/xhr_backend';
+import { JSONPBackend } from './src/backends/jsonp_backend';
+import { CookieXSRFStrategy, XHRBackend } from './src/backends/xhr_backend';
 import { RequestOptions } from './src/base_request_options';
-import { Http } from './src/http';
+import { Http, Jsonp } from './src/http';
 export { BrowserXhr } from './src/backends/browser_xhr';
 export { JSONPBackend, JSONPConnection } from './src/backends/jsonp_backend';
 export { CookieXSRFStrategy, XHRBackend, XHRConnection } from './src/backends/xhr_backend';
@@ -54,9 +55,6 @@ export { QueryEncoder, URLSearchParams } from './src/url_search_params';
  *     this.active = !this.active;
  *   }
  * }
- *
- * bootstrap(App)
- *   .catch(err => console.error(err));
  * ```
  *
  * The primary public API included in `HTTP_PROVIDERS` is the {@link Http} class.
@@ -87,8 +85,11 @@ export { QueryEncoder, URLSearchParams } from './src/url_search_params';
  *   search: string = 'coreTeam=true';
  * }
  *
- * bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
- *   .catch(err => console.error(err));
+ * @NgModule({
+ *   imports: [HttpModule],
+ *   providers: [{provide: RequestOptions, useClass: MyOptions}]
+ * })
+ * class MyModule {}
  * ```
  *
  * Likewise, to use a mock backend for unit tests, the {@link XHRBackend}
@@ -156,9 +157,13 @@ export { QueryEncoder, URLSearchParams } from './src/url_search_params';
  *   .catch(err => console.error(err));
  * ```
  *
- * @experimental
+ * @deprecated
  */
 export declare const HTTP_PROVIDERS: any[];
+/**
+ * @experimental
+ */
+export declare function _createDefaultCookieXSRFStrategy(): CookieXSRFStrategy;
 /**
  * @experimental
  */
@@ -280,8 +285,26 @@ export declare const HTTP_BINDINGS: any[];
  */
 export declare const JSONP_PROVIDERS: any[];
 /**
+ * @experimental
+ */
+export declare function jsonpFactory(jsonpBackend: JSONPBackend, requestOptions: RequestOptions): Jsonp;
+/**
  * See {@link JSONP_PROVIDERS} instead.
  *
  * @deprecated
  */
 export declare const JSON_BINDINGS: any[];
+/**
+ * The module that includes http's providers
+ *
+ * @experimental
+ */
+export declare class HttpModule {
+}
+/**
+ * The module that includes jsonp's providers
+ *
+ * @experimental
+ */
+export declare class JsonpModule {
+}

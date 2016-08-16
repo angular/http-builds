@@ -9,7 +9,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ResponseOptions } from '../base_response_options';
 import { ReadyState, RequestMethod, ResponseType } from '../enums';
-import { makeTypeError } from '../facade/exceptions';
 import { StringWrapper, isPresent } from '../facade/lang';
 import { ConnectionBackend } from '../interfaces';
 import { Response } from '../static_response';
@@ -30,7 +29,7 @@ export class JSONPConnection_ extends JSONPConnection {
         this.baseResponseOptions = baseResponseOptions;
         this._finished = false;
         if (req.method !== RequestMethod.Get) {
-            throw makeTypeError(JSONP_ERR_WRONG_METHOD);
+            throw new TypeError(JSONP_ERR_WRONG_METHOD);
         }
         this.request = req;
         this.response = new Observable((responseObserver) => {

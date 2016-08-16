@@ -280,9 +280,10 @@ var __extends = (this && this.__extends) || function (d, b) {
      */
     exports.ResponseContentType;
     (function (ResponseContentType) {
-        ResponseContentType[ResponseContentType["ArrayBuffer"] = 0] = "ArrayBuffer";
+        ResponseContentType[ResponseContentType["Text"] = 0] = "Text";
         ResponseContentType[ResponseContentType["Json"] = 1] = "Json";
-        ResponseContentType[ResponseContentType["Text"] = 2] = "Text";
+        ResponseContentType[ResponseContentType["ArrayBuffer"] = 2] = "ArrayBuffer";
+        ResponseContentType[ResponseContentType["Blob"] = 3] = "Blob";
     })(exports.ResponseContentType || (exports.ResponseContentType = {}));
     var Map$1 = global$1.Map;
     var Set = global$1.Set;
@@ -615,23 +616,6 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
     })();
     /**
-     * @stable
-     */
-    var BaseException = (function (_super) {
-        __extends(BaseException, _super);
-        function BaseException(message) {
-            if (message === void 0) { message = '--'; }
-            _super.call(this, message);
-            this.message = message;
-            this.stack = (new Error(message)).stack;
-        }
-        BaseException.prototype.toString = function () { return this.message; };
-        return BaseException;
-    }(Error));
-    function makeTypeError(message) {
-        return new TypeError(message);
-    }
-    /**
      * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
      * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
      *
@@ -672,29 +656,29 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
             // headers instanceof StringMap
             StringMapWrapper.forEach(headers, function (v, k) {
-                _this._headersMap.set(k, isListLikeIterable(v) ? v : [v]);
+                _this._headersMap.set(normalize(k), isListLikeIterable(v) ? v : [v]);
             });
         }
         /**
          * Returns a new Headers instance from the given DOMString of Response Headers
          */
         Headers.fromResponseHeaderString = function (headersString) {
-            return headersString.trim()
-                .split('\n')
-                .map(function (val) { return val.split(':'); })
-                .map(function (_a) {
-                var key = _a[0], parts = _a.slice(1);
-                return ([key.trim(), parts.join(':').trim()]);
-            })
-                .reduce(function (headers, _a) {
-                var key = _a[0], value = _a[1];
-                return !headers.set(key, value) && headers;
-            }, new Headers());
+            var headers = new Headers();
+            headersString.split('\n').forEach(function (line) {
+                var index = line.indexOf(':');
+                if (index > 0) {
+                    var key = line.substring(0, index);
+                    var value = line.substring(index + 1).trim();
+                    headers.set(key, value);
+                }
+            });
+            return headers;
         };
         /**
          * Appends a header to existing list of header values for a given header name.
          */
         Headers.prototype.append = function (name, value) {
+            name = normalize(name);
             var mapName = this._headersMap.get(name);
             var list = isListLikeIterable(mapName) ? mapName : [];
             list.push(value);
@@ -703,18 +687,18 @@ var __extends = (this && this.__extends) || function (d, b) {
         /**
          * Deletes all header values for the given name.
          */
-        Headers.prototype.delete = function (name) { this._headersMap.delete(name); };
+        Headers.prototype.delete = function (name) { this._headersMap.delete(normalize(name)); };
         Headers.prototype.forEach = function (fn) {
             this._headersMap.forEach(fn);
         };
         /**
          * Returns first header that matches given name.
          */
-        Headers.prototype.get = function (header) { return ListWrapper.first(this._headersMap.get(header)); };
+        Headers.prototype.get = function (header) { return ListWrapper.first(this._headersMap.get(normalize(header))); };
         /**
          * Check for existence of header by given name.
          */
-        Headers.prototype.has = function (header) { return this._headersMap.has(header); };
+        Headers.prototype.has = function (header) { return this._headersMap.has(normalize(header)); };
         /**
          * Provides names of set headers
          */
@@ -731,7 +715,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             else {
                 list.push(value);
             }
-            this._headersMap.set(header, list);
+            this._headersMap.set(normalize(header), list);
         };
         /**
          * Returns values of all headers.
@@ -745,7 +729,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this._headersMap.forEach(function (values, name) {
                 var list = [];
                 iterateListLike(values, function (val /** TODO #9100 */) { return list = ListWrapper.concat(list, val.split(',')); });
-                serializableHeaders[name] = list;
+                serializableHeaders[normalize(name)] = list;
             });
             return serializableHeaders;
         };
@@ -753,15 +737,22 @@ var __extends = (this && this.__extends) || function (d, b) {
          * Returns list of header values for a given name.
          */
         Headers.prototype.getAll = function (header) {
-            var headers = this._headersMap.get(header);
+            var headers = this._headersMap.get(normalize(header));
             return isListLikeIterable(headers) ? headers : [];
         };
         /**
          * This method is not implemented.
          */
-        Headers.prototype.entries = function () { throw new BaseException('"entries" method is not implemented on Headers class'); };
+        Headers.prototype.entries = function () { throw new _angular_core.BaseException('"entries" method is not implemented on Headers class'); };
         return Headers;
     }());
+    // "HTTP character sets are identified by case-insensitive tokens"
+    // Spec at https://tools.ietf.org/html/rfc2616
+    // This implementation is same as NodeJS.
+    // see https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_message_headers
+    function normalize(name) {
+        return name.toLowerCase();
+    }
     /**
      * Creates a response options object to be optionally provided when instantiating a
      * {@link Response}.
@@ -891,6 +882,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         return XSRFStrategy;
     }());
+    function makeTypeError(message) {
+        return new TypeError(message);
+    }
     function normalizeMethodName(method) {
         if (isString(method)) {
             var originalMethod = method;
@@ -925,10 +919,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         if (rawParams.length > 0) {
             var params = rawParams.split('&');
             params.forEach(function (param) {
-                var split = param.split('=', 2);
-                var key = split[0];
-                var val = split[1];
-                var list = isPresent(map.get(key)) ? map.get(key) : [];
+                var eqIdx = param.indexOf('=');
+                var _a = eqIdx == -1 ? [param, ''] : [param.slice(0, eqIdx), param.slice(eqIdx + 1)], key = _a[0], val = _a[1];
+                var list = map.get(key) || [];
                 list.push(val);
                 map.set(key, list);
             });
@@ -1001,7 +994,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.paramsMap = paramParser(rawParams);
         }
         URLSearchParams.prototype.clone = function () {
-            var clone = new URLSearchParams();
+            var clone = new URLSearchParams('', this.queryEncoder);
             clone.appendAll(this);
             return clone;
         };
@@ -1125,6 +1118,9 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (this._body instanceof ArrayBuffer) {
                 return String.fromCharCode.apply(null, new Uint16Array(this._body));
             }
+            if (this._body === null) {
+                return '';
+            }
             if (isJsObject(this._body)) {
                 return Json.stringify(this._body);
             }
@@ -1211,7 +1207,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.baseResponseOptions = baseResponseOptions;
             this._finished = false;
             if (req.method !== exports.RequestMethod.Get) {
-                throw makeTypeError(JSONP_ERR_WRONG_METHOD);
+                throw new TypeError(JSONP_ERR_WRONG_METHOD);
             }
             this.request = req;
             this.response = new rxjs_Observable.Observable(function (responseObserver) {
@@ -1400,6 +1396,9 @@ var __extends = (this && this.__extends) || function (d, b) {
                         case exports.ResponseContentType.Text:
                             _xhr.responseType = 'text';
                             break;
+                        case exports.ResponseContentType.Blob:
+                            _xhr.responseType = 'blob';
+                            break;
                         default:
                             throw new Error('The selected responseType is not supported');
                     }
@@ -1424,18 +1423,18 @@ var __extends = (this && this.__extends) || function (d, b) {
                 case ContentType.NONE:
                     break;
                 case ContentType.JSON:
-                    _xhr.setRequestHeader('Content-Type', 'application/json');
+                    _xhr.setRequestHeader('content-type', 'application/json');
                     break;
                 case ContentType.FORM:
-                    _xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                    _xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
                     break;
                 case ContentType.TEXT:
-                    _xhr.setRequestHeader('Content-Type', 'text/plain');
+                    _xhr.setRequestHeader('content-type', 'text/plain');
                     break;
                 case ContentType.BLOB:
                     var blob = req.blob();
                     if (blob.type) {
-                        _xhr.setRequestHeader('Content-Type', blob.type);
+                        _xhr.setRequestHeader('content-type', blob.type);
                     }
                     break;
             }
@@ -1645,19 +1644,39 @@ var __extends = (this && this.__extends) || function (d, b) {
                 }
             }
             this._body = requestOptions.body;
-            this.contentType = this.detectContentType();
             this.method = normalizeMethodName(requestOptions.method);
             // TODO(jeffbcross): implement behavior
             // Defaults to 'omit', consistent with browser
             // TODO(jeffbcross): implement behavior
             this.headers = new Headers(requestOptions.headers);
+            this.contentType = this.detectContentType();
             this.withCredentials = requestOptions.withCredentials;
             this.responseType = requestOptions.responseType;
         }
         /**
-         * Returns the content type of request's body based on its type.
+         * Returns the content type enum based on header options.
          */
         Request.prototype.detectContentType = function () {
+            switch (this.headers.get('content-type')) {
+                case 'application/json':
+                    return ContentType.JSON;
+                case 'application/x-www-form-urlencoded':
+                    return ContentType.FORM;
+                case 'multipart/form-data':
+                    return ContentType.FORM_DATA;
+                case 'text/plain':
+                case 'text/html':
+                    return ContentType.TEXT;
+                case 'application/octet-stream':
+                    return ContentType.BLOB;
+                default:
+                    return this.detectContentTypeFromBody();
+            }
+        };
+        /**
+         * Returns the content type of request's body based on its type.
+         */
+        Request.prototype.detectContentTypeFromBody = function () {
             if (this._body == null) {
                 return ContentType.NONE;
             }
@@ -1793,6 +1812,12 @@ var __extends = (this && this.__extends) || function (d, b) {
         Http.prototype.head = function (url, options) {
             return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Head, url)));
         };
+        /**
+         * Performs a request with `options` http method.
+         */
+        Http.prototype.options = function (url, options) {
+            return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Options, url)));
+        };
         return Http;
     }());
     /** @nocollapse */
@@ -1892,9 +1917,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *     this.active = !this.active;
      *   }
      * }
-     *
-     * bootstrap(App)
-     *   .catch(err => console.error(err));
      * ```
      *
      * The primary public API included in `HTTP_PROVIDERS` is the {@link Http} class.
@@ -1925,8 +1947,11 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   search: string = 'coreTeam=true';
      * }
      *
-     * bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
-     *   .catch(err => console.error(err));
+     * @NgModule({
+     *   imports: [HttpModule],
+     *   providers: [{provide: RequestOptions, useClass: MyOptions}]
+     * })
+     * class MyModule {}
      * ```
      *
      * Likewise, to use a mock backend for unit tests, the {@link XHRBackend}
@@ -1994,7 +2019,7 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   .catch(err => console.error(err));
      * ```
      *
-     * @experimental
+     * @deprecated
      */
     var HTTP_PROVIDERS = [
         // TODO(pascal): use factory type annotations once supported in DI
@@ -2004,8 +2029,14 @@ var __extends = (this && this.__extends) || function (d, b) {
         { provide: RequestOptions, useClass: BaseRequestOptions },
         { provide: ResponseOptions, useClass: BaseResponseOptions },
         XHRBackend,
-        { provide: XSRFStrategy, useValue: new CookieXSRFStrategy() },
+        { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
     ];
+    /**
+     * @experimental
+     */
+    function _createDefaultCookieXSRFStrategy() {
+        return new CookieXSRFStrategy();
+    }
     /**
      * @experimental
      */
@@ -2136,6 +2167,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         { provide: ResponseOptions, useClass: BaseResponseOptions },
         { provide: JSONPBackend, useClass: JSONPBackend_ },
     ];
+    /**
+     * @experimental
+     */
     function jsonpFactory(jsonpBackend, requestOptions) {
         return new Jsonp(jsonpBackend, requestOptions);
     }
@@ -2145,11 +2179,33 @@ var __extends = (this && this.__extends) || function (d, b) {
      * @deprecated
      */
     var JSON_BINDINGS = JSONP_PROVIDERS;
+    var HttpModule = (function () {
+        function HttpModule() {
+        }
+        return HttpModule;
+    }());
+    /** @nocollapse */
+    HttpModule.decorators = [
+        { type: _angular_core.NgModule, args: [{ providers: HTTP_PROVIDERS },] },
+    ];
+    var JsonpModule = (function () {
+        function JsonpModule() {
+        }
+        return JsonpModule;
+    }());
+    /** @nocollapse */
+    JsonpModule.decorators = [
+        { type: _angular_core.NgModule, args: [{ providers: JSONP_PROVIDERS },] },
+    ];
     exports.HTTP_PROVIDERS = HTTP_PROVIDERS;
+    exports._createDefaultCookieXSRFStrategy = _createDefaultCookieXSRFStrategy;
     exports.httpFactory = httpFactory;
     exports.HTTP_BINDINGS = HTTP_BINDINGS;
     exports.JSONP_PROVIDERS = JSONP_PROVIDERS;
+    exports.jsonpFactory = jsonpFactory;
     exports.JSON_BINDINGS = JSON_BINDINGS;
+    exports.HttpModule = HttpModule;
+    exports.JsonpModule = JsonpModule;
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
     exports.JSONPConnection = JSONPConnection;
