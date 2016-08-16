@@ -77,7 +77,7 @@ var MockConnection = (function () {
      *
      */
     MockConnection.prototype.mockError = function (err) {
-        // Matches ResourceLoader semantics
+        // Matches XHR semantics
         this.readyState = enums_1.ReadyState.Done;
         this.response.error(err);
     };
