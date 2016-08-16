@@ -1917,9 +1917,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      *     this.active = !this.active;
      *   }
      * }
-     *
-     * bootstrap(App)
-     *   .catch(err => console.error(err));
      * ```
      *
      * The primary public API included in `HTTP_PROVIDERS` is the {@link Http} class.
@@ -1950,8 +1947,11 @@ var __extends = (this && this.__extends) || function (d, b) {
      *   search: string = 'coreTeam=true';
      * }
      *
-     * bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
-     *   .catch(err => console.error(err));
+     * @NgModule({
+     *   imports: [HttpModule],
+     *   providers: [{provide: RequestOptions, useClass: MyOptions}]
+     * })
+     * class MyModule {}
      * ```
      *
      * Likewise, to use a mock backend for unit tests, the {@link XHRBackend}
