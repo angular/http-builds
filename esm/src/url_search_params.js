@@ -8,13 +8,14 @@
 import { ListWrapper, Map, isListLikeIterable } from '../src/facade/collection';
 import { isPresent } from '../src/facade/lang';
 function paramParser(rawParams = '') {
-    const map = new Map();
+    var map = new Map();
     if (rawParams.length > 0) {
-        const params = rawParams.split('&');
+        var params = rawParams.split('&');
         params.forEach((param) => {
-            const eqIdx = param.indexOf('=');
-            const [key, val] = eqIdx == -1 ? [param, ''] : [param.slice(0, eqIdx), param.slice(eqIdx + 1)];
-            const list = map.get(key) || [];
+            var split = param.split('=', 2);
+            var key = split[0];
+            var val = split[1];
+            var list = isPresent(map.get(key)) ? map.get(key) : [];
             list.push(val);
             map.set(key, list);
         });
@@ -82,7 +83,7 @@ export class URLSearchParams {
         this.paramsMap = paramParser(rawParams);
     }
     clone() {
-        var clone = new URLSearchParams('', this.queryEncoder);
+        var clone = new URLSearchParams();
         clone.appendAll(this);
         return clone;
     }

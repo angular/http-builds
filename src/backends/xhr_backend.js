@@ -101,9 +101,6 @@ var XHRConnection = (function () {
                     case enums_1.ResponseContentType.Text:
                         _xhr.responseType = 'text';
                         break;
-                    case enums_1.ResponseContentType.Blob:
-                        _xhr.responseType = 'blob';
-                        break;
                     default:
                         throw new Error('The selected responseType is not supported');
                 }
@@ -128,18 +125,18 @@ var XHRConnection = (function () {
             case enums_1.ContentType.NONE:
                 break;
             case enums_1.ContentType.JSON:
-                _xhr.setRequestHeader('content-type', 'application/json');
+                _xhr.setRequestHeader('Content-Type', 'application/json');
                 break;
             case enums_1.ContentType.FORM:
-                _xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                _xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
                 break;
             case enums_1.ContentType.TEXT:
-                _xhr.setRequestHeader('content-type', 'text/plain');
+                _xhr.setRequestHeader('Content-Type', 'text/plain');
                 break;
             case enums_1.ContentType.BLOB:
                 var blob = req.blob();
                 if (blob.type) {
-                    _xhr.setRequestHeader('content-type', blob.type);
+                    _xhr.setRequestHeader('Content-Type', blob.type);
                 }
                 break;
         }

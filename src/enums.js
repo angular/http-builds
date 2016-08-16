@@ -67,10 +67,9 @@ var ContentType = exports.ContentType;
  * @experimental
  */
 (function (ResponseContentType) {
-    ResponseContentType[ResponseContentType["Text"] = 0] = "Text";
+    ResponseContentType[ResponseContentType["ArrayBuffer"] = 0] = "ArrayBuffer";
     ResponseContentType[ResponseContentType["Json"] = 1] = "Json";
-    ResponseContentType[ResponseContentType["ArrayBuffer"] = 2] = "ArrayBuffer";
-    ResponseContentType[ResponseContentType["Blob"] = 3] = "Blob";
+    ResponseContentType[ResponseContentType["Text"] = 2] = "Text";
 })(exports.ResponseContentType || (exports.ResponseContentType = {}));
 var ResponseContentType = exports.ResponseContentType;
 //# sourceMappingURL=enums.js.map

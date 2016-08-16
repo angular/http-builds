@@ -99,9 +99,6 @@ export class XHRConnection {
                     case ResponseContentType.Text:
                         _xhr.responseType = 'text';
                         break;
-                    case ResponseContentType.Blob:
-                        _xhr.responseType = 'blob';
-                        break;
                     default:
                         throw new Error('The selected responseType is not supported');
                 }
@@ -126,18 +123,18 @@ export class XHRConnection {
             case ContentType.NONE:
                 break;
             case ContentType.JSON:
-                _xhr.setRequestHeader('content-type', 'application/json');
+                _xhr.setRequestHeader('Content-Type', 'application/json');
                 break;
             case ContentType.FORM:
-                _xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                _xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
                 break;
             case ContentType.TEXT:
-                _xhr.setRequestHeader('content-type', 'text/plain');
+                _xhr.setRequestHeader('Content-Type', 'text/plain');
                 break;
             case ContentType.BLOB:
                 var blob = req.blob();
                 if (blob.type) {
-                    _xhr.setRequestHeader('content-type', blob.type);
+                    _xhr.setRequestHeader('Content-Type', blob.type);
                 }
                 break;
         }

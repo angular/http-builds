@@ -6,13 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 "use strict";
-/**
- * @module
- * @description
- * The http module provides services to perform http requests. To get started, see the {@link Http}
- * class.
- */
-var core_1 = require('@angular/core');
 var browser_jsonp_1 = require('./src/backends/browser_jsonp');
 var browser_xhr_1 = require('./src/backends/browser_xhr');
 var jsonp_backend_1 = require('./src/backends/jsonp_backend');
@@ -98,6 +91,9 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  *     this.active = !this.active;
  *   }
  * }
+ *
+ * bootstrap(App)
+ *   .catch(err => console.error(err));
  * ```
  *
  * The primary public API included in `HTTP_PROVIDERS` is the {@link Http} class.
@@ -128,11 +124,8 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  *   search: string = 'coreTeam=true';
  * }
  *
- * @NgModule({
- *   imports: [HttpModule],
- *   providers: [{provide: RequestOptions, useClass: MyOptions}]
- * })
- * class MyModule {}
+ * bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}])
+ *   .catch(err => console.error(err));
  * ```
  *
  * Likewise, to use a mock backend for unit tests, the {@link XHRBackend}
@@ -200,7 +193,7 @@ exports.URLSearchParams = url_search_params_1.URLSearchParams;
  *   .catch(err => console.error(err));
  * ```
  *
- * @deprecated
+ * @experimental
  */
 exports.HTTP_PROVIDERS = [
     // TODO(pascal): use factory type annotations once supported in DI
@@ -210,15 +203,8 @@ exports.HTTP_PROVIDERS = [
     { provide: base_request_options_1.RequestOptions, useClass: base_request_options_1.BaseRequestOptions },
     { provide: base_response_options_1.ResponseOptions, useClass: base_response_options_1.BaseResponseOptions },
     xhr_backend_1.XHRBackend,
-    { provide: interfaces_1.XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
+    { provide: interfaces_1.XSRFStrategy, useValue: new xhr_backend_1.CookieXSRFStrategy() },
 ];
-/**
- * @experimental
- */
-function _createDefaultCookieXSRFStrategy() {
-    return new xhr_backend_1.CookieXSRFStrategy();
-}
-exports._createDefaultCookieXSRFStrategy = _createDefaultCookieXSRFStrategy;
 /**
  * @experimental
  */
@@ -350,37 +336,13 @@ exports.JSONP_PROVIDERS = [
     { provide: base_response_options_1.ResponseOptions, useClass: base_response_options_1.BaseResponseOptions },
     { provide: jsonp_backend_1.JSONPBackend, useClass: jsonp_backend_1.JSONPBackend_ },
 ];
-/**
- * @experimental
- */
 function jsonpFactory(jsonpBackend, requestOptions) {
     return new http_1.Jsonp(jsonpBackend, requestOptions);
 }
-exports.jsonpFactory = jsonpFactory;
 /**
  * See {@link JSONP_PROVIDERS} instead.
  *
  * @deprecated
  */
 exports.JSON_BINDINGS = exports.JSONP_PROVIDERS;
-var HttpModule = (function () {
-    function HttpModule() {
-    }
-    /** @nocollapse */
-    HttpModule.decorators = [
-        { type: core_1.NgModule, args: [{ providers: exports.HTTP_PROVIDERS },] },
-    ];
-    return HttpModule;
-}());
-exports.HttpModule = HttpModule;
-var JsonpModule = (function () {
-    function JsonpModule() {
-    }
-    /** @nocollapse */
-    JsonpModule.decorators = [
-        { type: core_1.NgModule, args: [{ providers: exports.JSONP_PROVIDERS },] },
-    ];
-    return JsonpModule;
-}());
-exports.JsonpModule = JsonpModule;
 //# sourceMappingURL=http.js.map

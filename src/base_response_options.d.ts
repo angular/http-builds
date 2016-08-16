@@ -30,9 +30,9 @@ import { ResponseOptionsArgs } from './interfaces';
  */
 export declare class ResponseOptions {
     /**
-     * String, Object, ArrayBuffer or Blob representing the body of the {@link Response}.
+     * String, Object, ArrayBuffer representing the body of the {@link Response}.
      */
-    body: string | Object | ArrayBuffer | Blob;
+    body: string | Object | ArrayBuffer;
     /**
      * Http {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html status code}
      * associated with the response.

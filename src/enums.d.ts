@@ -62,8 +62,7 @@ export declare enum ContentType {
  * @experimental
  */
 export declare enum ResponseContentType {
-    Text = 0,
+    ArrayBuffer = 0,
     Json = 1,
-    ArrayBuffer = 2,
-    Blob = 3,
+    Text = 2,
 }

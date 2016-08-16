@@ -14,9 +14,10 @@ function paramParser(rawParams) {
     if (rawParams.length > 0) {
         var params = rawParams.split('&');
         params.forEach(function (param) {
-            var eqIdx = param.indexOf('=');
-            var _a = eqIdx == -1 ? [param, ''] : [param.slice(0, eqIdx), param.slice(eqIdx + 1)], key = _a[0], val = _a[1];
-            var list = map.get(key) || [];
+            var split = param.split('=', 2);
+            var key = split[0];
+            var val = split[1];
+            var list = lang_1.isPresent(map.get(key)) ? map.get(key) : [];
             list.push(val);
             map.set(key, list);
         });
@@ -90,7 +91,7 @@ var URLSearchParams = (function () {
         this.paramsMap = paramParser(rawParams);
     }
     URLSearchParams.prototype.clone = function () {
-        var clone = new URLSearchParams('', this.queryEncoder);
+        var clone = new URLSearchParams();
         clone.appendAll(this);
         return clone;
     };

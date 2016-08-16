@@ -96,12 +96,6 @@ export class Http {
     head(url, options) {
         return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Head, url)));
     }
-    /**
-     * Performs a request with `options` http method.
-     */
-    options(url, options) {
-        return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Options, url)));
-    }
 }
 /** @nocollapse */
 Http.decorators = [

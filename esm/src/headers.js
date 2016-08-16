@@ -5,9 +5,9 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { BaseException } from '@angular/core';
-import { ListWrapper, Map, MapWrapper, StringMapWrapper, isListLikeIterable, iterateListLike } from '../src/facade/collection';
+import { BaseException } from '../src/facade/exceptions';
 import { isBlank } from '../src/facade/lang';
+import { isListLikeIterable, iterateListLike, Map, MapWrapper, StringMapWrapper, ListWrapper } from '../src/facade/collection';
 /**
  * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
  * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
@@ -48,29 +48,23 @@ export class Headers {
         }
         // headers instanceof StringMap
         StringMapWrapper.forEach(headers, (v, k) => {
-            this._headersMap.set(normalize(k), isListLikeIterable(v) ? v : [v]);
+            this._headersMap.set(k, isListLikeIterable(v) ? v : [v]);
         });
     }
     /**
      * Returns a new Headers instance from the given DOMString of Response Headers
      */
     static fromResponseHeaderString(headersString) {
-        let headers = new Headers();
-        headersString.split('\n').forEach(line => {
-            const index = line.indexOf(':');
-            if (index > 0) {
-                const key = line.substring(0, index);
-                const value = line.substring(index + 1).trim();
-                headers.set(key, value);
-            }
-        });
-        return headers;
+        return headersString.trim()
+            .split('\n')
+            .map(val => val.split(':'))
+            .map(([key, ...parts]) => ([key.trim(), parts.join(':').trim()]))
+            .reduce((headers, [key, value]) => !headers.set(key, value) && headers, new Headers());
     }
     /**
      * Appends a header to existing list of header values for a given header name.
      */
     append(name, value) {
-        name = normalize(name);
         var mapName = this._headersMap.get(name);
         var list = isListLikeIterable(mapName) ? mapName : [];
         list.push(value);
@@ -79,18 +73,18 @@ export class Headers {
     /**
      * Deletes all header values for the given name.
      */
-    delete(name) { this._headersMap.delete(normalize(name)); }
+    delete(name) { this._headersMap.delete(name); }
     forEach(fn) {
         this._headersMap.forEach(fn);
     }
     /**
      * Returns first header that matches given name.
      */
-    get(header) { return ListWrapper.first(this._headersMap.get(normalize(header))); }
+    get(header) { return ListWrapper.first(this._headersMap.get(header)); }
     /**
      * Check for existence of header by given name.
      */
-    has(header) { return this._headersMap.has(normalize(header)); }
+    has(header) { return this._headersMap.has(header); }
     /**
      * Provides names of set headers
      */
@@ -107,7 +101,7 @@ export class Headers {
         else {
             list.push(value);
         }
-        this._headersMap.set(normalize(header), list);
+        this._headersMap.set(header, list);
     }
     /**
      * Returns values of all headers.
@@ -121,7 +115,7 @@ export class Headers {
         this._headersMap.forEach((values, name) => {
             let list = [];
             iterateListLike(values, (val /** TODO #9100 */) => list = ListWrapper.concat(list, val.split(',')));
-            serializableHeaders[normalize(name)] = list;
+            serializableHeaders[name] = list;
         });
         return serializableHeaders;
     }
@@ -129,19 +123,12 @@ export class Headers {
      * Returns list of header values for a given name.
      */
     getAll(header) {
-        var headers = this._headersMap.get(normalize(header));
+        var headers = this._headersMap.get(header);
         return isListLikeIterable(headers) ? headers : [];
     }
     /**
      * This method is not implemented.
      */
     entries() { throw new BaseException('"entries" method is not implemented on Headers class'); }
-}
-// "HTTP character sets are identified by case-insensitive tokens"
-// Spec at https://tools.ietf.org/html/rfc2616
-// This implementation is same as NodeJS.
-// see https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_message_headers
-function normalize(name) {
-    return name.toLowerCase();
 }
 //# sourceMappingURL=headers.js.map
