@@ -76,7 +76,7 @@ export class MockConnection {
      *
      */
     mockError(err) {
-        // Matches XHR semantics
+        // Matches ResourceLoader semantics
         this.readyState = ReadyState.Done;
         this.response.error(err);
     }

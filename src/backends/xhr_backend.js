@@ -41,7 +41,7 @@ var XHRConnection = (function () {
             // load event handler
             var onLoad = function () {
                 // responseText is the old-school way of retrieving response (supported by IE8 & 9)
-                // response/responseType properties were introduced in XHR Level2 spec (supported by
+                // response/responseType properties were introduced in ResourceLoader Level2 spec (supported by
                 // IE10)
                 var body = lang_1.isPresent(_xhr.response) ? _xhr.response : _xhr.responseText;
                 // Implicitly strip a potential XSSI prefix.
