@@ -647,7 +647,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         function Headers(headers) {
             var _this = this;
             if (headers instanceof Headers) {
-                this._headersMap = headers._headersMap;
+                this._headersMap = new Map$1(headers._headersMap);
                 return;
             }
             this._headersMap = new Map$1();

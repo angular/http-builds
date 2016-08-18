@@ -41,7 +41,7 @@ var Headers = (function () {
     function Headers(headers) {
         var _this = this;
         if (headers instanceof Headers) {
-            this._headersMap = headers._headersMap;
+            this._headersMap = new collection_1.Map(headers._headersMap);
             return;
         }
         this._headersMap = new collection_1.Map();

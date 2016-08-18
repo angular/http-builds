@@ -39,7 +39,7 @@ import { isBlank } from '../src/facade/lang';
 export class Headers {
     constructor(headers) {
         if (headers instanceof Headers) {
-            this._headersMap = headers._headersMap;
+            this._headersMap = new Map(headers._headersMap);
             return;
         }
         this._headersMap = new Map();
