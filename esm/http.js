@@ -67,12 +67,35 @@ export class HttpModule {
 }
 /** @nocollapse */
 HttpModule.decorators = [
-    { type: NgModule, args: [{ providers: HTTP_PROVIDERS },] },
+    { type: NgModule, args: [{
+                // TODO(alxhub): switch back to HTTP_PROVIDERS when the metadata collector can inline it
+                providers: [
+                    // TODO(pascal): use factory type annotations once supported in DI
+                    // issue: https://github.com/angular/angular/issues/3183
+                    { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
+                    BrowserXhr,
+                    { provide: RequestOptions, useClass: BaseRequestOptions },
+                    { provide: ResponseOptions, useClass: BaseResponseOptions },
+                    XHRBackend,
+                    { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
+                ],
+            },] },
 ];
 export class JsonpModule {
 }
 /** @nocollapse */
 JsonpModule.decorators = [
-    { type: NgModule, args: [{ providers: JSONP_PROVIDERS },] },
+    { type: NgModule, args: [{
+                // TODO(alxhub): switch back to JSONP_PROVIDERS when the metadata collector can inline it
+                providers: [
+                    // TODO(pascal): use factory type annotations once supported in DI
+                    // issue: https://github.com/angular/angular/issues/3183
+                    { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
+                    BrowserJsonp,
+                    { provide: RequestOptions, useClass: BaseRequestOptions },
+                    { provide: ResponseOptions, useClass: BaseResponseOptions },
+                    { provide: JSONPBackend, useClass: JSONPBackend_ },
+                ],
+            },] },
 ];
 //# sourceMappingURL=http.js.map

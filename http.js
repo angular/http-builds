@@ -102,7 +102,19 @@ var HttpModule = (function () {
     }
     /** @nocollapse */
     HttpModule.decorators = [
-        { type: core_1.NgModule, args: [{ providers: HTTP_PROVIDERS },] },
+        { type: core_1.NgModule, args: [{
+                    // TODO(alxhub): switch back to HTTP_PROVIDERS when the metadata collector can inline it
+                    providers: [
+                        // TODO(pascal): use factory type annotations once supported in DI
+                        // issue: https://github.com/angular/angular/issues/3183
+                        { provide: http_1.Http, useFactory: httpFactory, deps: [xhr_backend_1.XHRBackend, base_request_options_1.RequestOptions] },
+                        browser_xhr_1.BrowserXhr,
+                        { provide: base_request_options_1.RequestOptions, useClass: base_request_options_1.BaseRequestOptions },
+                        { provide: base_response_options_1.ResponseOptions, useClass: base_response_options_1.BaseResponseOptions },
+                        xhr_backend_1.XHRBackend,
+                        { provide: interfaces_1.XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
+                    ],
+                },] },
     ];
     return HttpModule;
 }());
@@ -112,7 +124,18 @@ var JsonpModule = (function () {
     }
     /** @nocollapse */
     JsonpModule.decorators = [
-        { type: core_1.NgModule, args: [{ providers: JSONP_PROVIDERS },] },
+        { type: core_1.NgModule, args: [{
+                    // TODO(alxhub): switch back to JSONP_PROVIDERS when the metadata collector can inline it
+                    providers: [
+                        // TODO(pascal): use factory type annotations once supported in DI
+                        // issue: https://github.com/angular/angular/issues/3183
+                        { provide: http_1.Jsonp, useFactory: jsonpFactory, deps: [jsonp_backend_1.JSONPBackend, base_request_options_1.RequestOptions] },
+                        browser_jsonp_1.BrowserJsonp,
+                        { provide: base_request_options_1.RequestOptions, useClass: base_request_options_1.BaseRequestOptions },
+                        { provide: base_response_options_1.ResponseOptions, useClass: base_response_options_1.BaseResponseOptions },
+                        { provide: jsonp_backend_1.JSONPBackend, useClass: jsonp_backend_1.JSONPBackend_ },
+                    ],
+                },] },
     ];
     return JsonpModule;
 }());
