@@ -1877,40 +1877,12 @@ var __extends = (this && this.__extends) || function (d, b) {
         { type: ConnectionBackend, },
         { type: RequestOptions, },
     ];
-    var HTTP_PROVIDERS = [
-        // TODO(pascal): use factory type annotations once supported in DI
-        // issue: https://github.com/angular/angular/issues/3183
-        { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
-        BrowserXhr,
-        { provide: RequestOptions, useClass: BaseRequestOptions },
-        { provide: ResponseOptions, useClass: BaseResponseOptions },
-        XHRBackend,
-        { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
-    ];
-    /**
-     * @experimental
-     */
     function _createDefaultCookieXSRFStrategy() {
         return new CookieXSRFStrategy();
     }
-    /**
-     * @experimental
-     */
     function httpFactory(xhrBackend, requestOptions) {
         return new Http(xhrBackend, requestOptions);
     }
-    var JSONP_PROVIDERS = [
-        // TODO(pascal): use factory type annotations once supported in DI
-        // issue: https://github.com/angular/angular/issues/3183
-        { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
-        BrowserJsonp,
-        { provide: RequestOptions, useClass: BaseRequestOptions },
-        { provide: ResponseOptions, useClass: BaseResponseOptions },
-        { provide: JSONPBackend, useClass: JSONPBackend_ },
-    ];
-    /**
-     * @experimental
-     */
     function jsonpFactory(jsonpBackend, requestOptions) {
         return new Jsonp(jsonpBackend, requestOptions);
     }
@@ -1922,7 +1894,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     /** @nocollapse */
     HttpModule.decorators = [
         { type: _angular_core.NgModule, args: [{
-                    // TODO(alxhub): switch back to HTTP_PROVIDERS when the metadata collector can inline it
                     providers: [
                         // TODO(pascal): use factory type annotations once supported in DI
                         // issue: https://github.com/angular/angular/issues/3183
@@ -1943,7 +1914,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     /** @nocollapse */
     JsonpModule.decorators = [
         { type: _angular_core.NgModule, args: [{
-                    // TODO(alxhub): switch back to JSONP_PROVIDERS when the metadata collector can inline it
                     providers: [
                         // TODO(pascal): use factory type annotations once supported in DI
                         // issue: https://github.com/angular/angular/issues/3183
@@ -1955,9 +1925,6 @@ var __extends = (this && this.__extends) || function (d, b) {
                     ],
                 },] },
     ];
-    exports._createDefaultCookieXSRFStrategy = _createDefaultCookieXSRFStrategy;
-    exports.httpFactory = httpFactory;
-    exports.jsonpFactory = jsonpFactory;
     exports.HttpModule = HttpModule;
     exports.JsonpModule = JsonpModule;
     exports.BrowserXhr = BrowserXhr;
