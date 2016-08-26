@@ -36,7 +36,7 @@ function standardEncoding(v) {
         .replace(/%2C/gi, ',')
         .replace(/%3B/gi, ';')
         .replace(/%2B/gi, '+')
-        .replace(/%3D/gi, ';')
+        .replace(/%3D/gi, '=')
         .replace(/%3F/gi, '?')
         .replace(/%2F/gi, '/');
 }
