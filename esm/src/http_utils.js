@@ -5,7 +5,6 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { makeTypeError } from '../src/facade/exceptions';
 import { isString } from '../src/facade/lang';
 import { RequestMethod } from './enums';
 export function normalizeMethodName(method) {
@@ -15,7 +14,7 @@ export function normalizeMethodName(method) {
             .replace(/(\w)(\w*)/g, (g0, g1, g2) => g1.toUpperCase() + g2.toLowerCase());
         method = RequestMethod[method];
         if (typeof method !== 'number')
-            throw makeTypeError(`Invalid request method. The method "${originalMethod}" is not supported.`);
+            throw new Error(`Invalid request method. The method "${originalMethod}" is not supported.`);
     }
     return method;
 }

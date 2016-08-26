@@ -12,7 +12,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var core_1 = require('@angular/core');
-var exceptions_1 = require('../src/facade/exceptions');
 var lang_1 = require('../src/facade/lang');
 var base_request_options_1 = require('./base_request_options');
 var enums_1 = require('./enums');
@@ -62,7 +61,7 @@ var Http = (function () {
             responseObservable = httpRequest(this._backend, url);
         }
         else {
-            throw exceptions_1.makeTypeError('First argument must be a url string or Request instance.');
+            throw new Error('First argument must be a url string or Request instance.');
         }
         return responseObservable;
     };
@@ -147,12 +146,12 @@ var Jsonp = (function (_super) {
         }
         if (url instanceof static_request_1.Request) {
             if (url.method !== enums_1.RequestMethod.Get) {
-                exceptions_1.makeTypeError('JSONP requests must use GET request method.');
+                throw new Error('JSONP requests must use GET request method.');
             }
             responseObservable = httpRequest(this._backend, url);
         }
         else {
-            throw exceptions_1.makeTypeError('First argument must be a url string or Request instance.');
+            throw new Error('First argument must be a url string or Request instance.');
         }
         return responseObservable;
     };

@@ -743,7 +743,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         /**
          * This method is not implemented.
          */
-        Headers.prototype.entries = function () { throw new _angular_core.BaseException('"entries" method is not implemented on Headers class'); };
+        Headers.prototype.entries = function () { throw new Error('"entries" method is not implemented on Headers class'); };
         return Headers;
     }());
     // "HTTP character sets are identified by case-insensitive tokens"
@@ -882,9 +882,6 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         return XSRFStrategy;
     }());
-    function makeTypeError(message) {
-        return new TypeError(message);
-    }
     function normalizeMethodName(method) {
         if (isString(method)) {
             var originalMethod = method;
@@ -892,7 +889,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 .replace(/(\w)(\w*)/g, function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); });
             method = exports.RequestMethod[method];
             if (typeof method !== 'number')
-                throw makeTypeError("Invalid request method. The method \"" + originalMethod + "\" is not supported.");
+                throw new Error("Invalid request method. The method \"" + originalMethod + "\" is not supported.");
         }
         return method;
     }
@@ -1773,7 +1770,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 responseObservable = httpRequest(this._backend, url);
             }
             else {
-                throw makeTypeError('First argument must be a url string or Request instance.');
+                throw new Error('First argument must be a url string or Request instance.');
             }
             return responseObservable;
         };
@@ -1857,12 +1854,12 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
             if (url instanceof Request) {
                 if (url.method !== exports.RequestMethod.Get) {
-                    makeTypeError('JSONP requests must use GET request method.');
+                    throw new Error('JSONP requests must use GET request method.');
                 }
                 responseObservable = httpRequest(this._backend, url);
             }
             else {
-                throw makeTypeError('First argument must be a url string or Request instance.');
+                throw new Error('First argument must be a url string or Request instance.');
             }
             return responseObservable;
         };

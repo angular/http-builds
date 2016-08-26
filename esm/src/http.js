@@ -6,7 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { Injectable } from '@angular/core';
-import { makeTypeError } from '../src/facade/exceptions';
 import { isPresent, isString } from '../src/facade/lang';
 import { RequestOptions } from './base_request_options';
 import { RequestMethod } from './enums';
@@ -56,7 +55,7 @@ export class Http {
             responseObservable = httpRequest(this._backend, url);
         }
         else {
-            throw makeTypeError('First argument must be a url string or Request instance.');
+            throw new Error('First argument must be a url string or Request instance.');
         }
         return responseObservable;
     }
@@ -138,12 +137,12 @@ export class Jsonp extends Http {
         }
         if (url instanceof Request) {
             if (url.method !== RequestMethod.Get) {
-                makeTypeError('JSONP requests must use GET request method.');
+                throw new Error('JSONP requests must use GET request method.');
             }
             responseObservable = httpRequest(this._backend, url);
         }
         else {
-            throw makeTypeError('First argument must be a url string or Request instance.');
+            throw new Error('First argument must be a url string or Request instance.');
         }
         return responseObservable;
     }

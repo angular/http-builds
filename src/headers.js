@@ -6,7 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 "use strict";
-var core_1 = require('@angular/core');
 var collection_1 = require('../src/facade/collection');
 var lang_1 = require('../src/facade/lang');
 /**
@@ -137,7 +136,7 @@ var Headers = (function () {
     /**
      * This method is not implemented.
      */
-    Headers.prototype.entries = function () { throw new core_1.BaseException('"entries" method is not implemented on Headers class'); };
+    Headers.prototype.entries = function () { throw new Error('"entries" method is not implemented on Headers class'); };
     return Headers;
 }());
 exports.Headers = Headers;
