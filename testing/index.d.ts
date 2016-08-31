@@ -8,7 +8,6 @@
 /**
  * @module
  * @description
- * Entry point for all public APIs of the http package.
+ * Entry point for all public APIs of the platform-server/testing package.
  */
-export * from './src/index';
-//# sourceMappingURL=index.js.map
+export * from './mock_backend';
