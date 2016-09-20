@@ -288,20 +288,18 @@
         ResponseContentType[ResponseContentType["Blob"] = 3] = "Blob";
     })(exports.ResponseContentType || (exports.ResponseContentType = {}));
 
-    var Map$1 = global$1.Map;
-    var Set = global$1.Set;
     // Safari and Internet Explorer do not support the iterable parameter to the
     // Map constructor.  We work around that by manually adding the items.
     var createMapFromPairs = (function () {
         try {
-            if (new Map$1([[1, 2]]).size === 1) {
-                return function createMapFromPairs(pairs) { return new Map$1(pairs); };
+            if (new Map([[1, 2]]).size === 1) {
+                return function createMapFromPairs(pairs) { return new Map(pairs); };
             }
         }
         catch (e) {
         }
         return function createMapAndPopulateFromPairs(pairs) {
-            var map = new Map$1();
+            var map = new Map();
             for (var i = 0; i < pairs.length; i++) {
                 var pair = pairs[i];
                 map.set(pair[0], pair[1]);
@@ -309,22 +307,8 @@
             return map;
         };
     })();
-    var createMapFromMap = (function () {
-        try {
-            if (new Map$1(new Map$1())) {
-                return function createMapFromMap(m) { return new Map$1(m); };
-            }
-        }
-        catch (e) {
-        }
-        return function createMapAndPopulateFromMap(m) {
-            var map = new Map$1();
-            m.forEach(function (v, k) { map.set(k, v); });
-            return map;
-        };
-    })();
     var _clearValues = (function () {
-        if ((new Map$1()).keys().next) {
+        if ((new Map()).keys().next) {
             return function _clearValues(m) {
                 var keyIterator = m.keys();
                 var k;
@@ -343,7 +327,7 @@
     // TODO(mlaval): remove the work around once we have a working polyfill of Array.from
     var _arrayFromMap = (function () {
         try {
-            if ((new Map$1()).values().next) {
+            if ((new Map()).values().next) {
                 return function createArrayFromMap(m, getValues) {
                     return getValues ? Array.from(m.values()) : Array.from(m.keys());
                 };
@@ -352,7 +336,7 @@
         catch (e) {
         }
         return function createArrayFromMapWithForeach(m, getValues) {
-            var res = ListWrapper.createFixedSize(m.size), i = 0;
+            var res = new Array(m.size), i = 0;
             m.forEach(function (v, k) {
                 res[i] = getValues ? v : k;
                 i++;
@@ -363,9 +347,8 @@
     var MapWrapper = (function () {
         function MapWrapper() {
         }
-        MapWrapper.clone = function (m) { return createMapFromMap(m); };
         MapWrapper.createFromStringMap = function (stringMap) {
-            var result = new Map$1();
+            var result = new Map();
             for (var prop in stringMap) {
                 result.set(prop, stringMap[prop]);
             }
@@ -377,7 +360,6 @@
             return r;
         };
         MapWrapper.createFromPairs = function (pairs) { return createMapFromPairs(pairs); };
-        MapWrapper.clearValues = function (m) { _clearValues(m); };
         MapWrapper.iterable = function (m) { return m; };
         MapWrapper.keys = function (m) { return _arrayFromMap(m, false); };
         MapWrapper.values = function (m) { return _arrayFromMap(m, true); };
@@ -389,15 +371,6 @@
     var StringMapWrapper = (function () {
         function StringMapWrapper() {
         }
-        StringMapWrapper.create = function () {
-            // Note: We are not using Object.create(null) here due to
-            // performance!
-            // http://jsperf.com/ng2-object-create-null
-            return {};
-        };
-        StringMapWrapper.contains = function (map, key) {
-            return map.hasOwnProperty(key);
-        };
         StringMapWrapper.get = function (map, key) {
             return map.hasOwnProperty(key) ? map[key] : undefined;
         };
@@ -412,7 +385,6 @@
             }
             return true;
         };
-        StringMapWrapper.delete = function (map, key) { delete map[key]; };
         StringMapWrapper.forEach = function (map, callback) {
             for (var _i = 0, _a = Object.keys(map); _i < _a.length; _i++) {
                 var k = _a[_i];
@@ -581,7 +553,7 @@
         if (!isJsObject(obj))
             return false;
         return isArray(obj) ||
-            (!(obj instanceof Map$1) &&
+            (!(obj instanceof Map) &&
                 getSymbolIterator() in obj); // JS Iterable have a Symbol.iterator prop
     }
     function iterateListLike(obj, fn) {
@@ -598,25 +570,6 @@
             }
         }
     }
-    // Safari and Internet Explorer do not support the iterable parameter to the
-    // Set constructor.  We work around that by manually adding the items.
-    var createSetFromList = (function () {
-        var test = new Set([1, 2, 3]);
-        if (test.size === 3) {
-            return function createSetFromList(lst) { return new Set(lst); };
-        }
-        else {
-            return function createSetAndPopulateFromList(lst) {
-                var res = new Set(lst);
-                if (res.size !== lst.length) {
-                    for (var i = 0; i < lst.length; i++) {
-                        res.add(lst[i]);
-                    }
-                }
-                return res;
-            };
-        }
-    })();
 
     /**
      * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
@@ -650,10 +603,10 @@
         function Headers(headers) {
             var _this = this;
             if (headers instanceof Headers) {
-                this._headersMap = new Map$1(headers._headersMap);
+                this._headersMap = new Map(headers._headersMap);
                 return;
             }
-            this._headersMap = new Map$1();
+            this._headersMap = new Map();
             if (isBlank(headers)) {
                 return;
             }
@@ -974,9 +927,16 @@
         return view.buffer;
     }
 
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
     function paramParser(rawParams) {
         if (rawParams === void 0) { rawParams = ''; }
-        var map = new Map$1();
+        var map = new Map();
         if (rawParams.length > 0) {
             var params = rawParams.split('&');
             params.forEach(function (param) {
@@ -1062,21 +1022,12 @@
         URLSearchParams.prototype.has = function (param) { return this.paramsMap.has(param); };
         URLSearchParams.prototype.get = function (param) {
             var storedParam = this.paramsMap.get(param);
-            if (isListLikeIterable(storedParam)) {
-                return ListWrapper.first(storedParam);
-            }
-            else {
-                return null;
-            }
+            return Array.isArray(storedParam) ? storedParam[0] : null;
         };
-        URLSearchParams.prototype.getAll = function (param) {
-            var mapParam = this.paramsMap.get(param);
-            return isPresent(mapParam) ? mapParam : [];
-        };
+        URLSearchParams.prototype.getAll = function (param) { return this.paramsMap.get(param) || []; };
         URLSearchParams.prototype.set = function (param, val) {
-            var mapParam = this.paramsMap.get(param);
-            var list = isPresent(mapParam) ? mapParam : [];
-            ListWrapper.clear(list);
+            var list = this.paramsMap.get(param) || [];
+            list.length = 0;
             list.push(val);
             this.paramsMap.set(param, list);
         };
@@ -1089,16 +1040,14 @@
         URLSearchParams.prototype.setAll = function (searchParams) {
             var _this = this;
             searchParams.paramsMap.forEach(function (value, param) {
-                var mapParam = _this.paramsMap.get(param);
-                var list = isPresent(mapParam) ? mapParam : [];
-                ListWrapper.clear(list);
+                var list = _this.paramsMap.get(param) || [];
+                list.length = 0;
                 list.push(value[0]);
                 _this.paramsMap.set(param, list);
             });
         };
         URLSearchParams.prototype.append = function (param, val) {
-            var mapParam = this.paramsMap.get(param);
-            var list = isPresent(mapParam) ? mapParam : [];
+            var list = this.paramsMap.get(param) || [];
             list.push(val);
             this.paramsMap.set(param, list);
         };
@@ -1112,8 +1061,7 @@
         URLSearchParams.prototype.appendAll = function (searchParams) {
             var _this = this;
             searchParams.paramsMap.forEach(function (value, param) {
-                var mapParam = _this.paramsMap.get(param);
-                var list = isPresent(mapParam) ? mapParam : [];
+                var list = _this.paramsMap.get(param) || [];
                 for (var i = 0; i < value.length; ++i) {
                     list.push(value[i]);
                 }
@@ -1130,9 +1078,8 @@
         URLSearchParams.prototype.replaceAll = function (searchParams) {
             var _this = this;
             searchParams.paramsMap.forEach(function (value, param) {
-                var mapParam = _this.paramsMap.get(param);
-                var list = isPresent(mapParam) ? mapParam : [];
-                ListWrapper.clear(list);
+                var list = _this.paramsMap.get(param) || [];
+                list.length = 0;
                 for (var i = 0; i < value.length; ++i) {
                     list.push(value[i]);
                 }
