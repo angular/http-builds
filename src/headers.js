@@ -6,7 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { ListWrapper, MapWrapper, StringMapWrapper, isListLikeIterable, iterateListLike } from '../src/facade/collection';
-import { isBlank } from '../src/facade/lang';
 /**
  * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
  * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
@@ -43,7 +42,7 @@ export var Headers = (function () {
             return;
         }
         this._headersMap = new Map();
-        if (isBlank(headers)) {
+        if (!headers) {
             return;
         }
         // headers instanceof StringMap

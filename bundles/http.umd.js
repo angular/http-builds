@@ -612,7 +612,7 @@
                 return;
             }
             this._headersMap = new Map();
-            if (isBlank(headers)) {
+            if (!headers) {
                 return;
             }
             // headers instanceof StringMap
