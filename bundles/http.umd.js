@@ -312,18 +312,15 @@
                 return;
             }
             if (headers instanceof Headers) {
-                headers._headers.forEach(function (value, name) {
-                    var lcName = name.toLowerCase();
-                    _this._headers.set(lcName, value);
-                    _this.mayBeSetNormalizedName(name);
+                headers._headers.forEach(function (values, name) {
+                    values.forEach(function (value) { return _this.append(name, value); });
                 });
                 return;
             }
             Object.keys(headers).forEach(function (name) {
-                var value = headers[name];
-                var lcName = name.toLowerCase();
-                _this._headers.set(lcName, Array.isArray(value) ? value : [value]);
-                _this.mayBeSetNormalizedName(name);
+                var values = Array.isArray(headers[name]) ? headers[name] : [headers[name]];
+                _this.delete(name);
+                values.forEach(function (value) { return _this.append(name, value); });
             });
         }
         /**
@@ -346,7 +343,12 @@
          */
         Headers.prototype.append = function (name, value) {
             var values = this.getAll(name);
-            this.set(name, values === null ? [value] : values.concat([value]));
+            if (values === null) {
+                this.set(name, value);
+            }
+            else {
+                values.push(value);
+            }
         };
         /**
          * Deletes all header values for the given name.
@@ -382,8 +384,14 @@
          * Sets or overrides header value for given name.
          */
         Headers.prototype.set = function (name, value) {
-            var strValue = Array.isArray(value) ? value.join(',') : value;
-            this._headers.set(name.toLowerCase(), [strValue]);
+            if (Array.isArray(value)) {
+                if (value.length) {
+                    this._headers.set(name.toLowerCase(), [value.join(',')]);
+                }
+            }
+            else {
+                this._headers.set(name.toLowerCase(), [value]);
+            }
             this.mayBeSetNormalizedName(name);
         };
         /**
