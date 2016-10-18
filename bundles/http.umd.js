@@ -578,15 +578,25 @@
     }());
 
     function normalizeMethodName(method) {
-        if (isString(method)) {
-            var originalMethod = method;
-            method = method
-                .replace(/(\w)(\w*)/g, function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); });
-            method = exports.RequestMethod[method];
-            if (typeof method !== 'number')
-                throw new Error("Invalid request method. The method \"" + originalMethod + "\" is not supported.");
+        if (!isString(method))
+            return method;
+        switch (method.toUpperCase()) {
+            case 'GET':
+                return exports.RequestMethod.Get;
+            case 'POST':
+                return exports.RequestMethod.Post;
+            case 'PUT':
+                return exports.RequestMethod.Put;
+            case 'DELETE':
+                return exports.RequestMethod.Delete;
+            case 'OPTIONS':
+                return exports.RequestMethod.Options;
+            case 'HEAD':
+                return exports.RequestMethod.Head;
+            case 'PATCH':
+                return exports.RequestMethod.Patch;
         }
-        return method;
+        throw new Error("Invalid request method. The method \"" + method + "\" is not supported.");
     }
     var isSuccess = function (status) { return (status >= 200 && status < 300); };
     function getResponseURL(xhr) {

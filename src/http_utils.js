@@ -8,15 +8,25 @@
 import { isString } from '../src/facade/lang';
 import { RequestMethod } from './enums';
 export function normalizeMethodName(method) {
-    if (isString(method)) {
-        var originalMethod = method;
-        method = method
-            .replace(/(\w)(\w*)/g, function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); });
-        method = RequestMethod[method];
-        if (typeof method !== 'number')
-            throw new Error("Invalid request method. The method \"" + originalMethod + "\" is not supported.");
+    if (!isString(method))
+        return method;
+    switch (method.toUpperCase()) {
+        case 'GET':
+            return RequestMethod.Get;
+        case 'POST':
+            return RequestMethod.Post;
+        case 'PUT':
+            return RequestMethod.Put;
+        case 'DELETE':
+            return RequestMethod.Delete;
+        case 'OPTIONS':
+            return RequestMethod.Options;
+        case 'HEAD':
+            return RequestMethod.Head;
+        case 'PATCH':
+            return RequestMethod.Patch;
     }
-    return method;
+    throw new Error("Invalid request method. The method \"" + method + "\" is not supported.");
 }
 export var isSuccess = function (status) { return (status >= 200 && status < 300); };
 export function getResponseURL(xhr) {
