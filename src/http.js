@@ -128,43 +128,43 @@ export var Http = (function () {
      * Performs a request with `get` http method.
      */
     Http.prototype.get = function (url, options) {
-        return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, url)));
+        return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, url)));
     };
     /**
      * Performs a request with `post` http method.
      */
     Http.prototype.post = function (url, body, options) {
-        return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Post, url)));
+        return this.request(new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Post, url)));
     };
     /**
      * Performs a request with `put` http method.
      */
     Http.prototype.put = function (url, body, options) {
-        return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Put, url)));
+        return this.request(new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Put, url)));
     };
     /**
      * Performs a request with `delete` http method.
      */
     Http.prototype.delete = function (url, options) {
-        return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Delete, url)));
+        return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Delete, url)));
     };
     /**
      * Performs a request with `patch` http method.
      */
     Http.prototype.patch = function (url, body, options) {
-        return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Patch, url)));
+        return this.request(new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Patch, url)));
     };
     /**
      * Performs a request with `head` http method.
      */
     Http.prototype.head = function (url, options) {
-        return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Head, url)));
+        return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Head, url)));
     };
     /**
      * Performs a request with `options` http method.
      */
     Http.prototype.options = function (url, options) {
-        return httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Options, url)));
+        return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Options, url)));
     };
     Http.decorators = [
         { type: Injectable },
