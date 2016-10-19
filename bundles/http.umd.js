@@ -60,64 +60,9 @@
     function isPresent(obj) {
         return obj !== undefined && obj !== null;
     }
-    function isString(obj) {
-        return typeof obj === 'string';
-    }
-    var NumberWrapper = (function () {
-        function NumberWrapper() {
-        }
-        NumberWrapper.toFixed = function (n, fractionDigits) { return n.toFixed(fractionDigits); };
-        NumberWrapper.equal = function (a, b) { return a === b; };
-        NumberWrapper.parseIntAutoRadix = function (text) {
-            var result = parseInt(text);
-            if (isNaN(result)) {
-                throw new Error('Invalid integer literal when parsing ' + text);
-            }
-            return result;
-        };
-        NumberWrapper.parseInt = function (text, radix) {
-            if (radix == 10) {
-                if (/^(\-|\+)?[0-9]+$/.test(text)) {
-                    return parseInt(text, radix);
-                }
-            }
-            else if (radix == 16) {
-                if (/^(\-|\+)?[0-9ABCDEFabcdef]+$/.test(text)) {
-                    return parseInt(text, radix);
-                }
-            }
-            else {
-                var result = parseInt(text, radix);
-                if (!isNaN(result)) {
-                    return result;
-                }
-            }
-            throw new Error('Invalid integer literal when parsing ' + text + ' in base ' + radix);
-        };
-        Object.defineProperty(NumberWrapper, "NaN", {
-            get: function () { return NaN; },
-            enumerable: true,
-            configurable: true
-        });
-        NumberWrapper.isNumeric = function (value) { return !isNaN(value - parseFloat(value)); };
-        NumberWrapper.isNaN = function (value) { return isNaN(value); };
-        NumberWrapper.isInteger = function (value) { return Number.isInteger(value); };
-        return NumberWrapper;
-    }());
     function isJsObject(o) {
         return o !== null && (typeof o === 'function' || typeof o === 'object');
     }
-    // Can't be all uppercase as our transpiler would think it is a special directive...
-    var Json = (function () {
-        function Json() {
-        }
-        Json.parse = function (s) { return global$1.JSON.parse(s); };
-        Json.stringify = function (data) {
-            // Dart doesn't take 3 arguments
-            return global$1.JSON.stringify(data, null, 2);
-        };
-        return Json;
-    }());
 
     /**
      * @license
@@ -578,7 +523,7 @@
     }());
 
     function normalizeMethodName(method) {
-        if (!isString(method))
+        if (typeof method !== 'string')
             return method;
         switch (method.toUpperCase()) {
             case 'GET':
@@ -804,11 +749,11 @@
          * Attempts to return body as parsed `JSON` object, or raises an exception.
          */
         Body.prototype.json = function () {
-            if (isString(this._body)) {
-                return Json.parse(this._body);
+            if (typeof this._body === 'string') {
+                return JSON.parse(this._body);
             }
             if (this._body instanceof ArrayBuffer) {
-                return Json.parse(this.text());
+                return JSON.parse(this.text());
             }
             return this._body;
         };
@@ -826,7 +771,7 @@
                 return '';
             }
             if (isJsObject(this._body)) {
-                return Json.stringify(this._body);
+                return JSON.stringify(this._body, null, 2);
             }
             return this._body.toString();
         };
@@ -1115,7 +1060,7 @@
                     // by IE10)
                     var body = _xhr.response === undefined ? _xhr.responseText : _xhr.response;
                     // Implicitly strip a potential XSSI prefix.
-                    if (isString(body))
+                    if (typeof body === 'string')
                         body = body.replace(XSSI_PREFIX, '');
                     var headers = Headers.fromResponseHeaderString(_xhr.getAllResponseHeaders());
                     var url = getResponseURL(_xhr);
@@ -1336,7 +1281,8 @@
             this.body = isPresent(body) ? body : null;
             this.url = isPresent(url) ? url : null;
             this.search = isPresent(search) ?
-                (isString(search) ? new URLSearchParams((search)) : (search)) :
+                (typeof search === 'string' ? new URLSearchParams((search)) :
+                    (search)) :
                 null;
             this.withCredentials = isPresent(withCredentials) ? withCredentials : null;
             this.responseType = isPresent(responseType) ? responseType : null;
@@ -1368,18 +1314,17 @@
          */
         RequestOptions.prototype.merge = function (options) {
             return new RequestOptions({
-                method: isPresent(options) && isPresent(options.method) ? options.method : this.method,
-                headers: isPresent(options) && isPresent(options.headers) ? options.headers : this.headers,
-                body: isPresent(options) && isPresent(options.body) ? options.body : this.body,
-                url: isPresent(options) && isPresent(options.url) ? options.url : this.url,
-                search: isPresent(options) && isPresent(options.search) ?
-                    (isString(options.search) ? new URLSearchParams((options.search)) :
+                method: options && isPresent(options.method) ? options.method : this.method,
+                headers: options && isPresent(options.headers) ? options.headers : this.headers,
+                body: options && isPresent(options.body) ? options.body : this.body,
+                url: options && isPresent(options.url) ? options.url : this.url,
+                search: options && isPresent(options.search) ?
+                    (typeof options.search === 'string' ? new URLSearchParams(options.search) :
                         (options.search).clone()) :
                     this.search,
-                withCredentials: isPresent(options) && isPresent(options.withCredentials) ?
-                    options.withCredentials :
+                withCredentials: options && isPresent(options.withCredentials) ? options.withCredentials :
                     this.withCredentials,
-                responseType: isPresent(options) && isPresent(options.responseType) ? options.responseType :
+                responseType: options && isPresent(options.responseType) ? options.responseType :
                     this.responseType
             });
         };
@@ -1709,7 +1654,7 @@
          */
         Http.prototype.request = function (url, options) {
             var responseObservable;
-            if (isString(url)) {
+            if (typeof url === 'string') {
                 responseObservable = httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Get, url)));
             }
             else if (url instanceof Request) {
@@ -1796,7 +1741,7 @@
          */
         Jsonp.prototype.request = function (url, options) {
             var responseObservable;
-            if (isString(url)) {
+            if (typeof url === 'string') {
                 url =
                     new Request(mergeOptions(this._defaultOptions, options, exports.RequestMethod.Get, url));
             }

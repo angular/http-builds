@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 import { Injectable } from '@angular/core';
-import { isPresent, isString } from '../src/facade/lang';
+import { isPresent } from '../src/facade/lang';
 import { RequestOptions } from './base_request_options';
 import { RequestMethod } from './enums';
 import { ConnectionBackend } from './interfaces';
@@ -113,7 +113,7 @@ export var Http = (function () {
      */
     Http.prototype.request = function (url, options) {
         var responseObservable;
-        if (isString(url)) {
+        if (typeof url === 'string') {
             responseObservable = httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, url)));
         }
         else if (url instanceof Request) {
@@ -200,7 +200,7 @@ export var Jsonp = (function (_super) {
      */
     Jsonp.prototype.request = function (url, options) {
         var responseObservable;
-        if (isString(url)) {
+        if (typeof url === 'string') {
             url =
                 new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, url));
         }
