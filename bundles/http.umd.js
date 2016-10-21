@@ -58,7 +58,7 @@
         // TODO: to be fixed properly via #2830, noop for now
     };
     function isPresent(obj) {
-        return obj !== undefined && obj !== null;
+        return obj != null;
     }
     function isJsObject(o) {
         return o !== null && (typeof o === 'function' || typeof o === 'object');
@@ -1539,11 +1539,11 @@
         };
         return Request;
     }(Body));
-    var noop$1 = function () { };
-    var w = typeof window == 'object' ? window : noop$1;
-    var FormData = w['FormData'] || noop$1;
-    var Blob$1 = w['Blob'] || noop$1;
-    var ArrayBuffer$1 = w['ArrayBuffer'] || noop$1;
+    var noop = function () { };
+    var w = typeof window == 'object' ? window : noop;
+    var FormData = w['FormData'] || noop;
+    var Blob$1 = w['Blob'] || noop;
+    var ArrayBuffer$1 = w['ArrayBuffer'] || noop;
 
     /**
      * @license
