@@ -1181,7 +1181,7 @@
         }
         CookieXSRFStrategy.prototype.configureRequest = function (req) {
             var xsrfToken = _angular_platformBrowser.__platform_browser_private__.getDOM().getCookie(this._cookieName);
-            if (xsrfToken) {
+            if (xsrfToken && !req.headers.has(this._headerName)) {
                 req.headers.set(this._headerName, xsrfToken);
             }
         };
