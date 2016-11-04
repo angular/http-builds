@@ -215,7 +215,7 @@
                 return;
             }
             if (headers instanceof Headers) {
-                headers._headers.forEach(function (values, name) {
+                headers.forEach(function (values, name) {
                     values.forEach(function (value) { return _this.append(name, value); });
                 });
                 return;
