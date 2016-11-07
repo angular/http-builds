@@ -5,6 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+import { MapWrapper } from '../src/facade/collection';
 /**
  * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
  * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
@@ -45,7 +46,7 @@ export var Headers = (function () {
             return;
         }
         if (headers instanceof Headers) {
-            headers.forEach(function (values, name) {
+            headers._headers.forEach(function (values, name) {
                 values.forEach(function (value) { return _this.append(name, value); });
             });
             return;
@@ -112,7 +113,7 @@ export var Headers = (function () {
     /**
      * Returns the names of the headers
      */
-    Headers.prototype.keys = function () { return Array.from(this._normalizedNames.values()); };
+    Headers.prototype.keys = function () { return MapWrapper.values(this._normalizedNames); };
     /**
      * Sets or overrides header value for given name.
      */
@@ -130,7 +131,7 @@ export var Headers = (function () {
     /**
      * Returns values of all headers.
      */
-    Headers.prototype.values = function () { return Array.from(this._headers.values()); };
+    Headers.prototype.values = function () { return MapWrapper.values(this._headers); };
     /**
      * Returns string of all headers.
      */
