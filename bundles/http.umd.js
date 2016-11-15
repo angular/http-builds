@@ -35,42 +35,6 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
-    var globalScope;
-    if (typeof window === 'undefined') {
-        if (typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope) {
-            // TODO: Replace any with WorkerGlobalScope from lib.webworker.d.ts #3492
-            globalScope = self;
-        }
-        else {
-            globalScope = global;
-        }
-    }
-    else {
-        globalScope = window;
-    }
-    // Need to declare a new variable for global here since TypeScript
-    // exports the original value of the symbol.
-    var global$1 = globalScope;
-    // TODO: remove calls to assert in production environment
-    // Note: Can't just export this and import in in other files
-    // as `assert` is a reserved keyword in Dart
-    global$1.assert = function assert(condition) {
-        // TODO: to be fixed properly via #2830, noop for now
-    };
-    function isPresent(obj) {
-        return obj != null;
-    }
-    function isJsObject(o) {
-        return o !== null && (typeof o === 'function' || typeof o === 'object');
-    }
-
-    /**
-     * @license
-     * Copyright Google Inc. All Rights Reserved.
-     *
-     * Use of this source code is governed by an MIT-style license that can be
-     * found in the LICENSE file at https://angular.io/license
-     */
     /**
      * Supported http methods.
      * @experimental
@@ -348,12 +312,12 @@
     var ResponseOptions = (function () {
         function ResponseOptions(_a) {
             var _b = _a === void 0 ? {} : _a, body = _b.body, status = _b.status, headers = _b.headers, statusText = _b.statusText, type = _b.type, url = _b.url;
-            this.body = isPresent(body) ? body : null;
-            this.status = isPresent(status) ? status : null;
-            this.headers = isPresent(headers) ? headers : null;
-            this.statusText = isPresent(statusText) ? statusText : null;
-            this.type = isPresent(type) ? type : null;
-            this.url = isPresent(url) ? url : null;
+            this.body = body != null ? body : null;
+            this.status = status != null ? status : null;
+            this.headers = headers != null ? headers : null;
+            this.statusText = statusText != null ? statusText : null;
+            this.type = type != null ? type : null;
+            this.url = url != null ? url : null;
         }
         /**
          * Creates a copy of the `ResponseOptions` instance, using the optional input as values to
@@ -382,13 +346,12 @@
          */
         ResponseOptions.prototype.merge = function (options) {
             return new ResponseOptions({
-                body: isPresent(options) && isPresent(options.body) ? options.body : this.body,
-                status: isPresent(options) && isPresent(options.status) ? options.status : this.status,
-                headers: isPresent(options) && isPresent(options.headers) ? options.headers : this.headers,
-                statusText: isPresent(options) && isPresent(options.statusText) ? options.statusText :
-                    this.statusText,
-                type: isPresent(options) && isPresent(options.type) ? options.type : this.type,
-                url: isPresent(options) && isPresent(options.url) ? options.url : this.url,
+                body: options && options.body != null ? options.body : this.body,
+                status: options && options.status != null ? options.status : this.status,
+                headers: options && options.headers != null ? options.headers : this.headers,
+                statusText: options && options.statusText != null ? options.statusText : this.statusText,
+                type: options && options.type != null ? options.type : this.type,
+                url: options && options.url != null ? options.url : this.url,
             });
         };
         return ResponseOptions;
@@ -741,7 +704,7 @@
             if (this._body === null) {
                 return '';
             }
-            if (isJsObject(this._body)) {
+            if (typeof this._body === 'object') {
                 return JSON.stringify(this._body, null, 2);
             }
             return this._body.toString();
@@ -824,8 +787,9 @@
     var JSONP_HOME = '__ng_jsonp__';
     var _jsonpConnections = null;
     function _getJsonpConnections() {
+        var w = typeof window == 'object' ? window : {};
         if (_jsonpConnections === null) {
-            _jsonpConnections = global$1[JSONP_HOME] = {};
+            _jsonpConnections = w[JSONP_HOME] = {};
         }
         return _jsonpConnections;
     }
@@ -923,14 +887,14 @@
                     _dom.cleanup(script);
                     if (!_this._finished) {
                         var responseOptions_1 = new ResponseOptions({ body: JSONP_ERR_NO_CALLBACK, type: exports.ResponseType.Error, url: url });
-                        if (isPresent(baseResponseOptions)) {
+                        if (baseResponseOptions) {
                             responseOptions_1 = baseResponseOptions.merge(responseOptions_1);
                         }
                         responseObserver.error(new Response(responseOptions_1));
                         return;
                     }
                     var responseOptions = new ResponseOptions({ body: _this._responseData, url: url });
-                    if (isPresent(_this.baseResponseOptions)) {
+                    if (_this.baseResponseOptions) {
                         responseOptions = _this.baseResponseOptions.merge(responseOptions);
                     }
                     responseObserver.next(new Response(responseOptions));
@@ -942,7 +906,7 @@
                     _this.readyState = exports.ReadyState.Done;
                     _dom.cleanup(script);
                     var responseOptions = new ResponseOptions({ body: error.message, type: exports.ResponseType.Error });
-                    if (isPresent(baseResponseOptions)) {
+                    if (baseResponseOptions) {
                         responseOptions = baseResponseOptions.merge(responseOptions);
                     }
                     responseObserver.error(new Response(responseOptions));
@@ -954,9 +918,7 @@
                     _this.readyState = exports.ReadyState.Cancelled;
                     script.removeEventListener('load', onLoad);
                     script.removeEventListener('error', onError);
-                    if (isPresent(script)) {
-                        _this._dom.cleanup(script);
-                    }
+                    _this._dom.cleanup(script);
                 };
             });
         }
@@ -1253,16 +1215,14 @@
     var RequestOptions = (function () {
         function RequestOptions(_a) {
             var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, withCredentials = _b.withCredentials, responseType = _b.responseType;
-            this.method = isPresent(method) ? normalizeMethodName(method) : null;
-            this.headers = isPresent(headers) ? headers : null;
-            this.body = isPresent(body) ? body : null;
-            this.url = isPresent(url) ? url : null;
-            this.search = isPresent(search) ?
-                (typeof search === 'string' ? new URLSearchParams((search)) :
-                    (search)) :
-                null;
-            this.withCredentials = isPresent(withCredentials) ? withCredentials : null;
-            this.responseType = isPresent(responseType) ? responseType : null;
+            this.method = method != null ? normalizeMethodName(method) : null;
+            this.headers = headers != null ? headers : null;
+            this.body = body != null ? body : null;
+            this.url = url != null ? url : null;
+            this.search =
+                search != null ? (typeof search === 'string' ? new URLSearchParams(search) : search) : null;
+            this.withCredentials = withCredentials != null ? withCredentials : null;
+            this.responseType = responseType != null ? responseType : null;
         }
         /**
          * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
@@ -1291,17 +1251,17 @@
          */
         RequestOptions.prototype.merge = function (options) {
             return new RequestOptions({
-                method: options && isPresent(options.method) ? options.method : this.method,
-                headers: options && isPresent(options.headers) ? options.headers : this.headers,
-                body: options && isPresent(options.body) ? options.body : this.body,
-                url: options && isPresent(options.url) ? options.url : this.url,
-                search: options && isPresent(options.search) ?
+                method: options && options.method != null ? options.method : this.method,
+                headers: options && options.headers != null ? options.headers : this.headers,
+                body: options && options.body != null ? options.body : this.body,
+                url: options && options.url != null ? options.url : this.url,
+                search: options && options.search != null ?
                     (typeof options.search === 'string' ? new URLSearchParams(options.search) :
-                        (options.search).clone()) :
+                        options.search.clone()) :
                     this.search,
-                withCredentials: options && isPresent(options.withCredentials) ? options.withCredentials :
+                withCredentials: options && options.withCredentials != null ? options.withCredentials :
                     this.withCredentials,
-                responseType: options && isPresent(options.responseType) ? options.responseType :
+                responseType: options && options.responseType != null ? options.responseType :
                     this.responseType
             });
         };
@@ -1425,7 +1385,7 @@
             // TODO: assert that url is present
             var url = requestOptions.url;
             this.url = requestOptions.url;
-            if (isPresent(requestOptions.search)) {
+            if (requestOptions.search) {
                 var search = requestOptions.search.toString();
                 if (search.length > 0) {
                     var prefix = '?';
@@ -1440,7 +1400,6 @@
             this.method = normalizeMethodName(requestOptions.method);
             // TODO(jeffbcross): implement behavior
             // Defaults to 'omit', consistent with browser
-            // TODO(jeffbcross): implement behavior
             this.headers = new Headers(requestOptions.headers);
             this.contentType = this.detectContentType();
             this.withCredentials = requestOptions.withCredentials;
@@ -1539,7 +1498,7 @@
     }
     function mergeOptions(defaultOpts, providedOpts, method, url) {
         var newOptions = defaultOpts;
-        if (isPresent(providedOpts)) {
+        if (providedOpts) {
             // Hack so Dart can used named parameters
             return newOptions.merge(new RequestOptions({
                 method: providedOpts.method || method,
@@ -1551,12 +1510,7 @@
                 responseType: providedOpts.responseType
             }));
         }
-        if (isPresent(method)) {
-            return newOptions.merge(new RequestOptions({ method: method, url: url }));
-        }
-        else {
-            return newOptions.merge(new RequestOptions({ url: url }));
-        }
+        return newOptions.merge(new RequestOptions({ method: method, url: url }));
     }
     /**
      * Performs http requests using `XMLHttpRequest` as the default backend.

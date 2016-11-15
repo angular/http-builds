@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 import { Body } from './body';
 import { ContentType, RequestMethod, ResponseContentType } from './enums';
 import { Headers } from './headers';
