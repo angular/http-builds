@@ -157,7 +157,7 @@
             { type: _angular_core.Injectable },
         ];
         /** @nocollapse */
-        MockBackend.ctorParameters = [];
+        MockBackend.ctorParameters = function () { return []; };
         return MockBackend;
     }());
 
