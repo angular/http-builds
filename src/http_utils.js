@@ -6,10 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { RequestMethod } from './enums';
-/**
- * @param {?} method
- * @return {?}
- */
 export function normalizeMethodName(method) {
     if (typeof method !== 'string')
         return method;
@@ -31,11 +27,7 @@ export function normalizeMethodName(method) {
     }
     throw new Error("Invalid request method. The method \"" + method + "\" is not supported.");
 }
-export var /** @type {?} */ isSuccess = function (status) { return (status >= 200 && status < 300); };
-/**
- * @param {?} xhr
- * @return {?}
- */
+export var isSuccess = function (status) { return (status >= 200 && status < 300); };
 export function getResponseURL(xhr) {
     if ('responseURL' in xhr) {
         return xhr.responseURL;
@@ -45,13 +37,9 @@ export function getResponseURL(xhr) {
     }
     return;
 }
-/**
- * @param {?} input
- * @return {?}
- */
 export function stringToArrayBuffer(input) {
-    var /** @type {?} */ view = new Uint16Array(input.length);
-    for (var /** @type {?} */ i = 0, /** @type {?} */ strLen = input.length; i < strLen; i++) {
+    var view = new Uint16Array(input.length);
+    for (var i = 0, strLen = input.length; i < strLen; i++) {
         view[i] = input.charCodeAt(i);
     }
     return view.buffer;
