@@ -5,10 +5,10 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+import { Version } from '@angular/core';
 /**
- * @module
- * @description
- * Entry point for all public APIs of the http package.
+ * @stable
  */
+export var /** @type {?} */ VERSION = new Version('2.3.0-beta.0-e628b66');
 export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams } from './src/index';
 //# sourceMappingURL=index.js.map
