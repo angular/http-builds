@@ -14,31 +14,19 @@ import { BaseRequestOptions, RequestOptions } from './base_request_options';
 import { BaseResponseOptions, ResponseOptions } from './base_response_options';
 import { Http, Jsonp } from './http';
 import { XSRFStrategy } from './interfaces';
-/**
- * @return {?}
- */
 export function _createDefaultCookieXSRFStrategy() {
     return new CookieXSRFStrategy();
 }
-/**
- * @param {?} xhrBackend
- * @param {?} requestOptions
- * @return {?}
- */
 export function httpFactory(xhrBackend, requestOptions) {
     return new Http(xhrBackend, requestOptions);
 }
-/**
- * @param {?} jsonpBackend
- * @param {?} requestOptions
- * @return {?}
- */
 export function jsonpFactory(jsonpBackend, requestOptions) {
     return new Jsonp(jsonpBackend, requestOptions);
 }
 /**
- *  The module that includes http's providers
-  * *
+ * The module that includes http's providers
+ *
+ * @experimental
  */
 export var HttpModule = (function () {
     function HttpModule() {
@@ -58,21 +46,13 @@ export var HttpModule = (function () {
                 },] },
     ];
     /** @nocollapse */
-    HttpModule.ctorParameters = function () { return []; };
+    HttpModule.ctorParameters = [];
     return HttpModule;
 }());
-function HttpModule_tsickle_Closure_declarations() {
-    /** @type {?} */
-    HttpModule.decorators;
-    /**
-     * @nocollapse
-     * @type {?}
-     */
-    HttpModule.ctorParameters;
-}
 /**
- *  The module that includes jsonp's providers
-  * *
+ * The module that includes jsonp's providers
+ *
+ * @experimental
  */
 export var JsonpModule = (function () {
     function JsonpModule() {
@@ -91,16 +71,7 @@ export var JsonpModule = (function () {
                 },] },
     ];
     /** @nocollapse */
-    JsonpModule.ctorParameters = function () { return []; };
+    JsonpModule.ctorParameters = [];
     return JsonpModule;
 }());
-function JsonpModule_tsickle_Closure_declarations() {
-    /** @type {?} */
-    JsonpModule.decorators;
-    /**
-     * @nocollapse
-     * @type {?}
-     */
-    JsonpModule.ctorParameters;
-}
 //# sourceMappingURL=http_module.js.map

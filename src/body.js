@@ -8,20 +8,18 @@
 import { stringToArrayBuffer } from './http_utils';
 import { URLSearchParams } from './url_search_params';
 /**
- *  HTTP request body used by both {@link Request} and {@link Response}
-  * https://fetch.spec.whatwg.org/#body
- * @abstract
+ * HTTP request body used by both {@link Request} and {@link Response}
+ * https://fetch.spec.whatwg.org/#body
  */
 export var Body = (function () {
     function Body() {
     }
     /**
-     *  Attempts to return body as parsed `JSON` object, or raises an exception.
-     * @return {?}
+     * Attempts to return body as parsed `JSON` object, or raises an exception.
      */
     Body.prototype.json = function () {
         if (typeof this._body === 'string') {
-            return JSON.parse(/** @type {?} */ (this._body));
+            return JSON.parse(this._body);
         }
         if (this._body instanceof ArrayBuffer) {
             return JSON.parse(this.text());
@@ -29,15 +27,14 @@ export var Body = (function () {
         return this._body;
     };
     /**
-     *  Returns the body as a string, presuming `toString()` can be called on the response body.
-     * @return {?}
+     * Returns the body as a string, presuming `toString()` can be called on the response body.
      */
     Body.prototype.text = function () {
         if (this._body instanceof URLSearchParams) {
             return this._body.toString();
         }
         if (this._body instanceof ArrayBuffer) {
-            return String.fromCharCode.apply(null, new Uint16Array(/** @type {?} */ (this._body)));
+            return String.fromCharCode.apply(null, new Uint16Array(this._body));
         }
         if (this._body === null) {
             return '';
@@ -48,22 +45,20 @@ export var Body = (function () {
         return this._body.toString();
     };
     /**
-     *  Return the body as an ArrayBuffer
-     * @return {?}
+     * Return the body as an ArrayBuffer
      */
     Body.prototype.arrayBuffer = function () {
         if (this._body instanceof ArrayBuffer) {
-            return (this._body);
+            return this._body;
         }
         return stringToArrayBuffer(this.text());
     };
     /**
-     *  Returns the request's body as a Blob, assuming that body exists.
-     * @return {?}
-     */
+      * Returns the request's body as a Blob, assuming that body exists.
+      */
     Body.prototype.blob = function () {
         if (this._body instanceof Blob) {
-            return (this._body);
+            return this._body;
         }
         if (this._body instanceof ArrayBuffer) {
             return new Blob([this._body]);
@@ -72,8 +67,4 @@ export var Body = (function () {
     };
     return Body;
 }());
-function Body_tsickle_Closure_declarations() {
-    /** @type {?} */
-    Body.prototype._body;
-}
 //# sourceMappingURL=body.js.map
