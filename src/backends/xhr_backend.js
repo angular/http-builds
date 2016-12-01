@@ -15,18 +15,22 @@ import { getResponseURL, isSuccess } from '../http_utils';
 import { XSRFStrategy } from '../interfaces';
 import { Response } from '../static_response';
 import { BrowserXhr } from './browser_xhr';
-var XSSI_PREFIX = /^\)\]\}',?\n/;
+var /** @type {?} */ XSSI_PREFIX = /^\)\]\}',?\n/;
 /**
- * Creates connections using `XMLHttpRequest`. Given a fully-qualified
- * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the
- * request.
- *
- * This class would typically not be created or interacted with directly inside applications, though
- * the {@link MockConnection} may be interacted with in tests.
- *
- * @experimental
+ *  Creates connections using `XMLHttpRequest`. Given a fully-qualified
+  * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the
+  * request.
+  * *
+  * This class would typically not be created or interacted with directly inside applications, though
+  * the {@link MockConnection} may be interacted with in tests.
+  * *
  */
 export var XHRConnection = (function () {
+    /**
+     * @param {?} req
+     * @param {?} browserXHR
+     * @param {?=} baseResponseOptions
+     */
     function XHRConnection(req, browserXHR, baseResponseOptions) {
         var _this = this;
         this.request = req;
@@ -122,6 +126,11 @@ export var XHRConnection = (function () {
             };
         });
     }
+    /**
+     * @param {?} req
+     * @param {?} _xhr
+     * @return {?}
+     */
     XHRConnection.prototype.setDetectedContentType = function (req /** TODO Request */, _xhr /** XMLHttpRequest */) {
         // Skip if a custom Content-Type header is provided
         if (req.headers != null && req.headers.get('Content-Type') != null) {
@@ -141,7 +150,7 @@ export var XHRConnection = (function () {
                 _xhr.setRequestHeader('content-type', 'text/plain');
                 break;
             case ContentType.BLOB:
-                var blob = req.blob();
+                var /** @type {?} */ blob = req.blob();
                 if (blob.type) {
                     _xhr.setRequestHeader('content-type', blob.type);
                 }
@@ -150,64 +159,96 @@ export var XHRConnection = (function () {
     };
     return XHRConnection;
 }());
+function XHRConnection_tsickle_Closure_declarations() {
+    /** @type {?} */
+    XHRConnection.prototype.request;
+    /**
+     * Response {@link EventEmitter} which emits a single {@link Response} value on load event of
+     * `XMLHttpRequest`.
+     * @type {?}
+     */
+    XHRConnection.prototype.response;
+    /** @type {?} */
+    XHRConnection.prototype.readyState;
+}
 /**
- * `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application
- * using a cookie. See {@link https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)}
- * for more information on XSRF.
- *
- * Applications can configure custom cookie and header names by binding an instance of this class
- * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
- * details.
- *
- * @experimental
+ *  `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application
+  * using a cookie. See {@link https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)}
+  * for more information on XSRF.
+  * *
+  * Applications can configure custom cookie and header names by binding an instance of this class
+  * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
+  * details.
+  * *
  */
 export var CookieXSRFStrategy = (function () {
+    /**
+     * @param {?=} _cookieName
+     * @param {?=} _headerName
+     */
     function CookieXSRFStrategy(_cookieName, _headerName) {
         if (_cookieName === void 0) { _cookieName = 'XSRF-TOKEN'; }
         if (_headerName === void 0) { _headerName = 'X-XSRF-TOKEN'; }
         this._cookieName = _cookieName;
         this._headerName = _headerName;
     }
+    /**
+     * @param {?} req
+     * @return {?}
+     */
     CookieXSRFStrategy.prototype.configureRequest = function (req) {
-        var xsrfToken = __platform_browser_private__.getDOM().getCookie(this._cookieName);
+        var /** @type {?} */ xsrfToken = __platform_browser_private__.getDOM().getCookie(this._cookieName);
         if (xsrfToken) {
             req.headers.set(this._headerName, xsrfToken);
         }
     };
     return CookieXSRFStrategy;
 }());
+function CookieXSRFStrategy_tsickle_Closure_declarations() {
+    /** @type {?} */
+    CookieXSRFStrategy.prototype._cookieName;
+    /** @type {?} */
+    CookieXSRFStrategy.prototype._headerName;
+}
 /**
- * Creates {@link XHRConnection} instances.
- *
- * This class would typically not be used by end users, but could be
- * overridden if a different backend implementation should be used,
- * such as in a node backend.
- *
- * ### Example
- *
- * ```
- * import {Http, MyNodeBackend, HTTP_PROVIDERS, BaseRequestOptions} from '@angular/http';
- * @Component({
- *   viewProviders: [
- *     HTTP_PROVIDERS,
- *     {provide: Http, useFactory: (backend, options) => {
- *       return new Http(backend, options);
- *     }, deps: [MyNodeBackend, BaseRequestOptions]}]
- * })
- * class MyComponent {
- *   constructor(http:Http) {
- *     http.request('people.json').subscribe(res => this.people = res.json());
- *   }
- * }
- * ```
- * @experimental
+ *  Creates {@link XHRConnection} instances.
+  * *
+  * This class would typically not be used by end users, but could be
+  * overridden if a different backend implementation should be used,
+  * such as in a node backend.
+  * *
+  * ### Example
+  * *
+  * ```
+  * import {Http, MyNodeBackend, HTTP_PROVIDERS, BaseRequestOptions} from '@angular/http';
+  * viewProviders: [
+  * HTTP_PROVIDERS,
+  * {provide: Http, useFactory: (backend, options) => {
+  * return new Http(backend, options);
+  * }, deps: [MyNodeBackend, BaseRequestOptions]}]
+  * })
+  * class MyComponent {
+  * constructor(http:Http) {
+  * http.request('people.json').subscribe(res => this.people = res.json());
+  * }
+  * }
+  * ```
  */
 export var XHRBackend = (function () {
+    /**
+     * @param {?} _browserXHR
+     * @param {?} _baseResponseOptions
+     * @param {?} _xsrfStrategy
+     */
     function XHRBackend(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
         this._browserXHR = _browserXHR;
         this._baseResponseOptions = _baseResponseOptions;
         this._xsrfStrategy = _xsrfStrategy;
     }
+    /**
+     * @param {?} request
+     * @return {?}
+     */
     XHRBackend.prototype.createConnection = function (request) {
         this._xsrfStrategy.configureRequest(request);
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
@@ -216,11 +257,26 @@ export var XHRBackend = (function () {
         { type: Injectable },
     ];
     /** @nocollapse */
-    XHRBackend.ctorParameters = [
+    XHRBackend.ctorParameters = function () { return [
         { type: BrowserXhr, },
         { type: ResponseOptions, },
         { type: XSRFStrategy, },
-    ];
+    ]; };
     return XHRBackend;
 }());
+function XHRBackend_tsickle_Closure_declarations() {
+    /** @type {?} */
+    XHRBackend.decorators;
+    /**
+     * @nocollapse
+     * @type {?}
+     */
+    XHRBackend.ctorParameters;
+    /** @type {?} */
+    XHRBackend.prototype._browserXHR;
+    /** @type {?} */
+    XHRBackend.prototype._baseResponseOptions;
+    /** @type {?} */
+    XHRBackend.prototype._xsrfStrategy;
+}
 //# sourceMappingURL=xhr_backend.js.map
