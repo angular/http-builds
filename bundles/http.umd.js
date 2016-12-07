@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.3.0-rc.0-25c2141
+ * @license Angular v2.3.0-rc.0-986abbe
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1186,9 +1186,13 @@
                     responseObserver.error(new Response(responseOptions));
                 };
                 _this.setDetectedContentType(req, _xhr);
-                if (req.headers != null) {
-                    req.headers.forEach(function (values, name) { return _xhr.setRequestHeader(name, values.join(',')); });
+                if (req.headers == null) {
+                    req.headers = new Headers();
                 }
+                if (!req.headers.has('Accept')) {
+                    req.headers.append('Accept', 'application/json, text/plain, */*');
+                }
+                req.headers.forEach(function (values, name) { return _xhr.setRequestHeader(name, values.join(',')); });
                 // Select the correct buffer type to store the response
                 if (req.responseType != null && _xhr.responseType != null) {
                     switch (req.responseType) {
@@ -1991,7 +1995,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('2.3.0-rc.0-25c2141');
+    var /** @type {?} */ VERSION = new _angular_core.Version('2.3.0-rc.0-986abbe');
 
     exports.VERSION = VERSION;
     exports.BrowserXhr = BrowserXhr;
