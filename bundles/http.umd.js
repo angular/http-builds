@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.3.0-rc.0-986abbe
+ * @license Angular v2.3.0-rc.0-16efb13
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1995,9 +1995,8 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('2.3.0-rc.0-986abbe');
+    var /** @type {?} */ VERSION = new _angular_core.Version('2.3.0-rc.0-16efb13');
 
-    exports.VERSION = VERSION;
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
     exports.JSONPConnection = JSONPConnection;
@@ -2024,5 +2023,6 @@
     exports.Response = Response;
     exports.QueryEncoder = QueryEncoder;
     exports.URLSearchParams = URLSearchParams;
+    exports.VERSION = VERSION;
 
 }));
