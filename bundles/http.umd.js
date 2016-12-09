@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.3.0-90c2235
+ * @license Angular v2.3.0-08ff2e5
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -783,7 +783,7 @@
             if (this._body instanceof ArrayBuffer) {
                 return String.fromCharCode.apply(null, new Uint16Array(/** @type {?} */ (this._body)));
             }
-            if (this._body === null) {
+            if (this._body == null) {
                 return '';
             }
             if (typeof this._body === 'object') {
@@ -2052,7 +2052,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('2.3.0-90c2235');
+    var /** @type {?} */ VERSION = new _angular_core.Version('2.3.0-08ff2e5');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
