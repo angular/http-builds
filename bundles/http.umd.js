@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.3.0-56dce0e
+ * @license Angular v2.3.0-2e500cc
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1439,7 +1439,7 @@
         RequestOptions.prototype.merge = function (options) {
             return new RequestOptions({
                 method: options && options.method != null ? options.method : this.method,
-                headers: options && options.headers != null ? options.headers : this.headers,
+                headers: options && options.headers != null ? options.headers : new Headers(this.headers),
                 body: options && options.body != null ? options.body : this.body,
                 url: options && options.url != null ? options.url : this.url,
                 params: options && this._mergeSearchParams(options.params || options.search),
@@ -2052,7 +2052,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('2.3.0-56dce0e');
+    var /** @type {?} */ VERSION = new _angular_core.Version('2.3.0-2e500cc');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
