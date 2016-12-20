@@ -47,13 +47,7 @@ export declare abstract class XSRFStrategy {
 export interface RequestOptionsArgs {
     url?: string;
     method?: string | RequestMethod;
-    /** @deprecated from 4.0.0. Use params instead. */
-    search?: string | URLSearchParams | {
-        [key: string]: any | any[];
-    };
-    params?: string | URLSearchParams | {
-        [key: string]: any | any[];
-    };
+    search?: string | URLSearchParams;
     headers?: Headers;
     body?: any;
     withCredentials?: boolean;
