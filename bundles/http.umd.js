@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.4.0-6efdf84
+ * @license Angular v4.0.0-beta.0-171a9bd
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1385,16 +1385,30 @@
          * @param {?=} __0
          */
         function RequestOptions(_a) {
-            var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, withCredentials = _b.withCredentials, responseType = _b.responseType;
+            var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, params = _b.params, withCredentials = _b.withCredentials, responseType = _b.responseType;
             this.method = method != null ? normalizeMethodName(method) : null;
             this.headers = headers != null ? headers : null;
             this.body = body != null ? body : null;
             this.url = url != null ? url : null;
-            this.search =
-                search != null ? (typeof search === 'string' ? new URLSearchParams(search) : search) : null;
+            this.params = this._mergeSearchParams(params || search);
             this.withCredentials = withCredentials != null ? withCredentials : null;
             this.responseType = responseType != null ? responseType : null;
         }
+        Object.defineProperty(RequestOptions.prototype, "search", {
+            /**
+             * @deprecated from 4.0.0. Use params instead.
+             * @return {?}
+             */
+            get: function () { return this.params; },
+            /**
+             * @deprecated from 4.0.0. Use params instead.
+             * @param {?} params
+             * @return {?}
+             */
+            set: function (params) { this.params = params; },
+            enumerable: true,
+            configurable: true
+        });
         /**
          *  Creates a copy of the `RequestOptions` instance, using the optional input as values to override
           * existing values. This method will not change the values of the instance on which it is being
@@ -1428,15 +1442,58 @@
                 headers: options && options.headers != null ? options.headers : new Headers(this.headers),
                 body: options && options.body != null ? options.body : this.body,
                 url: options && options.url != null ? options.url : this.url,
-                search: options && options.search != null ?
-                    (typeof options.search === 'string' ? new URLSearchParams(options.search) :
-                        options.search.clone()) :
-                    this.search,
+                params: options && this._mergeSearchParams(options.params || options.search),
                 withCredentials: options && options.withCredentials != null ? options.withCredentials :
                     this.withCredentials,
                 responseType: options && options.responseType != null ? options.responseType :
                     this.responseType
             });
+        };
+        /**
+         * @param {?} params
+         * @return {?}
+         */
+        RequestOptions.prototype._mergeSearchParams = function (params) {
+            if (!params)
+                return this.params;
+            if (params instanceof URLSearchParams) {
+                return params.clone();
+            }
+            if (typeof params === 'string') {
+                return new URLSearchParams(params);
+            }
+            return this._parseParams(params);
+        };
+        /**
+         * @param {?=} objParams
+         * @return {?}
+         */
+        RequestOptions.prototype._parseParams = function (objParams) {
+            var _this = this;
+            if (objParams === void 0) { objParams = {}; }
+            var /** @type {?} */ params = new URLSearchParams();
+            Object.keys(objParams).forEach(function (key) {
+                var /** @type {?} */ value = objParams[key];
+                if (Array.isArray(value)) {
+                    value.forEach(function (item) { return _this._appendParam(key, item, params); });
+                }
+                else {
+                    _this._appendParam(key, value, params);
+                }
+            });
+            return params;
+        };
+        /**
+         * @param {?} key
+         * @param {?} value
+         * @param {?} params
+         * @return {?}
+         */
+        RequestOptions.prototype._appendParam = function (key, value, params) {
+            if (typeof value !== 'string') {
+                value = JSON.stringify(value);
+            }
+            params.append(key, value);
         };
         return RequestOptions;
     }());
@@ -1557,15 +1614,15 @@
             // TODO: assert that url is present
             var url = requestOptions.url;
             this.url = requestOptions.url;
-            if (requestOptions.search) {
-                var search = requestOptions.search.toString();
-                if (search.length > 0) {
+            if (requestOptions.params) {
+                var params = requestOptions.params.toString();
+                if (params.length > 0) {
                     var prefix = '?';
                     if (this.url.indexOf('?') != -1) {
                         prefix = (this.url[this.url.length - 1] == '&') ? '' : '&';
                     }
                     // TODO: just delete search-query-looking string in url?
-                    this.url = url + prefix + search;
+                    this.url = url + prefix + params;
                 }
             }
             this._body = requestOptions.body;
@@ -1995,7 +2052,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('2.4.0-6efdf84');
+    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.0-171a9bd');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
