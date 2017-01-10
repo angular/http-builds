@@ -49,13 +49,20 @@ export declare class RequestOptions {
     /**
      * Search parameters to be included in a {@link Request}.
      */
+    params: URLSearchParams;
+    /**
+     * @deprecated from 4.0.0. Use params instead.
+     */
+    /**
+     * @deprecated from 4.0.0. Use params instead.
+     */
     search: URLSearchParams;
     /**
      * Enable use credentials for a {@link Request}.
      */
     withCredentials: boolean;
     responseType: ResponseContentType;
-    constructor({method, headers, body, url, search, withCredentials, responseType}?: RequestOptionsArgs);
+    constructor({method, headers, body, url, search, params, withCredentials, responseType}?: RequestOptionsArgs);
     /**
      * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
      * existing values. This method will not change the values of the instance on which it is being
@@ -82,6 +89,9 @@ export declare class RequestOptions {
      * ```
      */
     merge(options?: RequestOptionsArgs): RequestOptions;
+    private _mergeSearchParams(params);
+    private _parseParams(objParams?);
+    private _appendParam(key, value, params);
 }
 /**
  * Subclass of {@link RequestOptions}, with default values.
