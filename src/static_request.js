@@ -62,15 +62,15 @@ export var Request = (function (_super) {
         // TODO: assert that url is present
         var url = requestOptions.url;
         this.url = requestOptions.url;
-        if (requestOptions.params) {
-            var params = requestOptions.params.toString();
-            if (params.length > 0) {
+        if (requestOptions.search) {
+            var search = requestOptions.search.toString();
+            if (search.length > 0) {
                 var prefix = '?';
                 if (this.url.indexOf('?') != -1) {
                     prefix = (this.url[this.url.length - 1] == '&') ? '' : '&';
                 }
                 // TODO: just delete search-query-looking string in url?
-                this.url = url + prefix + params;
+                this.url = url + prefix + search;
             }
         }
         this._body = requestOptions.body;
