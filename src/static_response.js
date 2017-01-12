@@ -55,7 +55,7 @@ export var Response = (function (_super) {
 }(Body));
 function Response_tsickle_Closure_declarations() {
     /**
-     * One of "basic", "cors", "default", "error, or "opaque".
+     * One of "basic", "cors", "default", "error", or "opaque".
      * *
      * Defaults to "default".
      * @type {?}
