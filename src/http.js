@@ -5,7 +5,12 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Injectable } from '@angular/core/index';
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+import { Injectable } from '@angular/core';
 import { RequestOptions } from './base_request_options';
 import { RequestMethod } from './enums';
 import { ConnectionBackend } from './interfaces';
@@ -26,7 +31,7 @@ function httpRequest(backend, request) {
  * @return {?}
  */
 function mergeOptions(defaultOpts, providedOpts, method, url) {
-    const /** @type {?} */ newOptions = defaultOpts;
+    var /** @type {?} */ newOptions = defaultOpts;
     if (providedOpts) {
         // Hack so Dart can used named parameters
         return newOptions.merge(new RequestOptions({
@@ -39,7 +44,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
             responseType: providedOpts.responseType
         }));
     }
-    return newOptions.merge(new RequestOptions({ method, url }));
+    return newOptions.merge(new RequestOptions({ method: method, url: url }));
 }
 /**
  * Performs http requests using `XMLHttpRequest` as the default backend.
@@ -101,12 +106,12 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  *
  * \@experimental
  */
-export class Http {
+export var Http = (function () {
     /**
      * @param {?} _backend
      * @param {?} _defaultOptions
      */
-    constructor(_backend, _defaultOptions) {
+    function Http(_backend, _defaultOptions) {
         this._backend = _backend;
         this._defaultOptions = _defaultOptions;
     }
@@ -119,8 +124,8 @@ export class Http {
      * @param {?=} options
      * @return {?}
      */
-    request(url, options) {
-        let /** @type {?} */ responseObservable;
+    Http.prototype.request = function (url, options) {
+        var /** @type {?} */ responseObservable;
         if (typeof url === 'string') {
             responseObservable = httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, /** @type {?} */ (url))));
         }
@@ -131,16 +136,16 @@ export class Http {
             throw new Error('First argument must be a url string or Request instance.');
         }
         return responseObservable;
-    }
+    };
     /**
      * Performs a request with `get` http method.
      * @param {?} url
      * @param {?=} options
      * @return {?}
      */
-    get(url, options) {
+    Http.prototype.get = function (url, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, url)));
-    }
+    };
     /**
      * Performs a request with `post` http method.
      * @param {?} url
@@ -148,9 +153,9 @@ export class Http {
      * @param {?=} options
      * @return {?}
      */
-    post(url, body, options) {
+    Http.prototype.post = function (url, body, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Post, url)));
-    }
+    };
     /**
      * Performs a request with `put` http method.
      * @param {?} url
@@ -158,18 +163,18 @@ export class Http {
      * @param {?=} options
      * @return {?}
      */
-    put(url, body, options) {
+    Http.prototype.put = function (url, body, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Put, url)));
-    }
+    };
     /**
      * Performs a request with `delete` http method.
      * @param {?} url
      * @param {?=} options
      * @return {?}
      */
-    delete(url, options) {
+    Http.prototype.delete = function (url, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Delete, url)));
-    }
+    };
     /**
      * Performs a request with `patch` http method.
      * @param {?} url
@@ -177,36 +182,37 @@ export class Http {
      * @param {?=} options
      * @return {?}
      */
-    patch(url, body, options) {
+    Http.prototype.patch = function (url, body, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions.merge(new RequestOptions({ body: body })), options, RequestMethod.Patch, url)));
-    }
+    };
     /**
      * Performs a request with `head` http method.
      * @param {?} url
      * @param {?=} options
      * @return {?}
      */
-    head(url, options) {
+    Http.prototype.head = function (url, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Head, url)));
-    }
+    };
     /**
      * Performs a request with `options` http method.
      * @param {?} url
      * @param {?=} options
      * @return {?}
      */
-    options(url, options) {
+    Http.prototype.options = function (url, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Options, url)));
-    }
-}
-Http.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-Http.ctorParameters = () => [
-    { type: ConnectionBackend, },
-    { type: RequestOptions, },
-];
+    };
+    Http.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    Http.ctorParameters = function () { return [
+        { type: ConnectionBackend, },
+        { type: RequestOptions, },
+    ]; };
+    return Http;
+}());
 function Http_tsickle_Closure_declarations() {
     /** @type {?} */
     Http.decorators;
@@ -223,13 +229,14 @@ function Http_tsickle_Closure_declarations() {
 /**
  * \@experimental
  */
-export class Jsonp extends Http {
+export var Jsonp = (function (_super) {
+    __extends(Jsonp, _super);
     /**
      * @param {?} backend
      * @param {?} defaultOptions
      */
-    constructor(backend, defaultOptions) {
-        super(backend, defaultOptions);
+    function Jsonp(backend, defaultOptions) {
+        _super.call(this, backend, defaultOptions);
     }
     /**
      * Performs any type of http request. First argument is required, and can either be a url or
@@ -248,8 +255,8 @@ export class Jsonp extends Http {
      * @param {?=} options
      * @return {?}
      */
-    request(url, options) {
-        let /** @type {?} */ responseObservable;
+    Jsonp.prototype.request = function (url, options) {
+        var /** @type {?} */ responseObservable;
         if (typeof url === 'string') {
             url =
                 new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, /** @type {?} */ (url)));
@@ -264,16 +271,17 @@ export class Jsonp extends Http {
             throw new Error('First argument must be a url string or Request instance.');
         }
         return responseObservable;
-    }
-}
-Jsonp.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-Jsonp.ctorParameters = () => [
-    { type: ConnectionBackend, },
-    { type: RequestOptions, },
-];
+    };
+    Jsonp.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    Jsonp.ctorParameters = function () { return [
+        { type: ConnectionBackend, },
+        { type: RequestOptions, },
+    ]; };
+    return Jsonp;
+}(Http));
 function Jsonp_tsickle_Closure_declarations() {
     /** @type {?} */
     Jsonp.decorators;

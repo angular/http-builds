@@ -5,7 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Injectable } from '@angular/core/index';
+import { Injectable } from '@angular/core';
 /**
  * A backend for http that uses the `XMLHttpRequest` browser API.
  *
@@ -13,19 +13,20 @@ import { Injectable } from '@angular/core/index';
  *
  * \@experimental
  */
-export class BrowserXhr {
-    constructor() {
+export var BrowserXhr = (function () {
+    function BrowserXhr() {
     }
     /**
      * @return {?}
      */
-    build() { return ((new XMLHttpRequest())); }
-}
-BrowserXhr.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-BrowserXhr.ctorParameters = () => [];
+    BrowserXhr.prototype.build = function () { return ((new XMLHttpRequest())); };
+    BrowserXhr.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    BrowserXhr.ctorParameters = function () { return []; };
+    return BrowserXhr;
+}());
 function BrowserXhr_tsickle_Closure_declarations() {
     /** @type {?} */
     BrowserXhr.decorators;

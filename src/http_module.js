@@ -5,7 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { NgModule } from '@angular/core/index';
+import { NgModule } from '@angular/core';
 import { BrowserJsonp } from './backends/browser_jsonp';
 import { BrowserXhr } from './backends/browser_xhr';
 import { JSONPBackend, JSONPBackend_ } from './backends/jsonp_backend';
@@ -41,24 +41,27 @@ export function jsonpFactory(jsonpBackend, requestOptions) {
  *
  * \@experimental
  */
-export class HttpModule {
-}
-HttpModule.decorators = [
-    { type: NgModule, args: [{
-                providers: [
-                    // TODO(pascal): use factory type annotations once supported in DI
-                    // issue: https://github.com/angular/angular/issues/3183
-                    { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
-                    BrowserXhr,
-                    { provide: RequestOptions, useClass: BaseRequestOptions },
-                    { provide: ResponseOptions, useClass: BaseResponseOptions },
-                    XHRBackend,
-                    { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
-                ],
-            },] },
-];
-/** @nocollapse */
-HttpModule.ctorParameters = () => [];
+export var HttpModule = (function () {
+    function HttpModule() {
+    }
+    HttpModule.decorators = [
+        { type: NgModule, args: [{
+                    providers: [
+                        // TODO(pascal): use factory type annotations once supported in DI
+                        // issue: https://github.com/angular/angular/issues/3183
+                        { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
+                        BrowserXhr,
+                        { provide: RequestOptions, useClass: BaseRequestOptions },
+                        { provide: ResponseOptions, useClass: BaseResponseOptions },
+                        XHRBackend,
+                        { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
+                    ],
+                },] },
+    ];
+    /** @nocollapse */
+    HttpModule.ctorParameters = function () { return []; };
+    return HttpModule;
+}());
 function HttpModule_tsickle_Closure_declarations() {
     /** @type {?} */
     HttpModule.decorators;
@@ -73,23 +76,26 @@ function HttpModule_tsickle_Closure_declarations() {
  *
  * \@experimental
  */
-export class JsonpModule {
-}
-JsonpModule.decorators = [
-    { type: NgModule, args: [{
-                providers: [
-                    // TODO(pascal): use factory type annotations once supported in DI
-                    // issue: https://github.com/angular/angular/issues/3183
-                    { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
-                    BrowserJsonp,
-                    { provide: RequestOptions, useClass: BaseRequestOptions },
-                    { provide: ResponseOptions, useClass: BaseResponseOptions },
-                    { provide: JSONPBackend, useClass: JSONPBackend_ },
-                ],
-            },] },
-];
-/** @nocollapse */
-JsonpModule.ctorParameters = () => [];
+export var JsonpModule = (function () {
+    function JsonpModule() {
+    }
+    JsonpModule.decorators = [
+        { type: NgModule, args: [{
+                    providers: [
+                        // TODO(pascal): use factory type annotations once supported in DI
+                        // issue: https://github.com/angular/angular/issues/3183
+                        { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
+                        BrowserJsonp,
+                        { provide: RequestOptions, useClass: BaseRequestOptions },
+                        { provide: ResponseOptions, useClass: BaseResponseOptions },
+                        { provide: JSONPBackend, useClass: JSONPBackend_ },
+                    ],
+                },] },
+    ];
+    /** @nocollapse */
+    JsonpModule.ctorParameters = function () { return []; };
+    return JsonpModule;
+}());
 function JsonpModule_tsickle_Closure_declarations() {
     /** @type {?} */
     JsonpModule.decorators;

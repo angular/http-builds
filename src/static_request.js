@@ -5,6 +5,11 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 import { Body } from './body';
 import { ContentType } from './enums';
 import { Headers } from './headers';
@@ -49,19 +54,20 @@ import { URLSearchParams } from './url_search_params';
  *
  * \@experimental
  */
-export class Request extends Body {
+export var Request = (function (_super) {
+    __extends(Request, _super);
     /**
      * @param {?} requestOptions
      */
-    constructor(requestOptions) {
-        super();
+    function Request(requestOptions) {
+        _super.call(this);
         // TODO: assert that url is present
-        const url = requestOptions.url;
+        var url = requestOptions.url;
         this.url = requestOptions.url;
         if (requestOptions.params) {
-            const params = requestOptions.params.toString();
+            var params = requestOptions.params.toString();
             if (params.length > 0) {
-                let prefix = '?';
+                var prefix = '?';
                 if (this.url.indexOf('?') != -1) {
                     prefix = (this.url[this.url.length - 1] == '&') ? '' : '&';
                 }
@@ -82,7 +88,7 @@ export class Request extends Body {
      * Returns the content type enum based on header options.
      * @return {?}
      */
-    detectContentType() {
+    Request.prototype.detectContentType = function () {
         switch (this.headers.get('content-type')) {
             case 'application/json':
                 return ContentType.JSON;
@@ -98,12 +104,12 @@ export class Request extends Body {
             default:
                 return this.detectContentTypeFromBody();
         }
-    }
+    };
     /**
      * Returns the content type of request's body based on its type.
      * @return {?}
      */
-    detectContentTypeFromBody() {
+    Request.prototype.detectContentTypeFromBody = function () {
         if (this._body == null) {
             return ContentType.NONE;
         }
@@ -125,13 +131,13 @@ export class Request extends Body {
         else {
             return ContentType.TEXT;
         }
-    }
+    };
     /**
      * Returns the request's body according to its type. If body is undefined, return
      * null.
      * @return {?}
      */
-    getBody() {
+    Request.prototype.getBody = function () {
         switch (this.contentType) {
             case ContentType.JSON:
                 return this.text();
@@ -148,8 +154,9 @@ export class Request extends Body {
             default:
                 return null;
         }
-    }
-}
+    };
+    return Request;
+}(Body));
 function Request_tsickle_Closure_declarations() {
     /**
      * Http method with which to perform the request.
@@ -182,9 +189,9 @@ function Request_tsickle_Closure_declarations() {
      */
     Request.prototype.responseType;
 }
-const /** @type {?} */ noop = function () { };
-const /** @type {?} */ w = typeof window == 'object' ? window : noop;
-const /** @type {?} */ FormData = ((w) /** TODO #9100 */)['FormData'] || noop;
-const /** @type {?} */ Blob = ((w) /** TODO #9100 */)['Blob'] || noop;
-export const /** @type {?} */ ArrayBuffer = ((w) /** TODO #9100 */)['ArrayBuffer'] || noop;
+var /** @type {?} */ noop = function () { };
+var /** @type {?} */ w = typeof window == 'object' ? window : noop;
+var /** @type {?} */ FormData = ((w) /** TODO #9100 */)['FormData'] || noop;
+var /** @type {?} */ Blob = ((w) /** TODO #9100 */)['Blob'] || noop;
+export var /** @type {?} */ ArrayBuffer = ((w) /** TODO #9100 */)['ArrayBuffer'] || noop;
 //# sourceMappingURL=static_request.js.map

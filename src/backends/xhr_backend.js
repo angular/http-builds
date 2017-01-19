@@ -5,8 +5,8 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Injectable } from '@angular/core/index';
-import { __platform_browser_private__ } from '@angular/platform-browser/index';
+import { Injectable } from '@angular/core';
+import { __platform_browser_private__ } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { ResponseOptions } from '../base_response_options';
 import { ContentType, RequestMethod, ResponseContentType, ResponseType } from '../enums';
@@ -15,7 +15,7 @@ import { getResponseURL, isSuccess } from '../http_utils';
 import { XSRFStrategy } from '../interfaces';
 import { Response } from '../static_response';
 import { BrowserXhr } from './browser_xhr';
-const /** @type {?} */ XSSI_PREFIX = /^\)\]\}',?\n/;
+var /** @type {?} */ XSSI_PREFIX = /^\)\]\}',?\n/;
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified
  * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the
@@ -26,25 +26,26 @@ const /** @type {?} */ XSSI_PREFIX = /^\)\]\}',?\n/;
  *
  * \@experimental
  */
-export class XHRConnection {
+export var XHRConnection = (function () {
     /**
      * @param {?} req
      * @param {?} browserXHR
      * @param {?=} baseResponseOptions
      */
-    constructor(req, browserXHR, baseResponseOptions) {
+    function XHRConnection(req, browserXHR, baseResponseOptions) {
+        var _this = this;
         this.request = req;
-        this.response = new Observable((responseObserver) => {
-            const _xhr = browserXHR.build();
+        this.response = new Observable(function (responseObserver) {
+            var _xhr = browserXHR.build();
             _xhr.open(RequestMethod[req.method].toUpperCase(), req.url);
             if (req.withCredentials != null) {
                 _xhr.withCredentials = req.withCredentials;
             }
             // load event handler
-            const onLoad = () => {
+            var onLoad = function () {
                 // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
-                let status = _xhr.status === 1223 ? 204 : _xhr.status;
-                let body = null;
+                var status = _xhr.status === 1223 ? 204 : _xhr.status;
+                var body = null;
                 // HTTP 204 means no content
                 if (status !== 204) {
                     // responseText is the old-school way of retrieving response (supported by IE8 & 9)
@@ -62,15 +63,15 @@ export class XHRConnection {
                 if (status === 0) {
                     status = body ? 200 : 0;
                 }
-                const headers = Headers.fromResponseHeaderString(_xhr.getAllResponseHeaders());
+                var headers = Headers.fromResponseHeaderString(_xhr.getAllResponseHeaders());
                 // IE 9 does not provide the way to get URL of response
-                const url = getResponseURL(_xhr) || req.url;
-                const statusText = _xhr.statusText || 'OK';
-                let responseOptions = new ResponseOptions({ body, status, headers, statusText, url });
+                var url = getResponseURL(_xhr) || req.url;
+                var statusText = _xhr.statusText || 'OK';
+                var responseOptions = new ResponseOptions({ body: body, status: status, headers: headers, statusText: statusText, url: url });
                 if (baseResponseOptions != null) {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }
-                const response = new Response(responseOptions);
+                var response = new Response(responseOptions);
                 response.ok = isSuccess(status);
                 if (response.ok) {
                     responseObserver.next(response);
@@ -81,8 +82,8 @@ export class XHRConnection {
                 responseObserver.error(response);
             };
             // error event handler
-            const onError = (err) => {
-                let responseOptions = new ResponseOptions({
+            var onError = function (err) {
+                var responseOptions = new ResponseOptions({
                     body: err,
                     type: ResponseType.Error,
                     status: _xhr.status,
@@ -93,14 +94,14 @@ export class XHRConnection {
                 }
                 responseObserver.error(new Response(responseOptions));
             };
-            this.setDetectedContentType(req, _xhr);
+            _this.setDetectedContentType(req, _xhr);
             if (req.headers == null) {
                 req.headers = new Headers();
             }
             if (!req.headers.has('Accept')) {
                 req.headers.append('Accept', 'application/json, text/plain, */*');
             }
-            req.headers.forEach((values, name) => _xhr.setRequestHeader(name, values.join(',')));
+            req.headers.forEach(function (values, name) { return _xhr.setRequestHeader(name, values.join(',')); });
             // Select the correct buffer type to store the response
             if (req.responseType != null && _xhr.responseType != null) {
                 switch (req.responseType) {
@@ -122,8 +123,8 @@ export class XHRConnection {
             }
             _xhr.addEventListener('load', onLoad);
             _xhr.addEventListener('error', onError);
-            _xhr.send(this.request.getBody());
-            return () => {
+            _xhr.send(_this.request.getBody());
+            return function () {
                 _xhr.removeEventListener('load', onLoad);
                 _xhr.removeEventListener('error', onError);
                 _xhr.abort();
@@ -135,7 +136,7 @@ export class XHRConnection {
      * @param {?} _xhr
      * @return {?}
      */
-    setDetectedContentType(req /** TODO Request */, _xhr /** XMLHttpRequest */) {
+    XHRConnection.prototype.setDetectedContentType = function (req /** TODO Request */, _xhr /** XMLHttpRequest */) {
         // Skip if a custom Content-Type header is provided
         if (req.headers != null && req.headers.get('Content-Type') != null) {
             return;
@@ -154,14 +155,15 @@ export class XHRConnection {
                 _xhr.setRequestHeader('content-type', 'text/plain');
                 break;
             case ContentType.BLOB:
-                const /** @type {?} */ blob = req.blob();
+                var /** @type {?} */ blob = req.blob();
                 if (blob.type) {
                     _xhr.setRequestHeader('content-type', blob.type);
                 }
                 break;
         }
-    }
-}
+    };
+    return XHRConnection;
+}());
 function XHRConnection_tsickle_Closure_declarations() {
     /** @type {?} */
     XHRConnection.prototype.request;
@@ -185,12 +187,14 @@ function XHRConnection_tsickle_Closure_declarations() {
  *
  * \@experimental
  */
-export class CookieXSRFStrategy {
+export var CookieXSRFStrategy = (function () {
     /**
      * @param {?=} _cookieName
      * @param {?=} _headerName
      */
-    constructor(_cookieName = 'XSRF-TOKEN', _headerName = 'X-XSRF-TOKEN') {
+    function CookieXSRFStrategy(_cookieName, _headerName) {
+        if (_cookieName === void 0) { _cookieName = 'XSRF-TOKEN'; }
+        if (_headerName === void 0) { _headerName = 'X-XSRF-TOKEN'; }
         this._cookieName = _cookieName;
         this._headerName = _headerName;
     }
@@ -198,13 +202,14 @@ export class CookieXSRFStrategy {
      * @param {?} req
      * @return {?}
      */
-    configureRequest(req) {
-        const /** @type {?} */ xsrfToken = __platform_browser_private__.getDOM().getCookie(this._cookieName);
+    CookieXSRFStrategy.prototype.configureRequest = function (req) {
+        var /** @type {?} */ xsrfToken = __platform_browser_private__.getDOM().getCookie(this._cookieName);
         if (xsrfToken) {
             req.headers.set(this._headerName, xsrfToken);
         }
-    }
-}
+    };
+    return CookieXSRFStrategy;
+}());
 function CookieXSRFStrategy_tsickle_Closure_declarations() {
     /** @type {?} */
     CookieXSRFStrategy.prototype._cookieName;
@@ -237,13 +242,13 @@ function CookieXSRFStrategy_tsickle_Closure_declarations() {
  * ```
  * \@experimental
  */
-export class XHRBackend {
+export var XHRBackend = (function () {
     /**
      * @param {?} _browserXHR
      * @param {?} _baseResponseOptions
      * @param {?} _xsrfStrategy
      */
-    constructor(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
+    function XHRBackend(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
         this._browserXHR = _browserXHR;
         this._baseResponseOptions = _baseResponseOptions;
         this._xsrfStrategy = _xsrfStrategy;
@@ -252,20 +257,21 @@ export class XHRBackend {
      * @param {?} request
      * @return {?}
      */
-    createConnection(request) {
+    XHRBackend.prototype.createConnection = function (request) {
         this._xsrfStrategy.configureRequest(request);
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
-    }
-}
-XHRBackend.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-XHRBackend.ctorParameters = () => [
-    { type: BrowserXhr, },
-    { type: ResponseOptions, },
-    { type: XSRFStrategy, },
-];
+    };
+    XHRBackend.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    XHRBackend.ctorParameters = function () { return [
+        { type: BrowserXhr, },
+        { type: ResponseOptions, },
+        { type: XSRFStrategy, },
+    ]; };
+    return XHRBackend;
+}());
 function XHRBackend_tsickle_Closure_declarations() {
     /** @type {?} */
     XHRBackend.decorators;

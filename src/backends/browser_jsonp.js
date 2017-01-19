@@ -5,76 +5,79 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Injectable } from '@angular/core/index';
-let /** @type {?} */ _nextRequestId = 0;
-export const /** @type {?} */ JSONP_HOME = '__ng_jsonp__';
-let /** @type {?} */ _jsonpConnections = null;
+import { Injectable } from '@angular/core';
+var /** @type {?} */ _nextRequestId = 0;
+export var /** @type {?} */ JSONP_HOME = '__ng_jsonp__';
+var /** @type {?} */ _jsonpConnections = null;
 /**
  * @return {?}
  */
 function _getJsonpConnections() {
-    const /** @type {?} */ w = typeof window == 'object' ? window : {};
+    var /** @type {?} */ w = typeof window == 'object' ? window : {};
     if (_jsonpConnections === null) {
         _jsonpConnections = w[JSONP_HOME] = {};
     }
     return _jsonpConnections;
 }
-export class BrowserJsonp {
+export var BrowserJsonp = (function () {
+    function BrowserJsonp() {
+    }
     /**
      * @param {?} url
      * @return {?}
      */
-    build(url) {
-        const /** @type {?} */ node = document.createElement('script');
+    BrowserJsonp.prototype.build = function (url) {
+        var /** @type {?} */ node = document.createElement('script');
         node.src = url;
         return node;
-    }
+    };
     /**
      * @return {?}
      */
-    nextRequestID() { return `__req${_nextRequestId++}`; }
+    BrowserJsonp.prototype.nextRequestID = function () { return "__req" + _nextRequestId++; };
     /**
      * @param {?} id
      * @return {?}
      */
-    requestCallback(id) { return `${JSONP_HOME}.${id}.finished`; }
+    BrowserJsonp.prototype.requestCallback = function (id) { return JSONP_HOME + "." + id + ".finished"; };
     /**
      * @param {?} id
      * @param {?} connection
      * @return {?}
      */
-    exposeConnection(id, connection) {
-        const /** @type {?} */ connections = _getJsonpConnections();
+    BrowserJsonp.prototype.exposeConnection = function (id, connection) {
+        var /** @type {?} */ connections = _getJsonpConnections();
         connections[id] = connection;
-    }
+    };
     /**
      * @param {?} id
      * @return {?}
      */
-    removeConnection(id) {
-        const /** @type {?} */ connections = _getJsonpConnections();
+    BrowserJsonp.prototype.removeConnection = function (id) {
+        var /** @type {?} */ connections = _getJsonpConnections();
         connections[id] = null;
-    }
+    };
     /**
      * @param {?} node
      * @return {?}
      */
-    send(node) { document.body.appendChild(/** @type {?} */ ((node))); }
+    BrowserJsonp.prototype.send = function (node) { document.body.appendChild(/** @type {?} */ ((node))); };
     /**
      * @param {?} node
      * @return {?}
      */
-    cleanup(node) {
+    BrowserJsonp.prototype.cleanup = function (node) {
         if (node.parentNode) {
             node.parentNode.removeChild(/** @type {?} */ ((node)));
         }
-    }
-}
-BrowserJsonp.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-BrowserJsonp.ctorParameters = () => [];
+    };
+    BrowserJsonp.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    BrowserJsonp.ctorParameters = function () { return []; };
+    return BrowserJsonp;
+}());
 function BrowserJsonp_tsickle_Closure_declarations() {
     /** @type {?} */
     BrowserJsonp.decorators;

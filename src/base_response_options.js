@@ -5,7 +5,12 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Injectable } from '@angular/core/index';
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+import { Injectable } from '@angular/core';
 import { ResponseType } from './enums';
 import { Headers } from './headers';
 /**
@@ -36,11 +41,12 @@ import { Headers } from './headers';
  *
  * \@experimental
  */
-export class ResponseOptions {
+export var ResponseOptions = (function () {
     /**
      * @param {?=} __0
      */
-    constructor({ body, status, headers, statusText, type, url } = {}) {
+    function ResponseOptions(_a) {
+        var _b = _a === void 0 ? {} : _a, body = _b.body, status = _b.status, headers = _b.headers, statusText = _b.statusText, type = _b.type, url = _b.url;
         this.body = body != null ? body : null;
         this.status = status != null ? status : null;
         this.headers = headers != null ? headers : null;
@@ -75,7 +81,7 @@ export class ResponseOptions {
      * @param {?=} options
      * @return {?}
      */
-    merge(options) {
+    ResponseOptions.prototype.merge = function (options) {
         return new ResponseOptions({
             body: options && options.body != null ? options.body : this.body,
             status: options && options.status != null ? options.status : this.status,
@@ -84,8 +90,9 @@ export class ResponseOptions {
             type: options && options.type != null ? options.type : this.type,
             url: options && options.url != null ? options.url : this.url,
         });
-    }
-}
+    };
+    return ResponseOptions;
+}());
 function ResponseOptions_tsickle_Closure_declarations() {
     /**
      * String, Object, ArrayBuffer or Blob representing the body of the {\@link Response}.
@@ -162,16 +169,18 @@ function ResponseOptions_tsickle_Closure_declarations() {
  *
  * \@experimental
  */
-export class BaseResponseOptions extends ResponseOptions {
-    constructor() {
-        super({ status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() });
+export var BaseResponseOptions = (function (_super) {
+    __extends(BaseResponseOptions, _super);
+    function BaseResponseOptions() {
+        _super.call(this, { status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() });
     }
-}
-BaseResponseOptions.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-BaseResponseOptions.ctorParameters = () => [];
+    BaseResponseOptions.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    BaseResponseOptions.ctorParameters = function () { return []; };
+    return BaseResponseOptions;
+}(ResponseOptions));
 function BaseResponseOptions_tsickle_Closure_declarations() {
     /** @type {?} */
     BaseResponseOptions.decorators;
