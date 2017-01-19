@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-beta.3-635bf02
+ * @license Angular v4.0.0-beta.3-1200cf2
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1669,7 +1669,7 @@
                 case 'text/html':
                     return ContentType.TEXT;
                 case 'application/octet-stream':
-                    return ContentType.BLOB;
+                    return this._body instanceof ArrayBuffer$1 ? ContentType.ARRAY_BUFFER : ContentType.BLOB;
                 default:
                     return this.detectContentTypeFromBody();
             }
@@ -1694,7 +1694,7 @@
             else if (this._body instanceof ArrayBuffer$1) {
                 return ContentType.ARRAY_BUFFER;
             }
-            else if (this._body && typeof this._body == 'object') {
+            else if (this._body && typeof this._body === 'object') {
                 return ContentType.JSON;
             }
             else {
@@ -2076,7 +2076,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.3-635bf02');
+    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.3-1200cf2');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
