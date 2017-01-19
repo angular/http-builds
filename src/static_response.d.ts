@@ -31,7 +31,7 @@ import { Headers } from './headers';
  */
 export declare class Response extends Body {
     /**
-     * One of "basic", "cors", "default", "error, or "opaque".
+     * One of "basic", "cors", "default", "error", or "opaque".
      *
      * Defaults to "default".
      */

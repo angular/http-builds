@@ -19,7 +19,6 @@ function _getJsonpConnections() {
     }
     return _jsonpConnections;
 }
-// Make sure not to evaluate this in a non-browser environment!
 export var BrowserJsonp = (function () {
     function BrowserJsonp() {
     }
