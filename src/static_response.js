@@ -5,11 +5,6 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 import { Body } from './body';
 /**
  * Creates `Response` instances from provided values.
@@ -31,13 +26,12 @@ import { Body } from './body';
  *
  * \@experimental
  */
-export var Response = (function (_super) {
-    __extends(Response, _super);
+export class Response extends Body {
     /**
      * @param {?} responseOptions
      */
-    function Response(responseOptions) {
-        _super.call(this);
+    constructor(responseOptions) {
+        super();
         this._body = responseOptions.body;
         this.status = responseOptions.status;
         this.ok = (this.status >= 200 && this.status <= 299);
@@ -49,11 +43,10 @@ export var Response = (function (_super) {
     /**
      * @return {?}
      */
-    Response.prototype.toString = function () {
-        return "Response with status: " + this.status + " " + this.statusText + " for URL: " + this.url;
-    };
-    return Response;
-}(Body));
+    toString() {
+        return `Response with status: ${this.status} ${this.statusText} for URL: ${this.url}`;
+    }
+}
 function Response_tsickle_Closure_declarations() {
     /**
      * One of "basic", "cors", "default", "error", or "opaque".

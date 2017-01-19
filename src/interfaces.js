@@ -14,28 +14,22 @@
  * \@experimental
  * @abstract
  */
-export var ConnectionBackend = (function () {
-    function ConnectionBackend() {
-    }
+export class ConnectionBackend {
     /**
      * @abstract
      * @param {?} request
      * @return {?}
      */
-    ConnectionBackend.prototype.createConnection = function (request) { };
-    return ConnectionBackend;
-}());
+    createConnection(request) { }
+}
 /**
  * Abstract class from which real connections are derived.
  *
  * \@experimental
  * @abstract
  */
-export var Connection = (function () {
-    function Connection() {
-    }
-    return Connection;
-}());
+export class Connection {
+}
 function Connection_tsickle_Closure_declarations() {
     /** @type {?} */
     Connection.prototype.readyState;
@@ -50,15 +44,12 @@ function Connection_tsickle_Closure_declarations() {
  * \@experimental
  * @abstract
  */
-export var XSRFStrategy = (function () {
-    function XSRFStrategy() {
-    }
+export class XSRFStrategy {
     /**
      * @abstract
      * @param {?} req
      * @return {?}
      */
-    XSRFStrategy.prototype.configureRequest = function (req) { };
-    return XSRFStrategy;
-}());
+    configureRequest(req) { }
+}
 //# sourceMappingURL=interfaces.js.map

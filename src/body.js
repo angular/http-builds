@@ -12,14 +12,12 @@ import { URLSearchParams } from './url_search_params';
  * https://fetch.spec.whatwg.org/#body
  * @abstract
  */
-export var Body = (function () {
-    function Body() {
-    }
+export class Body {
     /**
      * Attempts to return body as parsed `JSON` object, or raises an exception.
      * @return {?}
      */
-    Body.prototype.json = function () {
+    json() {
         if (typeof this._body === 'string') {
             return JSON.parse(/** @type {?} */ (this._body));
         }
@@ -27,12 +25,12 @@ export var Body = (function () {
             return JSON.parse(this.text());
         }
         return this._body;
-    };
+    }
     /**
      * Returns the body as a string, presuming `toString()` can be called on the response body.
      * @return {?}
      */
-    Body.prototype.text = function () {
+    text() {
         if (this._body instanceof URLSearchParams) {
             return this._body.toString();
         }
@@ -46,22 +44,22 @@ export var Body = (function () {
             return JSON.stringify(this._body, null, 2);
         }
         return this._body.toString();
-    };
+    }
     /**
      * Return the body as an ArrayBuffer
      * @return {?}
      */
-    Body.prototype.arrayBuffer = function () {
+    arrayBuffer() {
         if (this._body instanceof ArrayBuffer) {
             return (this._body);
         }
         return stringToArrayBuffer(this.text());
-    };
+    }
     /**
      * Returns the request's body as a Blob, assuming that body exists.
      * @return {?}
      */
-    Body.prototype.blob = function () {
+    blob() {
         if (this._body instanceof Blob) {
             return (this._body);
         }
@@ -69,9 +67,8 @@ export var Body = (function () {
             return new Blob([this._body]);
         }
         throw new Error('The request body isn\'t either a blob or an array buffer');
-    };
-    return Body;
-}());
+    }
+}
 function Body_tsickle_Closure_declarations() {
     /**
      * \@internal

@@ -7,15 +7,14 @@
  * @param {?=} rawParams
  * @return {?}
  */
-function paramParser(rawParams) {
-    if (rawParams === void 0) { rawParams = ''; }
-    var /** @type {?} */ map = new Map();
+function paramParser(rawParams = '') {
+    const /** @type {?} */ map = new Map();
     if (rawParams.length > 0) {
-        var /** @type {?} */ params = rawParams.split('&');
-        params.forEach(function (param) {
-            var /** @type {?} */ eqIdx = param.indexOf('=');
-            var _a = eqIdx == -1 ? [param, ''] : [param.slice(0, eqIdx), param.slice(eqIdx + 1)], key = _a[0], val = _a[1];
-            var /** @type {?} */ list = map.get(key) || [];
+        const /** @type {?} */ params = rawParams.split('&');
+        params.forEach((param) => {
+            const /** @type {?} */ eqIdx = param.indexOf('=');
+            const [key, val] = eqIdx == -1 ? [param, ''] : [param.slice(0, eqIdx), param.slice(eqIdx + 1)];
+            const /** @type {?} */ list = map.get(key) || [];
             list.push(val);
             map.set(key, list);
         });
@@ -26,21 +25,18 @@ function paramParser(rawParams) {
  * \@experimental
  *
  */
-export var QueryEncoder = (function () {
-    function QueryEncoder() {
-    }
+export class QueryEncoder {
     /**
      * @param {?} k
      * @return {?}
      */
-    QueryEncoder.prototype.encodeKey = function (k) { return standardEncoding(k); };
+    encodeKey(k) { return standardEncoding(k); }
     /**
      * @param {?} v
      * @return {?}
      */
-    QueryEncoder.prototype.encodeValue = function (v) { return standardEncoding(v); };
-    return QueryEncoder;
-}());
+    encodeValue(v) { return standardEncoding(v); }
+}
 /**
  * @param {?} v
  * @return {?}
@@ -92,14 +88,12 @@ function standardEncoding(v) {
  * ```
  * \@experimental
  */
-export var URLSearchParams = (function () {
+export class URLSearchParams {
     /**
      * @param {?=} rawParams
      * @param {?=} queryEncoder
      */
-    function URLSearchParams(rawParams, queryEncoder) {
-        if (rawParams === void 0) { rawParams = ''; }
-        if (queryEncoder === void 0) { queryEncoder = new QueryEncoder(); }
+    constructor(rawParams = '', queryEncoder = new QueryEncoder()) {
         this.rawParams = rawParams;
         this.queryEncoder = queryEncoder;
         this.paramsMap = paramParser(rawParams);
@@ -107,116 +101,111 @@ export var URLSearchParams = (function () {
     /**
      * @return {?}
      */
-    URLSearchParams.prototype.clone = function () {
-        var /** @type {?} */ clone = new URLSearchParams('', this.queryEncoder);
+    clone() {
+        const /** @type {?} */ clone = new URLSearchParams('', this.queryEncoder);
         clone.appendAll(this);
         return clone;
-    };
+    }
     /**
      * @param {?} param
      * @return {?}
      */
-    URLSearchParams.prototype.has = function (param) { return this.paramsMap.has(param); };
+    has(param) { return this.paramsMap.has(param); }
     /**
      * @param {?} param
      * @return {?}
      */
-    URLSearchParams.prototype.get = function (param) {
-        var /** @type {?} */ storedParam = this.paramsMap.get(param);
+    get(param) {
+        const /** @type {?} */ storedParam = this.paramsMap.get(param);
         return Array.isArray(storedParam) ? storedParam[0] : null;
-    };
+    }
     /**
      * @param {?} param
      * @return {?}
      */
-    URLSearchParams.prototype.getAll = function (param) { return this.paramsMap.get(param) || []; };
+    getAll(param) { return this.paramsMap.get(param) || []; }
     /**
      * @param {?} param
      * @param {?} val
      * @return {?}
      */
-    URLSearchParams.prototype.set = function (param, val) {
+    set(param, val) {
         if (val === void 0 || val === null) {
             this.delete(param);
             return;
         }
-        var /** @type {?} */ list = this.paramsMap.get(param) || [];
+        const /** @type {?} */ list = this.paramsMap.get(param) || [];
         list.length = 0;
         list.push(val);
         this.paramsMap.set(param, list);
-    };
+    }
     /**
      * @param {?} searchParams
      * @return {?}
      */
-    URLSearchParams.prototype.setAll = function (searchParams) {
-        var _this = this;
-        searchParams.paramsMap.forEach(function (value, param) {
-            var /** @type {?} */ list = _this.paramsMap.get(param) || [];
+    setAll(searchParams) {
+        searchParams.paramsMap.forEach((value, param) => {
+            const /** @type {?} */ list = this.paramsMap.get(param) || [];
             list.length = 0;
             list.push(value[0]);
-            _this.paramsMap.set(param, list);
+            this.paramsMap.set(param, list);
         });
-    };
+    }
     /**
      * @param {?} param
      * @param {?} val
      * @return {?}
      */
-    URLSearchParams.prototype.append = function (param, val) {
+    append(param, val) {
         if (val === void 0 || val === null)
             return;
-        var /** @type {?} */ list = this.paramsMap.get(param) || [];
+        const /** @type {?} */ list = this.paramsMap.get(param) || [];
         list.push(val);
         this.paramsMap.set(param, list);
-    };
+    }
     /**
      * @param {?} searchParams
      * @return {?}
      */
-    URLSearchParams.prototype.appendAll = function (searchParams) {
-        var _this = this;
-        searchParams.paramsMap.forEach(function (value, param) {
-            var /** @type {?} */ list = _this.paramsMap.get(param) || [];
-            for (var /** @type {?} */ i = 0; i < value.length; ++i) {
+    appendAll(searchParams) {
+        searchParams.paramsMap.forEach((value, param) => {
+            const /** @type {?} */ list = this.paramsMap.get(param) || [];
+            for (let /** @type {?} */ i = 0; i < value.length; ++i) {
                 list.push(value[i]);
             }
-            _this.paramsMap.set(param, list);
+            this.paramsMap.set(param, list);
         });
-    };
+    }
     /**
      * @param {?} searchParams
      * @return {?}
      */
-    URLSearchParams.prototype.replaceAll = function (searchParams) {
-        var _this = this;
-        searchParams.paramsMap.forEach(function (value, param) {
-            var /** @type {?} */ list = _this.paramsMap.get(param) || [];
+    replaceAll(searchParams) {
+        searchParams.paramsMap.forEach((value, param) => {
+            const /** @type {?} */ list = this.paramsMap.get(param) || [];
             list.length = 0;
-            for (var /** @type {?} */ i = 0; i < value.length; ++i) {
+            for (let /** @type {?} */ i = 0; i < value.length; ++i) {
                 list.push(value[i]);
             }
-            _this.paramsMap.set(param, list);
+            this.paramsMap.set(param, list);
         });
-    };
+    }
     /**
      * @return {?}
      */
-    URLSearchParams.prototype.toString = function () {
-        var _this = this;
-        var /** @type {?} */ paramsList = [];
-        this.paramsMap.forEach(function (values, k) {
-            values.forEach(function (v) { return paramsList.push(_this.queryEncoder.encodeKey(k) + '=' + _this.queryEncoder.encodeValue(v)); });
+    toString() {
+        const /** @type {?} */ paramsList = [];
+        this.paramsMap.forEach((values, k) => {
+            values.forEach(v => paramsList.push(this.queryEncoder.encodeKey(k) + '=' + this.queryEncoder.encodeValue(v)));
         });
         return paramsList.join('&');
-    };
+    }
     /**
      * @param {?} param
      * @return {?}
      */
-    URLSearchParams.prototype.delete = function (param) { this.paramsMap.delete(param); };
-    return URLSearchParams;
-}());
+    delete(param) { this.paramsMap.delete(param); }
+}
 function URLSearchParams_tsickle_Closure_declarations() {
     /** @type {?} */
     URLSearchParams.prototype.paramsMap;

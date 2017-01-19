@@ -5,12 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core/index';
 import { ResponseType } from './enums';
 import { Headers } from './headers';
 /**
@@ -41,12 +36,11 @@ import { Headers } from './headers';
  *
  * \@experimental
  */
-export var ResponseOptions = (function () {
+export class ResponseOptions {
     /**
      * @param {?=} __0
      */
-    function ResponseOptions(_a) {
-        var _b = _a === void 0 ? {} : _a, body = _b.body, status = _b.status, headers = _b.headers, statusText = _b.statusText, type = _b.type, url = _b.url;
+    constructor({ body, status, headers, statusText, type, url } = {}) {
         this.body = body != null ? body : null;
         this.status = status != null ? status : null;
         this.headers = headers != null ? headers : null;
@@ -81,7 +75,7 @@ export var ResponseOptions = (function () {
      * @param {?=} options
      * @return {?}
      */
-    ResponseOptions.prototype.merge = function (options) {
+    merge(options) {
         return new ResponseOptions({
             body: options && options.body != null ? options.body : this.body,
             status: options && options.status != null ? options.status : this.status,
@@ -90,9 +84,8 @@ export var ResponseOptions = (function () {
             type: options && options.type != null ? options.type : this.type,
             url: options && options.url != null ? options.url : this.url,
         });
-    };
-    return ResponseOptions;
-}());
+    }
+}
 function ResponseOptions_tsickle_Closure_declarations() {
     /**
      * String, Object, ArrayBuffer or Blob representing the body of the {\@link Response}.
@@ -169,18 +162,16 @@ function ResponseOptions_tsickle_Closure_declarations() {
  *
  * \@experimental
  */
-export var BaseResponseOptions = (function (_super) {
-    __extends(BaseResponseOptions, _super);
-    function BaseResponseOptions() {
-        _super.call(this, { status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() });
+export class BaseResponseOptions extends ResponseOptions {
+    constructor() {
+        super({ status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() });
     }
-    BaseResponseOptions.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    BaseResponseOptions.ctorParameters = function () { return []; };
-    return BaseResponseOptions;
-}(ResponseOptions));
+}
+BaseResponseOptions.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+BaseResponseOptions.ctorParameters = () => [];
 function BaseResponseOptions_tsickle_Closure_declarations() {
     /** @type {?} */
     BaseResponseOptions.decorators;

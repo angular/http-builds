@@ -5,12 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core/index';
 import { RequestMethod } from './enums';
 import { Headers } from './headers';
 import { normalizeMethodName } from './http_utils';
@@ -41,12 +36,11 @@ import { URLSearchParams } from './url_search_params';
  *
  * \@experimental
  */
-export var RequestOptions = (function () {
+export class RequestOptions {
     /**
      * @param {?=} __0
      */
-    function RequestOptions(_a) {
-        var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, params = _b.params, withCredentials = _b.withCredentials, responseType = _b.responseType;
+    constructor({ method, headers, body, url, search, params, withCredentials, responseType } = {}) {
         this.method = method != null ? normalizeMethodName(method) : null;
         this.headers = headers != null ? headers : null;
         this.body = body != null ? body : null;
@@ -55,21 +49,17 @@ export var RequestOptions = (function () {
         this.withCredentials = withCredentials != null ? withCredentials : null;
         this.responseType = responseType != null ? responseType : null;
     }
-    Object.defineProperty(RequestOptions.prototype, "search", {
-        /**
-         * @deprecated from 4.0.0. Use params instead.
-         * @return {?}
-         */
-        get: function () { return this.params; },
-        /**
-         * @deprecated from 4.0.0. Use params instead.
-         * @param {?} params
-         * @return {?}
-         */
-        set: function (params) { this.params = params; },
-        enumerable: true,
-        configurable: true
-    });
+    /**
+     * @deprecated from 4.0.0. Use params instead.
+     * @return {?}
+     */
+    get search() { return this.params; }
+    /**
+     * @deprecated from 4.0.0. Use params instead.
+     * @param {?} params
+     * @return {?}
+     */
+    set search(params) { this.params = params; }
     /**
      * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
      * existing values. This method will not change the values of the instance on which it is being
@@ -97,7 +87,7 @@ export var RequestOptions = (function () {
      * @param {?=} options
      * @return {?}
      */
-    RequestOptions.prototype.merge = function (options) {
+    merge(options) {
         return new RequestOptions({
             method: options && options.method != null ? options.method : this.method,
             headers: options && options.headers != null ? options.headers : new Headers(this.headers),
@@ -109,12 +99,12 @@ export var RequestOptions = (function () {
             responseType: options && options.responseType != null ? options.responseType :
                 this.responseType
         });
-    };
+    }
     /**
      * @param {?} params
      * @return {?}
      */
-    RequestOptions.prototype._mergeSearchParams = function (params) {
+    _mergeSearchParams(params) {
         if (!params)
             return this.params;
         if (params instanceof URLSearchParams) {
@@ -124,40 +114,37 @@ export var RequestOptions = (function () {
             return new URLSearchParams(params);
         }
         return this._parseParams(params);
-    };
+    }
     /**
      * @param {?=} objParams
      * @return {?}
      */
-    RequestOptions.prototype._parseParams = function (objParams) {
-        var _this = this;
-        if (objParams === void 0) { objParams = {}; }
-        var /** @type {?} */ params = new URLSearchParams();
-        Object.keys(objParams).forEach(function (key) {
-            var /** @type {?} */ value = objParams[key];
+    _parseParams(objParams = {}) {
+        const /** @type {?} */ params = new URLSearchParams();
+        Object.keys(objParams).forEach((key) => {
+            const /** @type {?} */ value = objParams[key];
             if (Array.isArray(value)) {
-                value.forEach(function (item) { return _this._appendParam(key, item, params); });
+                value.forEach((item) => this._appendParam(key, item, params));
             }
             else {
-                _this._appendParam(key, value, params);
+                this._appendParam(key, value, params);
             }
         });
         return params;
-    };
+    }
     /**
      * @param {?} key
      * @param {?} value
      * @param {?} params
      * @return {?}
      */
-    RequestOptions.prototype._appendParam = function (key, value, params) {
+    _appendParam(key, value, params) {
         if (typeof value !== 'string') {
             value = JSON.stringify(value);
         }
         params.append(key, value);
-    };
-    return RequestOptions;
-}());
+    }
+}
 function RequestOptions_tsickle_Closure_declarations() {
     /**
      * Http method with which to execute a {\@link Request}.
@@ -239,18 +226,16 @@ function RequestOptions_tsickle_Closure_declarations() {
  *
  * \@experimental
  */
-export var BaseRequestOptions = (function (_super) {
-    __extends(BaseRequestOptions, _super);
-    function BaseRequestOptions() {
-        _super.call(this, { method: RequestMethod.Get, headers: new Headers() });
+export class BaseRequestOptions extends RequestOptions {
+    constructor() {
+        super({ method: RequestMethod.Get, headers: new Headers() });
     }
-    BaseRequestOptions.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    BaseRequestOptions.ctorParameters = function () { return []; };
-    return BaseRequestOptions;
-}(RequestOptions));
+}
+BaseRequestOptions.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+BaseRequestOptions.ctorParameters = () => [];
 function BaseRequestOptions_tsickle_Closure_declarations() {
     /** @type {?} */
     BaseRequestOptions.decorators;

@@ -29,9 +29,9 @@ export function normalizeMethodName(method) {
         case 'PATCH':
             return RequestMethod.Patch;
     }
-    throw new Error("Invalid request method. The method \"" + method + "\" is not supported.");
+    throw new Error(`Invalid request method. The method "${method}" is not supported.`);
 }
-export var /** @type {?} */ isSuccess = function (status) { return (status >= 200 && status < 300); };
+export const /** @type {?} */ isSuccess = (status) => (status >= 200 && status < 300);
 /**
  * @param {?} xhr
  * @return {?}
@@ -50,8 +50,8 @@ export function getResponseURL(xhr) {
  * @return {?}
  */
 export function stringToArrayBuffer(input) {
-    var /** @type {?} */ view = new Uint16Array(input.length);
-    for (var /** @type {?} */ i = 0, /** @type {?} */ strLen = input.length; i < strLen; i++) {
+    const /** @type {?} */ view = new Uint16Array(input.length);
+    for (let /** @type {?} */ i = 0, /** @type {?} */ strLen = input.length; i < strLen; i++) {
         view[i] = input.charCodeAt(i);
     }
     return view.buffer;
