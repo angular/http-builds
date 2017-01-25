@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-beta.4-6152eb2
+ * @license Angular v4.0.0-beta.4-b2f9d56
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2076,7 +2076,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.4-6152eb2');
+    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.4-b2f9d56');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
