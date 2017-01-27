@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-beta.5-1e729d7
+ * @license Angular v4.0.0-beta.5-b141a22
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1269,7 +1269,7 @@
     }());
     /**
      * `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application
-     * using a cookie. See {\@link https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)}
+     * using a cookie. See https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
      * for more information on XSRF.
      *
      * Applications can configure custom cookie and header names by binding an instance of this class
@@ -2076,7 +2076,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.5-1e729d7');
+    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.5-b141a22');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
