@@ -37,7 +37,7 @@ export class BrowserJsonp {
      * @param {?} id
      * @return {?}
      */
-    requestCallback(id) { return `${JSONP_HOME}.${id}.finished`; }
+    requestCallback(id) { return `${JSONP_HOME}${id}_finished`; }
     /**
      * @param {?} id
      * @param {?} connection

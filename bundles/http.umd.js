@@ -915,7 +915,7 @@
          * @param {?} id
          * @return {?}
          */
-        BrowserJsonp.prototype.requestCallback = function (id) { return JSONP_HOME + "." + id + ".finished"; };
+        BrowserJsonp.prototype.requestCallback = function (id) { return "" + JSONP_HOME + id + "_finished"; };
         /**
          * @param {?} id
          * @param {?} connection
