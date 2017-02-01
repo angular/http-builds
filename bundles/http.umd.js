@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-beta.5-2205829
+ * @license Angular v4.0.0-beta.5-8270bec
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1767,6 +1767,7 @@
                 method: providedOpts.method || method,
                 url: providedOpts.url || url,
                 search: providedOpts.search,
+                params: providedOpts.params,
                 headers: providedOpts.headers,
                 body: providedOpts.body,
                 withCredentials: providedOpts.withCredentials,
@@ -2076,7 +2077,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.5-2205829');
+    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-beta.5-8270bec');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
