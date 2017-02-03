@@ -1,6 +1,6 @@
 /**
- * @license Angular v2.4.5-7ed39eb
- * (c) 2010-2016 Google, Inc. https://angular.io/
+ * @license Angular v2.4.6-343ee8a
+ * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
 (function (global, factory) {
@@ -915,7 +915,7 @@
          * @param {?} id
          * @return {?}
          */
-        BrowserJsonp.prototype.requestCallback = function (id) { return JSONP_HOME + "." + id + ".finished"; };
+        BrowserJsonp.prototype.requestCallback = function (id) { return "" + JSONP_HOME + id + "_finished"; };
         /**
          * @param {?} id
          * @param {?} connection
@@ -1269,7 +1269,7 @@
     }());
     /**
      * `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application
-     * using a cookie. See {\@link https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)}
+     * using a cookie. See https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
      * for more information on XSRF.
      *
      * Applications can configure custom cookie and header names by binding an instance of this class
@@ -2019,7 +2019,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('2.4.5-7ed39eb');
+    var /** @type {?} */ VERSION = new _angular_core.Version('2.4.6-343ee8a');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
