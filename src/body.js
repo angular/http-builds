@@ -12,7 +12,7 @@ import { URLSearchParams } from './url_search_params';
  * https://fetch.spec.whatwg.org/#body
  * @abstract
  */
-export var Body = (function () {
+var Body = (function () {
     function Body() {
     }
     /**
@@ -72,6 +72,7 @@ export var Body = (function () {
     };
     return Body;
 }());
+export { Body };
 function Body_tsickle_Closure_declarations() {
     /**
      * \@internal

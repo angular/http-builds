@@ -26,7 +26,7 @@ function paramParser(rawParams) {
  * \@experimental
  *
  */
-export var QueryEncoder = (function () {
+var QueryEncoder = (function () {
     function QueryEncoder() {
     }
     /**
@@ -41,6 +41,7 @@ export var QueryEncoder = (function () {
     QueryEncoder.prototype.encodeValue = function (v) { return standardEncoding(v); };
     return QueryEncoder;
 }());
+export { QueryEncoder };
 /**
  * @param {?} v
  * @return {?}
@@ -92,7 +93,7 @@ function standardEncoding(v) {
  * ```
  * \@experimental
  */
-export var URLSearchParams = (function () {
+var URLSearchParams = (function () {
     /**
      * @param {?=} rawParams
      * @param {?=} queryEncoder
@@ -217,6 +218,7 @@ export var URLSearchParams = (function () {
     URLSearchParams.prototype.delete = function (param) { this.paramsMap.delete(param); };
     return URLSearchParams;
 }());
+export { URLSearchParams };
 function URLSearchParams_tsickle_Closure_declarations() {
     /** @type {?} */
     URLSearchParams.prototype.paramsMap;

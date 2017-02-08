@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-beta.6-c33fda2
+ * @license Angular v4.0.0-beta.6-7a4c255
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -206,13 +206,13 @@
             this.connections.next(connection);
             return connection;
         };
-        MockBackend.decorators = [
-            { type: _angular_core.Injectable },
-        ];
-        /** @nocollapse */
-        MockBackend.ctorParameters = function () { return []; };
         return MockBackend;
     }());
+    MockBackend.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    MockBackend.ctorParameters = function () { return []; };
 
     exports.MockConnection = MockConnection;
     exports.MockBackend = MockBackend;

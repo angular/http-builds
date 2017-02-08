@@ -107,7 +107,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  *
  * \@experimental
  */
-export var Http = (function () {
+var Http = (function () {
     /**
      * @param {?} _backend
      * @param {?} _defaultOptions
@@ -204,16 +204,17 @@ export var Http = (function () {
     Http.prototype.options = function (url, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Options, url)));
     };
-    Http.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    Http.ctorParameters = function () { return [
-        { type: ConnectionBackend, },
-        { type: RequestOptions, },
-    ]; };
     return Http;
 }());
+export { Http };
+Http.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+Http.ctorParameters = function () { return [
+    { type: ConnectionBackend, },
+    { type: RequestOptions, },
+]; };
 function Http_tsickle_Closure_declarations() {
     /** @type {?} */
     Http.decorators;
@@ -230,14 +231,14 @@ function Http_tsickle_Closure_declarations() {
 /**
  * \@experimental
  */
-export var Jsonp = (function (_super) {
+var Jsonp = (function (_super) {
     __extends(Jsonp, _super);
     /**
      * @param {?} backend
      * @param {?} defaultOptions
      */
     function Jsonp(backend, defaultOptions) {
-        _super.call(this, backend, defaultOptions);
+        return _super.call(this, backend, defaultOptions) || this;
     }
     /**
      * Performs any type of http request. First argument is required, and can either be a url or
@@ -273,16 +274,17 @@ export var Jsonp = (function (_super) {
         }
         return responseObservable;
     };
-    Jsonp.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    Jsonp.ctorParameters = function () { return [
-        { type: ConnectionBackend, },
-        { type: RequestOptions, },
-    ]; };
     return Jsonp;
 }(Http));
+export { Jsonp };
+Jsonp.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+Jsonp.ctorParameters = function () { return [
+    { type: ConnectionBackend, },
+    { type: RequestOptions, },
+]; };
 function Jsonp_tsickle_Closure_declarations() {
     /** @type {?} */
     Jsonp.decorators;

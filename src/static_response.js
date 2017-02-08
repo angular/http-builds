@@ -31,20 +31,21 @@ import { Body } from './body';
  *
  * \@experimental
  */
-export var Response = (function (_super) {
+var Response = (function (_super) {
     __extends(Response, _super);
     /**
      * @param {?} responseOptions
      */
     function Response(responseOptions) {
-        _super.call(this);
-        this._body = responseOptions.body;
-        this.status = responseOptions.status;
-        this.ok = (this.status >= 200 && this.status <= 299);
-        this.statusText = responseOptions.statusText;
-        this.headers = responseOptions.headers;
-        this.type = responseOptions.type;
-        this.url = responseOptions.url;
+        var _this = _super.call(this) || this;
+        _this._body = responseOptions.body;
+        _this.status = responseOptions.status;
+        _this.ok = (_this.status >= 200 && _this.status <= 299);
+        _this.statusText = responseOptions.statusText;
+        _this.headers = responseOptions.headers;
+        _this.type = responseOptions.type;
+        _this.url = responseOptions.url;
+        return _this;
     }
     /**
      * @return {?}
@@ -54,6 +55,7 @@ export var Response = (function (_super) {
     };
     return Response;
 }(Body));
+export { Response };
 function Response_tsickle_Closure_declarations() {
     /**
      * One of "basic", "cors", "default", "error", or "opaque".

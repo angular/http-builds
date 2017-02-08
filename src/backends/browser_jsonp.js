@@ -19,7 +19,7 @@ function _getJsonpConnections() {
     }
     return _jsonpConnections;
 }
-export var BrowserJsonp = (function () {
+var BrowserJsonp = (function () {
     function BrowserJsonp() {
     }
     /**
@@ -71,13 +71,14 @@ export var BrowserJsonp = (function () {
             node.parentNode.removeChild(/** @type {?} */ ((node)));
         }
     };
-    BrowserJsonp.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    BrowserJsonp.ctorParameters = function () { return []; };
     return BrowserJsonp;
 }());
+export { BrowserJsonp };
+BrowserJsonp.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+BrowserJsonp.ctorParameters = function () { return []; };
 function BrowserJsonp_tsickle_Closure_declarations() {
     /** @type {?} */
     BrowserJsonp.decorators;

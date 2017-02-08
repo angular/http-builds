@@ -26,7 +26,7 @@
  *
  * \@experimental
  */
-export var Headers = (function () {
+var Headers = (function () {
     /**
      * @param {?=} headers
      */
@@ -184,6 +184,7 @@ export var Headers = (function () {
     };
     return Headers;
 }());
+export { Headers };
 function Headers_tsickle_Closure_declarations() {
     /**
      * \@internal header names are lower case

@@ -16,7 +16,7 @@ import { take } from 'rxjs/operator/take';
  *
  * @experimental
  */
-export var MockConnection = (function () {
+var MockConnection = (function () {
     function MockConnection(req) {
         this.response = take.call(new ReplaySubject(1), 1);
         this.readyState = ReadyState.Open;
@@ -80,6 +80,7 @@ export var MockConnection = (function () {
     };
     return MockConnection;
 }());
+export { MockConnection };
 /**
  * A mock backend for testing the {@link Http} service.
  *
@@ -167,7 +168,7 @@ export var MockConnection = (function () {
  *
  * @experimental
  */
-export var MockBackend = (function () {
+var MockBackend = (function () {
     function MockBackend() {
         var _this = this;
         this.connectionsArray = [];
@@ -207,11 +208,12 @@ export var MockBackend = (function () {
         this.connections.next(connection);
         return connection;
     };
-    MockBackend.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    MockBackend.ctorParameters = function () { return []; };
     return MockBackend;
 }());
+export { MockBackend };
+MockBackend.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+MockBackend.ctorParameters = function () { return []; };
 //# sourceMappingURL=mock_backend.js.map

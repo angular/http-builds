@@ -25,7 +25,7 @@ var /** @type {?} */ JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET reque
  * \@experimental
  * @abstract
  */
-export var JSONPConnection = (function () {
+var JSONPConnection = (function () {
     function JSONPConnection() {
     }
     /**
@@ -38,6 +38,7 @@ export var JSONPConnection = (function () {
     JSONPConnection.prototype.finished = function (data) { };
     return JSONPConnection;
 }());
+export { JSONPConnection };
 function JSONPConnection_tsickle_Closure_declarations() {
     /**
      * The {\@link ReadyState} of this request.
@@ -55,7 +56,7 @@ function JSONPConnection_tsickle_Closure_declarations() {
      */
     JSONPConnection.prototype.response;
 }
-export var JSONPConnection_ = (function (_super) {
+var JSONPConnection_ = (function (_super) {
     __extends(JSONPConnection_, _super);
     /**
      * @param {?} req
@@ -63,16 +64,15 @@ export var JSONPConnection_ = (function (_super) {
      * @param {?=} baseResponseOptions
      */
     function JSONPConnection_(req, _dom, baseResponseOptions) {
-        var _this = this;
-        _super.call(this);
-        this._dom = _dom;
-        this.baseResponseOptions = baseResponseOptions;
-        this._finished = false;
+        var _this = _super.call(this) || this;
+        _this._dom = _dom;
+        _this.baseResponseOptions = baseResponseOptions;
+        _this._finished = false;
         if (req.method !== RequestMethod.Get) {
             throw new TypeError(JSONP_ERR_WRONG_METHOD);
         }
-        this.request = req;
-        this.response = new Observable(function (responseObserver) {
+        _this.request = req;
+        _this.response = new Observable(function (responseObserver) {
             _this.readyState = ReadyState.Loading;
             var id = _this._id = _dom.nextRequestID();
             _dom.exposeConnection(id, _this);
@@ -128,6 +128,7 @@ export var JSONPConnection_ = (function (_super) {
                 _this._dom.cleanup(script);
             };
         });
+        return _this;
     }
     /**
      * @param {?=} data
@@ -143,6 +144,7 @@ export var JSONPConnection_ = (function (_super) {
     };
     return JSONPConnection_;
 }(JSONPConnection));
+export { JSONPConnection_ };
 function JSONPConnection__tsickle_Closure_declarations() {
     /** @type {?} */
     JSONPConnection_.prototype._id;
@@ -163,23 +165,25 @@ function JSONPConnection__tsickle_Closure_declarations() {
  * \@experimental
  * @abstract
  */
-export var JSONPBackend = (function (_super) {
+var JSONPBackend = (function (_super) {
     __extends(JSONPBackend, _super);
     function JSONPBackend() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return JSONPBackend;
 }(ConnectionBackend));
-export var JSONPBackend_ = (function (_super) {
+export { JSONPBackend };
+var JSONPBackend_ = (function (_super) {
     __extends(JSONPBackend_, _super);
     /**
      * @param {?} _browserJSONP
      * @param {?} _baseResponseOptions
      */
     function JSONPBackend_(_browserJSONP, _baseResponseOptions) {
-        _super.call(this);
-        this._browserJSONP = _browserJSONP;
-        this._baseResponseOptions = _baseResponseOptions;
+        var _this = _super.call(this) || this;
+        _this._browserJSONP = _browserJSONP;
+        _this._baseResponseOptions = _baseResponseOptions;
+        return _this;
     }
     /**
      * @param {?} request
@@ -188,16 +192,17 @@ export var JSONPBackend_ = (function (_super) {
     JSONPBackend_.prototype.createConnection = function (request) {
         return new JSONPConnection_(request, this._browserJSONP, this._baseResponseOptions);
     };
-    JSONPBackend_.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    JSONPBackend_.ctorParameters = function () { return [
-        { type: BrowserJsonp, },
-        { type: ResponseOptions, },
-    ]; };
     return JSONPBackend_;
 }(JSONPBackend));
+export { JSONPBackend_ };
+JSONPBackend_.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+JSONPBackend_.ctorParameters = function () { return [
+    { type: BrowserJsonp, },
+    { type: ResponseOptions, },
+]; };
 function JSONPBackend__tsickle_Closure_declarations() {
     /** @type {?} */
     JSONPBackend_.decorators;

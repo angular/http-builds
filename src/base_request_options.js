@@ -41,7 +41,7 @@ import { URLSearchParams } from './url_search_params';
  *
  * \@experimental
  */
-export var RequestOptions = (function () {
+var RequestOptions = (function () {
     /**
      * @param {?=} __0
      */
@@ -158,6 +158,7 @@ export var RequestOptions = (function () {
     };
     return RequestOptions;
 }());
+export { RequestOptions };
 function RequestOptions_tsickle_Closure_declarations() {
     /**
      * Http method with which to execute a {\@link Request}.
@@ -239,18 +240,19 @@ function RequestOptions_tsickle_Closure_declarations() {
  *
  * \@experimental
  */
-export var BaseRequestOptions = (function (_super) {
+var BaseRequestOptions = (function (_super) {
     __extends(BaseRequestOptions, _super);
     function BaseRequestOptions() {
-        _super.call(this, { method: RequestMethod.Get, headers: new Headers() });
+        return _super.call(this, { method: RequestMethod.Get, headers: new Headers() }) || this;
     }
-    BaseRequestOptions.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    BaseRequestOptions.ctorParameters = function () { return []; };
     return BaseRequestOptions;
 }(RequestOptions));
+export { BaseRequestOptions };
+BaseRequestOptions.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+BaseRequestOptions.ctorParameters = function () { return []; };
 function BaseRequestOptions_tsickle_Closure_declarations() {
     /** @type {?} */
     BaseRequestOptions.decorators;

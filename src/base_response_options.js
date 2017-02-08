@@ -41,7 +41,7 @@ import { Headers } from './headers';
  *
  * \@experimental
  */
-export var ResponseOptions = (function () {
+var ResponseOptions = (function () {
     /**
      * @param {?=} __0
      */
@@ -93,6 +93,7 @@ export var ResponseOptions = (function () {
     };
     return ResponseOptions;
 }());
+export { ResponseOptions };
 function ResponseOptions_tsickle_Closure_declarations() {
     /**
      * String, Object, ArrayBuffer or Blob representing the body of the {\@link Response}.
@@ -169,18 +170,19 @@ function ResponseOptions_tsickle_Closure_declarations() {
  *
  * \@experimental
  */
-export var BaseResponseOptions = (function (_super) {
+var BaseResponseOptions = (function (_super) {
     __extends(BaseResponseOptions, _super);
     function BaseResponseOptions() {
-        _super.call(this, { status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() });
+        return _super.call(this, { status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() }) || this;
     }
-    BaseResponseOptions.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    BaseResponseOptions.ctorParameters = function () { return []; };
     return BaseResponseOptions;
 }(ResponseOptions));
+export { BaseResponseOptions };
+BaseResponseOptions.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+BaseResponseOptions.ctorParameters = function () { return []; };
 function BaseResponseOptions_tsickle_Closure_declarations() {
     /** @type {?} */
     BaseResponseOptions.decorators;

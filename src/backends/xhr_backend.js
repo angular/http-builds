@@ -26,7 +26,7 @@ var /** @type {?} */ XSSI_PREFIX = /^\)\]\}',?\n/;
  *
  * \@experimental
  */
-export var XHRConnection = (function () {
+var XHRConnection = (function () {
     /**
      * @param {?} req
      * @param {?} browserXHR
@@ -164,6 +164,7 @@ export var XHRConnection = (function () {
     };
     return XHRConnection;
 }());
+export { XHRConnection };
 function XHRConnection_tsickle_Closure_declarations() {
     /** @type {?} */
     XHRConnection.prototype.request;
@@ -187,7 +188,7 @@ function XHRConnection_tsickle_Closure_declarations() {
  *
  * \@experimental
  */
-export var CookieXSRFStrategy = (function () {
+var CookieXSRFStrategy = (function () {
     /**
      * @param {?=} _cookieName
      * @param {?=} _headerName
@@ -210,6 +211,7 @@ export var CookieXSRFStrategy = (function () {
     };
     return CookieXSRFStrategy;
 }());
+export { CookieXSRFStrategy };
 function CookieXSRFStrategy_tsickle_Closure_declarations() {
     /** @type {?} */
     CookieXSRFStrategy.prototype._cookieName;
@@ -242,7 +244,7 @@ function CookieXSRFStrategy_tsickle_Closure_declarations() {
  * ```
  * \@experimental
  */
-export var XHRBackend = (function () {
+var XHRBackend = (function () {
     /**
      * @param {?} _browserXHR
      * @param {?} _baseResponseOptions
@@ -261,17 +263,18 @@ export var XHRBackend = (function () {
         this._xsrfStrategy.configureRequest(request);
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
     };
-    XHRBackend.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    XHRBackend.ctorParameters = function () { return [
-        { type: BrowserXhr, },
-        { type: ResponseOptions, },
-        { type: XSRFStrategy, },
-    ]; };
     return XHRBackend;
 }());
+export { XHRBackend };
+XHRBackend.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+XHRBackend.ctorParameters = function () { return [
+    { type: BrowserXhr, },
+    { type: ResponseOptions, },
+    { type: XSRFStrategy, },
+]; };
 function XHRBackend_tsickle_Closure_declarations() {
     /** @type {?} */
     XHRBackend.decorators;

@@ -13,20 +13,21 @@ import { Injectable } from '@angular/core';
  *
  * \@experimental
  */
-export var BrowserXhr = (function () {
+var BrowserXhr = (function () {
     function BrowserXhr() {
     }
     /**
      * @return {?}
      */
     BrowserXhr.prototype.build = function () { return ((new XMLHttpRequest())); };
-    BrowserXhr.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    BrowserXhr.ctorParameters = function () { return []; };
     return BrowserXhr;
 }());
+export { BrowserXhr };
+BrowserXhr.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+BrowserXhr.ctorParameters = function () { return []; };
 function BrowserXhr_tsickle_Closure_declarations() {
     /** @type {?} */
     BrowserXhr.decorators;

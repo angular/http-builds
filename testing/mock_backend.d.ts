@@ -1,4 +1,3 @@
-
 import { Connection, ConnectionBackend, ReadyState, Request, Response } from '@angular/http';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 /**

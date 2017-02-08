@@ -54,35 +54,36 @@ import { URLSearchParams } from './url_search_params';
  *
  * \@experimental
  */
-export var Request = (function (_super) {
+var Request = (function (_super) {
     __extends(Request, _super);
     /**
      * @param {?} requestOptions
      */
     function Request(requestOptions) {
-        _super.call(this);
+        var _this = _super.call(this) || this;
         // TODO: assert that url is present
         var url = requestOptions.url;
-        this.url = requestOptions.url;
+        _this.url = requestOptions.url;
         if (requestOptions.params) {
             var params = requestOptions.params.toString();
             if (params.length > 0) {
                 var prefix = '?';
-                if (this.url.indexOf('?') != -1) {
-                    prefix = (this.url[this.url.length - 1] == '&') ? '' : '&';
+                if (_this.url.indexOf('?') != -1) {
+                    prefix = (_this.url[_this.url.length - 1] == '&') ? '' : '&';
                 }
                 // TODO: just delete search-query-looking string in url?
-                this.url = url + prefix + params;
+                _this.url = url + prefix + params;
             }
         }
-        this._body = requestOptions.body;
-        this.method = normalizeMethodName(requestOptions.method);
+        _this._body = requestOptions.body;
+        _this.method = normalizeMethodName(requestOptions.method);
         // TODO(jeffbcross): implement behavior
         // Defaults to 'omit', consistent with browser
-        this.headers = new Headers(requestOptions.headers);
-        this.contentType = this.detectContentType();
-        this.withCredentials = requestOptions.withCredentials;
-        this.responseType = requestOptions.responseType;
+        _this.headers = new Headers(requestOptions.headers);
+        _this.contentType = _this.detectContentType();
+        _this.withCredentials = requestOptions.withCredentials;
+        _this.responseType = requestOptions.responseType;
+        return _this;
     }
     /**
      * Returns the content type enum based on header options.
@@ -157,6 +158,7 @@ export var Request = (function (_super) {
     };
     return Request;
 }(Body));
+export { Request };
 function Request_tsickle_Closure_declarations() {
     /**
      * Http method with which to perform the request.
