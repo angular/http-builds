@@ -38,6 +38,17 @@ import { URLSearchParams } from './url_search_params';
  */
 export class RequestOptions {
     /**
+     * @deprecated from 4.0.0. Use params instead.
+     * @return {?}
+     */
+    get search() { return this.params; }
+    /**
+     * @deprecated from 4.0.0. Use params instead.
+     * @param {?} params
+     * @return {?}
+     */
+    set search(params) { this.params = params; }
+    /**
      * @param {?=} __0
      */
     constructor({ method, headers, body, url, search, params, withCredentials, responseType } = {}) {
@@ -49,17 +60,6 @@ export class RequestOptions {
         this.withCredentials = withCredentials != null ? withCredentials : null;
         this.responseType = responseType != null ? responseType : null;
     }
-    /**
-     * @deprecated from 4.0.0. Use params instead.
-     * @return {?}
-     */
-    get search() { return this.params; }
-    /**
-     * @deprecated from 4.0.0. Use params instead.
-     * @param {?} params
-     * @return {?}
-     */
-    set search(params) { this.params = params; }
     /**
      * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
      * existing values. This method will not change the values of the instance on which it is being
@@ -227,9 +227,7 @@ function RequestOptions_tsickle_Closure_declarations() {
  * \@experimental
  */
 export class BaseRequestOptions extends RequestOptions {
-    constructor() {
-        super({ method: RequestMethod.Get, headers: new Headers() });
-    }
+    constructor() { super({ method: RequestMethod.Get, headers: new Headers() }); }
 }
 BaseRequestOptions.decorators = [
     { type: Injectable },

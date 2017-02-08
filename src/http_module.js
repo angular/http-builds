@@ -5,6 +5,12 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/**
+ * @module
+ * @description
+ * The http module provides services to perform http requests. To get started, see the {@link Http}
+ * class.
+ */
 import { NgModule } from '@angular/core/index';
 import { BrowserJsonp } from './backends/browser_jsonp';
 import { BrowserXhr } from './backends/browser_xhr';

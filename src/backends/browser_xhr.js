@@ -14,8 +14,7 @@ import { Injectable } from '@angular/core/index';
  * \@experimental
  */
 export class BrowserXhr {
-    constructor() {
-    }
+    constructor() { }
     /**
      * @return {?}
      */

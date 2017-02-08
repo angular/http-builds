@@ -206,13 +206,13 @@
             this.connections.next(connection);
             return connection;
         };
-        MockBackend.decorators = [
-            { type: _angular_core.Injectable },
-        ];
-        /** @nocollapse */
-        MockBackend.ctorParameters = function () { return []; };
         return MockBackend;
     }());
+    MockBackend.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    MockBackend.ctorParameters = function () { return []; };
 
     exports.MockConnection = MockConnection;
     exports.MockBackend = MockBackend;
