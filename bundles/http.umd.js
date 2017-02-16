@@ -2109,5 +2109,11 @@
     exports.QueryEncoder = QueryEncoder;
     exports.URLSearchParams = URLSearchParams;
     exports.VERSION = VERSION;
+    exports.ɵg = BrowserJsonp;
+    exports.ɵa = JSONPBackend_;
+    exports.ɵe = Body;
+    exports.ɵb = _createDefaultCookieXSRFStrategy;
+    exports.ɵc = httpFactory;
+    exports.ɵd = jsonpFactory;
 
 }));
