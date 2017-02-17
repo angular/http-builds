@@ -39,7 +39,7 @@ export var BrowserJsonp = (function () {
      * @param {?} id
      * @return {?}
      */
-    BrowserJsonp.prototype.requestCallback = function (id) { return "" + JSONP_HOME + id + "_finished"; };
+    BrowserJsonp.prototype.requestCallback = function (id) { return JSONP_HOME + "." + id + ".finished"; };
     /**
      * @param {?} id
      * @param {?} connection
