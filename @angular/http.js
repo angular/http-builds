@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-beta.8-6b7937f
+ * @license Angular v4.0.0-beta.8-e8d2743
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1923,6 +1923,6 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @stable
  */
-const /** @type {?} */ VERSION = new Version('4.0.0-beta.8-6b7937f');
+const /** @type {?} */ VERSION = new Version('4.0.0-beta.8-e8d2743');
 
 export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵe, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
