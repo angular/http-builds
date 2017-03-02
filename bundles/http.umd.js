@@ -1981,7 +1981,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */VERSION = new _core.Version('4.0.0-rc.1-3168ef7');
+    var /** @type {?} */VERSION = new _core.Version('4.0.0-rc.1-9560ad8');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
