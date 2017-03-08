@@ -13,7 +13,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * @license Angular v4.0.0-rc.2-5df998d
+ * @license Angular v4.0.0-rc.2-ad3b44a
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2400,6 +2400,6 @@ JsonpModule.ctorParameters = function () {
 /**
  * @stable
  */
-var /** @type {?} */VERSION = new Version('4.0.0-rc.2-5df998d');
+var /** @type {?} */VERSION = new Version('4.0.0-rc.2-ad3b44a');
 
 export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵe, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
