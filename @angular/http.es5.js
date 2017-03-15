@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * @license Angular v4.0.0-rc.3-4f7d62a
+ * @license Angular v4.0.0-rc.3-5c0ea20
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -30,7 +30,9 @@ var BrowserXhr = (function () {
 BrowserXhr.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 BrowserXhr.ctorParameters = function () { return []; };
 var RequestMethod = {};
 RequestMethod.Get = 0;
@@ -129,9 +131,13 @@ var Headers = (function () {
      */
     function Headers(headers) {
         var _this = this;
-        /** @internal header names are lower case */
+        /**
+         * \@internal header names are lower case
+         */
         this._headers = new Map();
-        /** @internal map lower case names to actual names */
+        /**
+         * \@internal map lower case names to actual names
+         */
         this._normalizedNames = new Map();
         if (!headers) {
             return;
@@ -417,7 +423,9 @@ var BaseResponseOptions = (function (_super) {
 BaseResponseOptions.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 BaseResponseOptions.ctorParameters = function () { return []; };
 /**
  * @license
@@ -922,7 +930,9 @@ var BrowserJsonp = (function () {
 BrowserJsonp.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 BrowserJsonp.ctorParameters = function () { return []; };
 var /** @type {?} */ JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
 var /** @type {?} */ JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
@@ -1070,7 +1080,9 @@ var JSONPBackend_ = (function (_super) {
 JSONPBackend_.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 JSONPBackend_.ctorParameters = function () { return [
     { type: BrowserJsonp, },
     { type: ResponseOptions, },
@@ -1308,7 +1320,9 @@ var XHRBackend = (function () {
 XHRBackend.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 XHRBackend.ctorParameters = function () { return [
     { type: BrowserXhr, },
     { type: ResponseOptions, },
@@ -1513,7 +1527,9 @@ var BaseRequestOptions = (function (_super) {
 BaseRequestOptions.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 BaseRequestOptions.ctorParameters = function () { return []; };
 /**
  * Creates `Request` instances from provided values.
@@ -1857,7 +1873,9 @@ var Http = (function () {
 Http.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 Http.ctorParameters = function () { return [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
@@ -1913,7 +1931,9 @@ var Jsonp = (function (_super) {
 Jsonp.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 Jsonp.ctorParameters = function () { return [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
@@ -1964,7 +1984,9 @@ HttpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 HttpModule.ctorParameters = function () { return []; };
 /**
  * The module that includes jsonp's providers
@@ -1989,10 +2011,12 @@ JsonpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 JsonpModule.ctorParameters = function () { return []; };
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new Version('4.0.0-rc.3-4f7d62a');
+var /** @type {?} */ VERSION = new Version('4.0.0-rc.3-5c0ea20');
 export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵe, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
