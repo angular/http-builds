@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-rc.3-bf98d9d
+ * @license Angular v4.0.0-rc.3-6772c91
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -24,7 +24,9 @@ class BrowserXhr {
 BrowserXhr.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 BrowserXhr.ctorParameters = () => [];
 
 let RequestMethod = {};
@@ -124,9 +126,13 @@ class Headers {
      * @param {?=} headers
      */
     constructor(headers) {
-        /** @internal header names are lower case */
+        /**
+         * \@internal header names are lower case
+         */
         this._headers = new Map();
-        /** @internal map lower case names to actual names */
+        /**
+         * \@internal map lower case names to actual names
+         */
         this._normalizedNames = new Map();
         if (!headers) {
             return;
@@ -406,7 +412,9 @@ class BaseResponseOptions extends ResponseOptions {
 BaseResponseOptions.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 BaseResponseOptions.ctorParameters = () => [];
 
 /**
@@ -888,7 +896,9 @@ class BrowserJsonp {
 BrowserJsonp.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 BrowserJsonp.ctorParameters = () => [];
 
 const /** @type {?} */ JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
@@ -1023,7 +1033,9 @@ class JSONPBackend_ extends JSONPBackend {
 JSONPBackend_.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 JSONPBackend_.ctorParameters = () => [
     { type: BrowserJsonp, },
     { type: ResponseOptions, },
@@ -1256,7 +1268,9 @@ class XHRBackend {
 XHRBackend.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 XHRBackend.ctorParameters = () => [
     { type: BrowserXhr, },
     { type: ResponseOptions, },
@@ -1450,7 +1464,9 @@ class BaseRequestOptions extends RequestOptions {
 BaseRequestOptions.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 BaseRequestOptions.ctorParameters = () => [];
 
 /**
@@ -1792,7 +1808,9 @@ class Http {
 Http.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 Http.ctorParameters = () => [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
@@ -1846,7 +1864,9 @@ class Jsonp extends Http {
 Jsonp.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 Jsonp.ctorParameters = () => [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
@@ -1895,7 +1915,9 @@ HttpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 HttpModule.ctorParameters = () => [];
 /**
  * The module that includes jsonp's providers
@@ -1917,12 +1939,14 @@ JsonpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */
+/**
+ * @nocollapse
+ */
 JsonpModule.ctorParameters = () => [];
 
 /**
  * @stable
  */
-const /** @type {?} */ VERSION = new Version('4.0.0-rc.3-bf98d9d');
+const /** @type {?} */ VERSION = new Version('4.0.0-rc.3-6772c91');
 
-export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵe, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
+export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };

@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-rc.3-bf98d9d
+ * @license Angular v4.0.0-rc.3-6772c91
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -33,7 +33,9 @@
     BrowserXhr.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     BrowserXhr.ctorParameters = function () { return []; };
     var RequestMethod = {};
     RequestMethod.Get = 0;
@@ -132,9 +134,13 @@
          */
         function Headers(headers) {
             var _this = this;
-            /** @internal header names are lower case */
+            /**
+             * \@internal header names are lower case
+             */
             this._headers = new Map();
-            /** @internal map lower case names to actual names */
+            /**
+             * \@internal map lower case names to actual names
+             */
             this._normalizedNames = new Map();
             if (!headers) {
                 return;
@@ -420,7 +426,9 @@
     BaseResponseOptions.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     BaseResponseOptions.ctorParameters = function () { return []; };
     /**
      * @license
@@ -925,7 +933,9 @@
     BrowserJsonp.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     BrowserJsonp.ctorParameters = function () { return []; };
     var /** @type {?} */ JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
     var /** @type {?} */ JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
@@ -1073,7 +1083,9 @@
     JSONPBackend_.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     JSONPBackend_.ctorParameters = function () { return [
         { type: BrowserJsonp, },
         { type: ResponseOptions, },
@@ -1311,7 +1323,9 @@
     XHRBackend.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     XHRBackend.ctorParameters = function () { return [
         { type: BrowserXhr, },
         { type: ResponseOptions, },
@@ -1516,7 +1530,9 @@
     BaseRequestOptions.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     BaseRequestOptions.ctorParameters = function () { return []; };
     /**
      * Creates `Request` instances from provided values.
@@ -1860,7 +1876,9 @@
     Http.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     Http.ctorParameters = function () { return [
         { type: ConnectionBackend, },
         { type: RequestOptions, },
@@ -1916,7 +1934,9 @@
     Jsonp.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     Jsonp.ctorParameters = function () { return [
         { type: ConnectionBackend, },
         { type: RequestOptions, },
@@ -1967,7 +1987,9 @@
                     ],
                 },] },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     HttpModule.ctorParameters = function () { return []; };
     /**
      * The module that includes jsonp's providers
@@ -1992,12 +2014,14 @@
                     ],
                 },] },
     ];
-    /** @nocollapse */
+    /**
+     * @nocollapse
+     */
     JsonpModule.ctorParameters = function () { return []; };
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-rc.3-bf98d9d');
+    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-rc.3-6772c91');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
@@ -2028,7 +2052,7 @@
     exports.VERSION = VERSION;
     exports.ɵg = BrowserJsonp;
     exports.ɵa = JSONPBackend_;
-    exports.ɵe = Body;
+    exports.ɵf = Body;
     exports.ɵb = _createDefaultCookieXSRFStrategy;
     exports.ɵc = httpFactory;
     exports.ɵd = jsonpFactory;
