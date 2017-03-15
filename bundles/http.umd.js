@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-rc.3-5c0ea20
+ * @license Angular v4.0.0-rc.3-b00fe20
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2021,7 +2021,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-rc.3-5c0ea20');
+    var /** @type {?} */ VERSION = new _angular_core.Version('4.0.0-rc.3-b00fe20');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;
@@ -2052,7 +2052,7 @@
     exports.VERSION = VERSION;
     exports.ɵg = BrowserJsonp;
     exports.ɵa = JSONPBackend_;
-    exports.ɵe = Body;
+    exports.ɵf = Body;
     exports.ɵb = _createDefaultCookieXSRFStrategy;
     exports.ɵc = httpFactory;
     exports.ɵd = jsonpFactory;
