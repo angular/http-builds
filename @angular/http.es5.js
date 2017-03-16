@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * @license Angular v4.0.0-rc.3-3131581
+ * @license Angular v4.0.0-rc.3-6e98757
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2018,5 +2018,5 @@ JsonpModule.ctorParameters = function () { return []; };
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new Version('4.0.0-rc.3-3131581');
+var /** @type {?} */ VERSION = new Version('4.0.0-rc.3-6e98757');
 export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
