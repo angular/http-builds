@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.0.0-rc.5-5c5c2ae
+ * @license Angular v4.0.0-rc.5-bcc29ff
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -7,6 +7,13 @@ import { Injectable, NgModule, Version } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ɵgetDOM } from '@angular/platform-browser';
 
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 /**
  * A backend for http that uses the `XMLHttpRequest` browser API.
  *
@@ -281,6 +288,13 @@ class Headers {
 }
 
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * Creates a response options object to be optionally provided when instantiating a
  * {\@link Response}.
  *
@@ -465,6 +479,13 @@ class XSRFStrategy {
 }
 
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * @param {?} method
  * @return {?}
  */
@@ -489,7 +510,7 @@ function normalizeMethodName(method) {
     }
     throw new Error(`Invalid request method. The method "${method}" is not supported.`);
 }
-const /** @type {?} */ isSuccess = (status) => (status >= 200 && status < 300);
+const isSuccess = (status) => (status >= 200 && status < 300);
 /**
  * @param {?} xhr
  * @return {?}
@@ -725,6 +746,13 @@ class URLSearchParams {
 }
 
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * HTTP request body used by both {\@link Request} and {\@link Response}
  * https://fetch.spec.whatwg.org/#body
  * @abstract
@@ -788,6 +816,13 @@ class Body {
 }
 
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * Creates `Response` instances from provided values.
  *
  * Though this object isn't
@@ -829,9 +864,16 @@ class Response extends Body {
     }
 }
 
-let /** @type {?} */ _nextRequestId = 0;
-const /** @type {?} */ JSONP_HOME = '__ng_jsonp__';
-let /** @type {?} */ _jsonpConnections = null;
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+let _nextRequestId = 0;
+const JSONP_HOME = '__ng_jsonp__';
+let _jsonpConnections = null;
 /**
  * @return {?}
  */
@@ -901,8 +943,15 @@ BrowserJsonp.decorators = [
  */
 BrowserJsonp.ctorParameters = () => [];
 
-const /** @type {?} */ JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
-const /** @type {?} */ JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+const JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
+const JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
  * Abstract base class for an in-flight JSONP request.
  *
@@ -1041,7 +1090,14 @@ JSONPBackend_.ctorParameters = () => [
     { type: ResponseOptions, },
 ];
 
-const /** @type {?} */ XSSI_PREFIX = /^\)\]\}',?\n/;
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+const XSSI_PREFIX = /^\)\]\}',?\n/;
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified
  * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the
@@ -1278,6 +1334,13 @@ XHRBackend.ctorParameters = () => [
 ];
 
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * Creates a request options object to be optionally provided when instantiating a
  * {\@link Request}.
  *
@@ -1470,6 +1533,13 @@ BaseRequestOptions.decorators = [
 BaseRequestOptions.ctorParameters = () => [];
 
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * Creates `Request` instances from provided values.
  *
  * The Request's interface is inspired by the Request constructor defined in the [Fetch
@@ -1609,12 +1679,19 @@ class Request extends Body {
         }
     }
 }
-const /** @type {?} */ noop = function () { };
-const /** @type {?} */ w = typeof window == 'object' ? window : noop;
-const /** @type {?} */ FormData = ((w) /** TODO #9100 */)['FormData'] || noop;
-const /** @type {?} */ Blob$1 = ((w) /** TODO #9100 */)['Blob'] || noop;
-const /** @type {?} */ ArrayBuffer$1 = ((w) /** TODO #9100 */)['ArrayBuffer'] || noop;
+const noop = function () { };
+const w = typeof window == 'object' ? window : noop;
+const FormData = ((w) /** TODO #9100 */)['FormData'] || noop;
+const Blob$1 = ((w) /** TODO #9100 */)['Blob'] || noop;
+const ArrayBuffer$1 = ((w) /** TODO #9100 */)['ArrayBuffer'] || noop;
 
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 /**
  * @param {?} backend
  * @param {?} request
@@ -1873,6 +1950,19 @@ Jsonp.ctorParameters = () => [
 ];
 
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @module
+ * @description
+ * The http module provides services to perform http requests. To get started, see the {@link Http}
+ * class.
+ */
+/**
  * @return {?}
  */
 function _createDefaultCookieXSRFStrategy() {
@@ -1945,9 +2035,48 @@ JsonpModule.decorators = [
 JsonpModule.ctorParameters = () => [];
 
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @module
+ * @description
+ * Entry point for all public APIs of the common package.
+ */
+/**
  * \@stable
  */
-const VERSION = new Version('4.0.0-rc.5-5c5c2ae');
+const VERSION = new Version('4.0.0-rc.5-bcc29ff');
+
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @module
+ * @description
+ * Entry point for all public APIs of the http package.
+ */
+
+// This file only reexports content of the `src` folder. Keep it that way.
+
+/**
+ * Generated bundle index. Do not edit.
+ */
 
 export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
 //# sourceMappingURL=http.js.map
