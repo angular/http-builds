@@ -1,6 +1,6 @@
 {
   "name": "@angular/http",
-  "version": "4.0.0-902bb2f",
+  "version": "4.0.0-23bf348",
   "description": "Angular - the http service",
   "main": "./bundles/http.umd.js",
   "module": "./@angular/http.es5.js",
@@ -10,8 +10,8 @@
   "license": "MIT",
   "peerDependencies": {
     "rxjs": "^5.0.1",
-    "@angular/core": "4.0.0-902bb2f",
-    "@angular/platform-browser": "4.0.0-902bb2f"
+    "@angular/core": "4.0.0-23bf348",
+    "@angular/platform-browser": "4.0.0-23bf348"
   },
   "repository": {
     "type": "git",
