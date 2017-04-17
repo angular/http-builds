@@ -32,17 +32,17 @@ export declare class ResponseOptions {
     /**
      * String, Object, ArrayBuffer or Blob representing the body of the {@link Response}.
      */
-    body: string | Object | ArrayBuffer | Blob | null;
+    body: string | Object | ArrayBuffer | Blob;
     /**
      * Http {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html status code}
      * associated with the response.
      */
-    status: number | null;
+    status: number;
     /**
      * Response {@link Headers headers}
      */
-    headers: Headers | null;
-    url: string | null;
+    headers: Headers;
+    url: string;
     constructor({body, status, headers, statusText, type, url}?: ResponseOptionsArgs);
     /**
      * Creates a copy of the `ResponseOptions` instance, using the optional input as values to

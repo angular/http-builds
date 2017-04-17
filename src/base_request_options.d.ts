@@ -31,11 +31,11 @@ export declare class RequestOptions {
      * Http method with which to execute a {@link Request}.
      * Acceptable methods are defined in the {@link RequestMethod} enum.
      */
-    method: RequestMethod | string | null;
+    method: RequestMethod | string;
     /**
      * {@link Headers} to be attached to a {@link Request}.
      */
-    headers: Headers | null;
+    headers: Headers;
     /**
      * Body to be used when creating a {@link Request}.
      */
@@ -43,7 +43,7 @@ export declare class RequestOptions {
     /**
      * Url with which to perform a {@link Request}.
      */
-    url: string | null;
+    url: string;
     /**
      * Search parameters to be included in a {@link Request}.
      */
@@ -58,8 +58,8 @@ export declare class RequestOptions {
     /**
      * Enable use credentials for a {@link Request}.
      */
-    withCredentials: boolean | null;
-    responseType: ResponseContentType | null;
+    withCredentials: boolean;
+    responseType: ResponseContentType;
     constructor({method, headers, body, url, search, params, withCredentials, responseType}?: RequestOptionsArgs);
     /**
      * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
@@ -85,7 +85,7 @@ export declare class RequestOptions {
      * ```
      */
     merge(options?: RequestOptionsArgs): RequestOptions;
-    private _mergeSearchParams(params?);
+    private _mergeSearchParams(params);
     private _parseParams(objParams?);
     private _appendParam(key, value, params);
 }

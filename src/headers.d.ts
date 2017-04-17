@@ -36,7 +36,7 @@
 export declare class Headers {
     constructor(headers?: Headers | {
         [name: string]: any;
-    } | null);
+    });
     /**
      * Returns a new Headers instance from the given DOMString of Response Headers
      */
@@ -49,11 +49,11 @@ export declare class Headers {
      * Deletes all header values for the given name.
      */
     delete(name: string): void;
-    forEach(fn: (values: string[], name: string | undefined, headers: Map<string, string[]>) => void): void;
+    forEach(fn: (values: string[], name: string, headers: Map<string, string[]>) => void): void;
     /**
      * Returns first header that matches given name.
      */
-    get(name: string): string | null;
+    get(name: string): string;
     /**
      * Checks for existence of header by given name.
      */
@@ -79,7 +79,7 @@ export declare class Headers {
     /**
      * Returns list of header values for a given name.
      */
-    getAll(name: string): string[] | null;
+    getAll(name: string): string[];
     /**
      * This method is not implemented.
      */

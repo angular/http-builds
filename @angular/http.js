@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.1.0-beta.1-2ddf3bc
+ * @license Angular v4.1.0-beta.1-2688842
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -258,7 +258,7 @@ class Headers {
         this._headers.forEach((values, name) => {
             const /** @type {?} */ split = [];
             values.forEach(v => split.push(...v.split(',')));
-            serialized[((this._normalizedNames.get(name)))] = split;
+            serialized[this._normalizedNames.get(name)] = split;
         });
         return serialized;
     }
@@ -268,7 +268,7 @@ class Headers {
      * @return {?}
      */
     getAll(name) {
-        return this.has(name) ? this._headers.get(name.toLowerCase()) || null : null;
+        return this.has(name) ? this._headers.get(name.toLowerCase()) : null;
     }
     /**
      * This method is not implemented.
@@ -522,7 +522,7 @@ function getResponseURL(xhr) {
     if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
         return xhr.getResponseHeader('X-Request-URL');
     }
-    return null;
+    return;
 }
 /**
  * @param {?} input
@@ -1427,7 +1427,7 @@ class RequestOptions {
         });
     }
     /**
-     * @param {?=} params
+     * @param {?} params
      * @return {?}
      */
     _mergeSearchParams(params) {
@@ -1700,7 +1700,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
     const /** @type {?} */ newOptions = defaultOpts;
     if (providedOpts) {
         // Hack so Dart can used named parameters
-        return (newOptions.merge(new RequestOptions({
+        return newOptions.merge(new RequestOptions({
             method: providedOpts.method || method,
             url: providedOpts.url || url,
             search: providedOpts.search,
@@ -1709,9 +1709,9 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
             body: providedOpts.body,
             withCredentials: providedOpts.withCredentials,
             responseType: providedOpts.responseType
-        })));
+        }));
     }
-    return (newOptions.merge(new RequestOptions({ method, url })));
+    return newOptions.merge(new RequestOptions({ method, url }));
 }
 /**
  * Performs http requests using `XMLHttpRequest` as the default backend.
@@ -2038,7 +2038,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * \@stable
  */
-const VERSION = new Version('4.1.0-beta.1-2ddf3bc');
+const VERSION = new Version('4.1.0-beta.1-2688842');
 
 /**
  * @license
