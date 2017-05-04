@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.1.0-1092292
+ * @license Angular v4.2.0-beta.0-04197ee
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -15,7 +15,7 @@ var __extends = (undefined && undefined.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * @license Angular v4.1.0-1092292
+ * @license Angular v4.2.0-beta.0-04197ee
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -554,6 +554,10 @@ function getResponseURL(xhr) {
  * @param {?} input
  * @return {?}
  */
+/**
+ * @param {?} input
+ * @return {?}
+ */
 function stringToArrayBuffer(input) {
     var /** @type {?} */ view = new Uint16Array(input.length);
     for (var /** @type {?} */ i = 0, /** @type {?} */ strLen = input.length; i < strLen; i++) {
@@ -810,14 +814,34 @@ var Body = (function () {
     };
     /**
      * Returns the body as a string, presuming `toString()` can be called on the response body.
+     *
+     * When decoding an `ArrayBuffer`, the optional `encodingHint` parameter determines how the
+     * bytes in the buffer will be interpreted. Valid values are:
+     *
+     * - `legacy` - incorrectly interpret the bytes as UTF-16 (technically, UCS-2). Only characters
+     *   in the Basic Multilingual Plane are supported, surrogate pairs are not handled correctly.
+     *   In addition, the endianness of the 16-bit octet pairs in the `ArrayBuffer` is not taken
+     *   into consideration. This is the default behavior to avoid breaking apps, but should be
+     *   considered deprecated.
+     *
+     * - `iso-8859` - interpret the bytes as ISO-8859 (which can be used for ASCII encoded text).
+     * @param {?=} encodingHint
      * @return {?}
      */
-    Body.prototype.text = function () {
+    Body.prototype.text = function (encodingHint) {
+        if (encodingHint === void 0) { encodingHint = 'legacy'; }
         if (this._body instanceof URLSearchParams) {
             return this._body.toString();
         }
         if (this._body instanceof ArrayBuffer) {
-            return String.fromCharCode.apply(null, new Uint16Array(/** @type {?} */ (this._body)));
+            switch (encodingHint) {
+                case 'legacy':
+                    return String.fromCharCode.apply(null, new Uint16Array(/** @type {?} */ (this._body)));
+                case 'iso-8859':
+                    return String.fromCharCode.apply(null, new Uint8Array(/** @type {?} */ (this._body)));
+                default:
+                    throw new Error("Invalid value for encodingHint: " + encodingHint);
+            }
         }
         if (this._body == null) {
             return '';
@@ -1647,8 +1671,15 @@ var Request = (function (_super) {
         // TODO: assert that url is present
         var url = requestOptions.url;
         _this.url = requestOptions.url;
-        if (requestOptions.params) {
-            var params = requestOptions.params.toString();
+        var paramsArg = requestOptions.params || requestOptions.search;
+        if (paramsArg) {
+            var params = void 0;
+            if (typeof paramsArg === 'object' && !(paramsArg instanceof URLSearchParams)) {
+                params = urlEncodeParams(paramsArg).toString();
+            }
+            else {
+                params = paramsArg.toString();
+            }
             if (params.length > 0) {
                 var prefix = '?';
                 if (_this.url.indexOf('?') != -1) {
@@ -1741,6 +1772,23 @@ var Request = (function (_super) {
     };
     return Request;
 }(Body));
+/**
+ * @param {?} params
+ * @return {?}
+ */
+function urlEncodeParams(params) {
+    var /** @type {?} */ searchParams = new URLSearchParams();
+    Object.keys(params).forEach(function (key) {
+        var /** @type {?} */ value = params[key];
+        if (value && Array.isArray(value)) {
+            value.forEach(function (element) { return searchParams.append(key, element.toString()); });
+        }
+        else {
+            searchParams.append(key, value.toString());
+        }
+    });
+    return searchParams;
+}
 var noop = function () { };
 var w = typeof window == 'object' ? window : noop;
 var FormData = ((w) /** TODO #9100 */)['FormData'] || noop;
@@ -2117,7 +2165,7 @@ JsonpModule.ctorParameters = function () { return []; };
 /**
  * \@stable
  */
-var VERSION = new _angular_core.Version('4.1.0-1092292');
+var VERSION = new _angular_core.Version('4.2.0-beta.0-04197ee');
 
 exports.BrowserXhr = BrowserXhr;
 exports.JSONPBackend = JSONPBackend;
