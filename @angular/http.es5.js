@@ -1,15 +1,6 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+import * as tslib_1 from "tslib";
 /**
- * @license Angular v4.2.0-rc.0-1651a8f
+ * @license Angular v4.2.0-rc.0-fa809ec
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -433,7 +424,7 @@ var ResponseOptions = (function () {
  * \@experimental
  */
 var BaseResponseOptions = (function (_super) {
-    __extends(BaseResponseOptions, _super);
+    tslib_1.__extends(BaseResponseOptions, _super);
     function BaseResponseOptions() {
         return _super.call(this, { status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() }) || this;
     }
@@ -901,7 +892,7 @@ var Body = (function () {
  * \@experimental
  */
 var Response = (function (_super) {
-    __extends(Response, _super);
+    tslib_1.__extends(Response, _super);
     /**
      * @param {?} responseOptions
      */
@@ -1034,7 +1025,7 @@ var JSONPConnection = (function () {
     return JSONPConnection;
 }());
 var JSONPConnection_ = (function (_super) {
-    __extends(JSONPConnection_, _super);
+    tslib_1.__extends(JSONPConnection_, _super);
     /**
      * @param {?} req
      * @param {?} _dom
@@ -1128,14 +1119,14 @@ var JSONPConnection_ = (function (_super) {
  * @abstract
  */
 var JSONPBackend = (function (_super) {
-    __extends(JSONPBackend, _super);
+    tslib_1.__extends(JSONPBackend, _super);
     function JSONPBackend() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return JSONPBackend;
 }(ConnectionBackend));
 var JSONPBackend_ = (function (_super) {
-    __extends(JSONPBackend_, _super);
+    tslib_1.__extends(JSONPBackend_, _super);
     /**
      * @param {?} _browserJSONP
      * @param {?} _baseResponseOptions
@@ -1599,7 +1590,7 @@ var RequestOptions = (function () {
  * \@experimental
  */
 var BaseRequestOptions = (function (_super) {
-    __extends(BaseRequestOptions, _super);
+    tslib_1.__extends(BaseRequestOptions, _super);
     function BaseRequestOptions() {
         return _super.call(this, { method: RequestMethod.Get, headers: new Headers() }) || this;
     }
@@ -1659,7 +1650,7 @@ BaseRequestOptions.ctorParameters = function () { return []; };
  * \@experimental
  */
 var Request = (function (_super) {
-    __extends(Request, _super);
+    tslib_1.__extends(Request, _super);
     /**
      * @param {?} requestOptions
      */
@@ -2003,7 +1994,7 @@ Http.ctorParameters = function () { return [
  * \@experimental
  */
 var Jsonp = (function (_super) {
-    __extends(Jsonp, _super);
+    tslib_1.__extends(Jsonp, _super);
     /**
      * @param {?} backend
      * @param {?} defaultOptions
@@ -2162,7 +2153,7 @@ JsonpModule.ctorParameters = function () { return []; };
 /**
  * \@stable
  */
-var VERSION = new Version('4.2.0-rc.0-1651a8f');
+var VERSION = new Version('4.2.0-rc.0-fa809ec');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
