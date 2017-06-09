@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.2.0-65d49d5
+ * @license Angular v4.2.0-0020dad
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -324,9 +324,10 @@ class Headers {
  */
 class ResponseOptions {
     /**
-     * @param {?=} __0
+     * @param {?=} opts
      */
-    constructor({ body, status, headers, statusText, type, url } = {}) {
+    constructor(opts = {}) {
+        const { body, status, headers, statusText, type, url } = opts;
         this.body = body != null ? body : null;
         this.status = status != null ? status : null;
         this.headers = headers != null ? headers : null;
@@ -1401,9 +1402,10 @@ class RequestOptions {
      */
     set search(params) { this.params = params; }
     /**
-     * @param {?=} __0
+     * @param {?=} opts
      */
-    constructor({ method, headers, body, url, search, params, withCredentials, responseType } = {}) {
+    constructor(opts = {}) {
+        const { method, headers, body, url, search, params, withCredentials, responseType } = opts;
         this.method = method != null ? normalizeMethodName(method) : null;
         this.headers = headers != null ? headers : null;
         this.body = body != null ? body : null;
@@ -2086,7 +2088,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * \@stable
  */
-const VERSION = new Version('4.2.0-65d49d5');
+const VERSION = new Version('4.2.0-0020dad');
 
 /**
  * @license

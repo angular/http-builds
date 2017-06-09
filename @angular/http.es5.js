@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 /**
- * @license Angular v4.2.0-65d49d5
+ * @license Angular v4.2.0-0020dad
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -327,10 +327,11 @@ var Headers = (function () {
  */
 var ResponseOptions = (function () {
     /**
-     * @param {?=} __0
+     * @param {?=} opts
      */
-    function ResponseOptions(_a) {
-        var _b = _a === void 0 ? {} : _a, body = _b.body, status = _b.status, headers = _b.headers, statusText = _b.statusText, type = _b.type, url = _b.url;
+    function ResponseOptions(opts) {
+        if (opts === void 0) { opts = {}; }
+        var body = opts.body, status = opts.status, headers = opts.headers, statusText = opts.statusText, type = opts.type, url = opts.url;
         this.body = body != null ? body : null;
         this.status = status != null ? status : null;
         this.headers = headers != null ? headers : null;
@@ -1437,10 +1438,11 @@ XHRBackend.ctorParameters = function () { return [
  */
 var RequestOptions = (function () {
     /**
-     * @param {?=} __0
+     * @param {?=} opts
      */
-    function RequestOptions(_a) {
-        var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, params = _b.params, withCredentials = _b.withCredentials, responseType = _b.responseType;
+    function RequestOptions(opts) {
+        if (opts === void 0) { opts = {}; }
+        var method = opts.method, headers = opts.headers, body = opts.body, url = opts.url, search = opts.search, params = opts.params, withCredentials = opts.withCredentials, responseType = opts.responseType;
         this.method = method != null ? normalizeMethodName(method) : null;
         this.headers = headers != null ? headers : null;
         this.body = body != null ? body : null;
@@ -2153,7 +2155,7 @@ JsonpModule.ctorParameters = function () { return []; };
 /**
  * \@stable
  */
-var VERSION = new Version('4.2.0-65d49d5');
+var VERSION = new Version('4.2.0-0020dad');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
