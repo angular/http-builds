@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.2.2-607fb1f
+ * @license Angular v4.2.2-2bdf2fe
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -36,7 +36,7 @@ function __extends(d, b) {
 }
 
 /**
- * @license Angular v4.2.2-607fb1f
+ * @license Angular v4.2.2-2bdf2fe
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2188,7 +2188,7 @@ JsonpModule.ctorParameters = function () { return []; };
 /**
  * \@stable
  */
-var VERSION = new _angular_core.Version('4.2.2-607fb1f');
+var VERSION = new _angular_core.Version('4.2.2-2bdf2fe');
 
 exports.BrowserXhr = BrowserXhr;
 exports.JSONPBackend = JSONPBackend;
