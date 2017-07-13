@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.3.0-rc.0-edb8375
+ * @license Angular v4.3.0-rc.0-a7ea008
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2088,7 +2088,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * \@stable
  */
-const VERSION = new Version('4.3.0-rc.0-edb8375');
+const VERSION = new Version('4.3.0-rc.0-a7ea008');
 
 /**
  * @license
