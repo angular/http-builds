@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.0-abee785
+ * @license Angular v5.0.0-beta.0-b7a6f52
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -8,6 +8,10 @@ import { ReadyState, Request } from '@angular/http';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 import { take } from 'rxjs/operator/take';
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -26,7 +30,7 @@ var MockConnection = (function () {
      * @param {?} req
      */
     function MockConnection(req) {
-        this.response = take.call(new ReplaySubject(1), 1);
+        this.response = (take.call(new ReplaySubject(1), 1));
         this.readyState = ReadyState.Open;
         this.request = req;
     }
@@ -229,10 +233,12 @@ var MockBackend = (function () {
 MockBackend.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 MockBackend.ctorParameters = function () { return []; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -246,6 +252,10 @@ MockBackend.ctorParameters = function () { return []; };
  * Entry point for all public APIs of the platform-server/testing package.
  */
 /**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
  * @license
  * Copyright Google Inc. All Rights Reserved.
  *
@@ -256,6 +266,10 @@ MockBackend.ctorParameters = function () { return []; };
  * @module
  * @description
  * Entry point for all public APIs of the http testing package.
+ */
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Generated bundle index. Do not edit.

@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.0-abee785
+ * @license Angular v5.0.0-beta.0-b7a6f52
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -10,9 +10,13 @@
 }(this, (function (exports,_angular_core,_angular_http,rxjs_ReplaySubject,rxjs_Subject,rxjs_operator_take) { 'use strict';
 
 /**
- * @license Angular v5.0.0-beta.0-abee785
+ * @license Angular v5.0.0-beta.0-b7a6f52
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
+ */
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license
@@ -32,7 +36,7 @@ var MockConnection = (function () {
      * @param {?} req
      */
     function MockConnection(req) {
-        this.response = rxjs_operator_take.take.call(new rxjs_ReplaySubject.ReplaySubject(1), 1);
+        this.response = (rxjs_operator_take.take.call(new rxjs_ReplaySubject.ReplaySubject(1), 1));
         this.readyState = _angular_http.ReadyState.Open;
         this.request = req;
     }
@@ -235,9 +239,7 @@ var MockBackend = (function () {
 MockBackend.decorators = [
     { type: _angular_core.Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 MockBackend.ctorParameters = function () { return []; };
 
 exports.MockConnection = MockConnection;
