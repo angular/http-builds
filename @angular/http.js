@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.2-1640d2a
+ * @license Angular v5.0.0-beta.2-81cb5bc
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2126,7 +2126,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * \@stable
  */
-const VERSION = new Version('5.0.0-beta.2-1640d2a');
+const VERSION = new Version('5.0.0-beta.2-81cb5bc');
 
 /**
  * @fileoverview added by tsickle
