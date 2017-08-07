@@ -71,7 +71,7 @@ export declare class MockConnection implements Connection {
  * ### Example
  *
  * ```
- * import {Injectable, Injector} from '@angular/core';
+ * import {Injectable, ReflectiveInjector} from '@angular/core';
  * import {async, fakeAsync, tick} from '@angular/core/testing';
  * import {BaseRequestOptions, ConnectionBackend, Http, RequestOptions} from '@angular/http';
  * import {Response, ResponseOptions} from '@angular/http';
@@ -99,7 +99,7 @@ export declare class MockConnection implements Connection {
  *
  * describe('MockBackend HeroService Example', () => {
  *   beforeEach(() => {
- *     this.injector = Injector.create([
+ *     this.injector = ReflectiveInjector.resolveAndCreate([
  *       {provide: ConnectionBackend, useClass: MockBackend},
  *       {provide: RequestOptions, useClass: BaseRequestOptions},
  *       Http,
@@ -158,7 +158,7 @@ export declare class MockBackend implements ConnectionBackend {
      * ### Example
      *
      * ```
-     * import {Injector} from '@angular/core';
+     * import {ReflectiveInjector} from '@angular/core';
      * import {fakeAsync, tick} from '@angular/core/testing';
      * import {BaseRequestOptions, ConnectionBackend, Http, RequestOptions} from '@angular/http';
      * import {Response, ResponseOptions} from '@angular/http';
@@ -169,7 +169,7 @@ export declare class MockBackend implements ConnectionBackend {
      *          MockConnection;  // this will be set when a new connection is emitted from the
      *                           // backend.
      *      let text: string;    // this will be set from mock response
-     *      let injector = Injector.create([
+     *      let injector = ReflectiveInjector.resolveAndCreate([
      *        {provide: ConnectionBackend, useClass: MockBackend},
      *        {provide: RequestOptions, useClass: BaseRequestOptions},
      *        Http,
