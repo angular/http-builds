@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.2-685cc26
+ * @license Angular v5.0.0-beta.2-fcadbf4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -10,7 +10,7 @@
 }(this, (function (exports,_angular_core,_angular_http,rxjs_ReplaySubject,rxjs_Subject,rxjs_operator_take) { 'use strict';
 
 /**
- * @license Angular v5.0.0-beta.2-685cc26
+ * @license Angular v5.0.0-beta.2-fcadbf4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -112,7 +112,7 @@ var MockConnection = (function () {
  * ### Example
  *
  * ```
- * import {Injectable, ReflectiveInjector} from '\@angular/core';
+ * import {Injectable, Injector} from '\@angular/core';
  * import {async, fakeAsync, tick} from '\@angular/core/testing';
  * import {BaseRequestOptions, ConnectionBackend, Http, RequestOptions} from '\@angular/http';
  * import {Response, ResponseOptions} from '\@angular/http';
@@ -140,7 +140,7 @@ var MockConnection = (function () {
  *
  * describe('MockBackend HeroService Example', () => {
  *   beforeEach(() => {
- *     this.injector = ReflectiveInjector.resolveAndCreate([
+ *     this.injector = Injector.create([
  *       {provide: ConnectionBackend, useClass: MockBackend},
  *       {provide: RequestOptions, useClass: BaseRequestOptions},
  *       Http,
