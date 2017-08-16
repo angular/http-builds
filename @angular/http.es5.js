@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 /**
- * @license Angular v5.0.0-beta.3-32ff21c
+ * @license Angular v5.0.0-beta.3-75d484e
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2193,7 +2193,7 @@ JsonpModule.ctorParameters = function () { return []; };
 /**
  * \@stable
  */
-var VERSION = new Version('5.0.0-beta.3-32ff21c');
+var VERSION = new Version('5.0.0-beta.3-75d484e');
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
