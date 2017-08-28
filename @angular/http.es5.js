@@ -1,16 +1,16 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+import * as tslib_1 from "tslib";
 /**
- * @license Angular v4.2.0-beta.0-4874765
+ * @license Angular v5.0.0-beta.4-d64c935
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
 import { Injectable, NgModule, Version } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ɵgetDOM } from '@angular/platform-browser';
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -37,10 +37,12 @@ var BrowserXhr = (function () {
 BrowserXhr.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 BrowserXhr.ctorParameters = function () { return []; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 var RequestMethod = {};
 RequestMethod.Get = 0;
 RequestMethod.Post = 1;
@@ -105,6 +107,10 @@ ResponseContentType[ResponseContentType.Json] = "Json";
 ResponseContentType[ResponseContentType.ArrayBuffer] = "ArrayBuffer";
 ResponseContentType[ResponseContentType.Blob] = "Blob";
 /**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
  * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
  * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
  *
@@ -132,7 +138,10 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
  *
  * \@experimental
  */
-var Headers = (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */ var Headers = (function () {
     /**
      * @param {?=} headers
      */
@@ -156,7 +165,7 @@ var Headers = (function () {
             return;
         }
         Object.keys(headers).forEach(function (name) {
-            var values = Array.isArray(headers[name]) ? headers[name] : [headers[name]];
+            var /** @type {?} */ values = Array.isArray(headers[name]) ? headers[name] : [headers[name]];
             _this.delete(name);
             values.forEach(function (value) { return _this.append(name, value); });
         });
@@ -295,6 +304,10 @@ var Headers = (function () {
     return Headers;
 }());
 /**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
  * @license
  * Copyright Google Inc. All Rights Reserved.
  *
@@ -331,10 +344,11 @@ var Headers = (function () {
  */
 var ResponseOptions = (function () {
     /**
-     * @param {?=} __0
+     * @param {?=} opts
      */
-    function ResponseOptions(_a) {
-        var _b = _a === void 0 ? {} : _a, body = _b.body, status = _b.status, headers = _b.headers, statusText = _b.statusText, type = _b.type, url = _b.url;
+    function ResponseOptions(opts) {
+        if (opts === void 0) { opts = {}; }
+        var body = opts.body, status = opts.status, headers = opts.headers, statusText = opts.statusText, type = opts.type, url = opts.url;
         this.body = body != null ? body : null;
         this.status = status != null ? status : null;
         this.headers = headers != null ? headers : null;
@@ -428,7 +442,7 @@ var ResponseOptions = (function () {
  * \@experimental
  */
 var BaseResponseOptions = (function (_super) {
-    __extends(BaseResponseOptions, _super);
+    tslib_1.__extends(BaseResponseOptions, _super);
     function BaseResponseOptions() {
         return _super.call(this, { status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() }) || this;
     }
@@ -437,16 +451,11 @@ var BaseResponseOptions = (function (_super) {
 BaseResponseOptions.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 BaseResponseOptions.ctorParameters = function () { return []; };
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Abstract class from which real backends are derived.
@@ -460,12 +469,6 @@ BaseResponseOptions.ctorParameters = function () { return []; };
 var ConnectionBackend = (function () {
     function ConnectionBackend() {
     }
-    /**
-     * @abstract
-     * @param {?} request
-     * @return {?}
-     */
-    ConnectionBackend.prototype.createConnection = function (request) { };
     return ConnectionBackend;
 }());
 /**
@@ -488,14 +491,33 @@ var Connection = (function () {
 var XSRFStrategy = (function () {
     function XSRFStrategy() {
     }
-    /**
-     * @abstract
-     * @param {?} req
-     * @return {?}
-     */
-    XSRFStrategy.prototype.configureRequest = function (req) { };
     return XSRFStrategy;
 }());
+/**
+ * Interface for options to construct a RequestOptions, based on
+ * [RequestInit](https://fetch.spec.whatwg.org/#requestinit) from the Fetch spec.
+ *
+ * \@experimental
+ * @record
+ */
+function RequestOptionsArgs() { }
+/**
+ * Required structure when constructing new Request();
+ * @record
+ */
+function RequestArgs() { }
+/**
+ * Interface for options to construct a Response, based on
+ * [ResponseInit](https://fetch.spec.whatwg.org/#responseinit) from the Fetch spec.
+ *
+ * \@experimental
+ * @record
+ */
+function ResponseOptionsArgs() { }
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -557,6 +579,10 @@ function stringToArrayBuffer(input) {
     }
     return view.buffer;
 }
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -777,6 +803,10 @@ var URLSearchParams = (function () {
     return URLSearchParams;
 }());
 /**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
  * @license
  * Copyright Google Inc. All Rights Reserved.
  *
@@ -869,11 +899,8 @@ var Body = (function () {
     return Body;
 }());
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Creates `Response` instances from provided values.
@@ -896,19 +923,19 @@ var Body = (function () {
  * \@experimental
  */
 var Response = (function (_super) {
-    __extends(Response, _super);
+    tslib_1.__extends(Response, _super);
     /**
      * @param {?} responseOptions
      */
     function Response(responseOptions) {
         var _this = _super.call(this) || this;
         _this._body = responseOptions.body;
-        _this.status = responseOptions.status;
+        _this.status = ((responseOptions.status));
         _this.ok = (_this.status >= 200 && _this.status <= 299);
         _this.statusText = responseOptions.statusText;
         _this.headers = responseOptions.headers;
-        _this.type = responseOptions.type;
-        _this.url = responseOptions.url;
+        _this.type = ((responseOptions.type));
+        _this.url = ((responseOptions.url));
         return _this;
     }
     /**
@@ -919,6 +946,10 @@ var Response = (function (_super) {
     };
     return Response;
 }(Body));
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -996,10 +1027,12 @@ var BrowserJsonp = (function () {
 BrowserJsonp.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 BrowserJsonp.ctorParameters = function () { return []; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -1018,18 +1051,10 @@ var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 var JSONPConnection = (function () {
     function JSONPConnection() {
     }
-    /**
-     * Callback called when the JSONP request completes, to notify the application
-     * of the new data.
-     * @abstract
-     * @param {?=} data
-     * @return {?}
-     */
-    JSONPConnection.prototype.finished = function (data) { };
     return JSONPConnection;
 }());
 var JSONPConnection_ = (function (_super) {
-    __extends(JSONPConnection_, _super);
+    tslib_1.__extends(JSONPConnection_, _super);
     /**
      * @param {?} req
      * @param {?} _dom
@@ -1046,45 +1071,45 @@ var JSONPConnection_ = (function (_super) {
         _this.request = req;
         _this.response = new Observable(function (responseObserver) {
             _this.readyState = ReadyState.Loading;
-            var id = _this._id = _dom.nextRequestID();
+            var /** @type {?} */ id = _this._id = _dom.nextRequestID();
             _dom.exposeConnection(id, _this);
             // Workaround Dart
             // url = url.replace(/=JSONP_CALLBACK(&|$)/, `generated method`);
-            var callback = _dom.requestCallback(_this._id);
-            var url = req.url;
+            var /** @type {?} */ callback = _dom.requestCallback(_this._id);
+            var /** @type {?} */ url = req.url;
             if (url.indexOf('=JSONP_CALLBACK&') > -1) {
                 url = url.replace('=JSONP_CALLBACK&', "=" + callback + "&");
             }
             else if (url.lastIndexOf('=JSONP_CALLBACK') === url.length - '=JSONP_CALLBACK'.length) {
                 url = url.substring(0, url.length - '=JSONP_CALLBACK'.length) + ("=" + callback);
             }
-            var script = _this._script = _dom.build(url);
-            var onLoad = function (event) {
+            var /** @type {?} */ script = _this._script = _dom.build(url);
+            var /** @type {?} */ onLoad = function (event) {
                 if (_this.readyState === ReadyState.Cancelled)
                     return;
                 _this.readyState = ReadyState.Done;
                 _dom.cleanup(script);
                 if (!_this._finished) {
-                    var responseOptions_1 = new ResponseOptions({ body: JSONP_ERR_NO_CALLBACK, type: ResponseType.Error, url: url });
+                    var /** @type {?} */ responseOptions_1 = new ResponseOptions({ body: JSONP_ERR_NO_CALLBACK, type: ResponseType.Error, url: url });
                     if (baseResponseOptions) {
                         responseOptions_1 = baseResponseOptions.merge(responseOptions_1);
                     }
                     responseObserver.error(new Response(responseOptions_1));
                     return;
                 }
-                var responseOptions = new ResponseOptions({ body: _this._responseData, url: url });
+                var /** @type {?} */ responseOptions = new ResponseOptions({ body: _this._responseData, url: url });
                 if (_this.baseResponseOptions) {
                     responseOptions = _this.baseResponseOptions.merge(responseOptions);
                 }
                 responseObserver.next(new Response(responseOptions));
                 responseObserver.complete();
             };
-            var onError = function (error) {
+            var /** @type {?} */ onError = function (error) {
                 if (_this.readyState === ReadyState.Cancelled)
                     return;
                 _this.readyState = ReadyState.Done;
                 _dom.cleanup(script);
-                var responseOptions = new ResponseOptions({ body: error.message, type: ResponseType.Error });
+                var /** @type {?} */ responseOptions = new ResponseOptions({ body: error.message, type: ResponseType.Error });
                 if (baseResponseOptions) {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }
@@ -1123,14 +1148,14 @@ var JSONPConnection_ = (function (_super) {
  * @abstract
  */
 var JSONPBackend = (function (_super) {
-    __extends(JSONPBackend, _super);
+    tslib_1.__extends(JSONPBackend, _super);
     function JSONPBackend() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return JSONPBackend;
 }(ConnectionBackend));
 var JSONPBackend_ = (function (_super) {
-    __extends(JSONPBackend_, _super);
+    tslib_1.__extends(JSONPBackend_, _super);
     /**
      * @param {?} _browserJSONP
      * @param {?} _baseResponseOptions
@@ -1153,13 +1178,15 @@ var JSONPBackend_ = (function (_super) {
 JSONPBackend_.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 JSONPBackend_.ctorParameters = function () { return [
     { type: BrowserJsonp, },
     { type: ResponseOptions, },
 ]; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -1188,16 +1215,16 @@ var XHRConnection = (function () {
         var _this = this;
         this.request = req;
         this.response = new Observable(function (responseObserver) {
-            var _xhr = browserXHR.build();
+            var /** @type {?} */ _xhr = browserXHR.build();
             _xhr.open(RequestMethod[req.method].toUpperCase(), req.url);
             if (req.withCredentials != null) {
                 _xhr.withCredentials = req.withCredentials;
             }
             // load event handler
-            var onLoad = function () {
+            var /** @type {?} */ onLoad = function () {
                 // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
-                var status = _xhr.status === 1223 ? 204 : _xhr.status;
-                var body = null;
+                var /** @type {?} */ status = _xhr.status === 1223 ? 204 : _xhr.status;
+                var /** @type {?} */ body = null;
                 // HTTP 204 means no content
                 if (status !== 204) {
                     // responseText is the old-school way of retrieving response (supported by IE8 & 9)
@@ -1215,15 +1242,15 @@ var XHRConnection = (function () {
                 if (status === 0) {
                     status = body ? 200 : 0;
                 }
-                var headers = Headers.fromResponseHeaderString(_xhr.getAllResponseHeaders());
+                var /** @type {?} */ headers = Headers.fromResponseHeaderString(_xhr.getAllResponseHeaders());
                 // IE 9 does not provide the way to get URL of response
-                var url = getResponseURL(_xhr) || req.url;
-                var statusText = _xhr.statusText || 'OK';
-                var responseOptions = new ResponseOptions({ body: body, status: status, headers: headers, statusText: statusText, url: url });
+                var /** @type {?} */ url = getResponseURL(_xhr) || req.url;
+                var /** @type {?} */ statusText = _xhr.statusText || 'OK';
+                var /** @type {?} */ responseOptions = new ResponseOptions({ body: body, status: status, headers: headers, statusText: statusText, url: url });
                 if (baseResponseOptions != null) {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }
-                var response = new Response(responseOptions);
+                var /** @type {?} */ response = new Response(responseOptions);
                 response.ok = isSuccess(status);
                 if (response.ok) {
                     responseObserver.next(response);
@@ -1234,8 +1261,8 @@ var XHRConnection = (function () {
                 responseObserver.error(response);
             };
             // error event handler
-            var onError = function (err) {
-                var responseOptions = new ResponseOptions({
+            var /** @type {?} */ onError = function (err) {
+                var /** @type {?} */ responseOptions = new ResponseOptions({
                     body: err,
                     type: ResponseType.Error,
                     status: _xhr.status,
@@ -1253,7 +1280,7 @@ var XHRConnection = (function () {
             if (!req.headers.has('Accept')) {
                 req.headers.append('Accept', 'application/json, text/plain, */*');
             }
-            req.headers.forEach(function (values, name) { return _xhr.setRequestHeader(name, values.join(',')); });
+            req.headers.forEach(function (values, name) { return _xhr.setRequestHeader(/** @type {?} */ ((name)), values.join(',')); });
             // Select the correct buffer type to store the response
             if (req.responseType != null && _xhr.responseType != null) {
                 switch (req.responseType) {
@@ -1400,14 +1427,16 @@ var XHRBackend = (function () {
 XHRBackend.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 XHRBackend.ctorParameters = function () { return [
     { type: BrowserXhr, },
     { type: ResponseOptions, },
     { type: XSRFStrategy, },
 ]; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -1441,10 +1470,11 @@ XHRBackend.ctorParameters = function () { return [
  */
 var RequestOptions = (function () {
     /**
-     * @param {?=} __0
+     * @param {?=} opts
      */
-    function RequestOptions(_a) {
-        var _b = _a === void 0 ? {} : _a, method = _b.method, headers = _b.headers, body = _b.body, url = _b.url, search = _b.search, params = _b.params, withCredentials = _b.withCredentials, responseType = _b.responseType;
+    function RequestOptions(opts) {
+        if (opts === void 0) { opts = {}; }
+        var method = opts.method, headers = opts.headers, body = opts.body, url = opts.url, search = opts.search, params = opts.params, withCredentials = opts.withCredentials, responseType = opts.responseType;
         this.method = method != null ? normalizeMethodName(method) : null;
         this.headers = headers != null ? headers : null;
         this.body = body != null ? body : null;
@@ -1594,7 +1624,7 @@ var RequestOptions = (function () {
  * \@experimental
  */
 var BaseRequestOptions = (function (_super) {
-    __extends(BaseRequestOptions, _super);
+    tslib_1.__extends(BaseRequestOptions, _super);
     function BaseRequestOptions() {
         return _super.call(this, { method: RequestMethod.Get, headers: new Headers() }) || this;
     }
@@ -1603,10 +1633,12 @@ var BaseRequestOptions = (function (_super) {
 BaseRequestOptions.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 BaseRequestOptions.ctorParameters = function () { return []; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -1654,18 +1686,18 @@ BaseRequestOptions.ctorParameters = function () { return []; };
  * \@experimental
  */
 var Request = (function (_super) {
-    __extends(Request, _super);
+    tslib_1.__extends(Request, _super);
     /**
      * @param {?} requestOptions
      */
     function Request(requestOptions) {
         var _this = _super.call(this) || this;
         // TODO: assert that url is present
-        var url = requestOptions.url;
-        _this.url = requestOptions.url;
-        var paramsArg = requestOptions.params || requestOptions.search;
+        var /** @type {?} */ url = requestOptions.url;
+        _this.url = ((requestOptions.url));
+        var /** @type {?} */ paramsArg = requestOptions.params || requestOptions.search;
         if (paramsArg) {
-            var params = void 0;
+            var /** @type {?} */ params = void 0;
             if (typeof paramsArg === 'object' && !(paramsArg instanceof URLSearchParams)) {
                 params = urlEncodeParams(paramsArg).toString();
             }
@@ -1673,7 +1705,7 @@ var Request = (function (_super) {
                 params = paramsArg.toString();
             }
             if (params.length > 0) {
-                var prefix = '?';
+                var /** @type {?} */ prefix = '?';
                 if (_this.url.indexOf('?') != -1) {
                     prefix = (_this.url[_this.url.length - 1] == '&') ? '' : '&';
                 }
@@ -1682,13 +1714,13 @@ var Request = (function (_super) {
             }
         }
         _this._body = requestOptions.body;
-        _this.method = normalizeMethodName(requestOptions.method);
+        _this.method = normalizeMethodName(/** @type {?} */ ((requestOptions.method)));
         // TODO(jeffbcross): implement behavior
         // Defaults to 'omit', consistent with browser
         _this.headers = new Headers(requestOptions.headers);
         _this.contentType = _this.detectContentType();
-        _this.withCredentials = requestOptions.withCredentials;
-        _this.responseType = requestOptions.responseType;
+        _this.withCredentials = ((requestOptions.withCredentials));
+        _this.responseType = ((requestOptions.responseType));
         return _this;
     }
     /**
@@ -1786,6 +1818,10 @@ var w = typeof window == 'object' ? window : noop;
 var FormData = ((w) /** TODO #9100 */)['FormData'] || noop;
 var Blob$1 = ((w) /** TODO #9100 */)['Blob'] || noop;
 var ArrayBuffer$1 = ((w) /** TODO #9100 */)['ArrayBuffer'] || noop;
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -1987,9 +2023,7 @@ var Http = (function () {
 Http.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 Http.ctorParameters = function () { return [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
@@ -1998,7 +2032,7 @@ Http.ctorParameters = function () { return [
  * \@experimental
  */
 var Jsonp = (function (_super) {
-    __extends(Jsonp, _super);
+    tslib_1.__extends(Jsonp, _super);
     /**
      * @param {?} backend
      * @param {?} defaultOptions
@@ -2045,13 +2079,15 @@ var Jsonp = (function (_super) {
 Jsonp.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 Jsonp.ctorParameters = function () { return [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
 ]; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2111,9 +2147,7 @@ HttpModule.decorators = [
                 ],
             },] },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 HttpModule.ctorParameters = function () { return []; };
 /**
  * The module that includes jsonp's providers
@@ -2138,10 +2172,12 @@ JsonpModule.decorators = [
                 ],
             },] },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 JsonpModule.ctorParameters = function () { return []; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2157,13 +2193,21 @@ JsonpModule.ctorParameters = function () { return []; };
 /**
  * \@stable
  */
-var VERSION = new Version('4.2.0-beta.0-4874765');
+var VERSION = new Version('5.0.0-beta.4-d64c935');
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license
@@ -2179,7 +2223,11 @@ var VERSION = new Version('4.2.0-beta.0-4874765');
  */
 // This file only reexports content of the `src` folder. Keep it that way.
 /**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
  * Generated bundle index. Do not edit.
  */
-export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
+export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, RequestOptionsArgs, ResponseOptionsArgs, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd, RequestArgs as ɵe };
 //# sourceMappingURL=http.es5.js.map

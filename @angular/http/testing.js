@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.2.0-beta.0-4874765
+ * @license Angular v5.0.0-beta.4-d64c935
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -9,6 +9,10 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 import { take } from 'rxjs/operator/take';
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -27,7 +31,7 @@ class MockConnection {
      * @param {?} req
      */
     constructor(req) {
-        this.response = take.call(new ReplaySubject(1), 1);
+        this.response = (take.call(new ReplaySubject(1), 1));
         this.readyState = ReadyState.Open;
         this.request = req;
     }
@@ -102,7 +106,7 @@ class MockConnection {
  * ### Example
  *
  * ```
- * import {Injectable, ReflectiveInjector} from '\@angular/core';
+ * import {Injectable, Injector} from '\@angular/core';
  * import {async, fakeAsync, tick} from '\@angular/core/testing';
  * import {BaseRequestOptions, ConnectionBackend, Http, RequestOptions} from '\@angular/http';
  * import {Response, ResponseOptions} from '\@angular/http';
@@ -130,7 +134,7 @@ class MockConnection {
  *
  * describe('MockBackend HeroService Example', () => {
  *   beforeEach(() => {
- *     this.injector = ReflectiveInjector.resolveAndCreate([
+ *     this.injector = Injector.create([
  *       {provide: ConnectionBackend, useClass: MockBackend},
  *       {provide: RequestOptions, useClass: BaseRequestOptions},
  *       Http,
@@ -227,11 +231,13 @@ class MockBackend {
 MockBackend.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 MockBackend.ctorParameters = () => [];
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -246,6 +252,10 @@ MockBackend.ctorParameters = () => [];
  */
 
 /**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
  * @license
  * Copyright Google Inc. All Rights Reserved.
  *
@@ -258,6 +268,10 @@ MockBackend.ctorParameters = () => [];
  * Entry point for all public APIs of the http testing package.
  */
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * Generated bundle index. Do not edit.
  */

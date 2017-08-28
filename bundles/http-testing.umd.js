@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.2.0-beta.0-4874765
+ * @license Angular v5.0.0-beta.4-d64c935
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -10,9 +10,13 @@
 }(this, (function (exports,_angular_core,_angular_http,rxjs_ReplaySubject,rxjs_Subject,rxjs_operator_take) { 'use strict';
 
 /**
- * @license Angular v4.2.0-beta.0-4874765
+ * @license Angular v5.0.0-beta.4-d64c935
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
+ */
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license
@@ -32,7 +36,7 @@ var MockConnection = (function () {
      * @param {?} req
      */
     function MockConnection(req) {
-        this.response = rxjs_operator_take.take.call(new rxjs_ReplaySubject.ReplaySubject(1), 1);
+        this.response = (rxjs_operator_take.take.call(new rxjs_ReplaySubject.ReplaySubject(1), 1));
         this.readyState = _angular_http.ReadyState.Open;
         this.request = req;
     }
@@ -108,7 +112,7 @@ var MockConnection = (function () {
  * ### Example
  *
  * ```
- * import {Injectable, ReflectiveInjector} from '\@angular/core';
+ * import {Injectable, Injector} from '\@angular/core';
  * import {async, fakeAsync, tick} from '\@angular/core/testing';
  * import {BaseRequestOptions, ConnectionBackend, Http, RequestOptions} from '\@angular/http';
  * import {Response, ResponseOptions} from '\@angular/http';
@@ -136,7 +140,7 @@ var MockConnection = (function () {
  *
  * describe('MockBackend HeroService Example', () => {
  *   beforeEach(() => {
- *     this.injector = ReflectiveInjector.resolveAndCreate([
+ *     this.injector = Injector.create([
  *       {provide: ConnectionBackend, useClass: MockBackend},
  *       {provide: RequestOptions, useClass: BaseRequestOptions},
  *       Http,
@@ -235,9 +239,7 @@ var MockBackend = (function () {
 MockBackend.decorators = [
     { type: _angular_core.Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 MockBackend.ctorParameters = function () { return []; };
 
 exports.MockConnection = MockConnection;
