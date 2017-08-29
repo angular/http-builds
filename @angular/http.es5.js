@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 /**
- * @license Angular v5.0.0-beta.5-2e714f9
+ * @license Angular v5.0.0-beta.5-72c7b6e
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -23,7 +23,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
  *
  * Take care not to evaluate this in non-browser contexts.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var BrowserXhr = (function () {
     function BrowserXhr() {
@@ -136,7 +136,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
  * console.log(thirdHeaders.get('X-My-Custom-Header')); //'Angular'
  * ```
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 /**
  * @fileoverview added by tsickle
@@ -340,7 +340,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
  * console.log('res.json():', res.json()); // Object {name: "Jeff"}
  * ```
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var ResponseOptions = (function () {
     /**
@@ -439,7 +439,7 @@ var ResponseOptions = (function () {
  * console.log('res.text():', res.text()); // Angular;
  * ```
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var BaseResponseOptions = (function (_super) {
     tslib_1.__extends(BaseResponseOptions, _super);
@@ -463,7 +463,7 @@ BaseResponseOptions.ctorParameters = function () { return []; };
  * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
  * {\@link Request}.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  * @abstract
  */
 var ConnectionBackend = (function () {
@@ -474,7 +474,7 @@ var ConnectionBackend = (function () {
 /**
  * Abstract class from which real connections are derived.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  * @abstract
  */
 var Connection = (function () {
@@ -485,7 +485,7 @@ var Connection = (function () {
 /**
  * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  * @abstract
  */
 var XSRFStrategy = (function () {
@@ -497,7 +497,7 @@ var XSRFStrategy = (function () {
  * Interface for options to construct a RequestOptions, based on
  * [RequestInit](https://fetch.spec.whatwg.org/#requestinit) from the Fetch spec.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  * @record
  */
 function RequestOptionsArgs() { }
@@ -510,7 +510,7 @@ function RequestArgs() { }
  * Interface for options to construct a Response, based on
  * [ResponseInit](https://fetch.spec.whatwg.org/#responseinit) from the Fetch spec.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  * @record
  */
 function ResponseOptionsArgs() { }
@@ -608,7 +608,7 @@ function paramParser(rawParams) {
     return map;
 }
 /**
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  *
  */
 var QueryEncoder = (function () {
@@ -675,7 +675,7 @@ function standardEncoding(v) {
  *
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var URLSearchParams = (function () {
     /**
@@ -920,7 +920,7 @@ var Body = (function () {
  * can be accessed many times. There are other differences in the implementation, but this is the
  * most significant.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var Response = (function (_super) {
     tslib_1.__extends(Response, _super);
@@ -1045,7 +1045,7 @@ var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
  * Abstract base class for an in-flight JSONP request.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  * @abstract
  */
 var JSONPConnection = (function () {
@@ -1144,7 +1144,7 @@ var JSONPConnection_ = (function (_super) {
 /**
  * A {\@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  * @abstract
  */
 var JSONPBackend = (function (_super) {
@@ -1203,7 +1203,7 @@ var XSSI_PREFIX = /^\)\]\}',?\n/;
  * This class would typically not be created or interacted with directly inside applications, though
  * the {\@link MockConnection} may be interacted with in tests.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var XHRConnection = (function () {
     /**
@@ -1352,7 +1352,7 @@ var XHRConnection = (function () {
  * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
  * details.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var CookieXSRFStrategy = (function () {
     /**
@@ -1401,7 +1401,7 @@ var CookieXSRFStrategy = (function () {
  *   }
  * }
  * ```
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var XHRBackend = (function () {
     /**
@@ -1466,7 +1466,7 @@ XHRBackend.ctorParameters = function () { return [
  * console.log('options.url:', options.url); // https://google.com
  * ```
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var RequestOptions = (function () {
     /**
@@ -1621,7 +1621,7 @@ var RequestOptions = (function () {
  * console.log('req.url:', req.url); // https://google.com
  * ```
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var BaseRequestOptions = (function (_super) {
     tslib_1.__extends(BaseRequestOptions, _super);
@@ -1683,7 +1683,7 @@ BaseRequestOptions.ctorParameters = function () { return []; };
  * });
  * ```
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var Request = (function (_super) {
     tslib_1.__extends(Request, _super);
@@ -1919,7 +1919,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  * http.get('request-from-mock-backend.json').subscribe((res:Response) => doSomething(res));
  * ```
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var Http = (function () {
     /**
@@ -2029,7 +2029,7 @@ Http.ctorParameters = function () { return [
     { type: RequestOptions, },
 ]; };
 /**
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var Jsonp = (function (_super) {
     tslib_1.__extends(Jsonp, _super);
@@ -2126,7 +2126,7 @@ function jsonpFactory(jsonpBackend, requestOptions) {
 /**
  * The module that includes http's providers
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var HttpModule = (function () {
     function HttpModule() {
@@ -2152,7 +2152,7 @@ HttpModule.ctorParameters = function () { return []; };
 /**
  * The module that includes jsonp's providers
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 var JsonpModule = (function () {
     function JsonpModule() {
@@ -2191,9 +2191,9 @@ JsonpModule.ctorParameters = function () { return []; };
  * Entry point for all public APIs of the common package.
  */
 /**
- * \@stable
+ * @deprecated use \@angular/common/http instead
  */
-var VERSION = new Version('5.0.0-beta.5-2e714f9');
+var VERSION = new Version('5.0.0-beta.5-72c7b6e');
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc

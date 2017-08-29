@@ -4,7 +4,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
  *
  * Mock Connection to represent a {@link Connection} for tests.
  *
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare class MockConnection implements Connection {
     /**
@@ -147,7 +147,7 @@ export declare class MockConnection implements Connection {
  *
  * This method only exists in the mock implementation, not in real Backends.
  *
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare class MockBackend implements ConnectionBackend {
     /**
