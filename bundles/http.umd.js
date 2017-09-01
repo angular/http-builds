@@ -1,12 +1,12 @@
 /**
- * @license Angular v5.0.0-beta.5-ee04217
+ * @license Angular v5.0.0-beta.5-fd701b0
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Observable'), require('@angular/platform-browser')) :
 	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Observable', '@angular/platform-browser'], factory) :
-	(factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}),global.ng.core,global.Rx,global.ng.platformBrowser));
+	(factory((global.ng = global.ng || {}, global.ng.http = {}),global.ng.core,global.Rx,global.ng.platformBrowser));
 }(this, (function (exports,_angular_core,rxjs_Observable,_angular_platformBrowser) { 'use strict';
 
 /*! *****************************************************************************
@@ -36,7 +36,7 @@ function __extends(d, b) {
 }
 
 /**
- * @license Angular v5.0.0-beta.5-ee04217
+ * @license Angular v5.0.0-beta.5-fd701b0
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -72,18 +72,21 @@ BrowserXhr.decorators = [
 ];
 /** @nocollapse */
 BrowserXhr.ctorParameters = function () { return []; };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-var RequestMethod = {};
-RequestMethod.Get = 0;
-RequestMethod.Post = 1;
-RequestMethod.Put = 2;
-RequestMethod.Delete = 3;
-RequestMethod.Options = 4;
-RequestMethod.Head = 5;
-RequestMethod.Patch = 6;
+/** @enum {number} */
+var RequestMethod = {
+    Get: 0,
+    Post: 1,
+    Put: 2,
+    Delete: 3,
+    Options: 4,
+    Head: 5,
+    Patch: 6,
+};
 RequestMethod[RequestMethod.Get] = "Get";
 RequestMethod[RequestMethod.Post] = "Post";
 RequestMethod[RequestMethod.Put] = "Put";
@@ -91,38 +94,44 @@ RequestMethod[RequestMethod.Delete] = "Delete";
 RequestMethod[RequestMethod.Options] = "Options";
 RequestMethod[RequestMethod.Head] = "Head";
 RequestMethod[RequestMethod.Patch] = "Patch";
-var ReadyState = {};
-ReadyState.Unsent = 0;
-ReadyState.Open = 1;
-ReadyState.HeadersReceived = 2;
-ReadyState.Loading = 3;
-ReadyState.Done = 4;
-ReadyState.Cancelled = 5;
+/** @enum {number} */
+var ReadyState = {
+    Unsent: 0,
+    Open: 1,
+    HeadersReceived: 2,
+    Loading: 3,
+    Done: 4,
+    Cancelled: 5,
+};
 ReadyState[ReadyState.Unsent] = "Unsent";
 ReadyState[ReadyState.Open] = "Open";
 ReadyState[ReadyState.HeadersReceived] = "HeadersReceived";
 ReadyState[ReadyState.Loading] = "Loading";
 ReadyState[ReadyState.Done] = "Done";
 ReadyState[ReadyState.Cancelled] = "Cancelled";
-var ResponseType = {};
-ResponseType.Basic = 0;
-ResponseType.Cors = 1;
-ResponseType.Default = 2;
-ResponseType.Error = 3;
-ResponseType.Opaque = 4;
+/** @enum {number} */
+var ResponseType = {
+    Basic: 0,
+    Cors: 1,
+    Default: 2,
+    Error: 3,
+    Opaque: 4,
+};
 ResponseType[ResponseType.Basic] = "Basic";
 ResponseType[ResponseType.Cors] = "Cors";
 ResponseType[ResponseType.Default] = "Default";
 ResponseType[ResponseType.Error] = "Error";
 ResponseType[ResponseType.Opaque] = "Opaque";
-var ContentType = {};
-ContentType.NONE = 0;
-ContentType.JSON = 1;
-ContentType.FORM = 2;
-ContentType.FORM_DATA = 3;
-ContentType.TEXT = 4;
-ContentType.BLOB = 5;
-ContentType.ARRAY_BUFFER = 6;
+/** @enum {number} */
+var ContentType = {
+    NONE: 0,
+    JSON: 1,
+    FORM: 2,
+    FORM_DATA: 3,
+    TEXT: 4,
+    BLOB: 5,
+    ARRAY_BUFFER: 6,
+};
 ContentType[ContentType.NONE] = "NONE";
 ContentType[ContentType.JSON] = "JSON";
 ContentType[ContentType.FORM] = "FORM";
@@ -130,15 +139,18 @@ ContentType[ContentType.FORM_DATA] = "FORM_DATA";
 ContentType[ContentType.TEXT] = "TEXT";
 ContentType[ContentType.BLOB] = "BLOB";
 ContentType[ContentType.ARRAY_BUFFER] = "ARRAY_BUFFER";
-var ResponseContentType = {};
-ResponseContentType.Text = 0;
-ResponseContentType.Json = 1;
-ResponseContentType.ArrayBuffer = 2;
-ResponseContentType.Blob = 3;
+/** @enum {number} */
+var ResponseContentType = {
+    Text: 0,
+    Json: 1,
+    ArrayBuffer: 2,
+    Blob: 3,
+};
 ResponseContentType[ResponseContentType.Text] = "Text";
 ResponseContentType[ResponseContentType.Json] = "Json";
 ResponseContentType[ResponseContentType.ArrayBuffer] = "ArrayBuffer";
 ResponseContentType[ResponseContentType.Blob] = "Blob";
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -171,10 +183,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
  *
  * @deprecated use \@angular/common/http instead
  */
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */ var Headers = (function () {
+var Headers = (function () {
     /**
      * @param {?=} headers
      */
@@ -213,9 +222,9 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
         headersString.split('\n').forEach(function (line) {
             var /** @type {?} */ index = line.indexOf(':');
             if (index > 0) {
-                var /** @type {?} */ name = line.slice(0, index);
+                var /** @type {?} */ name_1 = line.slice(0, index);
                 var /** @type {?} */ value = line.slice(index + 1).trim();
-                headers.set(name, value);
+                headers.set(name_1, value);
             }
         });
         return headers;
@@ -336,6 +345,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
     };
     return Headers;
 }());
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -486,6 +496,7 @@ BaseResponseOptions.decorators = [
 ];
 /** @nocollapse */
 BaseResponseOptions.ctorParameters = function () { return []; };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -547,6 +558,7 @@ function RequestArgs() { }
  * @record
  */
 function ResponseOptionsArgs() { }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -601,6 +613,7 @@ function getResponseURL(xhr) {
  * @param {?} input
  * @return {?}
  */
+
 /**
  * @param {?} input
  * @return {?}
@@ -612,6 +625,7 @@ function stringToArrayBuffer(input) {
     }
     return view.buffer;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -835,6 +849,7 @@ var URLSearchParams = (function () {
     URLSearchParams.prototype.delete = function (param) { this.paramsMap.delete(param); };
     return URLSearchParams;
 }());
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -931,6 +946,7 @@ var Body = (function () {
     };
     return Body;
 }());
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -979,6 +995,7 @@ var Response = (function (_super) {
     };
     return Response;
 }(Body));
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -1062,6 +1079,7 @@ BrowserJsonp.decorators = [
 ];
 /** @nocollapse */
 BrowserJsonp.ctorParameters = function () { return []; };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -1216,6 +1234,7 @@ JSONPBackend_.ctorParameters = function () { return [
     { type: BrowserJsonp, },
     { type: ResponseOptions, },
 ]; };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -1466,6 +1485,7 @@ XHRBackend.ctorParameters = function () { return [
     { type: ResponseOptions, },
     { type: XSRFStrategy, },
 ]; };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -1668,6 +1688,7 @@ BaseRequestOptions.decorators = [
 ];
 /** @nocollapse */
 BaseRequestOptions.ctorParameters = function () { return []; };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -1851,6 +1872,7 @@ var w = typeof window == 'object' ? window : noop;
 var FormData = ((w) /** TODO #9100 */)['FormData'] || noop;
 var Blob$1 = ((w) /** TODO #9100 */)['Blob'] || noop;
 var ArrayBuffer$1 = ((w) /** TODO #9100 */)['ArrayBuffer'] || noop;
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -2117,6 +2139,7 @@ Jsonp.ctorParameters = function () { return [
     { type: ConnectionBackend, },
     { type: RequestOptions, },
 ]; };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -2207,6 +2230,7 @@ JsonpModule.decorators = [
 ];
 /** @nocollapse */
 JsonpModule.ctorParameters = function () { return []; };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
@@ -2226,7 +2250,7 @@ JsonpModule.ctorParameters = function () { return []; };
 /**
  * @deprecated use \@angular/common/http instead
  */
-var VERSION = new _angular_core.Version('5.0.0-beta.5-ee04217');
+var VERSION = new _angular_core.Version('5.0.0-beta.5-fd701b0');
 
 exports.BrowserXhr = BrowserXhr;
 exports.JSONPBackend = JSONPBackend;

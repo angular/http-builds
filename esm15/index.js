@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.5-ee04217
+ * @license Angular v5.0.0-beta.5-fd701b0
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -42,14 +42,16 @@ BrowserXhr.ctorParameters = () => [];
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-let RequestMethod = {};
-RequestMethod.Get = 0;
-RequestMethod.Post = 1;
-RequestMethod.Put = 2;
-RequestMethod.Delete = 3;
-RequestMethod.Options = 4;
-RequestMethod.Head = 5;
-RequestMethod.Patch = 6;
+/** @enum {number} */
+const RequestMethod = {
+    Get: 0,
+    Post: 1,
+    Put: 2,
+    Delete: 3,
+    Options: 4,
+    Head: 5,
+    Patch: 6,
+};
 RequestMethod[RequestMethod.Get] = "Get";
 RequestMethod[RequestMethod.Post] = "Post";
 RequestMethod[RequestMethod.Put] = "Put";
@@ -57,38 +59,44 @@ RequestMethod[RequestMethod.Delete] = "Delete";
 RequestMethod[RequestMethod.Options] = "Options";
 RequestMethod[RequestMethod.Head] = "Head";
 RequestMethod[RequestMethod.Patch] = "Patch";
-let ReadyState = {};
-ReadyState.Unsent = 0;
-ReadyState.Open = 1;
-ReadyState.HeadersReceived = 2;
-ReadyState.Loading = 3;
-ReadyState.Done = 4;
-ReadyState.Cancelled = 5;
+/** @enum {number} */
+const ReadyState = {
+    Unsent: 0,
+    Open: 1,
+    HeadersReceived: 2,
+    Loading: 3,
+    Done: 4,
+    Cancelled: 5,
+};
 ReadyState[ReadyState.Unsent] = "Unsent";
 ReadyState[ReadyState.Open] = "Open";
 ReadyState[ReadyState.HeadersReceived] = "HeadersReceived";
 ReadyState[ReadyState.Loading] = "Loading";
 ReadyState[ReadyState.Done] = "Done";
 ReadyState[ReadyState.Cancelled] = "Cancelled";
-let ResponseType = {};
-ResponseType.Basic = 0;
-ResponseType.Cors = 1;
-ResponseType.Default = 2;
-ResponseType.Error = 3;
-ResponseType.Opaque = 4;
+/** @enum {number} */
+const ResponseType = {
+    Basic: 0,
+    Cors: 1,
+    Default: 2,
+    Error: 3,
+    Opaque: 4,
+};
 ResponseType[ResponseType.Basic] = "Basic";
 ResponseType[ResponseType.Cors] = "Cors";
 ResponseType[ResponseType.Default] = "Default";
 ResponseType[ResponseType.Error] = "Error";
 ResponseType[ResponseType.Opaque] = "Opaque";
-let ContentType = {};
-ContentType.NONE = 0;
-ContentType.JSON = 1;
-ContentType.FORM = 2;
-ContentType.FORM_DATA = 3;
-ContentType.TEXT = 4;
-ContentType.BLOB = 5;
-ContentType.ARRAY_BUFFER = 6;
+/** @enum {number} */
+const ContentType = {
+    NONE: 0,
+    JSON: 1,
+    FORM: 2,
+    FORM_DATA: 3,
+    TEXT: 4,
+    BLOB: 5,
+    ARRAY_BUFFER: 6,
+};
 ContentType[ContentType.NONE] = "NONE";
 ContentType[ContentType.JSON] = "JSON";
 ContentType[ContentType.FORM] = "FORM";
@@ -96,11 +104,13 @@ ContentType[ContentType.FORM_DATA] = "FORM_DATA";
 ContentType[ContentType.TEXT] = "TEXT";
 ContentType[ContentType.BLOB] = "BLOB";
 ContentType[ContentType.ARRAY_BUFFER] = "ARRAY_BUFFER";
-let ResponseContentType = {};
-ResponseContentType.Text = 0;
-ResponseContentType.Json = 1;
-ResponseContentType.ArrayBuffer = 2;
-ResponseContentType.Blob = 3;
+/** @enum {number} */
+const ResponseContentType = {
+    Text: 0,
+    Json: 1,
+    ArrayBuffer: 2,
+    Blob: 3,
+};
 ResponseContentType[ResponseContentType.Text] = "Text";
 ResponseContentType[ResponseContentType.Json] = "Json";
 ResponseContentType[ResponseContentType.ArrayBuffer] = "ArrayBuffer";
@@ -2126,7 +2136,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('5.0.0-beta.5-ee04217');
+const VERSION = new Version('5.0.0-beta.5-fd701b0');
 
 /**
  * @fileoverview added by tsickle
@@ -2154,7 +2164,7 @@ const VERSION = new Version('5.0.0-beta.5-ee04217');
 /**
  * @module
  * @description
- * Entry point for all public APIs of the http package.
+ * Entry point for all public APIs of this package.
  */
 
 // This file only reexports content of the `src` folder. Keep it that way.
@@ -2168,4 +2178,4 @@ const VERSION = new Version('5.0.0-beta.5-ee04217');
  */
 
 export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, RequestOptionsArgs, ResponseOptionsArgs, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd, RequestArgs as ɵe };
-//# sourceMappingURL=http.js.map
+//# sourceMappingURL=index.js.map
