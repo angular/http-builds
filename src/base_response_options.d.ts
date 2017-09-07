@@ -26,24 +26,24 @@ import { ResponseOptionsArgs } from './interfaces';
  * console.log('res.json():', res.json()); // Object {name: "Jeff"}
  * ```
  *
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare class ResponseOptions {
     /**
      * String, Object, ArrayBuffer or Blob representing the body of the {@link Response}.
      */
-    body: string | Object | ArrayBuffer | Blob;
+    body: string | Object | ArrayBuffer | Blob | null;
     /**
      * Http {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html status code}
      * associated with the response.
      */
-    status: number;
+    status: number | null;
     /**
      * Response {@link Headers headers}
      */
-    headers: Headers;
-    url: string;
-    constructor({body, status, headers, statusText, type, url}?: ResponseOptionsArgs);
+    headers: Headers | null;
+    url: string | null;
+    constructor(opts?: ResponseOptionsArgs);
     /**
      * Creates a copy of the `ResponseOptions` instance, using the optional input as values to
      * override
@@ -115,7 +115,7 @@ export declare class ResponseOptions {
  * console.log('res.text():', res.text()); // Angular;
  * ```
  *
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare class BaseResponseOptions extends ResponseOptions {
     constructor();
