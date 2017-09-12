@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.6-112e777
+ * @license Angular v5.0.0-beta.6-ca5aeba
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -30,7 +30,7 @@ class BrowserXhr {
     /**
      * @return {?}
      */
-    build() { return ((new XMLHttpRequest())); }
+    build() { return /** @type {?} */ ((new XMLHttpRequest())); }
 }
 BrowserXhr.decorators = [
     { type: Injectable },
@@ -148,10 +148,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
  *
  * @deprecated use \@angular/common/http instead
  */
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */ class Headers {
+class Headers {
     /**
      * @param {?=} headers
      */
@@ -274,6 +271,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
      */
     values() { return Array.from(this._headers.values()); }
     /**
+     * Returns string of all headers.
      * @return {?}
      */
     toJSON() {
@@ -281,7 +279,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
         this._headers.forEach((values, name) => {
             const /** @type {?} */ split = [];
             values.forEach(v => split.push(...v.split(',')));
-            serialized[((this._normalizedNames.get(name)))] = split;
+            serialized[/** @type {?} */ ((this._normalizedNames.get(name)))] = split;
         });
         return serialized;
     }
@@ -495,12 +493,12 @@ class XSRFStrategy {
  * @deprecated use \@angular/common/http instead
  * @record
  */
-function RequestOptionsArgs() { }
+
 /**
  * Required structure when constructing new Request();
  * @record
  */
-function RequestArgs() { }
+
 /**
  * Interface for options to construct a Response, based on
  * [ResponseInit](https://fetch.spec.whatwg.org/#responseinit) from the Fetch spec.
@@ -508,7 +506,6 @@ function RequestArgs() { }
  * @deprecated use \@angular/common/http instead
  * @record
  */
-function ResponseOptionsArgs() { }
 
 /**
  * @fileoverview added by tsickle
@@ -582,11 +579,6 @@ function stringToArrayBuffer(input) {
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
  * @param {?=} rawParams
  * @return {?}
  */
@@ -864,7 +856,7 @@ class Body {
      */
     arrayBuffer() {
         if (this._body instanceof ArrayBuffer) {
-            return (this._body);
+            return /** @type {?} */ (this._body);
         }
         return stringToArrayBuffer(this.text());
     }
@@ -874,7 +866,7 @@ class Body {
      */
     blob() {
         if (this._body instanceof Blob) {
-            return (this._body);
+            return /** @type {?} */ (this._body);
         }
         if (this._body instanceof ArrayBuffer) {
             return new Blob([this._body]);
@@ -914,12 +906,12 @@ class Response extends Body {
     constructor(responseOptions) {
         super();
         this._body = responseOptions.body;
-        this.status = ((responseOptions.status));
+        this.status = /** @type {?} */ ((responseOptions.status));
         this.ok = (this.status >= 200 && this.status <= 299);
         this.statusText = responseOptions.statusText;
         this.headers = responseOptions.headers;
-        this.type = ((responseOptions.type));
-        this.url = ((responseOptions.url));
+        this.type = /** @type {?} */ ((responseOptions.type));
+        this.url = /** @type {?} */ ((responseOptions.url));
     }
     /**
      * @return {?}
@@ -1645,7 +1637,7 @@ class Request extends Body {
         super();
         // TODO: assert that url is present
         const /** @type {?} */ url = requestOptions.url;
-        this.url = ((requestOptions.url));
+        this.url = /** @type {?} */ ((requestOptions.url));
         const /** @type {?} */ paramsArg = requestOptions.params || requestOptions.search;
         if (paramsArg) {
             let /** @type {?} */ params;
@@ -1670,8 +1662,8 @@ class Request extends Body {
         // Defaults to 'omit', consistent with browser
         this.headers = new Headers(requestOptions.headers);
         this.contentType = this.detectContentType();
-        this.withCredentials = ((requestOptions.withCredentials));
-        this.responseType = ((requestOptions.responseType));
+        this.withCredentials = /** @type {?} */ ((requestOptions.withCredentials));
+        this.responseType = /** @type {?} */ ((requestOptions.responseType));
     }
     /**
      * Returns the content type enum based on header options.
@@ -1764,9 +1756,9 @@ function urlEncodeParams(params) {
 }
 const noop = function () { };
 const w = typeof window == 'object' ? window : noop;
-const FormData = ((w) /** TODO #9100 */)['FormData'] || noop;
-const Blob$1 = ((w) /** TODO #9100 */)['Blob'] || noop;
-const ArrayBuffer$1 = ((w) /** TODO #9100 */)['ArrayBuffer'] || noop;
+const FormData = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['FormData'] || noop;
+const Blob$1 = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['Blob'] || noop;
+const ArrayBuffer$1 = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['ArrayBuffer'] || noop;
 
 /**
  * @fileoverview added by tsickle
@@ -1798,7 +1790,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
     const /** @type {?} */ newOptions = defaultOpts;
     if (providedOpts) {
         // Hack so Dart can used named parameters
-        return (newOptions.merge(new RequestOptions({
+        return /** @type {?} */ (newOptions.merge(new RequestOptions({
             method: providedOpts.method || method,
             url: providedOpts.url || url,
             search: providedOpts.search,
@@ -1809,7 +1801,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
             responseType: providedOpts.responseType
         })));
     }
-    return (newOptions.merge(new RequestOptions({ method, url })));
+    return /** @type {?} */ (newOptions.merge(new RequestOptions({ method, url })));
 }
 /**
  * Performs http requests using `XMLHttpRequest` as the default backend.
@@ -2136,7 +2128,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('5.0.0-beta.6-112e777');
+const VERSION = new Version('5.0.0-beta.6-ca5aeba');
 
 /**
  * @fileoverview added by tsickle
@@ -2177,5 +2169,5 @@ const VERSION = new Version('5.0.0-beta.6-112e777');
  * Generated bundle index. Do not edit.
  */
 
-export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, RequestOptionsArgs, ResponseOptionsArgs, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd, RequestArgs as ɵe };
+export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
 //# sourceMappingURL=index.js.map

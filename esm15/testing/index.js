@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.6-112e777
+ * @license Angular v5.0.0-beta.6-ca5aeba
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -31,7 +31,7 @@ class MockConnection {
      * @param {?} req
      */
     constructor(req) {
-        this.response = (take.call(new ReplaySubject(1), 1));
+        this.response = /** @type {?} */ (take.call(new ReplaySubject(1), 1));
         this.readyState = ReadyState.Open;
         this.request = req;
     }

@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.6-112e777
+ * @license Angular v5.0.0-beta.6-ca5aeba
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -10,7 +10,7 @@
 }(this, (function (exports,_angular_core,_angular_http,rxjs_ReplaySubject,rxjs_Subject,rxjs_operator_take) { 'use strict';
 
 /**
- * @license Angular v5.0.0-beta.6-112e777
+ * @license Angular v5.0.0-beta.6-ca5aeba
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -32,14 +32,26 @@
  * @deprecated use \@angular/common/http instead
  */
 var MockConnection = (function () {
-    /**
-     * @param {?} req
-     */
     function MockConnection(req) {
-        this.response = (rxjs_operator_take.take.call(new rxjs_ReplaySubject.ReplaySubject(1), 1));
+        this.response = /** @type {?} */ (rxjs_operator_take.take.call(new rxjs_ReplaySubject.ReplaySubject(1), 1));
         this.readyState = _angular_http.ReadyState.Open;
         this.request = req;
     }
+    /**
+     * Sends a mock response to the connection. This response is the value that is emitted to the
+     * {@link EventEmitter} returned by {@link Http}.
+     *
+     * ### Example
+     *
+     * ```
+     * var connection;
+     * backend.connections.subscribe(c => connection = c);
+     * http.request('data.json').subscribe(res => console.log(res.text()));
+     * connection.mockRespond(new Response(new ResponseOptions({ body: 'fake response' }))); //logs
+     * 'fake response'
+     * ```
+     *
+     */
     /**
      * Sends a mock response to the connection. This response is the value that is emitted to the
      * {\@link EventEmitter} returned by {\@link Http}.
@@ -57,7 +69,24 @@ var MockConnection = (function () {
      * @param {?} res
      * @return {?}
      */
-    MockConnection.prototype.mockRespond = function (res) {
+    MockConnection.prototype.mockRespond = /**
+     * Sends a mock response to the connection. This response is the value that is emitted to the
+     * {\@link EventEmitter} returned by {\@link Http}.
+     *
+     * ### Example
+     *
+     * ```
+     * var connection;
+     * backend.connections.subscribe(c => connection = c);
+     * http.request('data.json').subscribe(res => console.log(res.text()));
+     * connection.mockRespond(new Response(new ResponseOptions({ body: 'fake response' }))); //logs
+     * 'fake response'
+     * ```
+     *
+     * @param {?} res
+     * @return {?}
+     */
+    function (res) {
         if (this.readyState === _angular_http.ReadyState.Done || this.readyState === _angular_http.ReadyState.Cancelled) {
             throw new Error('Connection has already been resolved');
         }
@@ -68,17 +97,47 @@ var MockConnection = (function () {
     /**
      * Not yet implemented!
      *
+     * Sends the provided {@link Response} to the `downloadObserver` of the `Request`
+     * associated with this connection.
+     */
+    /**
+     * Not yet implemented!
+     *
      * Sends the provided {\@link Response} to the `downloadObserver` of the `Request`
      * associated with this connection.
      * @param {?} res
      * @return {?}
      */
-    MockConnection.prototype.mockDownload = function (res) {
+    MockConnection.prototype.mockDownload = /**
+     * Not yet implemented!
+     *
+     * Sends the provided {\@link Response} to the `downloadObserver` of the `Request`
+     * associated with this connection.
+     * @param {?} res
+     * @return {?}
+     */
+    function (res) {
         // this.request.downloadObserver.onNext(res);
         // if (res.bytesLoaded === res.totalBytes) {
         //   this.request.downloadObserver.onCompleted();
         // }
     };
+    // TODO(jeffbcross): consider using Response type
+    /**
+     * Emits the provided error object as an error to the {@link Response} {@link EventEmitter}
+     * returned
+     * from {@link Http}.
+     *
+     * ### Example
+     *
+     * ```
+     * var connection;
+     * backend.connections.subscribe(c => connection = c);
+     * http.request('data.json').subscribe(res => res, err => console.log(err)));
+     * connection.mockError(new Error('error'));
+     * ```
+     *
+     */
     /**
      * Emits the provided error object as an error to the {\@link Response} {\@link EventEmitter}
      * returned
@@ -96,7 +155,24 @@ var MockConnection = (function () {
      * @param {?=} err
      * @return {?}
      */
-    MockConnection.prototype.mockError = function (err) {
+    MockConnection.prototype.mockError = /**
+     * Emits the provided error object as an error to the {\@link Response} {\@link EventEmitter}
+     * returned
+     * from {\@link Http}.
+     *
+     * ### Example
+     *
+     * ```
+     * var connection;
+     * backend.connections.subscribe(c => connection = c);
+     * http.request('data.json').subscribe(res => res, err => console.log(err)));
+     * connection.mockError(new Error('error'));
+     * ```
+     *
+     * @param {?=} err
+     * @return {?}
+     */
+    function (err) {
         // Matches ResourceLoader semantics
         this.readyState = _angular_http.ReadyState.Done;
         this.response.error(err);
@@ -202,9 +278,20 @@ var MockBackend = (function () {
      * Checks all connections, and raises an exception if any connection has not received a response.
      *
      * This method only exists in the mock implementation, not in real Backends.
+     */
+    /**
+     * Checks all connections, and raises an exception if any connection has not received a response.
+     *
+     * This method only exists in the mock implementation, not in real Backends.
      * @return {?}
      */
-    MockBackend.prototype.verifyNoPendingRequests = function () {
+    MockBackend.prototype.verifyNoPendingRequests = /**
+     * Checks all connections, and raises an exception if any connection has not received a response.
+     *
+     * This method only exists in the mock implementation, not in real Backends.
+     * @return {?}
+     */
+    function () {
         var /** @type {?} */ pending = 0;
         this.pendingConnections.subscribe(function (c) { return pending++; });
         if (pending > 0)
@@ -215,9 +302,28 @@ var MockBackend = (function () {
      * connections, if it's expected that there are connections that have not yet received a response.
      *
      * This method only exists in the mock implementation, not in real Backends.
+     */
+    /**
+     * Can be used in conjunction with `verifyNoPendingRequests` to resolve any not-yet-resolve
+     * connections, if it's expected that there are connections that have not yet received a response.
+     *
+     * This method only exists in the mock implementation, not in real Backends.
      * @return {?}
      */
-    MockBackend.prototype.resolveAllConnections = function () { this.connections.subscribe(function (c) { return c.readyState = 4; }); };
+    MockBackend.prototype.resolveAllConnections = /**
+     * Can be used in conjunction with `verifyNoPendingRequests` to resolve any not-yet-resolve
+     * connections, if it's expected that there are connections that have not yet received a response.
+     *
+     * This method only exists in the mock implementation, not in real Backends.
+     * @return {?}
+     */
+    function () { this.connections.subscribe(function (c) { return c.readyState = 4; }); };
+    /**
+     * Creates a new {@link MockConnection}. This is equivalent to calling `new
+     * MockConnection()`, except that it also will emit the new `Connection` to the `connections`
+     * emitter of this `MockBackend` instance. This method will usually only be used by tests
+     * against the framework itself, not by end-users.
+     */
     /**
      * Creates a new {\@link MockConnection}. This is equivalent to calling `new
      * MockConnection()`, except that it also will emit the new `Connection` to the `connections`
@@ -226,7 +332,15 @@ var MockBackend = (function () {
      * @param {?} req
      * @return {?}
      */
-    MockBackend.prototype.createConnection = function (req) {
+    MockBackend.prototype.createConnection = /**
+     * Creates a new {\@link MockConnection}. This is equivalent to calling `new
+     * MockConnection()`, except that it also will emit the new `Connection` to the `connections`
+     * emitter of this `MockBackend` instance. This method will usually only be used by tests
+     * against the framework itself, not by end-users.
+     * @param {?} req
+     * @return {?}
+     */
+    function (req) {
         if (!req || !(req instanceof _angular_http.Request)) {
             throw new Error("createConnection requires an instance of Request, got " + req);
         }
@@ -234,13 +348,13 @@ var MockBackend = (function () {
         this.connections.next(connection);
         return connection;
     };
+    MockBackend.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    MockBackend.ctorParameters = function () { return []; };
     return MockBackend;
 }());
-MockBackend.decorators = [
-    { type: _angular_core.Injectable },
-];
-/** @nocollapse */
-MockBackend.ctorParameters = function () { return []; };
 
 exports.MockConnection = MockConnection;
 exports.MockBackend = MockBackend;

@@ -36,7 +36,7 @@ export declare class JSONPConnection_ extends JSONPConnection {
     private _script;
     private _responseData;
     private _finished;
-    constructor(req: Request, _dom: BrowserJsonp, baseResponseOptions?: ResponseOptions);
+    constructor(req: Request, _dom: BrowserJsonp, baseResponseOptions?: ResponseOptions | undefined);
     finished(data?: any): void;
 }
 /**
