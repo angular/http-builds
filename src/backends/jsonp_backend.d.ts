@@ -8,7 +8,7 @@ import { BrowserJsonp } from './browser_jsonp';
 /**
  * Abstract base class for an in-flight JSONP request.
  *
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare abstract class JSONPConnection implements Connection {
     /**
@@ -36,13 +36,13 @@ export declare class JSONPConnection_ extends JSONPConnection {
     private _script;
     private _responseData;
     private _finished;
-    constructor(req: Request, _dom: BrowserJsonp, baseResponseOptions?: ResponseOptions);
+    constructor(req: Request, _dom: BrowserJsonp, baseResponseOptions?: ResponseOptions | undefined);
     finished(data?: any): void;
 }
 /**
  * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare abstract class JSONPBackend extends ConnectionBackend {
 }
