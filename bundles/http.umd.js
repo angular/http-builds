@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.7-4695c69
+ * @license Angular v5.0.0-beta.7-b6431c6
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -36,7 +36,7 @@ function __extends(d, b) {
 }
 
 /**
- * @license Angular v5.0.0-beta.7-4695c69
+ * @license Angular v5.0.0-beta.7-b6431c6
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1386,28 +1386,22 @@ var BrowserJsonp = (function () {
 var JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
 var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
- * Abstract base class for an in-flight JSONP request.
+ * Base class for an in-flight JSONP request.
  *
  * @deprecated use \@angular/common/http instead
- * @abstract
  */
 var JSONPConnection = (function () {
-    function JSONPConnection() {
-    }
-    return JSONPConnection;
-}());
-var JSONPConnection_ = (function (_super) {
-    __extends(JSONPConnection_, _super);
-    function JSONPConnection_(req, _dom, baseResponseOptions) {
-        var _this = _super.call(this) || this;
-        _this._dom = _dom;
-        _this.baseResponseOptions = baseResponseOptions;
-        _this._finished = false;
+    /** @internal */
+    function JSONPConnection(req, _dom, baseResponseOptions) {
+        var _this = this;
+        this._dom = _dom;
+        this.baseResponseOptions = baseResponseOptions;
+        this._finished = false;
         if (req.method !== RequestMethod.Get) {
             throw new TypeError(JSONP_ERR_WRONG_METHOD);
         }
-        _this.request = req;
-        _this.response = new rxjs_Observable.Observable(function (responseObserver) {
+        this.request = req;
+        this.response = new rxjs_Observable.Observable(function (responseObserver) {
             _this.readyState = ReadyState.Loading;
             var /** @type {?} */ id = _this._id = _dom.nextRequestID();
             _dom.exposeConnection(id, _this);
@@ -1463,13 +1457,20 @@ var JSONPConnection_ = (function (_super) {
                 _this._dom.cleanup(script);
             };
         });
-        return _this;
     }
     /**
+     * Callback called when the JSONP request completes, to notify the application
+     * of the new data.
+     */
+    /**
+     * Callback called when the JSONP request completes, to notify the application
+     * of the new data.
      * @param {?=} data
      * @return {?}
      */
-    JSONPConnection_.prototype.finished = /**
+    JSONPConnection.prototype.finished = /**
+     * Callback called when the JSONP request completes, to notify the application
+     * of the new data.
      * @param {?=} data
      * @return {?}
      */
@@ -1481,24 +1482,17 @@ var JSONPConnection_ = (function (_super) {
             return;
         this._responseData = data;
     };
-    return JSONPConnection_;
-}(JSONPConnection));
+    return JSONPConnection;
+}());
 /**
  * A {\@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
  * @deprecated use \@angular/common/http instead
- * @abstract
  */
 var JSONPBackend = (function (_super) {
     __extends(JSONPBackend, _super);
-    function JSONPBackend() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return JSONPBackend;
-}(ConnectionBackend));
-var JSONPBackend_ = (function (_super) {
-    __extends(JSONPBackend_, _super);
-    function JSONPBackend_(_browserJSONP, _baseResponseOptions) {
+    /** @internal */
+    function JSONPBackend(_browserJSONP, _baseResponseOptions) {
         var _this = _super.call(this) || this;
         _this._browserJSONP = _browserJSONP;
         _this._baseResponseOptions = _baseResponseOptions;
@@ -1508,23 +1502,23 @@ var JSONPBackend_ = (function (_super) {
      * @param {?} request
      * @return {?}
      */
-    JSONPBackend_.prototype.createConnection = /**
+    JSONPBackend.prototype.createConnection = /**
      * @param {?} request
      * @return {?}
      */
     function (request) {
-        return new JSONPConnection_(request, this._browserJSONP, this._baseResponseOptions);
+        return new JSONPConnection(request, this._browserJSONP, this._baseResponseOptions);
     };
-    JSONPBackend_.decorators = [
+    JSONPBackend.decorators = [
         { type: _angular_core.Injectable },
     ];
     /** @nocollapse */
-    JSONPBackend_.ctorParameters = function () { return [
+    JSONPBackend.ctorParameters = function () { return [
         { type: BrowserJsonp, },
         { type: ResponseOptions, },
     ]; };
-    return JSONPBackend_;
-}(JSONPBackend));
+    return JSONPBackend;
+}(ConnectionBackend));
 
 /**
  * @fileoverview added by tsickle
@@ -2705,7 +2699,7 @@ var JsonpModule = (function () {
                         BrowserJsonp,
                         { provide: RequestOptions, useClass: BaseRequestOptions },
                         { provide: ResponseOptions, useClass: BaseResponseOptions },
-                        { provide: JSONPBackend, useClass: JSONPBackend_ },
+                        JSONPBackend,
                     ],
                 },] },
     ];
@@ -2733,7 +2727,7 @@ var JsonpModule = (function () {
 /**
  * @deprecated use \@angular/common/http instead
  */
-var VERSION = new _angular_core.Version('5.0.0-beta.7-4695c69');
+var VERSION = new _angular_core.Version('5.0.0-beta.7-b6431c6');
 
 exports.BrowserXhr = BrowserXhr;
 exports.JSONPBackend = JSONPBackend;
@@ -2762,12 +2756,11 @@ exports.Response = Response;
 exports.QueryEncoder = QueryEncoder;
 exports.URLSearchParams = URLSearchParams;
 exports.VERSION = VERSION;
-exports.ɵg = BrowserJsonp;
-exports.ɵa = JSONPBackend_;
+exports.ɵe = BrowserJsonp;
 exports.ɵf = Body;
-exports.ɵb = _createDefaultCookieXSRFStrategy;
-exports.ɵc = httpFactory;
-exports.ɵd = jsonpFactory;
+exports.ɵa = _createDefaultCookieXSRFStrategy;
+exports.ɵb = httpFactory;
+exports.ɵc = jsonpFactory;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

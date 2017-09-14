@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.0.0-beta.7-4695c69
+ * @license Angular v5.0.0-beta.7-b6431c6
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1016,21 +1016,18 @@ BrowserJsonp.ctorParameters = () => [];
 const JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
 const JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
- * Abstract base class for an in-flight JSONP request.
+ * Base class for an in-flight JSONP request.
  *
  * @deprecated use \@angular/common/http instead
- * @abstract
  */
 class JSONPConnection {
-}
-class JSONPConnection_ extends JSONPConnection {
     /**
+     * \@internal
      * @param {?} req
      * @param {?} _dom
      * @param {?=} baseResponseOptions
      */
     constructor(req, _dom, baseResponseOptions) {
-        super();
         this._dom = _dom;
         this.baseResponseOptions = baseResponseOptions;
         this._finished = false;
@@ -1096,6 +1093,8 @@ class JSONPConnection_ extends JSONPConnection {
         });
     }
     /**
+     * Callback called when the JSONP request completes, to notify the application
+     * of the new data.
      * @param {?=} data
      * @return {?}
      */
@@ -1112,12 +1111,10 @@ class JSONPConnection_ extends JSONPConnection {
  * A {\@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
  * @deprecated use \@angular/common/http instead
- * @abstract
  */
 class JSONPBackend extends ConnectionBackend {
-}
-class JSONPBackend_ extends JSONPBackend {
     /**
+     * \@internal
      * @param {?} _browserJSONP
      * @param {?} _baseResponseOptions
      */
@@ -1131,14 +1128,14 @@ class JSONPBackend_ extends JSONPBackend {
      * @return {?}
      */
     createConnection(request) {
-        return new JSONPConnection_(request, this._browserJSONP, this._baseResponseOptions);
+        return new JSONPConnection(request, this._browserJSONP, this._baseResponseOptions);
     }
 }
-JSONPBackend_.decorators = [
+JSONPBackend.decorators = [
     { type: Injectable },
 ];
 /** @nocollapse */
-JSONPBackend_.ctorParameters = () => [
+JSONPBackend.ctorParameters = () => [
     { type: BrowserJsonp, },
     { type: ResponseOptions, },
 ];
@@ -2102,7 +2099,7 @@ JsonpModule.decorators = [
                     BrowserJsonp,
                     { provide: RequestOptions, useClass: BaseRequestOptions },
                     { provide: ResponseOptions, useClass: BaseResponseOptions },
-                    { provide: JSONPBackend, useClass: JSONPBackend_ },
+                    JSONPBackend,
                 ],
             },] },
 ];
@@ -2128,7 +2125,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('5.0.0-beta.7-4695c69');
+const VERSION = new Version('5.0.0-beta.7-b6431c6');
 
 /**
  * @fileoverview added by tsickle
@@ -2169,5 +2166,5 @@ const VERSION = new Version('5.0.0-beta.7-4695c69');
  * Generated bundle index. Do not edit.
  */
 
-export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵg, JSONPBackend_ as ɵa, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵb, httpFactory as ɵc, jsonpFactory as ɵd };
+export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵe, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵa, httpFactory as ɵb, jsonpFactory as ɵc };
 //# sourceMappingURL=index.js.map
