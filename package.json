@@ -1,11 +1,11 @@
 {
   "name": "@angular/http",
-  "version": "5.0.0-beta.7-9d2236a",
+  "version": "5.0.0-beta.7-5751865",
   "description": "Angular - the http service",
   "main": "./bundles/http.umd.js",
-  "module": "./esm5/index.js",
-  "es2015": "./esm15/index.js",
-  "typings": "./index.d.ts",
+  "module": "./esm5/http.js",
+  "es2015": "./esm2015/http.js",
+  "typings": "./http.d.ts",
   "author": "angular",
   "license": "MIT",
   "dependencies": {
@@ -13,8 +13,8 @@
   },
   "peerDependencies": {
     "rxjs": "^5.0.1",
-    "@angular/core": "5.0.0-beta.7-9d2236a",
-    "@angular/platform-browser": "5.0.0-beta.7-9d2236a"
+    "@angular/core": "5.0.0-beta.7-5751865",
+    "@angular/platform-browser": "5.0.0-beta.7-5751865"
   },
   "repository": {
     "type": "git",
