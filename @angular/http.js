@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.4.4-65ca7fd
+ * @license Angular v4.4.4-28c29d5
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2088,7 +2088,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * \@stable
  */
-const VERSION = new Version('4.4.4-65ca7fd');
+const VERSION = new Version('4.4.4-28c29d5');
 
 /**
  * @license
