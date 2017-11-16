@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.1.0-beta.0-f8658cd
+ * @license Angular v5.1.0-beta.0-336041a
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -26,7 +26,7 @@ import { take } from 'rxjs/operator/take';
  *
  * @deprecated use \@angular/common/http instead
  */
-var MockConnection = (function () {
+var MockConnection = /** @class */ (function () {
     function MockConnection(req) {
         this.response = /** @type {?} */ (take.call(new ReplaySubject(1), 1));
         this.readyState = ReadyState.Open;
@@ -261,7 +261,7 @@ var MockConnection = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var MockBackend = (function () {
+var MockBackend = /** @class */ (function () {
     function MockBackend() {
         var _this = this;
         this.connectionsArray = [];
