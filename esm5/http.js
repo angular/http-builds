@@ -1,5 +1,5 @@
 /**
- * @license Angular v5.2.0-beta.1-83c1383
+ * @license Angular v5.2.0-beta.1-83d207d
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2632,12 +2632,6 @@ var Jsonp = /** @class */ (function (_super) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * @module
- * @description
- * The http module provides services to perform http requests. To get started, see the {@link Http}
- * class.
- */
-/**
  * @return {?}
  */
 function _createDefaultCookieXSRFStrategy() {
@@ -2723,14 +2717,9 @@ var JsonpModule = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * @module
- * @description
- * Entry point for all public APIs of the common package.
- */
-/**
  * @deprecated use \@angular/common/http instead
  */
-var VERSION = new Version('5.2.0-beta.1-83c1383');
+var VERSION = new Version('5.2.0-beta.1-83d207d');
 
 /**
  * @fileoverview added by tsickle
