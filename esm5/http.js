@@ -1,6 +1,6 @@
 /**
- * @license Angular v5.2.0-rc.0-dcc3eba
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v5.2.0-rc.0-b5934fc
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 import { Injectable, NgModule, Version } from '@angular/core';
@@ -2719,7 +2719,7 @@ var JsonpModule = /** @class */ (function () {
 /**
  * @deprecated use \@angular/common/http instead
  */
-var VERSION = new Version('5.2.0-rc.0-dcc3eba');
+var VERSION = new Version('5.2.0-rc.0-b5934fc');
 
 /**
  * @fileoverview added by tsickle
