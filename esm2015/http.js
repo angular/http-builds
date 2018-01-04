@@ -1,6 +1,6 @@
 /**
- * @license Angular v5.1.3-5efb751
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v5.1.3-d3c0425
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 import { Injectable, NgModule, Version } from '@angular/core';
@@ -2160,7 +2160,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('5.1.3-5efb751');
+const VERSION = new Version('5.1.3-d3c0425');
 
 /**
  * @fileoverview added by tsickle
