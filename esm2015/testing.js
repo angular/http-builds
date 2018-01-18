@@ -1,6 +1,6 @@
 /**
- * @license Angular v4.2.2-a6c99f0
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v5.2.0-2717a3e
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 import { Injectable } from '@angular/core';
@@ -9,6 +9,10 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 import { take } from 'rxjs/operator/take';
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -20,14 +24,14 @@ import { take } from 'rxjs/operator/take';
  *
  * Mock Connection to represent a {\@link Connection} for tests.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 class MockConnection {
     /**
      * @param {?} req
      */
     constructor(req) {
-        this.response = take.call(new ReplaySubject(1), 1);
+        this.response = /** @type {?} */ (take.call(new ReplaySubject(1), 1));
         this.readyState = ReadyState.Open;
         this.request = req;
     }
@@ -102,7 +106,7 @@ class MockConnection {
  * ### Example
  *
  * ```
- * import {Injectable, ReflectiveInjector} from '\@angular/core';
+ * import {Injectable, Injector} from '\@angular/core';
  * import {async, fakeAsync, tick} from '\@angular/core/testing';
  * import {BaseRequestOptions, ConnectionBackend, Http, RequestOptions} from '\@angular/http';
  * import {Response, ResponseOptions} from '\@angular/http';
@@ -130,7 +134,7 @@ class MockConnection {
  *
  * describe('MockBackend HeroService Example', () => {
  *   beforeEach(() => {
- *     this.injector = ReflectiveInjector.resolveAndCreate([
+ *     this.injector = Injector.create([
  *       {provide: ConnectionBackend, useClass: MockBackend},
  *       {provide: RequestOptions, useClass: BaseRequestOptions},
  *       Http,
@@ -178,7 +182,7 @@ class MockConnection {
  *
  * This method only exists in the mock implementation, not in real Backends.
  *
- * \@experimental
+ * @deprecated use \@angular/common/http instead
  */
 class MockBackend {
     constructor() {
@@ -227,11 +231,13 @@ class MockBackend {
 MockBackend.decorators = [
     { type: Injectable },
 ];
-/**
- * @nocollapse
- */
+/** @nocollapse */
 MockBackend.ctorParameters = () => [];
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -246,6 +252,10 @@ MockBackend.ctorParameters = () => [];
  */
 
 /**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
  * @license
  * Copyright Google Inc. All Rights Reserved.
  *
@@ -255,9 +265,13 @@ MockBackend.ctorParameters = () => [];
 /**
  * @module
  * @description
- * Entry point for all public APIs of the http testing package.
+ * Entry point for all public APIs of this package.
  */
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * Generated bundle index. Do not edit.
  */
