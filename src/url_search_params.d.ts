@@ -1,5 +1,5 @@
 /**
- * @experimental
+ * @deprecated use @angular/common/http instead
  **/
 export declare class QueryEncoder {
     encodeKey(k: string): string;
@@ -38,7 +38,7 @@ export declare class QueryEncoder {
  *
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare class URLSearchParams {
     rawParams: string;
@@ -47,7 +47,7 @@ export declare class URLSearchParams {
     constructor(rawParams?: string, queryEncoder?: QueryEncoder);
     clone(): URLSearchParams;
     has(param: string): boolean;
-    get(param: string): string;
+    get(param: string): string | null;
     getAll(param: string): string[];
     set(param: string, val: string): void;
     setAll(searchParams: URLSearchParams): void;

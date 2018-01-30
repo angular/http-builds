@@ -27,7 +27,7 @@ import { Headers } from './headers';
  * can be accessed many times. There are other differences in the implementation, but this is the
  * most significant.
  *
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare class Response extends Body {
     /**
@@ -58,7 +58,7 @@ export declare class Response extends Body {
      *
      * Defaults to "OK"
      */
-    statusText: string;
+    statusText: string | null;
     /**
      * Non-standard property
      *
@@ -76,7 +76,7 @@ export declare class Response extends Body {
      * Headers object based on the `Headers` class in the [Fetch
      * Spec](https://fetch.spec.whatwg.org/#headers-class).
      */
-    headers: Headers;
+    headers: Headers | null;
     constructor(responseOptions: ResponseOptions);
     toString(): string;
 }

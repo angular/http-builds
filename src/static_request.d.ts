@@ -46,7 +46,7 @@ import { RequestArgs } from './interfaces';
  * });
  * ```
  *
- * @experimental
+ * @deprecated use @angular/common/http instead
  */
 export declare class Request extends Body {
     /**
@@ -80,4 +80,4 @@ export declare class Request extends Body {
      */
     getBody(): any;
 }
-export declare const ArrayBuffer: any;
+export declare const ArrayBuffer: ArrayBufferConstructor;
