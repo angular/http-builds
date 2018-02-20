@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.0-beta.4-e2bdef4
+ * @license Angular v6.0.0-beta.4-f6120c0
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -36,7 +36,7 @@ function __extends(d, b) {
 }
 
 /**
- * @license Angular v6.0.0-beta.4-e2bdef4
+ * @license Angular v6.0.0-beta.4-f6120c0
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2751,7 +2751,7 @@ var JsonpModule = /** @class */ (function () {
 /**
  * @deprecated use \@angular/common/http instead
  */
-var VERSION = new _angular_core.Version('6.0.0-beta.4-e2bdef4');
+var VERSION = new _angular_core.Version('6.0.0-beta.4-f6120c0');
 
 exports.BrowserXhr = BrowserXhr;
 exports.JSONPBackend = JSONPBackend;
