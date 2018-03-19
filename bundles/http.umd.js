@@ -1,11 +1,11 @@
 /**
- * @license Angular v5.0.0-beta.6-3f585ba
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-beta.7-a7d6efe
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Observable'), require('@angular/platform-browser')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Observable', '@angular/platform-browser'], factory) :
+	typeof define === 'function' && define.amd ? define('@angular/http', ['exports', '@angular/core', 'rxjs/Observable', '@angular/platform-browser'], factory) :
 	(factory((global.ng = global.ng || {}, global.ng.http = {}),global.ng.core,global.Rx,global.ng.platformBrowser));
 }(this, (function (exports,_angular_core,rxjs_Observable,_angular_platformBrowser) { 'use strict';
 
@@ -36,8 +36,8 @@ function __extends(d, b) {
 }
 
 /**
- * @license Angular v5.0.0-beta.6-3f585ba
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-beta.7-a7d6efe
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 /**
@@ -58,7 +58,7 @@ function __extends(d, b) {
  *
  * @deprecated use \@angular/common/http instead
  */
-var BrowserXhr = (function () {
+var BrowserXhr = /** @class */ (function () {
     function BrowserXhr() {
     }
     /**
@@ -79,6 +79,13 @@ var BrowserXhr = (function () {
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
  */
 /** @enum {number} */
 var RequestMethod = {
@@ -159,6 +166,13 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
  * @suppress {checkTypes} checked by tsc
  */
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * Polyfill for [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers), as
  * specified in the [Fetch Spec](https://fetch.spec.whatwg.org/#headers-class).
  *
@@ -186,7 +200,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
  *
  * @deprecated use \@angular/common/http instead
  */
-var Headers = (function () {
+var Headers = /** @class */ (function () {
     // TODO(vicb): any -> string|string[]
     function Headers(headers) {
         var _this = this;
@@ -482,7 +496,7 @@ var Headers = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var ResponseOptions = (function () {
+var ResponseOptions = /** @class */ (function () {
     function ResponseOptions(opts) {
         if (opts === void 0) { opts = {}; }
         var body = opts.body, status = opts.status, headers = opts.headers, statusText = opts.statusText, type = opts.type, url = opts.url;
@@ -630,7 +644,7 @@ var ResponseOptions = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var BaseResponseOptions = (function (_super) {
+var BaseResponseOptions = /** @class */ (function (_super) {
     __extends(BaseResponseOptions, _super);
     function BaseResponseOptions() {
         return _super.call(this, { status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() }) || this;
@@ -648,6 +662,13 @@ var BaseResponseOptions = (function (_super) {
  * @suppress {checkTypes} checked by tsc
  */
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * Abstract class from which real backends are derived.
  *
  * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
@@ -656,7 +677,7 @@ var BaseResponseOptions = (function (_super) {
  * @deprecated use \@angular/common/http instead
  * @abstract
  */
-var ConnectionBackend = (function () {
+var ConnectionBackend = /** @class */ (function () {
     function ConnectionBackend() {
     }
     return ConnectionBackend;
@@ -667,7 +688,7 @@ var ConnectionBackend = (function () {
  * @deprecated use \@angular/common/http instead
  * @abstract
  */
-var Connection = (function () {
+var Connection = /** @class */ (function () {
     function Connection() {
     }
     return Connection;
@@ -678,7 +699,7 @@ var Connection = (function () {
  * @deprecated use \@angular/common/http instead
  * @abstract
  */
-var XSRFStrategy = (function () {
+var XSRFStrategy = /** @class */ (function () {
     function XSRFStrategy() {
     }
     return XSRFStrategy;
@@ -776,6 +797,13 @@ function stringToArrayBuffer(input) {
  * @suppress {checkTypes} checked by tsc
  */
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * @param {?=} rawParams
  * @return {?}
  */
@@ -798,7 +826,7 @@ function paramParser(rawParams) {
  * @deprecated use \@angular/common/http instead
  *
  */
-var QueryEncoder = (function () {
+var QueryEncoder = /** @class */ (function () {
     function QueryEncoder() {
     }
     /**
@@ -872,7 +900,7 @@ function standardEncoding(v) {
  * ```
  * @deprecated use \@angular/common/http instead
  */
-var URLSearchParams = (function () {
+var URLSearchParams = /** @class */ (function () {
     function URLSearchParams(rawParams, queryEncoder) {
         if (rawParams === void 0) { rawParams = ''; }
         if (queryEncoder === void 0) { queryEncoder = new QueryEncoder(); }
@@ -1076,7 +1104,7 @@ var URLSearchParams = (function () {
  * https://fetch.spec.whatwg.org/#body
  * @abstract
  */
-var Body = (function () {
+var Body = /** @class */ (function () {
     function Body() {
     }
     /**
@@ -1213,6 +1241,13 @@ var Body = (function () {
  * @suppress {checkTypes} checked by tsc
  */
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
  * Creates `Response` instances from provided values.
  *
  * Though this object isn't
@@ -1232,7 +1267,7 @@ var Body = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var Response = (function (_super) {
+var Response = /** @class */ (function (_super) {
     __extends(Response, _super);
     function Response(responseOptions) {
         var _this = _super.call(this) || this;
@@ -1281,7 +1316,7 @@ function _getJsonpConnections() {
     }
     return _jsonpConnections;
 }
-var BrowserJsonp = (function () {
+var BrowserJsonp = /** @class */ (function () {
     function BrowserJsonp() {
     }
     // Construct a <script> element with the specified URL
@@ -1386,28 +1421,22 @@ var BrowserJsonp = (function () {
 var JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
 var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
- * Abstract base class for an in-flight JSONP request.
+ * Base class for an in-flight JSONP request.
  *
  * @deprecated use \@angular/common/http instead
- * @abstract
  */
-var JSONPConnection = (function () {
-    function JSONPConnection() {
-    }
-    return JSONPConnection;
-}());
-var JSONPConnection_ = (function (_super) {
-    __extends(JSONPConnection_, _super);
-    function JSONPConnection_(req, _dom, baseResponseOptions) {
-        var _this = _super.call(this) || this;
-        _this._dom = _dom;
-        _this.baseResponseOptions = baseResponseOptions;
-        _this._finished = false;
+var JSONPConnection = /** @class */ (function () {
+    /** @internal */
+    function JSONPConnection(req, _dom, baseResponseOptions) {
+        var _this = this;
+        this._dom = _dom;
+        this.baseResponseOptions = baseResponseOptions;
+        this._finished = false;
         if (req.method !== RequestMethod.Get) {
             throw new TypeError(JSONP_ERR_WRONG_METHOD);
         }
-        _this.request = req;
-        _this.response = new rxjs_Observable.Observable(function (responseObserver) {
+        this.request = req;
+        this.response = new rxjs_Observable.Observable(function (responseObserver) {
             _this.readyState = ReadyState.Loading;
             var /** @type {?} */ id = _this._id = _dom.nextRequestID();
             _dom.exposeConnection(id, _this);
@@ -1463,13 +1492,20 @@ var JSONPConnection_ = (function (_super) {
                 _this._dom.cleanup(script);
             };
         });
-        return _this;
     }
     /**
+     * Callback called when the JSONP request completes, to notify the application
+     * of the new data.
+     */
+    /**
+     * Callback called when the JSONP request completes, to notify the application
+     * of the new data.
      * @param {?=} data
      * @return {?}
      */
-    JSONPConnection_.prototype.finished = /**
+    JSONPConnection.prototype.finished = /**
+     * Callback called when the JSONP request completes, to notify the application
+     * of the new data.
      * @param {?=} data
      * @return {?}
      */
@@ -1481,24 +1517,17 @@ var JSONPConnection_ = (function (_super) {
             return;
         this._responseData = data;
     };
-    return JSONPConnection_;
-}(JSONPConnection));
+    return JSONPConnection;
+}());
 /**
  * A {\@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
  * @deprecated use \@angular/common/http instead
- * @abstract
  */
-var JSONPBackend = (function (_super) {
+var JSONPBackend = /** @class */ (function (_super) {
     __extends(JSONPBackend, _super);
-    function JSONPBackend() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return JSONPBackend;
-}(ConnectionBackend));
-var JSONPBackend_ = (function (_super) {
-    __extends(JSONPBackend_, _super);
-    function JSONPBackend_(_browserJSONP, _baseResponseOptions) {
+    /** @internal */
+    function JSONPBackend(_browserJSONP, _baseResponseOptions) {
         var _this = _super.call(this) || this;
         _this._browserJSONP = _browserJSONP;
         _this._baseResponseOptions = _baseResponseOptions;
@@ -1508,23 +1537,23 @@ var JSONPBackend_ = (function (_super) {
      * @param {?} request
      * @return {?}
      */
-    JSONPBackend_.prototype.createConnection = /**
+    JSONPBackend.prototype.createConnection = /**
      * @param {?} request
      * @return {?}
      */
     function (request) {
-        return new JSONPConnection_(request, this._browserJSONP, this._baseResponseOptions);
+        return new JSONPConnection(request, this._browserJSONP, this._baseResponseOptions);
     };
-    JSONPBackend_.decorators = [
+    JSONPBackend.decorators = [
         { type: _angular_core.Injectable },
     ];
     /** @nocollapse */
-    JSONPBackend_.ctorParameters = function () { return [
+    JSONPBackend.ctorParameters = function () { return [
         { type: BrowserJsonp, },
         { type: ResponseOptions, },
     ]; };
-    return JSONPBackend_;
-}(JSONPBackend));
+    return JSONPBackend;
+}(ConnectionBackend));
 
 /**
  * @fileoverview added by tsickle
@@ -1548,7 +1577,7 @@ var XSSI_PREFIX = /^\)\]\}',?\n/;
  *
  * @deprecated use \@angular/common/http instead
  */
-var XHRConnection = (function () {
+var XHRConnection = /** @class */ (function () {
     function XHRConnection(req, browserXHR, baseResponseOptions) {
         var _this = this;
         this.request = req;
@@ -1697,7 +1726,7 @@ var XHRConnection = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var CookieXSRFStrategy = (function () {
+var CookieXSRFStrategy = /** @class */ (function () {
     function CookieXSRFStrategy(_cookieName, _headerName) {
         if (_cookieName === void 0) { _cookieName = 'XSRF-TOKEN'; }
         if (_headerName === void 0) { _headerName = 'X-XSRF-TOKEN'; }
@@ -1746,7 +1775,7 @@ var CookieXSRFStrategy = (function () {
  * ```
  * @deprecated use \@angular/common/http instead
  */
-var XHRBackend = (function () {
+var XHRBackend = /** @class */ (function () {
     function XHRBackend(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
         this._browserXHR = _browserXHR;
         this._baseResponseOptions = _baseResponseOptions;
@@ -1811,7 +1840,7 @@ var XHRBackend = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var RequestOptions = (function () {
+var RequestOptions = /** @class */ (function () {
     // TODO(Dzmitry): remove search when this.search is removed
     function RequestOptions(opts) {
         if (opts === void 0) { opts = {}; }
@@ -2032,7 +2061,7 @@ var RequestOptions = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var BaseRequestOptions = (function (_super) {
+var BaseRequestOptions = /** @class */ (function (_super) {
     __extends(BaseRequestOptions, _super);
     function BaseRequestOptions() {
         return _super.call(this, { method: RequestMethod.Get, headers: new Headers() }) || this;
@@ -2095,7 +2124,7 @@ var BaseRequestOptions = (function (_super) {
  *
  * @deprecated use \@angular/common/http instead
  */
-var Request = (function (_super) {
+var Request = /** @class */ (function (_super) {
     __extends(Request, _super);
     function Request(requestOptions) {
         var _this = _super.call(this) || this;
@@ -2355,7 +2384,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  *
  * @deprecated use \@angular/common/http instead
  */
-var Http = (function () {
+var Http = /** @class */ (function () {
     function Http(_backend, _defaultOptions) {
         this._backend = _backend;
         this._defaultOptions = _defaultOptions;
@@ -2542,7 +2571,7 @@ var Http = (function () {
 /**
  * @deprecated use \@angular/common/http instead
  */
-var Jsonp = (function (_super) {
+var Jsonp = /** @class */ (function (_super) {
     __extends(Jsonp, _super);
     function Jsonp(backend, defaultOptions) {
         return _super.call(this, backend, defaultOptions) || this;
@@ -2635,12 +2664,6 @@ var Jsonp = (function (_super) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * @module
- * @description
- * The http module provides services to perform http requests. To get started, see the {@link Http}
- * class.
- */
-/**
  * @return {?}
  */
 function _createDefaultCookieXSRFStrategy() {
@@ -2667,7 +2690,7 @@ function jsonpFactory(jsonpBackend, requestOptions) {
  *
  * @deprecated use \@angular/common/http instead
  */
-var HttpModule = (function () {
+var HttpModule = /** @class */ (function () {
     function HttpModule() {
     }
     HttpModule.decorators = [
@@ -2693,7 +2716,7 @@ var HttpModule = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var JsonpModule = (function () {
+var JsonpModule = /** @class */ (function () {
     function JsonpModule() {
     }
     JsonpModule.decorators = [
@@ -2705,7 +2728,7 @@ var JsonpModule = (function () {
                         BrowserJsonp,
                         { provide: RequestOptions, useClass: BaseRequestOptions },
                         { provide: ResponseOptions, useClass: BaseResponseOptions },
-                        { provide: JSONPBackend, useClass: JSONPBackend_ },
+                        JSONPBackend,
                     ],
                 },] },
     ];
@@ -2726,14 +2749,9 @@ var JsonpModule = (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * @module
- * @description
- * Entry point for all public APIs of the common package.
- */
-/**
  * @deprecated use \@angular/common/http instead
  */
-var VERSION = new _angular_core.Version('5.0.0-beta.6-3f585ba');
+var VERSION = new _angular_core.Version('6.0.0-beta.7-a7d6efe');
 
 exports.BrowserXhr = BrowserXhr;
 exports.JSONPBackend = JSONPBackend;
@@ -2762,12 +2780,11 @@ exports.Response = Response;
 exports.QueryEncoder = QueryEncoder;
 exports.URLSearchParams = URLSearchParams;
 exports.VERSION = VERSION;
-exports.ɵg = BrowserJsonp;
-exports.ɵa = JSONPBackend_;
+exports.ɵe = BrowserJsonp;
 exports.ɵf = Body;
-exports.ɵb = _createDefaultCookieXSRFStrategy;
-exports.ɵc = httpFactory;
-exports.ɵd = jsonpFactory;
+exports.ɵa = _createDefaultCookieXSRFStrategy;
+exports.ɵb = httpFactory;
+exports.ɵc = jsonpFactory;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

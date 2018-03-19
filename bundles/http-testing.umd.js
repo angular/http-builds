@@ -1,17 +1,17 @@
 /**
- * @license Angular v5.0.0-beta.6-3f585ba
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-beta.7-a7d6efe
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/http'), require('rxjs/ReplaySubject'), require('rxjs/Subject'), require('rxjs/operator/take')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/http', 'rxjs/ReplaySubject', 'rxjs/Subject', 'rxjs/operator/take'], factory) :
+	typeof define === 'function' && define.amd ? define('@angular/http/testing', ['exports', '@angular/core', '@angular/http', 'rxjs/ReplaySubject', 'rxjs/Subject', 'rxjs/operator/take'], factory) :
 	(factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}, global.ng.http.testing = {}),global.ng.core,global.ng.http,global.Rx,global.Rx,global.Rx.Observable.prototype));
 }(this, (function (exports,_angular_core,_angular_http,rxjs_ReplaySubject,rxjs_Subject,rxjs_operator_take) { 'use strict';
 
 /**
- * @license Angular v5.0.0-beta.6-3f585ba
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-beta.7-a7d6efe
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 /**
@@ -31,7 +31,7 @@
  *
  * @deprecated use \@angular/common/http instead
  */
-var MockConnection = (function () {
+var MockConnection = /** @class */ (function () {
     function MockConnection(req) {
         this.response = /** @type {?} */ (rxjs_operator_take.take.call(new rxjs_ReplaySubject.ReplaySubject(1), 1));
         this.readyState = _angular_http.ReadyState.Open;
@@ -266,7 +266,7 @@ var MockConnection = (function () {
  *
  * @deprecated use \@angular/common/http instead
  */
-var MockBackend = (function () {
+var MockBackend = /** @class */ (function () {
     function MockBackend() {
         var _this = this;
         this.connectionsArray = [];
