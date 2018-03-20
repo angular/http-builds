@@ -1,13 +1,12 @@
 /**
- * @license Angular v6.0.0-beta.7-2b3de63
+ * @license Angular v6.0.0-beta.7-4648597
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 import { Injectable } from '@angular/core';
 import { ReadyState, Request } from '@angular/http';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Subject } from 'rxjs/Subject';
-import { take } from 'rxjs/operator/take';
+import { ReplaySubject, Subject } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 /**
  * @fileoverview added by tsickle
@@ -31,7 +30,7 @@ class MockConnection {
      * @param {?} req
      */
     constructor(req) {
-        this.response = /** @type {?} */ (take.call(new ReplaySubject(1), 1));
+        this.response = /** @type {?} */ (new ReplaySubject(1).pipe(take(1)));
         this.readyState = ReadyState.Open;
         this.request = req;
     }

@@ -11,9 +11,8 @@
  */
 import { Injectable } from '@angular/core';
 import { ReadyState, Request } from '@angular/http';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Subject } from 'rxjs/Subject';
-import { take } from 'rxjs/operator/take';
+import { ReplaySubject, Subject } from 'rxjs';
+import { take } from 'rxjs/operators';
 /**
  *
  * Mock Connection to represent a {\@link Connection} for tests.
@@ -28,7 +27,7 @@ var /**
  */
 MockConnection = /** @class */ (function () {
     function MockConnection(req) {
-        this.response = /** @type {?} */ (take.call(new ReplaySubject(1), 1));
+        this.response = /** @type {?} */ (new ReplaySubject(1).pipe(take(1)));
         this.readyState = ReadyState.Open;
         this.request = req;
     }

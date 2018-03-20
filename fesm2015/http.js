@@ -1,10 +1,10 @@
 /**
- * @license Angular v6.0.0-beta.7-2b3de63
+ * @license Angular v6.0.0-beta.7-4648597
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 import { Injectable, NgModule, Version } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ɵgetDOM } from '@angular/platform-browser';
 
 /**
@@ -1846,7 +1846,8 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  *
  * ```typescript
  * import {Http, HTTP_PROVIDERS} from '\@angular/http';
- * import 'rxjs/add/operator/map'
+ * import {map} from 'rxjs/operators';
+ *
  * \@Component({
  *   selector: 'http-app',
  *   viewProviders: [HTTP_PROVIDERS],
@@ -1856,7 +1857,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  *   constructor(http: Http) {
  *     http.get('people.json')
  *       // Call map on the response observable to get the parsed people object
- *       .map(res => res.json())
+ *       .pipe(map(res => res.json()))
  *       // Subscribe to the observable to get the parsed people object and attach it to the
  *       // component
  *       .subscribe(people => this.people = people);
@@ -2149,7 +2150,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('6.0.0-beta.7-2b3de63');
+const VERSION = new Version('6.0.0-beta.7-4648597');
 
 /**
  * @fileoverview added by tsickle

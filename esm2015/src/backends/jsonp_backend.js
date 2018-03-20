@@ -10,7 +10,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ResponseOptions } from '../base_response_options';
 import { ReadyState, RequestMethod, ResponseType } from '../enums';
 import { ConnectionBackend } from '../interfaces';
