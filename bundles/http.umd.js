@@ -1,13 +1,13 @@
 /**
- * @license Angular v5.1.0-5a0076f
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-rc.3-5992fe6
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Observable'), require('@angular/platform-browser')) :
-	typeof define === 'function' && define.amd ? define('@angular/http', ['exports', '@angular/core', 'rxjs/Observable', '@angular/platform-browser'], factory) :
-	(factory((global.ng = global.ng || {}, global.ng.http = {}),global.ng.core,global.Rx,global.ng.platformBrowser));
-}(this, (function (exports,_angular_core,rxjs_Observable,_angular_platformBrowser) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs'), require('@angular/platform-browser')) :
+	typeof define === 'function' && define.amd ? define('@angular/http', ['exports', '@angular/core', 'rxjs', '@angular/platform-browser'], factory) :
+	(factory((global.ng = global.ng || {}, global.ng.http = {}),global.ng.core,global.rxjs,global.ng.platformBrowser));
+}(this, (function (exports,_angular_core,rxjs,_angular_platformBrowser) { 'use strict';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -36,8 +36,8 @@ function __extends(d, b) {
 }
 
 /**
- * @license Angular v5.1.0-5a0076f
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-rc.3-5992fe6
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 /**
@@ -1436,7 +1436,7 @@ var JSONPConnection = /** @class */ (function () {
             throw new TypeError(JSONP_ERR_WRONG_METHOD);
         }
         this.request = req;
-        this.response = new rxjs_Observable.Observable(function (responseObserver) {
+        this.response = new rxjs.Observable(function (responseObserver) {
             _this.readyState = ReadyState.Loading;
             var /** @type {?} */ id = _this._id = _dom.nextRequestID();
             _dom.exposeConnection(id, _this);
@@ -1581,7 +1581,7 @@ var XHRConnection = /** @class */ (function () {
     function XHRConnection(req, browserXHR, baseResponseOptions) {
         var _this = this;
         this.request = req;
-        this.response = new rxjs_Observable.Observable(function (responseObserver) {
+        this.response = new rxjs.Observable(function (responseObserver) {
             var /** @type {?} */ _xhr = browserXHR.build();
             _xhr.open(RequestMethod[req.method].toUpperCase(), req.url);
             if (req.withCredentials != null) {
@@ -2335,7 +2335,8 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  *
  * ```typescript
  * import {Http, HTTP_PROVIDERS} from '\@angular/http';
- * import 'rxjs/add/operator/map'
+ * import {map} from 'rxjs/operators';
+ *
  * \@Component({
  *   selector: 'http-app',
  *   viewProviders: [HTTP_PROVIDERS],
@@ -2345,7 +2346,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  *   constructor(http: Http) {
  *     http.get('people.json')
  *       // Call map on the response observable to get the parsed people object
- *       .map(res => res.json())
+ *       .pipe(map(res => res.json()))
  *       // Subscribe to the observable to get the parsed people object and attach it to the
  *       // component
  *       .subscribe(people => this.people = people);
@@ -2664,12 +2665,6 @@ var Jsonp = /** @class */ (function (_super) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * @module
- * @description
- * The http module provides services to perform http requests. To get started, see the {@link Http}
- * class.
- */
-/**
  * @return {?}
  */
 function _createDefaultCookieXSRFStrategy() {
@@ -2755,14 +2750,9 @@ var JsonpModule = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * @module
- * @description
- * Entry point for all public APIs of the common package.
- */
-/**
  * @deprecated use \@angular/common/http instead
  */
-var VERSION = new _angular_core.Version('5.1.0-5a0076f');
+var VERSION = new _angular_core.Version('6.0.0-rc.3-5992fe6');
 
 exports.BrowserXhr = BrowserXhr;
 exports.JSONPBackend = JSONPBackend;

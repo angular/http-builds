@@ -1,17 +1,17 @@
 /**
- * @license Angular v5.1.0-5a0076f
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-rc.3-5992fe6
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/http'), require('rxjs/ReplaySubject'), require('rxjs/Subject'), require('rxjs/operator/take')) :
-	typeof define === 'function' && define.amd ? define('@angular/http/testing', ['exports', '@angular/core', '@angular/http', 'rxjs/ReplaySubject', 'rxjs/Subject', 'rxjs/operator/take'], factory) :
-	(factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}, global.ng.http.testing = {}),global.ng.core,global.ng.http,global.Rx,global.Rx,global.Rx.Observable.prototype));
-}(this, (function (exports,_angular_core,_angular_http,rxjs_ReplaySubject,rxjs_Subject,rxjs_operator_take) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/http'), require('rxjs'), require('rxjs/operators')) :
+	typeof define === 'function' && define.amd ? define('@angular/http/testing', ['exports', '@angular/core', '@angular/http', 'rxjs', 'rxjs/operators'], factory) :
+	(factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}, global.ng.http.testing = {}),global.ng.core,global.ng.http,global.rxjs,global.rxjs.operators));
+}(this, (function (exports,_angular_core,_angular_http,rxjs,rxjs_operators) { 'use strict';
 
 /**
- * @license Angular v5.1.0-5a0076f
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-rc.3-5992fe6
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 /**
@@ -33,7 +33,7 @@
  */
 var MockConnection = /** @class */ (function () {
     function MockConnection(req) {
-        this.response = /** @type {?} */ (rxjs_operator_take.take.call(new rxjs_ReplaySubject.ReplaySubject(1), 1));
+        this.response = /** @type {?} */ (new rxjs.ReplaySubject(1).pipe(rxjs_operators.take(1)));
         this.readyState = _angular_http.ReadyState.Open;
         this.request = req;
     }
@@ -270,9 +270,9 @@ var MockBackend = /** @class */ (function () {
     function MockBackend() {
         var _this = this;
         this.connectionsArray = [];
-        this.connections = new rxjs_Subject.Subject();
+        this.connections = new rxjs.Subject();
         this.connections.subscribe(function (connection) { return _this.connectionsArray.push(connection); });
-        this.pendingConnections = new rxjs_Subject.Subject();
+        this.pendingConnections = new rxjs.Subject();
     }
     /**
      * Checks all connections, and raises an exception if any connection has not received a response.

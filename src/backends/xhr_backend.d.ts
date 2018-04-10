@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ResponseOptions } from '../base_response_options';
 import { ReadyState } from '../enums';
 import { Connection, ConnectionBackend, XSRFStrategy } from '../interfaces';
