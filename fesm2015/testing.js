@@ -1,8 +1,9 @@
 /**
- * @license Angular v6.0.0-rc.5-60e5507
+ * @license Angular v6.0.0-rc.5+73.sha-ace6440
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
+
 import { Injectable } from '@angular/core';
 import { ReadyState, Request } from '@angular/http';
 import { ReplaySubject, Subject } from 'rxjs';
@@ -228,7 +229,7 @@ class MockBackend {
     }
 }
 MockBackend.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 MockBackend.ctorParameters = () => [];
@@ -271,6 +272,19 @@ MockBackend.ctorParameters = () => [];
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @module
+ * @description
+ * Entry point for all public APIs of the http/testing package.
+ */
+
 /**
  * Generated bundle index. Do not edit.
  */

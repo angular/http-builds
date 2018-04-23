@@ -1,8 +1,9 @@
 /**
- * @license Angular v6.0.0-rc.5-60e5507
+ * @license Angular v6.0.0-rc.5+73.sha-ace6440
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
+
 import { Injectable, NgModule, Version } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ɵgetDOM } from '@angular/platform-browser';
@@ -33,7 +34,7 @@ class BrowserXhr {
     build() { return /** @type {?} */ ((new XMLHttpRequest())); }
 }
 BrowserXhr.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 BrowserXhr.ctorParameters = () => [];
@@ -464,7 +465,7 @@ class BaseResponseOptions extends ResponseOptions {
     }
 }
 BaseResponseOptions.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 BaseResponseOptions.ctorParameters = () => [];
@@ -1032,7 +1033,7 @@ class BrowserJsonp {
     }
 }
 BrowserJsonp.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 BrowserJsonp.ctorParameters = () => [];
@@ -1167,7 +1168,7 @@ class JSONPBackend extends ConnectionBackend {
     }
 }
 JSONPBackend.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 JSONPBackend.ctorParameters = () => [
@@ -1411,7 +1412,7 @@ class XHRBackend {
     }
 }
 XHRBackend.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 XHRBackend.ctorParameters = () => [
@@ -1606,7 +1607,7 @@ class BaseRequestOptions extends RequestOptions {
     constructor() { super({ method: RequestMethod.Get, headers: new Headers() }); }
 }
 BaseRequestOptions.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 BaseRequestOptions.ctorParameters = () => [];
@@ -1995,7 +1996,7 @@ class Http {
     }
 }
 Http.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 Http.ctorParameters = () => [
@@ -2049,7 +2050,7 @@ class Jsonp extends Http {
     }
 }
 Jsonp.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 Jsonp.ctorParameters = () => [
@@ -2109,7 +2110,7 @@ HttpModule.decorators = [
                     XHRBackend,
                     { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
                 ],
-            },] },
+            },] }
 ];
 /** @nocollapse */
 HttpModule.ctorParameters = () => [];
@@ -2131,7 +2132,7 @@ JsonpModule.decorators = [
                     { provide: ResponseOptions, useClass: BaseResponseOptions },
                     JSONPBackend,
                 ],
-            },] },
+            },] }
 ];
 /** @nocollapse */
 JsonpModule.ctorParameters = () => [];
@@ -2150,7 +2151,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('6.0.0-rc.5-60e5507');
+const VERSION = new Version('6.0.0-rc.5+73.sha-ace6440');
 
 /**
  * @fileoverview added by tsickle
@@ -2188,8 +2189,20 @@ const VERSION = new Version('6.0.0-rc.5-60e5507');
  * @suppress {checkTypes} checked by tsc
  */
 /**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+// This file is not used to build this module. It is only used during editing
+// by the TypeScript language service and during build for verification. `ngc`
+// replaces this file with production index.ts when it rewrites private symbol
+// names.
+
+/**
  * Generated bundle index. Do not edit.
  */
 
-export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION, BrowserJsonp as ɵe, Body as ɵf, _createDefaultCookieXSRFStrategy as ɵa, httpFactory as ɵb, jsonpFactory as ɵc };
+export { BrowserJsonp as ɵangular_packages_http_http_e, Body as ɵangular_packages_http_http_f, _createDefaultCookieXSRFStrategy as ɵangular_packages_http_http_a, httpFactory as ɵangular_packages_http_http_b, jsonpFactory as ɵangular_packages_http_http_c, BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION };
 //# sourceMappingURL=http.js.map
