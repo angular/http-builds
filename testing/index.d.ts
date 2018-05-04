@@ -8,10 +8,6 @@
 /**
  * @module
  * @description
- * Entry point for all public APIs of the common package.
+ * Entry point for all public APIs of the http/testing package.
  */
-import { Version } from '@angular/core';
-/**
- * @deprecated use @angular/common/http instead
- */
-export declare const VERSION: Version;
+export * from './public_api';
