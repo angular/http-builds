@@ -1,13 +1,13 @@
 /**
- * @license Angular v5.1.0-9e1ef61
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v6.0.0-rc.5+145.sha-741fa9e
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
+
 import { Injectable } from '@angular/core';
 import { ReadyState, Request } from '@angular/http';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Subject } from 'rxjs/Subject';
-import { take } from 'rxjs/operator/take';
+import { ReplaySubject, Subject } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 /**
  * @fileoverview added by tsickle
@@ -31,7 +31,7 @@ class MockConnection {
      * @param {?} req
      */
     constructor(req) {
-        this.response = /** @type {?} */ (take.call(new ReplaySubject(1), 1));
+        this.response = /** @type {?} */ (new ReplaySubject(1).pipe(take(1)));
         this.readyState = ReadyState.Open;
         this.request = req;
     }
@@ -229,7 +229,7 @@ class MockBackend {
     }
 }
 MockBackend.decorators = [
-    { type: Injectable },
+    { type: Injectable }
 ];
 /** @nocollapse */
 MockBackend.ctorParameters = () => [];
@@ -272,6 +272,19 @@ MockBackend.ctorParameters = () => [];
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @module
+ * @description
+ * Entry point for all public APIs of the http/testing package.
+ */
+
 /**
  * Generated bundle index. Do not edit.
  */

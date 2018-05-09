@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ReadyState } from '../enums';
 import { Connection, ConnectionBackend } from '../interfaces';
 import { Request } from '../static_request';

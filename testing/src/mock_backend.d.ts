@@ -1,5 +1,5 @@
 import { Connection, ConnectionBackend, ReadyState, Request, Response } from '@angular/http';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject } from 'rxjs';
 /**
  *
  * Mock Connection to represent a {@link Connection} for tests.
