@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.0-rc.5+173.sha-d889f57
+ * @license Angular v6.0.0-rc.5+174.sha-cfde36d
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2358,7 +2358,7 @@ var JsonpModule = /** @class */ (function () {
 /**
  * @deprecated use @angular/common/http instead
  */
-var VERSION = new core.Version('6.0.0-rc.5+173.sha-d889f57');
+var VERSION = new core.Version('6.0.0-rc.5+174.sha-cfde36d');
 
 /**
  * @license
