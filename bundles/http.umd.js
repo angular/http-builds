@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.0-rc.5+184.sha-e5e5c24
+ * @license Angular v6.0.0-rc.5+185.sha-5cf82f8
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1203,8 +1203,6 @@ var BrowserJsonp = /** @class */ (function () {
     BrowserJsonp.decorators = [
         { type: core.Injectable }
     ];
-    /** @nocollapse */
-    BrowserJsonp.ctorParameters = function () { return []; };
     return BrowserJsonp;
 }());
 
@@ -2318,8 +2316,6 @@ var HttpModule = /** @class */ (function () {
                     ],
                 },] }
     ];
-    /** @nocollapse */
-    HttpModule.ctorParameters = function () { return []; };
     return HttpModule;
 }());
 /**
@@ -2343,8 +2339,6 @@ var JsonpModule = /** @class */ (function () {
                     ],
                 },] }
     ];
-    /** @nocollapse */
-    JsonpModule.ctorParameters = function () { return []; };
     return JsonpModule;
 }());
 
@@ -2358,7 +2352,7 @@ var JsonpModule = /** @class */ (function () {
 /**
  * @deprecated use @angular/common/http instead
  */
-var VERSION = new core.Version('6.0.0-rc.5+184.sha-e5e5c24');
+var VERSION = new core.Version('6.0.0-rc.5+185.sha-5cf82f8');
 
 /**
  * @license
