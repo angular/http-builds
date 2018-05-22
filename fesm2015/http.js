@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.0-rc.5+78.sha-e1c4930
+ * @license Angular v6.0.0-rc.5+215.sha-23a98b9
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1035,8 +1035,6 @@ class BrowserJsonp {
 BrowserJsonp.decorators = [
     { type: Injectable }
 ];
-/** @nocollapse */
-BrowserJsonp.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
@@ -2112,8 +2110,6 @@ HttpModule.decorators = [
                 ],
             },] }
 ];
-/** @nocollapse */
-HttpModule.ctorParameters = () => [];
 /**
  * The module that includes jsonp's providers
  *
@@ -2134,8 +2130,6 @@ JsonpModule.decorators = [
                 ],
             },] }
 ];
-/** @nocollapse */
-JsonpModule.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
@@ -2151,7 +2145,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('6.0.0-rc.5+78.sha-e1c4930');
+const VERSION = new Version('6.0.0-rc.5+215.sha-23a98b9');
 
 /**
  * @fileoverview added by tsickle
