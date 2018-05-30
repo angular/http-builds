@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.3+33.sha-e9f2203
+ * @license Angular v6.0.3+34.sha-4122502
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2151,7 +2151,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('6.0.3+33.sha-e9f2203');
+const VERSION = new Version('6.0.3+34.sha-4122502');
 
 /**
  * @fileoverview added by tsickle
