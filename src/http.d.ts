@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { RequestOptions } from './base_request_options';
 import { ConnectionBackend, RequestOptionsArgs } from './interfaces';
 import { Request } from './static_request';
@@ -14,7 +14,8 @@ import { Response } from './static_response';
  *
  * ```typescript
  * import {Http, HTTP_PROVIDERS} from '@angular/http';
- * import 'rxjs/add/operator/map'
+ * import {map} from 'rxjs/operators';
+ *
  * @Component({
  *   selector: 'http-app',
  *   viewProviders: [HTTP_PROVIDERS],
@@ -24,7 +25,7 @@ import { Response } from './static_response';
  *   constructor(http: Http) {
  *     http.get('people.json')
  *       // Call map on the response observable to get the parsed people object
- *       .map(res => res.json())
+ *       .pipe(map(res => res.json()))
  *       // Subscribe to the observable to get the parsed people object and attach it to the
  *       // component
  *       .subscribe(people => this.people = people);
