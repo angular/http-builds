@@ -246,13 +246,6 @@ MockBackend.decorators = [
 /** @nocollapse */
 MockBackend.ctorParameters = () => [];
 function MockBackend_tsickle_Closure_declarations() {
-    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
-    MockBackend.decorators;
-    /**
-     * @nocollapse
-     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
-     */
-    MockBackend.ctorParameters;
     /**
      * {\@link EventEmitter}
      * of {\@link MockConnection} instances that have been created by this backend. Can be subscribed

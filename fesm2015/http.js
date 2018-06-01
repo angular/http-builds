@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.0-rc.5+294.sha-60aa943
+ * @license Angular v6.0.0-rc.5+295.sha-f69ac67
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1170,8 +1170,8 @@ JSONPBackend.decorators = [
 ];
 /** @nocollapse */
 JSONPBackend.ctorParameters = () => [
-    { type: BrowserJsonp, },
-    { type: ResponseOptions, },
+    { type: BrowserJsonp },
+    { type: ResponseOptions }
 ];
 
 /**
@@ -1414,9 +1414,9 @@ XHRBackend.decorators = [
 ];
 /** @nocollapse */
 XHRBackend.ctorParameters = () => [
-    { type: BrowserXhr, },
-    { type: ResponseOptions, },
-    { type: XSRFStrategy, },
+    { type: BrowserXhr },
+    { type: ResponseOptions },
+    { type: XSRFStrategy }
 ];
 
 /**
@@ -1998,8 +1998,8 @@ Http.decorators = [
 ];
 /** @nocollapse */
 Http.ctorParameters = () => [
-    { type: ConnectionBackend, },
-    { type: RequestOptions, },
+    { type: ConnectionBackend },
+    { type: RequestOptions }
 ];
 /**
  * @deprecated use \@angular/common/http instead
@@ -2052,8 +2052,8 @@ Jsonp.decorators = [
 ];
 /** @nocollapse */
 Jsonp.ctorParameters = () => [
-    { type: ConnectionBackend, },
-    { type: RequestOptions, },
+    { type: ConnectionBackend },
+    { type: RequestOptions }
 ];
 
 /**
@@ -2145,7 +2145,7 @@ JsonpModule.decorators = [
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('6.0.0-rc.5+294.sha-60aa943');
+const VERSION = new Version('6.0.0-rc.5+295.sha-f69ac67');
 
 /**
  * @fileoverview added by tsickle
