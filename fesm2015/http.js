@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.3+49.sha-2991b1b
+ * @license Angular v6.0.3+50.sha-d69ba73
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1035,8 +1035,6 @@ class BrowserJsonp {
 BrowserJsonp.decorators = [
     { type: Injectable }
 ];
-/** @nocollapse */
-BrowserJsonp.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
@@ -1172,8 +1170,8 @@ JSONPBackend.decorators = [
 ];
 /** @nocollapse */
 JSONPBackend.ctorParameters = () => [
-    { type: BrowserJsonp, },
-    { type: ResponseOptions, },
+    { type: BrowserJsonp },
+    { type: ResponseOptions }
 ];
 
 /**
@@ -1416,9 +1414,9 @@ XHRBackend.decorators = [
 ];
 /** @nocollapse */
 XHRBackend.ctorParameters = () => [
-    { type: BrowserXhr, },
-    { type: ResponseOptions, },
-    { type: XSRFStrategy, },
+    { type: BrowserXhr },
+    { type: ResponseOptions },
+    { type: XSRFStrategy }
 ];
 
 /**
@@ -2000,8 +1998,8 @@ Http.decorators = [
 ];
 /** @nocollapse */
 Http.ctorParameters = () => [
-    { type: ConnectionBackend, },
-    { type: RequestOptions, },
+    { type: ConnectionBackend },
+    { type: RequestOptions }
 ];
 /**
  * @deprecated use \@angular/common/http instead
@@ -2054,8 +2052,8 @@ Jsonp.decorators = [
 ];
 /** @nocollapse */
 Jsonp.ctorParameters = () => [
-    { type: ConnectionBackend, },
-    { type: RequestOptions, },
+    { type: ConnectionBackend },
+    { type: RequestOptions }
 ];
 
 /**
@@ -2112,8 +2110,6 @@ HttpModule.decorators = [
                 ],
             },] }
 ];
-/** @nocollapse */
-HttpModule.ctorParameters = () => [];
 /**
  * The module that includes jsonp's providers
  *
@@ -2134,8 +2130,6 @@ JsonpModule.decorators = [
                 ],
             },] }
 ];
-/** @nocollapse */
-JsonpModule.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
@@ -2151,7 +2145,7 @@ JsonpModule.ctorParameters = () => [];
 /**
  * @deprecated use \@angular/common/http instead
  */
-const VERSION = new Version('6.0.3+49.sha-2991b1b');
+const VERSION = new Version('6.0.3+50.sha-d69ba73');
 
 /**
  * @fileoverview added by tsickle

@@ -168,17 +168,10 @@ JSONPBackend.decorators = [
 ];
 /** @nocollapse */
 JSONPBackend.ctorParameters = () => [
-    { type: BrowserJsonp, },
-    { type: ResponseOptions, },
+    { type: BrowserJsonp },
+    { type: ResponseOptions }
 ];
 function JSONPBackend_tsickle_Closure_declarations() {
-    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
-    JSONPBackend.decorators;
-    /**
-     * @nocollapse
-     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
-     */
-    JSONPBackend.ctorParameters;
     /** @type {?} */
     JSONPBackend.prototype._browserJSONP;
     /** @type {?} */

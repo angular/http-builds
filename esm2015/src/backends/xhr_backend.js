@@ -266,18 +266,11 @@ XHRBackend.decorators = [
 ];
 /** @nocollapse */
 XHRBackend.ctorParameters = () => [
-    { type: BrowserXhr, },
-    { type: ResponseOptions, },
-    { type: XSRFStrategy, },
+    { type: BrowserXhr },
+    { type: ResponseOptions },
+    { type: XSRFStrategy }
 ];
 function XHRBackend_tsickle_Closure_declarations() {
-    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
-    XHRBackend.decorators;
-    /**
-     * @nocollapse
-     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
-     */
-    XHRBackend.ctorParameters;
     /** @type {?} */
     XHRBackend.prototype._browserXHR;
     /** @type {?} */
