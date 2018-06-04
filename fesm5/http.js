@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.3+52.sha-0e1919c
+ * @license Angular v6.0.3+54.sha-a3d9878
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -21,7 +21,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
  *
  * Take care not to evaluate this in non-browser contexts.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var BrowserXhr = /** @class */ (function () {
     function BrowserXhr() {
@@ -44,7 +44,7 @@ var BrowserXhr = /** @class */ (function () {
  */
 /**
  * Supported http methods.
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var RequestMethod;
 (function (RequestMethod) {
@@ -60,7 +60,7 @@ var RequestMethod;
  * All possible states in which a connection can be, based on
  * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
  * additional "CANCELLED" state.
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var ReadyState;
 (function (ReadyState) {
@@ -74,7 +74,7 @@ var ReadyState;
 /**
  * Acceptable response types to be associated with a {@link Response}, based on
  * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var ResponseType;
 (function (ResponseType) {
@@ -86,7 +86,7 @@ var ResponseType;
 })(ResponseType || (ResponseType = {}));
 /**
  * Supported content type to be automatically associated with a {@link Request}.
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var ContentType;
 (function (ContentType) {
@@ -100,7 +100,7 @@ var ContentType;
 })(ContentType || (ContentType = {}));
 /**
  * Define which buffer to use to store the response
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var ResponseContentType;
 (function (ResponseContentType) {
@@ -143,7 +143,7 @@ var ResponseContentType;
  * console.log(thirdHeaders.get('X-My-Custom-Header')); //'Angular'
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var Headers = /** @class */ (function () {
     // TODO(vicb): any -> string|string[]
@@ -309,7 +309,7 @@ var Headers = /** @class */ (function () {
  * console.log('res.json():', res.json()); // Object {name: "Jeff"}
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var ResponseOptions = /** @class */ (function () {
     function ResponseOptions(opts) {
@@ -403,7 +403,7 @@ var ResponseOptions = /** @class */ (function () {
  * console.log('res.text():', res.text()); // Angular;
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var BaseResponseOptions = /** @class */ (function (_super) {
     __extends(BaseResponseOptions, _super);
@@ -431,7 +431,7 @@ var BaseResponseOptions = /** @class */ (function (_super) {
  * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
  * {@link Request}.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var ConnectionBackend = /** @class */ (function () {
     function ConnectionBackend() {
@@ -441,7 +441,7 @@ var ConnectionBackend = /** @class */ (function () {
 /**
  * Abstract class from which real connections are derived.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var Connection = /** @class */ (function () {
     function Connection() {
@@ -451,7 +451,7 @@ var Connection = /** @class */ (function () {
 /**
  * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var XSRFStrategy = /** @class */ (function () {
     function XSRFStrategy() {
@@ -529,7 +529,7 @@ function paramParser(rawParams) {
     return map;
 }
 /**
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  **/
 var QueryEncoder = /** @class */ (function () {
     function QueryEncoder() {
@@ -583,7 +583,7 @@ function standardEncoding(v) {
  *
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var URLSearchParams = /** @class */ (function () {
     function URLSearchParams(rawParams, queryEncoder) {
@@ -795,7 +795,7 @@ var Body = /** @class */ (function () {
  * can be accessed many times. There are other differences in the implementation, but this is the
  * most significant.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var Response = /** @class */ (function (_super) {
     __extends(Response, _super);
@@ -879,7 +879,7 @@ var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
  * Base class for an in-flight JSONP request.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var JSONPConnection = /** @class */ (function () {
     /** @internal */
@@ -966,7 +966,7 @@ var JSONPConnection = /** @class */ (function () {
 /**
  * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var JSONPBackend = /** @class */ (function (_super) {
     __extends(JSONPBackend, _super);
@@ -1007,7 +1007,7 @@ var XSSI_PREFIX = /^\)\]\}',?\n/;
  * This class would typically not be created or interacted with directly inside applications, though
  * the {@link MockConnection} may be interacted with in tests.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var XHRConnection = /** @class */ (function () {
     function XHRConnection(req, browserXHR, baseResponseOptions) {
@@ -1146,7 +1146,7 @@ var XHRConnection = /** @class */ (function () {
  * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
  * details.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var CookieXSRFStrategy = /** @class */ (function () {
     function CookieXSRFStrategy(_cookieName, _headerName) {
@@ -1187,7 +1187,7 @@ var CookieXSRFStrategy = /** @class */ (function () {
  *   }
  * }
  * ```
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var XHRBackend = /** @class */ (function () {
     function XHRBackend(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
@@ -1240,7 +1240,7 @@ var XHRBackend = /** @class */ (function () {
  * console.log('options.url:', options.url); // https://google.com
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var RequestOptions = /** @class */ (function () {
     // TODO(Dzmitry): remove search when this.search is removed
@@ -1374,7 +1374,7 @@ var RequestOptions = /** @class */ (function () {
  * console.log('req.url:', req.url); // https://google.com
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var BaseRequestOptions = /** @class */ (function (_super) {
     __extends(BaseRequestOptions, _super);
@@ -1434,7 +1434,7 @@ var BaseRequestOptions = /** @class */ (function (_super) {
  * });
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var Request = /** @class */ (function (_super) {
     __extends(Request, _super);
@@ -1646,7 +1646,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  * http.get('request-from-mock-backend.json').subscribe((res:Response) => doSomething(res));
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var Http = /** @class */ (function () {
     function Http(_backend, _defaultOptions) {
@@ -1725,7 +1725,7 @@ var Http = /** @class */ (function () {
     return Http;
 }());
 /**
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var Jsonp = /** @class */ (function (_super) {
     __extends(Jsonp, _super);
@@ -1799,7 +1799,7 @@ function jsonpFactory(jsonpBackend, requestOptions) {
 /**
  * The module that includes http's providers
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var HttpModule = /** @class */ (function () {
     function HttpModule() {
@@ -1823,7 +1823,7 @@ var HttpModule = /** @class */ (function () {
 /**
  * The module that includes jsonp's providers
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 var JsonpModule = /** @class */ (function () {
     function JsonpModule() {
@@ -1857,9 +1857,9 @@ var JsonpModule = /** @class */ (function () {
  * Entry point for all public APIs of the common package.
  */
 /**
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
-var VERSION = new Version('6.0.3+52.sha-0e1919c');
+var VERSION = new Version('6.0.3+54.sha-a3d9878');
 
 /**
  * @license
