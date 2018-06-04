@@ -24,7 +24,7 @@ import { URLSearchParams } from './url_search_params';
  * console.log('options.url:', options.url); // https://google.com
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class RequestOptions {
     /**
@@ -126,7 +126,7 @@ export declare class RequestOptions {
  * console.log('req.url:', req.url); // https://google.com
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class BaseRequestOptions extends RequestOptions {
     constructor();
