@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.0-rc.5+303.sha-5794506
+ * @license Angular v6.0.0-rc.5+309.sha-08a18b8
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -24,7 +24,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
  *
  * Take care not to evaluate this in non-browser contexts.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class BrowserXhr {
     constructor() { }
@@ -161,7 +161,7 @@ ResponseContentType[ResponseContentType.Blob] = "Blob";
  * console.log(thirdHeaders.get('X-My-Custom-Header')); //'Angular'
  * ```
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class Headers {
     /**
@@ -360,7 +360,7 @@ class Headers {
  * console.log('res.json():', res.json()); // Object {name: "Jeff"}
  * ```
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class ResponseOptions {
     /**
@@ -457,7 +457,7 @@ class ResponseOptions {
  * console.log('res.text():', res.text()); // Angular;
  * ```
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class BaseResponseOptions extends ResponseOptions {
     constructor() {
@@ -487,7 +487,7 @@ BaseResponseOptions.ctorParameters = () => [];
  * The primary purpose of a `ConnectionBackend` is to create new connections to fulfill a given
  * {\@link Request}.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  * @abstract
  */
 class ConnectionBackend {
@@ -495,7 +495,7 @@ class ConnectionBackend {
 /**
  * Abstract class from which real connections are derived.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  * @abstract
  */
 class Connection {
@@ -503,7 +503,7 @@ class Connection {
 /**
  * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  * @abstract
  */
 class XSRFStrategy {
@@ -512,7 +512,7 @@ class XSRFStrategy {
  * Interface for options to construct a RequestOptions, based on
  * [RequestInit](https://fetch.spec.whatwg.org/#requestinit) from the Fetch spec.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  * @record
  */
 
@@ -525,7 +525,7 @@ class XSRFStrategy {
  * Interface for options to construct a Response, based on
  * [ResponseInit](https://fetch.spec.whatwg.org/#responseinit) from the Fetch spec.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  * @record
  */
 
@@ -626,7 +626,7 @@ function paramParser(rawParams = '') {
     return map;
 }
 /**
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  *
  */
 class QueryEncoder {
@@ -690,7 +690,7 @@ function standardEncoding(v) {
  *
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class URLSearchParams {
     /**
@@ -933,7 +933,7 @@ class Body {
  * can be accessed many times. There are other differences in the implementation, but this is the
  * most significant.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class Response extends Body {
     /**
@@ -1052,7 +1052,7 @@ const JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
  * Base class for an in-flight JSONP request.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class JSONPConnection {
     /**
@@ -1144,7 +1144,7 @@ class JSONPConnection {
 /**
  * A {\@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class JSONPBackend extends ConnectionBackend {
     /**
@@ -1194,7 +1194,7 @@ const XSSI_PREFIX = /^\)\]\}',?\n/;
  * This class would typically not be created or interacted with directly inside applications, though
  * the {\@link MockConnection} may be interacted with in tests.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class XHRConnection {
     /**
@@ -1341,7 +1341,7 @@ class XHRConnection {
  * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
  * details.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class CookieXSRFStrategy {
     /**
@@ -1387,7 +1387,7 @@ class CookieXSRFStrategy {
  *   }
  * }
  * ```
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class XHRBackend {
     /**
@@ -1452,7 +1452,7 @@ XHRBackend.ctorParameters = () => [
  * console.log('options.url:', options.url); // https://google.com
  * ```
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class RequestOptions {
     /**
@@ -1599,7 +1599,7 @@ class RequestOptions {
  * console.log('req.url:', req.url); // https://google.com
  * ```
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class BaseRequestOptions extends RequestOptions {
     constructor() { super({ method: RequestMethod.Get, headers: new Headers() }); }
@@ -1658,7 +1658,7 @@ BaseRequestOptions.ctorParameters = () => [];
  * });
  * ```
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class Request extends Body {
     /**
@@ -1893,7 +1893,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  * http.get('request-from-mock-backend.json').subscribe((res:Response) => doSomething(res));
  * ```
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class Http {
     /**
@@ -2002,7 +2002,7 @@ Http.ctorParameters = () => [
     { type: RequestOptions }
 ];
 /**
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class Jsonp extends Http {
     /**
@@ -2092,7 +2092,7 @@ function jsonpFactory(jsonpBackend, requestOptions) {
 /**
  * The module that includes http's providers
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class HttpModule {
 }
@@ -2113,7 +2113,7 @@ HttpModule.decorators = [
 /**
  * The module that includes jsonp's providers
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class JsonpModule {
 }
@@ -2143,9 +2143,9 @@ JsonpModule.decorators = [
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
-const VERSION = new Version('6.0.0-rc.5+303.sha-5794506');
+const VERSION = new Version('6.0.0-rc.5+309.sha-08a18b8');
 
 /**
  * @fileoverview added by tsickle

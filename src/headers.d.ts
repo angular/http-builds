@@ -31,7 +31,7 @@
  * console.log(thirdHeaders.get('X-My-Custom-Header')); //'Angular'
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class Headers {
     constructor(headers?: Headers | {
