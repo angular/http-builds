@@ -13,7 +13,7 @@ import { ResponseOptionsArgs } from './interfaces';
  * This class may be used in tests to build {@link Response Responses} for
  * mock responses (see {@link MockBackend}).
  *
- * ### Example ([live demo](http://plnkr.co/edit/P9Jkk8e8cz6NVzbcxEsD?p=preview))
+ * ### Example
  *
  * ```typescript
  * import {ResponseOptions, Response} from '@angular/http';
@@ -53,7 +53,7 @@ export declare class ResponseOptions {
      * This may be useful when sharing a base `ResponseOptions` object inside tests,
      * where certain properties may change from test to test.
      *
-     * ### Example ([live demo](http://plnkr.co/edit/1lXquqFfgduTFBWjNoRE?p=preview))
+     * ### Example
      *
      * ```typescript
      * import {ResponseOptions, Response} from '@angular/http';
@@ -82,7 +82,7 @@ export declare class ResponseOptions {
  * when configuring an {@link Injector}, in order to override the default options
  * used by {@link Http} to create {@link Response Responses}.
  *
- * ### Example ([live demo](http://plnkr.co/edit/qv8DLT?p=preview))
+ * ### Example
  *
  * ```typescript
  * import {provide} from '@angular/core';
@@ -101,7 +101,7 @@ export declare class ResponseOptions {
  * The options could also be extended when manually creating a {@link Response}
  * object.
  *
- * ### Example ([live demo](http://plnkr.co/edit/VngosOWiaExEtbstDoix?p=preview))
+ * ### Example
  *
  * ```
  * import {BaseResponseOptions, Response} from '@angular/http';
