@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Observable } from 'rxjs';
 import { ResponseOptions } from '../base_response_options';
 import { ReadyState } from '../enums';
@@ -31,7 +24,7 @@ export declare class XHRConnection implements Connection {
     response: Observable<Response>;
     readyState: ReadyState;
     constructor(req: Request, browserXHR: BrowserXhr, baseResponseOptions?: ResponseOptions);
-    setDetectedContentType(req: any /** TODO Request */, _xhr: any /** XMLHttpRequest */): void;
+    setDetectedContentType(req: any, _xhr: any): void;
 }
 /**
  * `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application

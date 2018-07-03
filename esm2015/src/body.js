@@ -1,6 +1,6 @@
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license
@@ -92,7 +92,7 @@ export class Body {
         throw new Error('The request body isn\'t either a blob or an array buffer');
     }
 }
-if (false) {
+function Body_tsickle_Closure_declarations() {
     /**
      * \@internal
      * @type {?}

@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.1.0-beta.3+30.sha-e3064d5
+ * @license Angular v6.1.0-beta.3+29.sha-0c3738a
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -11,7 +11,7 @@ import { take } from 'rxjs/operators';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license
@@ -198,8 +198,7 @@ class MockBackend {
      * @return {?}
      */
     verifyNoPendingRequests() {
-        /** @type {?} */
-        let pending = 0;
+        let /** @type {?} */ pending = 0;
         this.pendingConnections.subscribe((c) => pending++);
         if (pending > 0)
             throw new Error(`${pending} pending connections to be resolved`);
@@ -224,8 +223,7 @@ class MockBackend {
         if (!req || !(req instanceof Request)) {
             throw new Error(`createConnection requires an instance of Request, got ${req}`);
         }
-        /** @type {?} */
-        const connection = new MockConnection(req);
+        const /** @type {?} */ connection = new MockConnection(req);
         this.connections.next(connection);
         return connection;
     }
@@ -238,7 +236,7 @@ MockBackend.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license
@@ -255,7 +253,7 @@ MockBackend.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license
@@ -272,7 +270,7 @@ MockBackend.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license

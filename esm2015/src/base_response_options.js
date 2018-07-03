@@ -1,6 +1,6 @@
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @license
@@ -91,7 +91,7 @@ export class ResponseOptions {
         });
     }
 }
-if (false) {
+function ResponseOptions_tsickle_Closure_declarations() {
     /**
      * String, Object, ArrayBuffer or Blob representing the body of the {\@link Response}.
      * @type {?}
