@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 import { Observable } from 'rxjs';
 import { ReadyState } from '../enums';
 import { Connection, ConnectionBackend } from '../interfaces';
@@ -10,7 +17,7 @@ import { Response } from '../static_response';
  */
 export declare class JSONPConnection implements Connection {
     private _dom;
-    private baseResponseOptions;
+    private baseResponseOptions?;
     private _id;
     private _script;
     private _responseData;

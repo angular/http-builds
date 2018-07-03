@@ -1,6 +1,6 @@
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -20,13 +20,13 @@ const RequestMethod = {
     Patch: 6,
 };
 export { RequestMethod };
-RequestMethod[RequestMethod.Get] = "Get";
-RequestMethod[RequestMethod.Post] = "Post";
-RequestMethod[RequestMethod.Put] = "Put";
-RequestMethod[RequestMethod.Delete] = "Delete";
-RequestMethod[RequestMethod.Options] = "Options";
-RequestMethod[RequestMethod.Head] = "Head";
-RequestMethod[RequestMethod.Patch] = "Patch";
+RequestMethod[RequestMethod.Get] = 'Get';
+RequestMethod[RequestMethod.Post] = 'Post';
+RequestMethod[RequestMethod.Put] = 'Put';
+RequestMethod[RequestMethod.Delete] = 'Delete';
+RequestMethod[RequestMethod.Options] = 'Options';
+RequestMethod[RequestMethod.Head] = 'Head';
+RequestMethod[RequestMethod.Patch] = 'Patch';
 /** @enum {number} */
 const ReadyState = {
     Unsent: 0,
@@ -37,12 +37,12 @@ const ReadyState = {
     Cancelled: 5,
 };
 export { ReadyState };
-ReadyState[ReadyState.Unsent] = "Unsent";
-ReadyState[ReadyState.Open] = "Open";
-ReadyState[ReadyState.HeadersReceived] = "HeadersReceived";
-ReadyState[ReadyState.Loading] = "Loading";
-ReadyState[ReadyState.Done] = "Done";
-ReadyState[ReadyState.Cancelled] = "Cancelled";
+ReadyState[ReadyState.Unsent] = 'Unsent';
+ReadyState[ReadyState.Open] = 'Open';
+ReadyState[ReadyState.HeadersReceived] = 'HeadersReceived';
+ReadyState[ReadyState.Loading] = 'Loading';
+ReadyState[ReadyState.Done] = 'Done';
+ReadyState[ReadyState.Cancelled] = 'Cancelled';
 /** @enum {number} */
 const ResponseType = {
     Basic: 0,
@@ -52,11 +52,11 @@ const ResponseType = {
     Opaque: 4,
 };
 export { ResponseType };
-ResponseType[ResponseType.Basic] = "Basic";
-ResponseType[ResponseType.Cors] = "Cors";
-ResponseType[ResponseType.Default] = "Default";
-ResponseType[ResponseType.Error] = "Error";
-ResponseType[ResponseType.Opaque] = "Opaque";
+ResponseType[ResponseType.Basic] = 'Basic';
+ResponseType[ResponseType.Cors] = 'Cors';
+ResponseType[ResponseType.Default] = 'Default';
+ResponseType[ResponseType.Error] = 'Error';
+ResponseType[ResponseType.Opaque] = 'Opaque';
 /** @enum {number} */
 const ContentType = {
     NONE: 0,
@@ -68,13 +68,13 @@ const ContentType = {
     ARRAY_BUFFER: 6,
 };
 export { ContentType };
-ContentType[ContentType.NONE] = "NONE";
-ContentType[ContentType.JSON] = "JSON";
-ContentType[ContentType.FORM] = "FORM";
-ContentType[ContentType.FORM_DATA] = "FORM_DATA";
-ContentType[ContentType.TEXT] = "TEXT";
-ContentType[ContentType.BLOB] = "BLOB";
-ContentType[ContentType.ARRAY_BUFFER] = "ARRAY_BUFFER";
+ContentType[ContentType.NONE] = 'NONE';
+ContentType[ContentType.JSON] = 'JSON';
+ContentType[ContentType.FORM] = 'FORM';
+ContentType[ContentType.FORM_DATA] = 'FORM_DATA';
+ContentType[ContentType.TEXT] = 'TEXT';
+ContentType[ContentType.BLOB] = 'BLOB';
+ContentType[ContentType.ARRAY_BUFFER] = 'ARRAY_BUFFER';
 /** @enum {number} */
 const ResponseContentType = {
     Text: 0,
@@ -83,9 +83,9 @@ const ResponseContentType = {
     Blob: 3,
 };
 export { ResponseContentType };
-ResponseContentType[ResponseContentType.Text] = "Text";
-ResponseContentType[ResponseContentType.Json] = "Json";
-ResponseContentType[ResponseContentType.ArrayBuffer] = "ArrayBuffer";
-ResponseContentType[ResponseContentType.Blob] = "Blob";
+ResponseContentType[ResponseContentType.Text] = 'Text';
+ResponseContentType[ResponseContentType.Json] = 'Json';
+ResponseContentType[ResponseContentType.ArrayBuffer] = 'ArrayBuffer';
+ResponseContentType[ResponseContentType.Blob] = 'Blob';
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZW51bXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9wYWNrYWdlcy9odHRwL3NyYy9lbnVtcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBAbGljZW5zZVxuICogQ29weXJpZ2h0IEdvb2dsZSBJbmMuIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXG4gKlxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcbiAqIGZvdW5kIGluIHRoZSBMSUNFTlNFIGZpbGUgYXQgaHR0cHM6Ly9hbmd1bGFyLmlvL2xpY2Vuc2VcbiAqL1xuXG4vKipcbiAqIFN1cHBvcnRlZCBodHRwIG1ldGhvZHMuXG4gKiBAZGVwcmVjYXRlZCBzZWUgaHR0cHM6Ly9hbmd1bGFyLmlvL2d1aWRlL2h0dHBcbiAqL1xuZXhwb3J0IGVudW0gUmVxdWVzdE1ldGhvZCB7XG4gIEdldCxcbiAgUG9zdCxcbiAgUHV0LFxuICBEZWxldGUsXG4gIE9wdGlvbnMsXG4gIEhlYWQsXG4gIFBhdGNoXG59XG5cbi8qKlxuICogQWxsIHBvc3NpYmxlIHN0YXRlcyBpbiB3aGljaCBhIGNvbm5lY3Rpb24gY2FuIGJlLCBiYXNlZCBvblxuICogW1N0YXRlc10oaHR0cDovL3d3dy53My5vcmcvVFIvWE1MSHR0cFJlcXVlc3QvI3N0YXRlcykgZnJvbSB0aGUgYFhNTEh0dHBSZXF1ZXN0YCBzcGVjLCBidXQgd2l0aCBhblxuICogYWRkaXRpb25hbCBcIkNBTkNFTExFRFwiIHN0YXRlLlxuICogQGRlcHJlY2F0ZWQgc2VlIGh0dHBzOi8vYW5ndWxhci5pby9ndWlkZS9odHRwXG4gKi9cbmV4cG9ydCBlbnVtIFJlYWR5U3RhdGUge1xuICBVbnNlbnQsXG4gIE9wZW4sXG4gIEhlYWRlcnNSZWNlaXZlZCxcbiAgTG9hZGluZyxcbiAgRG9uZSxcbiAgQ2FuY2VsbGVkXG59XG5cbi8qKlxuICogQWNjZXB0YWJsZSByZXNwb25zZSB0eXBlcyB0byBiZSBhc3NvY2lhdGVkIHdpdGggYSB7QGxpbmsgUmVzcG9uc2V9LCBiYXNlZCBvblxuICogW1Jlc3BvbnNlVHlwZV0oaHR0cHM6Ly9mZXRjaC5zcGVjLndoYXR3Zy5vcmcvI3Jlc3BvbnNldHlwZSkgZnJvbSB0aGUgRmV0Y2ggc3BlYy5cbiAqIEBkZXByZWNhdGVkIHNlZSBodHRwczovL2FuZ3VsYXIuaW8vZ3VpZGUvaHR0cFxuICovXG5leHBvcnQgZW51bSBSZXNwb25zZVR5cGUge1xuICBCYXNpYyxcbiAgQ29ycyxcbiAgRGVmYXVsdCxcbiAgRXJyb3IsXG4gIE9wYXF1ZVxufVxuXG4vKipcbiAqIFN1cHBvcnRlZCBjb250ZW50IHR5cGUgdG8gYmUgYXV0b21hdGljYWxseSBhc3NvY2lhdGVkIHdpdGggYSB7QGxpbmsgUmVxdWVzdH0uXG4gKiBAZGVwcmVjYXRlZCBzZWUgaHR0cHM6Ly9hbmd1bGFyLmlvL2d1aWRlL2h0dHBcbiAqL1xuZXhwb3J0IGVudW0gQ29udGVudFR5cGUge1xuICBOT05FLFxuICBKU09OLFxuICBGT1JNLFxuICBGT1JNX0RBVEEsXG4gIFRFWFQsXG4gIEJMT0IsXG4gIEFSUkFZX0JVRkZFUlxufVxuXG4vKipcbiAqIERlZmluZSB3aGljaCBidWZmZXIgdG8gdXNlIHRvIHN0b3JlIHRoZSByZXNwb25zZVxuICogQGRlcHJlY2F0ZWQgc2VlIGh0dHBzOi8vYW5ndWxhci5pby9ndWlkZS9odHRwXG4gKi9cbmV4cG9ydCBlbnVtIFJlc3BvbnNlQ29udGVudFR5cGUge1xuICBUZXh0LFxuICBKc29uLFxuICBBcnJheUJ1ZmZlcixcbiAgQmxvYlxufVxuIl19
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZW51bXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9wYWNrYWdlcy9odHRwL3NyYy9lbnVtcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7O0lBYUUsTUFBRztJQUNILE9BQUk7SUFDSixNQUFHO0lBQ0gsU0FBTTtJQUNOLFVBQU87SUFDUCxPQUFJO0lBQ0osUUFBSzs7OzRCQU5MLEdBQUc7NEJBQ0gsSUFBSTs0QkFDSixHQUFHOzRCQUNILE1BQU07NEJBQ04sT0FBTzs0QkFDUCxJQUFJOzRCQUNKLEtBQUs7OztJQVVMLFNBQU07SUFDTixPQUFJO0lBQ0osa0JBQWU7SUFDZixVQUFPO0lBQ1AsT0FBSTtJQUNKLFlBQVM7OztzQkFMVCxNQUFNO3NCQUNOLElBQUk7c0JBQ0osZUFBZTtzQkFDZixPQUFPO3NCQUNQLElBQUk7c0JBQ0osU0FBUzs7O0lBU1QsUUFBSztJQUNMLE9BQUk7SUFDSixVQUFPO0lBQ1AsUUFBSztJQUNMLFNBQU07OzswQkFKTixLQUFLOzBCQUNMLElBQUk7MEJBQ0osT0FBTzswQkFDUCxLQUFLOzBCQUNMLE1BQU07OztJQVFOLE9BQUk7SUFDSixPQUFJO0lBQ0osT0FBSTtJQUNKLFlBQVM7SUFDVCxPQUFJO0lBQ0osT0FBSTtJQUNKLGVBQVk7Ozt3QkFOWixJQUFJO3dCQUNKLElBQUk7d0JBQ0osSUFBSTt3QkFDSixTQUFTO3dCQUNULElBQUk7d0JBQ0osSUFBSTt3QkFDSixZQUFZOzs7SUFRWixPQUFJO0lBQ0osT0FBSTtJQUNKLGNBQVc7SUFDWCxPQUFJOzs7d0NBSEosSUFBSTt3Q0FDSixJQUFJO3dDQUNKLFdBQVc7d0NBQ1gsSUFBSSIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBHb29nbGUgSW5jLiBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXG4gKi9cblxuLyoqXG4gKiBTdXBwb3J0ZWQgaHR0cCBtZXRob2RzLlxuICogQGRlcHJlY2F0ZWQgc2VlIGh0dHBzOi8vYW5ndWxhci5pby9ndWlkZS9odHRwXG4gKi9cbmV4cG9ydCBlbnVtIFJlcXVlc3RNZXRob2Qge1xuICBHZXQsXG4gIFBvc3QsXG4gIFB1dCxcbiAgRGVsZXRlLFxuICBPcHRpb25zLFxuICBIZWFkLFxuICBQYXRjaFxufVxuXG4vKipcbiAqIEFsbCBwb3NzaWJsZSBzdGF0ZXMgaW4gd2hpY2ggYSBjb25uZWN0aW9uIGNhbiBiZSwgYmFzZWQgb25cbiAqIFtTdGF0ZXNdKGh0dHA6Ly93d3cudzMub3JnL1RSL1hNTEh0dHBSZXF1ZXN0LyNzdGF0ZXMpIGZyb20gdGhlIGBYTUxIdHRwUmVxdWVzdGAgc3BlYywgYnV0IHdpdGggYW5cbiAqIGFkZGl0aW9uYWwgXCJDQU5DRUxMRURcIiBzdGF0ZS5cbiAqIEBkZXByZWNhdGVkIHNlZSBodHRwczovL2FuZ3VsYXIuaW8vZ3VpZGUvaHR0cFxuICovXG5leHBvcnQgZW51bSBSZWFkeVN0YXRlIHtcbiAgVW5zZW50LFxuICBPcGVuLFxuICBIZWFkZXJzUmVjZWl2ZWQsXG4gIExvYWRpbmcsXG4gIERvbmUsXG4gIENhbmNlbGxlZFxufVxuXG4vKipcbiAqIEFjY2VwdGFibGUgcmVzcG9uc2UgdHlwZXMgdG8gYmUgYXNzb2NpYXRlZCB3aXRoIGEge0BsaW5rIFJlc3BvbnNlfSwgYmFzZWQgb25cbiAqIFtSZXNwb25zZVR5cGVdKGh0dHBzOi8vZmV0Y2guc3BlYy53aGF0d2cub3JnLyNyZXNwb25zZXR5cGUpIGZyb20gdGhlIEZldGNoIHNwZWMuXG4gKiBAZGVwcmVjYXRlZCBzZWUgaHR0cHM6Ly9hbmd1bGFyLmlvL2d1aWRlL2h0dHBcbiAqL1xuZXhwb3J0IGVudW0gUmVzcG9uc2VUeXBlIHtcbiAgQmFzaWMsXG4gIENvcnMsXG4gIERlZmF1bHQsXG4gIEVycm9yLFxuICBPcGFxdWVcbn1cblxuLyoqXG4gKiBTdXBwb3J0ZWQgY29udGVudCB0eXBlIHRvIGJlIGF1dG9tYXRpY2FsbHkgYXNzb2NpYXRlZCB3aXRoIGEge0BsaW5rIFJlcXVlc3R9LlxuICogQGRlcHJlY2F0ZWQgc2VlIGh0dHBzOi8vYW5ndWxhci5pby9ndWlkZS9odHRwXG4gKi9cbmV4cG9ydCBlbnVtIENvbnRlbnRUeXBlIHtcbiAgTk9ORSxcbiAgSlNPTixcbiAgRk9STSxcbiAgRk9STV9EQVRBLFxuICBURVhULFxuICBCTE9CLFxuICBBUlJBWV9CVUZGRVJcbn1cblxuLyoqXG4gKiBEZWZpbmUgd2hpY2ggYnVmZmVyIHRvIHVzZSB0byBzdG9yZSB0aGUgcmVzcG9uc2VcbiAqIEBkZXByZWNhdGVkIHNlZSBodHRwczovL2FuZ3VsYXIuaW8vZ3VpZGUvaHR0cFxuICovXG5leHBvcnQgZW51bSBSZXNwb25zZUNvbnRlbnRUeXBlIHtcbiAgVGV4dCxcbiAgSnNvbixcbiAgQXJyYXlCdWZmZXIsXG4gIEJsb2Jcbn1cbiJdfQ==
