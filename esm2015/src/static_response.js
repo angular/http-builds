@@ -1,6 +1,6 @@
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -51,7 +51,7 @@ export class Response extends Body {
         return `Response with status: ${this.status} ${this.statusText} for URL: ${this.url}`;
     }
 }
-function Response_tsickle_Closure_declarations() {
+if (false) {
     /**
      * One of "basic", "cors", "default", "error", or "opaque".
      *
