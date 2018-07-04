@@ -16,7 +16,7 @@ export declare enum RequestMethod {
     Delete = 3,
     Options = 4,
     Head = 5,
-    Patch = 6,
+    Patch = 6
 }
 /**
  * All possible states in which a connection can be, based on
@@ -30,7 +30,7 @@ export declare enum ReadyState {
     HeadersReceived = 2,
     Loading = 3,
     Done = 4,
-    Cancelled = 5,
+    Cancelled = 5
 }
 /**
  * Acceptable response types to be associated with a {@link Response}, based on
@@ -42,7 +42,7 @@ export declare enum ResponseType {
     Cors = 1,
     Default = 2,
     Error = 3,
-    Opaque = 4,
+    Opaque = 4
 }
 /**
  * Supported content type to be automatically associated with a {@link Request}.
@@ -55,7 +55,7 @@ export declare enum ContentType {
     FORM_DATA = 3,
     TEXT = 4,
     BLOB = 5,
-    ARRAY_BUFFER = 6,
+    ARRAY_BUFFER = 6
 }
 /**
  * Define which buffer to use to store the response
@@ -65,5 +65,5 @@ export declare enum ResponseContentType {
     Text = 0,
     Json = 1,
     ArrayBuffer = 2,
-    Blob = 3,
+    Blob = 3
 }
