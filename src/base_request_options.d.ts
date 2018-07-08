@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 import { RequestMethod, ResponseContentType } from './enums';
 import { Headers } from './headers';
 import { RequestOptionsArgs } from './interfaces';
@@ -52,8 +59,8 @@ export declare class RequestOptions {
      * @deprecated from 4.0.0. Use params instead.
      */
     /**
-     * @deprecated from 4.0.0. Use params instead.
-     */
+    * @deprecated from 4.0.0. Use params instead.
+    */
     search: URLSearchParams;
     /**
      * Enable use credentials for a {@link Request}.
@@ -85,9 +92,9 @@ export declare class RequestOptions {
      * ```
      */
     merge(options?: RequestOptionsArgs): RequestOptions;
-    private _mergeSearchParams(params?);
-    private _parseParams(objParams?);
-    private _appendParam(key, value, params);
+    private _mergeSearchParams;
+    private _parseParams;
+    private _appendParam;
 }
 /**
  * Subclass of {@link RequestOptions}, with default values.
