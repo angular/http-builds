@@ -84,5 +84,5 @@ export declare class Headers {
      * This method is not implemented.
      */
     entries(): void;
-    private mayBeSetNormalizedName(name);
+    private mayBeSetNormalizedName;
 }
