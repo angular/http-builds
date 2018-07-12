@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.7+21.sha-0437598
+ * @license Angular v6.0.8+4.sha-48415ed
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -12,13 +12,6 @@ import { take } from 'rxjs/operators';
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
  */
 /**
  *
@@ -238,51 +231,15 @@ MockBackend.ctorParameters = () => [];
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the platform-server/testing package.
- */
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of this package.
- */
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the http/testing package.
  */
 
 /**

@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.7+21.sha-0437598
+ * @license Angular v6.0.8+4.sha-48415ed
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -11,13 +11,6 @@ import { ɵgetDOM } from '@angular/platform-browser';
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
  */
 /**
  * A backend for http that uses the `XMLHttpRequest` browser API.
@@ -328,13 +321,6 @@ class Headers {
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
  * Creates a response options object to be optionally provided when instantiating a
  * {\@link Response}.
  *
@@ -508,37 +494,10 @@ class Connection {
  */
 class XSRFStrategy {
 }
-/**
- * Interface for options to construct a RequestOptions, based on
- * [RequestInit](https://fetch.spec.whatwg.org/#requestinit) from the Fetch spec.
- *
- * @deprecated see https://angular.io/guide/http
- * @record
- */
-
-/**
- * Required structure when constructing new Request();
- * @record
- */
-
-/**
- * Interface for options to construct a Response, based on
- * [ResponseInit](https://fetch.spec.whatwg.org/#responseinit) from the Fetch spec.
- *
- * @deprecated see https://angular.io/guide/http
- * @record
- */
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
  */
 /**
  * @param {?} method
@@ -565,7 +524,7 @@ function normalizeMethodName(method) {
     }
     throw new Error(`Invalid request method. The method "${method}" is not supported.`);
 }
-const isSuccess = (status) => (status >= 200 && status < 300);
+const /** @type {?} */ isSuccess = (status) => (status >= 200 && status < 300);
 /**
  * @param {?} xhr
  * @return {?}
@@ -579,11 +538,6 @@ function getResponseURL(xhr) {
     }
     return null;
 }
-/**
- * @param {?} input
- * @return {?}
- */
-
 /**
  * @param {?} input
  * @return {?}
@@ -816,13 +770,6 @@ class URLSearchParams {
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
  * HTTP request body used by both {\@link Request} and {\@link Response}
  * https://fetch.spec.whatwg.org/#body
  * @abstract
@@ -909,13 +856,6 @@ class Body {
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
  * Creates `Response` instances from provided values.
  *
  * Though this object isn't
@@ -961,16 +901,9 @@ class Response extends Body {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-let _nextRequestId = 0;
-const JSONP_HOME = '__ng_jsonp__';
-let _jsonpConnections = null;
+let /** @type {?} */ _nextRequestId = 0;
+const /** @type {?} */ JSONP_HOME = '__ng_jsonp__';
+let /** @type {?} */ _jsonpConnections = null;
 /**
  * @return {?}
  */
@@ -1040,15 +973,8 @@ BrowserJsonp.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-const JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
-const JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
+const /** @type {?} */ JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
+const /** @type {?} */ JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
 /**
  * Base class for an in-flight JSONP request.
  *
@@ -1178,14 +1104,7 @@ JSONPBackend.ctorParameters = () => [
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-const XSSI_PREFIX = /^\)\]\}',?\n/;
+const /** @type {?} */ XSSI_PREFIX = /^\)\]\}',?\n/;
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified
  * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the
@@ -1424,13 +1343,6 @@ XHRBackend.ctorParameters = () => [
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
  * Creates a request options object to be optionally provided when instantiating a
  * {\@link Request}.
  *
@@ -1615,13 +1527,6 @@ BaseRequestOptions.ctorParameters = () => [];
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
  * Creates `Request` instances from provided values.
  *
  * The Request's interface is inspired by the Request constructor defined in the [Fetch
@@ -1785,22 +1690,15 @@ function urlEncodeParams(params) {
     });
     return searchParams;
 }
-const noop = function () { };
-const w = typeof window == 'object' ? window : noop;
-const FormData = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['FormData'] || noop;
-const Blob$1 = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['Blob'] || noop;
-const ArrayBuffer$1 = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['ArrayBuffer'] || noop;
+const /** @type {?} */ noop = function () { };
+const /** @type {?} */ w = typeof window == 'object' ? window : noop;
+const /** @type {?} */ FormData = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['FormData'] || noop;
+const /** @type {?} */ Blob$1 = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['Blob'] || noop;
+const /** @type {?} */ ArrayBuffer$1 = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['ArrayBuffer'] || noop;
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
  */
 /**
  * @param {?} backend
@@ -2061,13 +1959,6 @@ Jsonp.ctorParameters = () => [
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
  * @return {?}
  */
 function _createDefaultCookieXSRFStrategy() {
@@ -2136,63 +2027,25 @@ JsonpModule.decorators = [
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
  * @deprecated see https://angular.io/guide/http
  */
-const VERSION = new Version('6.0.7+21.sha-0437598');
+const /** @type {?} */ VERSION = new Version('6.0.8+4.sha-48415ed');
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
  */
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of this package.
- */
-
 // This file only reexports content of the `src` folder. Keep it that way.
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-// This file is not used to build this module. It is only used during editing
-// by the TypeScript language service and during build for verification. `ngc`
-// replaces this file with production index.ts when it rewrites private symbol
-// names.
 
 /**
  * Generated bundle index. Do not edit.
