@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.8+8.sha-e295206
+ * @license Angular v6.0.8+7.sha-0e7501b
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2029,7 +2029,7 @@ JsonpModule.decorators = [
 /**
  * @deprecated see https://angular.io/guide/http
  */
-const /** @type {?} */ VERSION = new Version('6.0.8+8.sha-e295206');
+const /** @type {?} */ VERSION = new Version('6.0.8+7.sha-0e7501b');
 
 /**
  * @fileoverview added by tsickle
