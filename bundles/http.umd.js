@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.1.0
+ * @license Angular v6.1.0+5.sha-f2bf828
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -52,9 +52,12 @@
     ***************************************************************************** */
     /* global Reflect, Promise */
 
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
 
     function __extends(d, b) {
         extendStatics(d, b);
@@ -1874,7 +1877,7 @@
     /**
      * @deprecated see https://angular.io/guide/http
      */
-    var VERSION = new core.Version('6.1.0');
+    var VERSION = new core.Version('6.1.0+5.sha-f2bf828');
 
     /**
      * @license
