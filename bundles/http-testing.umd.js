@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.1.1+8.sha-a57f8a1
+ * @license Angular v6.1.1+10.sha-c66794c
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -185,7 +185,7 @@
      *        this.heroService.getHeroes()
      *            .then((heroes: String[]) => result = heroes)
      *            .catch((error: any) => catchedError = error);
-     *        this.lastConnection.mockRespond(new Response(new ResponseOptions({
+     *        this.lastConnection.mockError(new Response(new ResponseOptions({
      *          status: 404,
      *          statusText: 'URL not Found',
      *        })));
