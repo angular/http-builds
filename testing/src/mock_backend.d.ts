@@ -1,10 +1,17 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 import { Connection, ConnectionBackend, ReadyState, Request, Response } from '@angular/http';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject } from 'rxjs';
 /**
  *
  * Mock Connection to represent a {@link Connection} for tests.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class MockConnection implements Connection {
     /**
@@ -134,7 +141,7 @@ export declare class MockConnection implements Connection {
  *        this.heroService.getHeroes()
  *            .then((heroes: String[]) => result = heroes)
  *            .catch((error: any) => catchedError = error);
- *        this.lastConnection.mockRespond(new Response(new ResponseOptions({
+ *        this.lastConnection.mockError(new Response(new ResponseOptions({
  *          status: 404,
  *          statusText: 'URL not Found',
  *        })));
@@ -147,7 +154,7 @@ export declare class MockConnection implements Connection {
  *
  * This method only exists in the mock implementation, not in real Backends.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class MockBackend implements ConnectionBackend {
     /**

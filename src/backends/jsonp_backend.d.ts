@@ -1,4 +1,11 @@
-import { Observable } from 'rxjs/Observable';
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+import { Observable } from 'rxjs';
 import { ReadyState } from '../enums';
 import { Connection, ConnectionBackend } from '../interfaces';
 import { Request } from '../static_request';
@@ -6,11 +13,11 @@ import { Response } from '../static_response';
 /**
  * Base class for an in-flight JSONP request.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class JSONPConnection implements Connection {
     private _dom;
-    private baseResponseOptions;
+    private baseResponseOptions?;
     private _id;
     private _script;
     private _responseData;
@@ -36,7 +43,7 @@ export declare class JSONPConnection implements Connection {
 /**
  * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class JSONPBackend extends ConnectionBackend {
     private _browserJSONP;

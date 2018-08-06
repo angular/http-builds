@@ -1,5 +1,12 @@
 /**
- * @deprecated use @angular/common/http instead
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @deprecated see https://angular.io/guide/http
  **/
 export declare class QueryEncoder {
     encodeKey(k: string): string;
@@ -38,7 +45,7 @@ export declare class QueryEncoder {
  *
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class URLSearchParams {
     rawParams: string;

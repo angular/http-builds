@@ -1,4 +1,11 @@
-import { Observable } from 'rxjs/Observable';
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+import { Observable } from 'rxjs';
 import { ResponseOptions } from '../base_response_options';
 import { ReadyState } from '../enums';
 import { Connection, ConnectionBackend, XSRFStrategy } from '../interfaces';
@@ -13,7 +20,7 @@ import { BrowserXhr } from './browser_xhr';
  * This class would typically not be created or interacted with directly inside applications, though
  * the {@link MockConnection} may be interacted with in tests.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class XHRConnection implements Connection {
     request: Request;
@@ -24,7 +31,7 @@ export declare class XHRConnection implements Connection {
     response: Observable<Response>;
     readyState: ReadyState;
     constructor(req: Request, browserXHR: BrowserXhr, baseResponseOptions?: ResponseOptions);
-    setDetectedContentType(req: any, _xhr: any): void;
+    setDetectedContentType(req: any /** TODO Request */, _xhr: any /** XMLHttpRequest */): void;
 }
 /**
  * `XSRFConfiguration` sets up Cross Site Request Forgery (XSRF) protection for the application
@@ -35,7 +42,7 @@ export declare class XHRConnection implements Connection {
  * with different `cookieName` and `headerName` values. See the main HTTP documentation for more
  * details.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class CookieXSRFStrategy implements XSRFStrategy {
     private _cookieName;
@@ -67,7 +74,7 @@ export declare class CookieXSRFStrategy implements XSRFStrategy {
  *   }
  * }
  * ```
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class XHRBackend implements ConnectionBackend {
     private _browserXHR;

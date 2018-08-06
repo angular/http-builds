@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 import { Headers } from './headers';
 import { ResponseOptionsArgs } from './interfaces';
 /**
@@ -13,7 +20,7 @@ import { ResponseOptionsArgs } from './interfaces';
  * This class may be used in tests to build {@link Response Responses} for
  * mock responses (see {@link MockBackend}).
  *
- * ### Example ([live demo](http://plnkr.co/edit/P9Jkk8e8cz6NVzbcxEsD?p=preview))
+ * ### Example
  *
  * ```typescript
  * import {ResponseOptions, Response} from '@angular/http';
@@ -26,7 +33,7 @@ import { ResponseOptionsArgs } from './interfaces';
  * console.log('res.json():', res.json()); // Object {name: "Jeff"}
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class ResponseOptions {
     /**
@@ -53,7 +60,7 @@ export declare class ResponseOptions {
      * This may be useful when sharing a base `ResponseOptions` object inside tests,
      * where certain properties may change from test to test.
      *
-     * ### Example ([live demo](http://plnkr.co/edit/1lXquqFfgduTFBWjNoRE?p=preview))
+     * ### Example
      *
      * ```typescript
      * import {ResponseOptions, Response} from '@angular/http';
@@ -82,7 +89,7 @@ export declare class ResponseOptions {
  * when configuring an {@link Injector}, in order to override the default options
  * used by {@link Http} to create {@link Response Responses}.
  *
- * ### Example ([live demo](http://plnkr.co/edit/qv8DLT?p=preview))
+ * ### Example
  *
  * ```typescript
  * import {provide} from '@angular/core';
@@ -101,7 +108,7 @@ export declare class ResponseOptions {
  * The options could also be extended when manually creating a {@link Response}
  * object.
  *
- * ### Example ([live demo](http://plnkr.co/edit/VngosOWiaExEtbstDoix?p=preview))
+ * ### Example
  *
  * ```
  * import {BaseResponseOptions, Response} from '@angular/http';
@@ -115,7 +122,7 @@ export declare class ResponseOptions {
  * console.log('res.text():', res.text()); // Angular;
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class BaseResponseOptions extends ResponseOptions {
     constructor();
