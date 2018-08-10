@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.0.0-rc.5+145.sha-741fa9e
+ * @license Angular v7.0.0-beta.1+25.sha-ca8c683
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -11,20 +11,13 @@ import { take } from 'rxjs/operators';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  *
  * Mock Connection to represent a {\@link Connection} for tests.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class MockConnection {
     /**
@@ -169,7 +162,7 @@ class MockConnection {
  *        this.heroService.getHeroes()
  *            .then((heroes: String[]) => result = heroes)
  *            .catch((error: any) => catchedError = error);
- *        this.lastConnection.mockRespond(new Response(new ResponseOptions({
+ *        this.lastConnection.mockError(new Response(new ResponseOptions({
  *          status: 404,
  *          statusText: 'URL not Found',
  *        })));
@@ -182,7 +175,7 @@ class MockConnection {
  *
  * This method only exists in the mock implementation, not in real Backends.
  *
- * @deprecated use \@angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 class MockBackend {
     constructor() {
@@ -198,7 +191,8 @@ class MockBackend {
      * @return {?}
      */
     verifyNoPendingRequests() {
-        let /** @type {?} */ pending = 0;
+        /** @type {?} */
+        let pending = 0;
         this.pendingConnections.subscribe((c) => pending++);
         if (pending > 0)
             throw new Error(`${pending} pending connections to be resolved`);
@@ -223,7 +217,8 @@ class MockBackend {
         if (!req || !(req instanceof Request)) {
             throw new Error(`createConnection requires an instance of Request, got ${req}`);
         }
-        const /** @type {?} */ connection = new MockConnection(req);
+        /** @type {?} */
+        const connection = new MockConnection(req);
         this.connections.next(connection);
         return connection;
     }
@@ -236,53 +231,17 @@ MockBackend.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the platform-server/testing package.
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of this package.
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the http/testing package.
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 
 /**

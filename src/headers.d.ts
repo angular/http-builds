@@ -31,7 +31,7 @@
  * console.log(thirdHeaders.get('X-My-Custom-Header')); //'Angular'
  * ```
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class Headers {
     constructor(headers?: Headers | {
@@ -84,5 +84,5 @@ export declare class Headers {
      * This method is not implemented.
      */
     entries(): void;
-    private mayBeSetNormalizedName(name);
+    private mayBeSetNormalizedName;
 }
