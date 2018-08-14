@@ -1,11 +1,11 @@
 /**
- * @license Angular v6.1.2+9.sha-cb05f9b
+ * @license Angular v6.1.2+11.sha-151e4b9
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 
 import { Injectable, NgModule, Version } from '@angular/core';
-import { __extends, __read, __spread } from 'tslib';
+import { __read, __extends, __spread } from 'tslib';
 import { Observable } from 'rxjs';
 import { ɵgetDOM } from '@angular/platform-browser';
 
@@ -1847,7 +1847,7 @@ var JsonpModule = /** @class */ (function () {
 /**
  * @deprecated see https://angular.io/guide/http
  */
-var VERSION = new Version('6.1.2+9.sha-cb05f9b');
+var VERSION = new Version('6.1.2+11.sha-151e4b9');
 
 /**
  * @license
