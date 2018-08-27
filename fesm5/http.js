@@ -1,11 +1,11 @@
 /**
- * @license Angular v7.0.0-beta.3+30.sha-3d41739
+ * @license Angular v7.0.0-beta.3+39.sha-9bcd8c2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 
+import { __decorate, __read, __metadata, __extends, __spread } from 'tslib';
 import { Injectable, NgModule, Version } from '@angular/core';
-import { __read, __extends, __spread } from 'tslib';
 import { Observable } from 'rxjs';
 import { ɵgetDOM } from '@angular/platform-browser';
 
@@ -27,11 +27,10 @@ var BrowserXhr = /** @class */ (function () {
     function BrowserXhr() {
     }
     BrowserXhr.prototype.build = function () { return (new XMLHttpRequest()); };
-    BrowserXhr.decorators = [
-        { type: Injectable }
-    ];
-    /** @nocollapse */
-    BrowserXhr.ctorParameters = function () { return []; };
+    BrowserXhr = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [])
+    ], BrowserXhr);
     return BrowserXhr;
 }());
 
@@ -410,11 +409,10 @@ var BaseResponseOptions = /** @class */ (function (_super) {
     function BaseResponseOptions() {
         return _super.call(this, { status: 200, statusText: 'Ok', type: ResponseType.Default, headers: new Headers() }) || this;
     }
-    BaseResponseOptions.decorators = [
-        { type: Injectable }
-    ];
-    /** @nocollapse */
-    BaseResponseOptions.ctorParameters = function () { return []; };
+    BaseResponseOptions = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [])
+    ], BaseResponseOptions);
     return BaseResponseOptions;
 }(ResponseOptions));
 
@@ -860,9 +858,9 @@ var BrowserJsonp = /** @class */ (function () {
             node.parentNode.removeChild((node));
         }
     };
-    BrowserJsonp.decorators = [
-        { type: Injectable }
-    ];
+    BrowserJsonp = __decorate([
+        Injectable()
+    ], BrowserJsonp);
     return BrowserJsonp;
 }());
 
@@ -979,14 +977,10 @@ var JSONPBackend = /** @class */ (function (_super) {
     JSONPBackend.prototype.createConnection = function (request) {
         return new JSONPConnection(request, this._browserJSONP, this._baseResponseOptions);
     };
-    JSONPBackend.decorators = [
-        { type: Injectable }
-    ];
-    /** @nocollapse */
-    JSONPBackend.ctorParameters = function () { return [
-        { type: BrowserJsonp },
-        { type: ResponseOptions }
-    ]; };
+    JSONPBackend = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [BrowserJsonp, ResponseOptions])
+    ], JSONPBackend);
     return JSONPBackend;
 }(ConnectionBackend));
 
@@ -1198,15 +1192,11 @@ var XHRBackend = /** @class */ (function () {
         this._xsrfStrategy.configureRequest(request);
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
     };
-    XHRBackend.decorators = [
-        { type: Injectable }
-    ];
-    /** @nocollapse */
-    XHRBackend.ctorParameters = function () { return [
-        { type: BrowserXhr },
-        { type: ResponseOptions },
-        { type: XSRFStrategy }
-    ]; };
+    XHRBackend = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [BrowserXhr, ResponseOptions,
+            XSRFStrategy])
+    ], XHRBackend);
     return XHRBackend;
 }());
 
@@ -1380,11 +1370,10 @@ var BaseRequestOptions = /** @class */ (function (_super) {
     function BaseRequestOptions() {
         return _super.call(this, { method: RequestMethod.Get, headers: new Headers() }) || this;
     }
-    BaseRequestOptions.decorators = [
-        { type: Injectable }
-    ];
-    /** @nocollapse */
-    BaseRequestOptions.ctorParameters = function () { return []; };
+    BaseRequestOptions = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [])
+    ], BaseRequestOptions);
     return BaseRequestOptions;
 }(RequestOptions));
 
@@ -1713,14 +1702,10 @@ var Http = /** @class */ (function () {
     Http.prototype.options = function (url, options) {
         return this.request(new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Options, url)));
     };
-    Http.decorators = [
-        { type: Injectable }
-    ];
-    /** @nocollapse */
-    Http.ctorParameters = function () { return [
-        { type: ConnectionBackend },
-        { type: RequestOptions }
-    ]; };
+    Http = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [ConnectionBackend, RequestOptions])
+    ], Http);
     return Http;
 }());
 /**
@@ -1762,14 +1747,10 @@ var Jsonp = /** @class */ (function (_super) {
         }
         return responseObservable;
     };
-    Jsonp.decorators = [
-        { type: Injectable }
-    ];
-    /** @nocollapse */
-    Jsonp.ctorParameters = function () { return [
-        { type: ConnectionBackend },
-        { type: RequestOptions }
-    ]; };
+    Jsonp = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [ConnectionBackend, RequestOptions])
+    ], Jsonp);
     return Jsonp;
 }(Http));
 
@@ -1797,20 +1778,20 @@ function jsonpFactory(jsonpBackend, requestOptions) {
 var HttpModule = /** @class */ (function () {
     function HttpModule() {
     }
-    HttpModule.decorators = [
-        { type: NgModule, args: [{
-                    providers: [
-                        // TODO(pascal): use factory type annotations once supported in DI
-                        // issue: https://github.com/angular/angular/issues/3183
-                        { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
-                        BrowserXhr,
-                        { provide: RequestOptions, useClass: BaseRequestOptions },
-                        { provide: ResponseOptions, useClass: BaseResponseOptions },
-                        XHRBackend,
-                        { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
-                    ],
-                },] }
-    ];
+    HttpModule = __decorate([
+        NgModule({
+            providers: [
+                // TODO(pascal): use factory type annotations once supported in DI
+                // issue: https://github.com/angular/angular/issues/3183
+                { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
+                BrowserXhr,
+                { provide: RequestOptions, useClass: BaseRequestOptions },
+                { provide: ResponseOptions, useClass: BaseResponseOptions },
+                XHRBackend,
+                { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
+            ],
+        })
+    ], HttpModule);
     return HttpModule;
 }());
 /**
@@ -1821,19 +1802,19 @@ var HttpModule = /** @class */ (function () {
 var JsonpModule = /** @class */ (function () {
     function JsonpModule() {
     }
-    JsonpModule.decorators = [
-        { type: NgModule, args: [{
-                    providers: [
-                        // TODO(pascal): use factory type annotations once supported in DI
-                        // issue: https://github.com/angular/angular/issues/3183
-                        { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
-                        BrowserJsonp,
-                        { provide: RequestOptions, useClass: BaseRequestOptions },
-                        { provide: ResponseOptions, useClass: BaseResponseOptions },
-                        JSONPBackend,
-                    ],
-                },] }
-    ];
+    JsonpModule = __decorate([
+        NgModule({
+            providers: [
+                // TODO(pascal): use factory type annotations once supported in DI
+                // issue: https://github.com/angular/angular/issues/3183
+                { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
+                BrowserJsonp,
+                { provide: RequestOptions, useClass: BaseRequestOptions },
+                { provide: ResponseOptions, useClass: BaseResponseOptions },
+                JSONPBackend,
+            ],
+        })
+    ], JsonpModule);
     return JsonpModule;
 }());
 
@@ -1847,7 +1828,7 @@ var JsonpModule = /** @class */ (function () {
 /**
  * @deprecated see https://angular.io/guide/http
  */
-var VERSION = new Version('7.0.0-beta.3+30.sha-3d41739');
+var VERSION = new Version('7.0.0-beta.3+39.sha-9bcd8c2');
 
 /**
  * @license
