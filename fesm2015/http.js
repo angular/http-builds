@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0-beta.3+63.sha-c230173
+ * @license Angular v7.0.0-beta.3+67.sha-0024d68
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -44,7 +44,7 @@ BrowserXhr.ctorParameters = () => [];
  * found in the LICENSE file at https://angular.io/license
  */
 /** @enum {number} */
-const RequestMethod = {
+var RequestMethod = {
     Get: 0,
     Post: 1,
     Put: 2,
@@ -61,7 +61,7 @@ RequestMethod[RequestMethod.Options] = 'Options';
 RequestMethod[RequestMethod.Head] = 'Head';
 RequestMethod[RequestMethod.Patch] = 'Patch';
 /** @enum {number} */
-const ReadyState = {
+var ReadyState = {
     Unsent: 0,
     Open: 1,
     HeadersReceived: 2,
@@ -76,7 +76,7 @@ ReadyState[ReadyState.Loading] = 'Loading';
 ReadyState[ReadyState.Done] = 'Done';
 ReadyState[ReadyState.Cancelled] = 'Cancelled';
 /** @enum {number} */
-const ResponseType = {
+var ResponseType = {
     Basic: 0,
     Cors: 1,
     Default: 2,
@@ -89,7 +89,7 @@ ResponseType[ResponseType.Default] = 'Default';
 ResponseType[ResponseType.Error] = 'Error';
 ResponseType[ResponseType.Opaque] = 'Opaque';
 /** @enum {number} */
-const ContentType = {
+var ContentType = {
     NONE: 0,
     JSON: 1,
     FORM: 2,
@@ -106,7 +106,7 @@ ContentType[ContentType.TEXT] = 'TEXT';
 ContentType[ContentType.BLOB] = 'BLOB';
 ContentType[ContentType.ARRAY_BUFFER] = 'ARRAY_BUFFER';
 /** @enum {number} */
-const ResponseContentType = {
+var ResponseContentType = {
     Text: 0,
     Json: 1,
     ArrayBuffer: 2,
@@ -2095,7 +2095,7 @@ JsonpModule.decorators = [
 /** *
  * @deprecated see https://angular.io/guide/http
   @type {?} */
-const VERSION = new Version('7.0.0-beta.3+63.sha-c230173');
+const VERSION = new Version('7.0.0-beta.3+67.sha-0024d68');
 
 /**
  * @fileoverview added by tsickle
