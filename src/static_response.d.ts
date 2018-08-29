@@ -27,7 +27,7 @@ import { Headers } from './headers';
  * can be accessed many times. There are other differences in the implementation, but this is the
  * most significant.
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class Response extends Body {
     /**

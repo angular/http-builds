@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 import { JSONPBackend } from './backends/jsonp_backend';
 import { CookieXSRFStrategy, XHRBackend } from './backends/xhr_backend';
 import { RequestOptions } from './base_request_options';
@@ -8,14 +15,14 @@ export declare function jsonpFactory(jsonpBackend: JSONPBackend, requestOptions:
 /**
  * The module that includes http's providers
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class HttpModule {
 }
 /**
  * The module that includes jsonp's providers
  *
- * @deprecated use @angular/common/http instead
+ * @deprecated see https://angular.io/guide/http
  */
 export declare class JsonpModule {
 }
