@@ -1,6 +1,6 @@
 {
   "name": "@angular/http",
-  "version": "7.0.0-beta.4+52.sha-51c26b8",
+  "version": "7.0.0-beta.4+50.sha-13b8399",
   "description": "Angular - the http service",
   "main": "./bundles/http.umd.js",
   "module": "./fesm5/http.js",
@@ -17,8 +17,8 @@
   },
   "peerDependencies": {
     "rxjs": "^6.0.0",
-    "@angular/core": "7.0.0-beta.4+52.sha-51c26b8",
-    "@angular/platform-browser": "7.0.0-beta.4+52.sha-51c26b8"
+    "@angular/core": "7.0.0-beta.4+50.sha-13b8399",
+    "@angular/platform-browser": "7.0.0-beta.4+50.sha-13b8399"
   },
   "repository": {
     "type": "git",
