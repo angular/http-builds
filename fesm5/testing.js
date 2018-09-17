@@ -1,9 +1,10 @@
 /**
- * @license Angular v7.0.0-beta.2+28.sha-21a1440
+ * @license Angular v7.0.0-beta.5+32.sha-47f4412
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 
+import { __decorate, __metadata } from 'tslib';
 import { Injectable } from '@angular/core';
 import { ReadyState, Request } from '@angular/http';
 import { ReplaySubject, Subject } from 'rxjs';
@@ -213,11 +214,10 @@ var MockBackend = /** @class */ (function () {
         this.connections.next(connection);
         return connection;
     };
-    MockBackend.decorators = [
-        { type: Injectable }
-    ];
-    /** @nocollapse */
-    MockBackend.ctorParameters = function () { return []; };
+    MockBackend = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [])
+    ], MockBackend);
     return MockBackend;
 }());
 
