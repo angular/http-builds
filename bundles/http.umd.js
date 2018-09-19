@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.1.7+39.sha-a41f331
+ * @license Angular v6.1.8
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1869,7 +1869,7 @@
     /**
      * @deprecated see https://angular.io/guide/http
      */
-    var VERSION = new core.Version('6.1.7+39.sha-a41f331');
+    var VERSION = new core.Version('6.1.8');
 
     /**
      * @license
