@@ -1,10 +1,10 @@
 /**
- * @license Angular v6.1.8+20.sha-37f3b92
+ * @license Angular v6.1.8+37.sha-cea7fbe
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 
-import { __decorate, __metadata, __read, __extends, __spread } from 'tslib';
+import { __decorate, __read, __metadata, __extends, __spread } from 'tslib';
 import { Injectable, NgModule, Version } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ɵgetDOM } from '@angular/platform-browser';
@@ -123,6 +123,7 @@ var ResponseContentType;
  * The only known difference between this `Headers` implementation and the spec is the
  * lack of an `entries` method.
  *
+ * @usageNotes
  * ### Example
  *
  * ```
@@ -295,6 +296,7 @@ var Headers = /** @class */ (function () {
  * This class may be used in tests to build {@link Response Responses} for
  * mock responses (see {@link MockBackend}).
  *
+ * @usageNotes
  * ### Example
  *
  * ```typescript
@@ -330,6 +332,7 @@ var ResponseOptions = /** @class */ (function () {
      * This may be useful when sharing a base `ResponseOptions` object inside tests,
      * where certain properties may change from test to test.
      *
+     * @usageNotes
      * ### Example
      *
      * ```typescript
@@ -369,6 +372,7 @@ var ResponseOptions = /** @class */ (function () {
  * when configuring an {@link Injector}, in order to override the default options
  * used by {@link Http} to create {@link Response Responses}.
  *
+ * @usageNotes
  * ### Example
  *
  * ```typescript
@@ -531,8 +535,8 @@ function paramParser(rawParams) {
 var QueryEncoder = /** @class */ (function () {
     function QueryEncoder() {
     }
-    QueryEncoder.prototype.encodeKey = function (k) { return standardEncoding(k); };
-    QueryEncoder.prototype.encodeValue = function (v) { return standardEncoding(v); };
+    QueryEncoder.prototype.encodeKey = function (key) { return standardEncoding(key); };
+    QueryEncoder.prototype.encodeValue = function (value) { return standardEncoding(value); };
     return QueryEncoder;
 }());
 function standardEncoding(v) {
@@ -781,6 +785,7 @@ var Body = /** @class */ (function () {
  * usually instantiated by end-users, it is the primary object interacted with when it comes time to
  * add data to a view.
  *
+ * @usageNotes
  * ### Example
  *
  * ```
@@ -1163,6 +1168,7 @@ var CookieXSRFStrategy = /** @class */ (function () {
  * overridden if a different backend implementation should be used,
  * such as in a node backend.
  *
+ * @usageNotes
  * ### Example
  *
  * ```
@@ -1582,6 +1588,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  * `request` returns an `Observable` which will emit a single {@link Response} when a
  * response is received.
  *
+ * @usageNotes
  * ### Example
  *
  * ```typescript
@@ -1828,7 +1835,7 @@ var JsonpModule = /** @class */ (function () {
 /**
  * @deprecated see https://angular.io/guide/http
  */
-var VERSION = new Version('6.1.8+20.sha-37f3b92');
+var VERSION = new Version('6.1.8+37.sha-cea7fbe');
 
 /**
  * @license
