@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0-beta.6+35.sha-82a14dc
+ * @license Angular v7.0.0-beta.6+58.sha-0c34471
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -21,6 +21,26 @@ import { take } from 'rxjs/operators';
  *
  * Mock Connection to represent a {@link Connection} for tests.
  *
+ * @usageNotes
+ * ### Example of `mockRespond()`
+ *
+ * ```
+ * var connection;
+ * backend.connections.subscribe(c => connection = c);
+ * http.request('data.json').subscribe(res => console.log(res.text()));
+ * connection.mockRespond(new Response(new ResponseOptions({ body: 'fake response' }))); //logs
+ * 'fake response'
+ * ```
+ *
+ * ### Example of `mockError()`
+ *
+ * ```
+ * var connection;
+ * backend.connections.subscribe(c => connection = c);
+ * http.request('data.json').subscribe(res => res, err => console.log(err)));
+ * connection.mockError(new Error('error'));
+ * ```
+ *
  * @deprecated see https://angular.io/guide/http
  */
 var MockConnection = /** @class */ (function () {
@@ -32,16 +52,6 @@ var MockConnection = /** @class */ (function () {
     /**
      * Sends a mock response to the connection. This response is the value that is emitted to the
      * {@link EventEmitter} returned by {@link Http}.
-     *
-     * ### Example
-     *
-     * ```
-     * var connection;
-     * backend.connections.subscribe(c => connection = c);
-     * http.request('data.json').subscribe(res => console.log(res.text()));
-     * connection.mockRespond(new Response(new ResponseOptions({ body: 'fake response' }))); //logs
-     * 'fake response'
-     * ```
      *
      */
     MockConnection.prototype.mockRespond = function (res) {
@@ -70,15 +80,6 @@ var MockConnection = /** @class */ (function () {
      * returned
      * from {@link Http}.
      *
-     * ### Example
-     *
-     * ```
-     * var connection;
-     * backend.connections.subscribe(c => connection = c);
-     * http.request('data.json').subscribe(res => res, err => console.log(err)));
-     * connection.mockError(new Error('error'));
-     * ```
-     *
      */
     MockConnection.prototype.mockError = function (err) {
         // Matches ResourceLoader semantics
@@ -93,6 +94,7 @@ var MockConnection = /** @class */ (function () {
  * This class can be injected in tests, and should be used to override providers
  * to other backends, such as {@link XHRBackend}.
  *
+ * @usageNotes
  * ### Example
  *
  * ```
@@ -169,8 +171,6 @@ var MockConnection = /** @class */ (function () {
  *      }));
  * });
  * ```
- *
- * This method only exists in the mock implementation, not in real Backends.
  *
  * @deprecated see https://angular.io/guide/http
  */

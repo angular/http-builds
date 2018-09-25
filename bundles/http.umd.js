@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0-beta.6+35.sha-82a14dc
+ * @license Angular v7.0.0-beta.6+58.sha-0c34471
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -164,6 +164,7 @@
      * The only known difference between this `Headers` implementation and the spec is the
      * lack of an `entries` method.
      *
+     * @usageNotes
      * ### Example
      *
      * ```
@@ -336,6 +337,7 @@
      * This class may be used in tests to build {@link Response Responses} for
      * mock responses (see {@link MockBackend}).
      *
+     * @usageNotes
      * ### Example
      *
      * ```typescript
@@ -371,6 +373,7 @@
          * This may be useful when sharing a base `ResponseOptions` object inside tests,
          * where certain properties may change from test to test.
          *
+         * @usageNotes
          * ### Example
          *
          * ```typescript
@@ -410,6 +413,7 @@
      * when configuring an {@link Injector}, in order to override the default options
      * used by {@link Http} to create {@link Response Responses}.
      *
+     * @usageNotes
      * ### Example
      *
      * ```typescript
@@ -572,8 +576,8 @@
     var QueryEncoder = /** @class */ (function () {
         function QueryEncoder() {
         }
-        QueryEncoder.prototype.encodeKey = function (k) { return standardEncoding(k); };
-        QueryEncoder.prototype.encodeValue = function (v) { return standardEncoding(v); };
+        QueryEncoder.prototype.encodeKey = function (key) { return standardEncoding(key); };
+        QueryEncoder.prototype.encodeValue = function (value) { return standardEncoding(value); };
         return QueryEncoder;
     }());
     function standardEncoding(v) {
@@ -822,6 +826,7 @@
      * usually instantiated by end-users, it is the primary object interacted with when it comes time to
      * add data to a view.
      *
+     * @usageNotes
      * ### Example
      *
      * ```
@@ -1204,6 +1209,7 @@
      * overridden if a different backend implementation should be used,
      * such as in a node backend.
      *
+     * @usageNotes
      * ### Example
      *
      * ```
@@ -1623,6 +1629,7 @@
      * `request` returns an `Observable` which will emit a single {@link Response} when a
      * response is received.
      *
+     * @usageNotes
      * ### Example
      *
      * ```typescript
@@ -1869,7 +1876,7 @@
     /**
      * @deprecated see https://angular.io/guide/http
      */
-    var VERSION = new core.Version('7.0.0-beta.6+35.sha-82a14dc');
+    var VERSION = new core.Version('7.0.0-beta.6+58.sha-0c34471');
 
     /**
      * @license
