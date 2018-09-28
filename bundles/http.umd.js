@@ -1,5 +1,5 @@
 /**
- * @license Angular v6.1.9+19.sha-04a023c
+ * @license Angular v6.1.9+20.sha-22dc8ad
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1876,7 +1876,7 @@
     /**
      * @deprecated see https://angular.io/guide/http
      */
-    var VERSION = new core.Version('6.1.9+19.sha-04a023c');
+    var VERSION = new core.Version('6.1.9+20.sha-22dc8ad');
 
     /**
      * @license
