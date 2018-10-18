@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0
+ * @license Angular v7.0.0+1.sha-a403c4f
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1876,7 +1876,7 @@
     /**
      * @deprecated see https://angular.io/guide/http
      */
-    var VERSION = new core.Version('7.0.0');
+    var VERSION = new core.Version('7.0.0+1.sha-a403c4f');
 
     /**
      * @license
