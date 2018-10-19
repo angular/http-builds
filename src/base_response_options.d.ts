@@ -35,6 +35,7 @@ import { ResponseOptionsArgs } from './interfaces';
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class ResponseOptions {
     /**
@@ -126,6 +127,7 @@ export declare class ResponseOptions {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class BaseResponseOptions extends ResponseOptions {
     constructor();

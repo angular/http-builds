@@ -33,6 +33,7 @@
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class Headers {
     constructor(headers?: Headers | {

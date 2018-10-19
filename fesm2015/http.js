@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0-rc.1+118.sha-31022cb
+ * @license Angular v7.0.0-rc.1+137.sha-4c2ce4e
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -22,6 +22,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
  * Take care not to evaluate this in non-browser contexts.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let BrowserXhr = class BrowserXhr {
     constructor() { }
@@ -42,6 +43,7 @@ BrowserXhr = __decorate([
 /**
  * Supported http methods.
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var RequestMethod;
 (function (RequestMethod) {
@@ -58,6 +60,7 @@ var RequestMethod;
  * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
  * additional "CANCELLED" state.
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var ReadyState;
 (function (ReadyState) {
@@ -72,6 +75,7 @@ var ReadyState;
  * Acceptable response types to be associated with a {@link Response}, based on
  * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var ResponseType;
 (function (ResponseType) {
@@ -98,6 +102,7 @@ var ContentType;
 /**
  * Define which buffer to use to store the response
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var ResponseContentType;
 (function (ResponseContentType) {
@@ -142,6 +147,7 @@ var ResponseContentType;
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class Headers {
     // TODO(vicb): any -> string|string[]
@@ -305,6 +311,7 @@ class Headers {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class ResponseOptions {
     constructor(opts = {}) {
@@ -399,6 +406,7 @@ class ResponseOptions {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let BaseResponseOptions = class BaseResponseOptions extends ResponseOptions {
     constructor() {
@@ -424,6 +432,7 @@ BaseResponseOptions = __decorate([
  * {@link Request}.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class ConnectionBackend {
 }
@@ -431,6 +440,7 @@ class ConnectionBackend {
  * Abstract class from which real connections are derived.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class Connection {
 }
@@ -438,6 +448,7 @@ class Connection {
  * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class XSRFStrategy {
 }
@@ -511,6 +522,7 @@ function paramParser(rawParams = '') {
 }
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  **/
 class QueryEncoder {
     encodeKey(key) { return standardEncoding(key); }
@@ -562,6 +574,7 @@ function standardEncoding(v) {
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class URLSearchParams {
     constructor(rawParams = '', queryEncoder = new QueryEncoder()) {
@@ -764,6 +777,7 @@ class Body {
  * most significant.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class Response extends Body {
     constructor(responseOptions) {
@@ -842,6 +856,7 @@ const JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
  * Base class for an in-flight JSONP request.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class JSONPConnection {
     /** @internal */
@@ -927,6 +942,7 @@ class JSONPConnection {
  * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let JSONPBackend = class JSONPBackend extends ConnectionBackend {
     /** @internal */
@@ -961,6 +977,7 @@ const XSSI_PREFIX = /^\)\]\}',?\n/;
  * the {@link MockConnection} may be interacted with in tests.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class XHRConnection {
     constructor(req, browserXHR, baseResponseOptions) {
@@ -1098,6 +1115,7 @@ class XHRConnection {
  * details.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class CookieXSRFStrategy {
     constructor(_cookieName = 'XSRF-TOKEN', _headerName = 'X-XSRF-TOKEN') {
@@ -1137,6 +1155,7 @@ class CookieXSRFStrategy {
  * }
  * ```
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let XHRBackend = class XHRBackend {
     constructor(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
@@ -1185,6 +1204,7 @@ XHRBackend = __decorate([
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class RequestOptions {
     /**
@@ -1311,6 +1331,7 @@ class RequestOptions {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let BaseRequestOptions = class BaseRequestOptions extends RequestOptions {
     constructor() { super({ method: RequestMethod.Get, headers: new Headers() }); }
@@ -1366,6 +1387,7 @@ BaseRequestOptions = __decorate([
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 class Request extends Body {
     constructor(requestOptions) {
@@ -1576,6 +1598,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let Http = class Http {
     constructor(_backend, _defaultOptions) {
@@ -1650,6 +1673,7 @@ Http = __decorate([
 ], Http);
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let Jsonp = class Jsonp extends Http {
     constructor(backend, defaultOptions) {
@@ -1712,6 +1736,7 @@ function jsonpFactory(jsonpBackend, requestOptions) {
  * The module that includes http's providers
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let HttpModule = class HttpModule {
 };
@@ -1733,6 +1758,7 @@ HttpModule = __decorate([
  * The module that includes jsonp's providers
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 let JsonpModule = class JsonpModule {
 };
@@ -1759,8 +1785,9 @@ JsonpModule = __decorate([
  */
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
-const VERSION = new Version('7.0.0-rc.1+118.sha-31022cb');
+const VERSION = new Version('7.0.0-rc.1+137.sha-4c2ce4e');
 
 /**
  * @license
