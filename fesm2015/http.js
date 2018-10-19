@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0+32.sha-3f94759
+ * @license Angular v7.0.0+52.sha-778e1c2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -18,6 +18,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
  * Take care not to evaluate this in non-browser contexts.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class BrowserXhr {
     constructor() { }
@@ -156,6 +157,7 @@ ResponseContentType[ResponseContentType.Blob] = 'Blob';
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class Headers {
     /**
@@ -360,6 +362,7 @@ class Headers {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class ResponseOptions {
     /**
@@ -459,6 +462,7 @@ class ResponseOptions {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class BaseResponseOptions extends ResponseOptions {
     constructor() {
@@ -489,6 +493,7 @@ BaseResponseOptions.ctorParameters = () => [];
  * {\@link Request}.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  * @abstract
  */
 class ConnectionBackend {
@@ -497,6 +502,7 @@ class ConnectionBackend {
  * Abstract class from which real connections are derived.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  * @abstract
  */
 class Connection {
@@ -505,6 +511,7 @@ class Connection {
  * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  * @abstract
  */
 class XSRFStrategy {
@@ -602,6 +609,7 @@ function paramParser(rawParams = '') {
 }
 /**
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  *
  */
 class QueryEncoder {
@@ -666,6 +674,7 @@ function standardEncoding(v) {
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class URLSearchParams {
     /**
@@ -904,6 +913,7 @@ class Body {
  * most significant.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class Response extends Body {
     /**
@@ -1018,6 +1028,7 @@ const JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
  * Base class for an in-flight JSONP request.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class JSONPConnection {
     /**
@@ -1117,6 +1128,7 @@ class JSONPConnection {
  * A {\@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class JSONPBackend extends ConnectionBackend {
     /**
@@ -1161,6 +1173,7 @@ const XSSI_PREFIX = /^\)\]\}',?\n/;
  * the {\@link MockConnection} may be interacted with in tests.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class XHRConnection {
     /**
@@ -1316,6 +1329,7 @@ class XHRConnection {
  * details.
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class CookieXSRFStrategy {
     /**
@@ -1364,6 +1378,7 @@ class CookieXSRFStrategy {
  * }
  * ```
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class XHRBackend {
     /**
@@ -1422,6 +1437,7 @@ XHRBackend.ctorParameters = () => [
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class RequestOptions {
     /**
@@ -1571,6 +1587,7 @@ class RequestOptions {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class BaseRequestOptions extends RequestOptions {
     constructor() { super({ method: RequestMethod.Get, headers: new Headers() }); }
@@ -1623,6 +1640,7 @@ BaseRequestOptions.ctorParameters = () => [];
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class Request extends Body {
     /**
@@ -1863,6 +1881,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class Http {
     /**
@@ -1973,6 +1992,7 @@ Http.ctorParameters = () => [
 ];
 /**
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class Jsonp extends Http {
     /**
@@ -2057,6 +2077,7 @@ function jsonpFactory(jsonpBackend, requestOptions) {
  * The module that includes http's providers
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class HttpModule {
 }
@@ -2078,6 +2099,7 @@ HttpModule.decorators = [
  * The module that includes jsonp's providers
  *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
  */
 class JsonpModule {
 }
@@ -2101,8 +2123,9 @@ JsonpModule.decorators = [
  */
 /** *
  * @deprecated see https://angular.io/guide/http
+ * \@publicApi
   @type {?} */
-const VERSION = new Version('7.0.0+32.sha-3f94759');
+const VERSION = new Version('7.0.0+52.sha-778e1c2');
 
 /**
  * @fileoverview added by tsickle

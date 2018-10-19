@@ -71,6 +71,7 @@ import { Response } from './static_response';
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class Http {
     protected _backend: ConnectionBackend;
@@ -114,6 +115,7 @@ export declare class Http {
 }
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class Jsonp extends Http {
     constructor(backend: ConnectionBackend, defaultOptions: RequestOptions);
