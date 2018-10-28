@@ -7,6 +7,7 @@
  */
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  **/
 export declare class QueryEncoder {
     encodeKey(key: string): string;
@@ -46,6 +47,7 @@ export declare class QueryEncoder {
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class URLSearchParams {
     rawParams: string;

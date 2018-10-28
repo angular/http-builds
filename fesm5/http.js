@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0-rc.1+51.sha-e814bfa
+ * @license Angular v7.1.0-beta.0+45.sha-064f0d0
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -22,6 +22,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
  * Take care not to evaluate this in non-browser contexts.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var BrowserXhr = /** @class */ (function () {
     function BrowserXhr() {
@@ -44,6 +45,7 @@ var BrowserXhr = /** @class */ (function () {
 /**
  * Supported http methods.
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var RequestMethod;
 (function (RequestMethod) {
@@ -60,6 +62,7 @@ var RequestMethod;
  * [States](http://www.w3.org/TR/XMLHttpRequest/#states) from the `XMLHttpRequest` spec, but with an
  * additional "CANCELLED" state.
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var ReadyState;
 (function (ReadyState) {
@@ -74,6 +77,7 @@ var ReadyState;
  * Acceptable response types to be associated with a {@link Response}, based on
  * [ResponseType](https://fetch.spec.whatwg.org/#responsetype) from the Fetch spec.
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var ResponseType;
 (function (ResponseType) {
@@ -100,6 +104,7 @@ var ContentType;
 /**
  * Define which buffer to use to store the response
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var ResponseContentType;
 (function (ResponseContentType) {
@@ -144,6 +149,7 @@ var ResponseContentType;
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var Headers = /** @class */ (function () {
     // TODO(vicb): any -> string|string[]
@@ -311,6 +317,7 @@ var Headers = /** @class */ (function () {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var ResponseOptions = /** @class */ (function () {
     function ResponseOptions(opts) {
@@ -407,6 +414,7 @@ var ResponseOptions = /** @class */ (function () {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var BaseResponseOptions = /** @class */ (function (_super) {
     __extends(BaseResponseOptions, _super);
@@ -434,6 +442,7 @@ var BaseResponseOptions = /** @class */ (function (_super) {
  * {@link Request}.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var ConnectionBackend = /** @class */ (function () {
     function ConnectionBackend() {
@@ -444,6 +453,7 @@ var ConnectionBackend = /** @class */ (function () {
  * Abstract class from which real connections are derived.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var Connection = /** @class */ (function () {
     function Connection() {
@@ -454,6 +464,7 @@ var Connection = /** @class */ (function () {
  * An XSRFStrategy configures XSRF protection (e.g. via headers) on an HTTP request.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var XSRFStrategy = /** @class */ (function () {
     function XSRFStrategy() {
@@ -531,6 +542,7 @@ function paramParser(rawParams) {
 }
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  **/
 var QueryEncoder = /** @class */ (function () {
     function QueryEncoder() {
@@ -585,6 +597,7 @@ function standardEncoding(v) {
  * let params = new URLSearchParams('', new MyQueryEncoder());
  * ```
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var URLSearchParams = /** @class */ (function () {
     function URLSearchParams(rawParams, queryEncoder) {
@@ -798,6 +811,7 @@ var Body = /** @class */ (function () {
  * most significant.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var Response = /** @class */ (function (_super) {
     __extends(Response, _super);
@@ -882,6 +896,7 @@ var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
  * Base class for an in-flight JSONP request.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var JSONPConnection = /** @class */ (function () {
     /** @internal */
@@ -969,6 +984,7 @@ var JSONPConnection = /** @class */ (function () {
  * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var JSONPBackend = /** @class */ (function (_super) {
     __extends(JSONPBackend, _super);
@@ -1006,6 +1022,7 @@ var XSSI_PREFIX = /^\)\]\}',?\n/;
  * the {@link MockConnection} may be interacted with in tests.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var XHRConnection = /** @class */ (function () {
     function XHRConnection(req, browserXHR, baseResponseOptions) {
@@ -1145,6 +1162,7 @@ var XHRConnection = /** @class */ (function () {
  * details.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var CookieXSRFStrategy = /** @class */ (function () {
     function CookieXSRFStrategy(_cookieName, _headerName) {
@@ -1187,6 +1205,7 @@ var CookieXSRFStrategy = /** @class */ (function () {
  * }
  * ```
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var XHRBackend = /** @class */ (function () {
     function XHRBackend(_browserXHR, _baseResponseOptions, _xsrfStrategy) {
@@ -1236,6 +1255,7 @@ var XHRBackend = /** @class */ (function () {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var RequestOptions = /** @class */ (function () {
     // TODO(Dzmitry): remove search when this.search is removed
@@ -1370,6 +1390,7 @@ var RequestOptions = /** @class */ (function () {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var BaseRequestOptions = /** @class */ (function (_super) {
     __extends(BaseRequestOptions, _super);
@@ -1429,6 +1450,7 @@ var BaseRequestOptions = /** @class */ (function (_super) {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var Request = /** @class */ (function (_super) {
     __extends(Request, _super);
@@ -1642,6 +1664,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var Http = /** @class */ (function () {
     function Http(_backend, _defaultOptions) {
@@ -1717,6 +1740,7 @@ var Http = /** @class */ (function () {
 }());
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var Jsonp = /** @class */ (function (_super) {
     __extends(Jsonp, _super);
@@ -1781,6 +1805,7 @@ function jsonpFactory(jsonpBackend, requestOptions) {
  * The module that includes http's providers
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var HttpModule = /** @class */ (function () {
     function HttpModule() {
@@ -1805,6 +1830,7 @@ var HttpModule = /** @class */ (function () {
  * The module that includes jsonp's providers
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 var JsonpModule = /** @class */ (function () {
     function JsonpModule() {
@@ -1834,8 +1860,9 @@ var JsonpModule = /** @class */ (function () {
  */
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
-var VERSION = new Version('7.0.0-rc.1+51.sha-e814bfa');
+var VERSION = new Version('7.1.0-beta.0+45.sha-064f0d0');
 
 /**
  * @license

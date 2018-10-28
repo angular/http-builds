@@ -32,6 +32,7 @@ import { ReplaySubject } from 'rxjs';
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class MockConnection implements Connection {
     /**
@@ -155,6 +156,7 @@ export declare class MockConnection implements Connection {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class MockBackend implements ConnectionBackend {
     /**
