@@ -4,7 +4,7 @@
  * License: MIT
  */
 
-import { __decorate, __metadata, __extends, __read, __spread } from 'tslib';
+import { __decorate, __metadata, __read, __extends, __spread } from 'tslib';
 import { Injectable, NgModule, Version } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ɵgetDOM } from '@angular/platform-browser';
