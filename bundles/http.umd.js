@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.1.0-beta.1+6.sha-4e9f2e5
+ * @license Angular v7.1.0-beta.1+14.sha-2e7b5c5
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -32,6 +32,9 @@
         BrowserXhr.ngInjectableDef = i0.defineInjectable({ token: BrowserXhr, factory: function BrowserXhr_Factory(t) { return new (t || BrowserXhr)(); }, providedIn: null });
         return BrowserXhr;
     }());
+    /*@__PURE__*/ i0.ɵsetClassMetadata(BrowserXhr, [{
+            type: i0.Injectable
+        }], [], null);
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -440,6 +443,9 @@
         BaseResponseOptions.ngInjectableDef = i0.defineInjectable({ token: BaseResponseOptions, factory: function BaseResponseOptions_Factory(t) { return new (t || BaseResponseOptions)(); }, providedIn: null });
         return BaseResponseOptions;
     }(ResponseOptions));
+    /*@__PURE__*/ i0.ɵsetClassMetadata(BaseResponseOptions, [{
+            type: i0.Injectable
+        }], [], null);
 
     /**
      * @license
@@ -893,6 +899,9 @@
         BrowserJsonp.ngInjectableDef = i0.defineInjectable({ token: BrowserJsonp, factory: function BrowserJsonp_Factory(t) { return new (t || BrowserJsonp)(); }, providedIn: null });
         return BrowserJsonp;
     }());
+    /*@__PURE__*/ i0.ɵsetClassMetadata(BrowserJsonp, [{
+            type: i0.Injectable
+        }], null, null);
 
     var JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
     var JSONP_ERR_WRONG_METHOD = 'JSONP requests must use GET request method.';
@@ -1005,6 +1014,13 @@
         JSONPBackend.ngInjectableDef = i0.defineInjectable({ token: JSONPBackend, factory: function JSONPBackend_Factory(t) { return new (t || JSONPBackend)(i0.inject(BrowserJsonp), i0.inject(ResponseOptions)); }, providedIn: null });
         return JSONPBackend;
     }(ConnectionBackend));
+    /*@__PURE__*/ i0.ɵsetClassMetadata(JSONPBackend, [{
+            type: i0.Injectable
+        }], [{
+            type: BrowserJsonp
+        }, {
+            type: ResponseOptions
+        }], null);
 
     /**
      * @license
@@ -1221,6 +1237,15 @@
         XHRBackend.ngInjectableDef = i0.defineInjectable({ token: XHRBackend, factory: function XHRBackend_Factory(t) { return new (t || XHRBackend)(i0.inject(BrowserXhr), i0.inject(ResponseOptions), i0.inject(XSRFStrategy)); }, providedIn: null });
         return XHRBackend;
     }());
+    /*@__PURE__*/ i0.ɵsetClassMetadata(XHRBackend, [{
+            type: i0.Injectable
+        }], [{
+            type: BrowserXhr
+        }, {
+            type: ResponseOptions
+        }, {
+            type: XSRFStrategy
+        }], null);
 
     /**
      * Creates a request options object to be optionally provided when instantiating a
@@ -1390,6 +1415,9 @@
         BaseRequestOptions.ngInjectableDef = i0.defineInjectable({ token: BaseRequestOptions, factory: function BaseRequestOptions_Factory(t) { return new (t || BaseRequestOptions)(); }, providedIn: null });
         return BaseRequestOptions;
     }(RequestOptions));
+    /*@__PURE__*/ i0.ɵsetClassMetadata(BaseRequestOptions, [{
+            type: i0.Injectable
+        }], [], null);
 
     /**
      * @license
@@ -1715,6 +1743,13 @@
         Http.ngInjectableDef = i0.defineInjectable({ token: Http, factory: function Http_Factory(t) { return new (t || Http)(i0.inject(ConnectionBackend), i0.inject(RequestOptions)); }, providedIn: null });
         return Http;
     }());
+    /*@__PURE__*/ i0.ɵsetClassMetadata(Http, [{
+            type: i0.Injectable
+        }], [{
+            type: ConnectionBackend
+        }, {
+            type: RequestOptions
+        }], null);
     /**
      * @deprecated see https://angular.io/guide/http
      * @publicApi
@@ -1758,6 +1793,13 @@
         Jsonp.ngInjectableDef = i0.defineInjectable({ token: Jsonp, factory: function Jsonp_Factory(t) { return new (t || Jsonp)(i0.inject(ConnectionBackend), i0.inject(RequestOptions)); }, providedIn: null });
         return Jsonp;
     }(Http));
+    /*@__PURE__*/ i0.ɵsetClassMetadata(Jsonp, [{
+            type: i0.Injectable
+        }], [{
+            type: ConnectionBackend
+        }, {
+            type: RequestOptions
+        }], null);
 
     /**
      * @license
@@ -1797,6 +1839,21 @@
             ], imports: [] });
         return HttpModule;
     }());
+    /*@__PURE__*/ i0.ɵsetClassMetadata(HttpModule, [{
+            type: i0.NgModule,
+            args: [{
+                    providers: [
+                        // TODO(pascal): use factory type annotations once supported in DI
+                        // issue: https://github.com/angular/angular/issues/3183
+                        { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
+                        BrowserXhr,
+                        { provide: RequestOptions, useClass: BaseRequestOptions },
+                        { provide: ResponseOptions, useClass: BaseResponseOptions },
+                        XHRBackend,
+                        { provide: XSRFStrategy, useFactory: _createDefaultCookieXSRFStrategy },
+                    ],
+                }]
+        }], null, null);
     /**
      * The module that includes jsonp's providers
      *
@@ -1818,6 +1875,20 @@
             ], imports: [] });
         return JsonpModule;
     }());
+    /*@__PURE__*/ i0.ɵsetClassMetadata(JsonpModule, [{
+            type: i0.NgModule,
+            args: [{
+                    providers: [
+                        // TODO(pascal): use factory type annotations once supported in DI
+                        // issue: https://github.com/angular/angular/issues/3183
+                        { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
+                        BrowserJsonp,
+                        { provide: RequestOptions, useClass: BaseRequestOptions },
+                        { provide: ResponseOptions, useClass: BaseResponseOptions },
+                        JSONPBackend,
+                    ],
+                }]
+        }], null, null);
 
     /**
      * @license
@@ -1830,7 +1901,7 @@
      * @deprecated see https://angular.io/guide/http
      * @publicApi
      */
-    var VERSION = new i0.Version('7.1.0-beta.1+6.sha-4e9f2e5');
+    var VERSION = new i0.Version('7.1.0-beta.1+14.sha-2e7b5c5');
 
     /**
      * @license

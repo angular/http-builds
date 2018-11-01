@@ -1,10 +1,10 @@
 /**
- * @license Angular v7.1.0-beta.1+6.sha-4e9f2e5
+ * @license Angular v7.1.0-beta.1+14.sha-2e7b5c5
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 
-import { defineInjectable } from '@angular/core';
+import { Injectable, defineInjectable, ɵsetClassMetadata } from '@angular/core';
 import { ReadyState, Request } from '@angular/http';
 import { ReplaySubject, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -218,6 +218,9 @@ var MockBackend = /** @class */ (function () {
     MockBackend.ngInjectableDef = defineInjectable({ token: MockBackend, factory: function MockBackend_Factory(t) { return new (t || MockBackend)(); }, providedIn: null });
     return MockBackend;
 }());
+/*@__PURE__*/ ɵsetClassMetadata(MockBackend, [{
+        type: Injectable
+    }], [], null);
 
 /**
  * @license
