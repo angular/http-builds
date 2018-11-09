@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.3+8.sha-682034f
+ * @license Angular v7.0.3+10.sha-fb0d93d
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2125,7 +2125,7 @@ JsonpModule.decorators = [
  * @deprecated see https://angular.io/guide/http
  * \@publicApi
   @type {?} */
-const VERSION = new Version('7.0.3+8.sha-682034f');
+const VERSION = new Version('7.0.3+10.sha-fb0d93d');
 
 /**
  * @fileoverview added by tsickle
