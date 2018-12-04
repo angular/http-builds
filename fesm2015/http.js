@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.1.0+128.sha-8e644d9
+ * @license Angular v7.1.0+127.sha-1597886
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2281,7 +2281,7 @@ JsonpModule.ngInjectorDef = defineInjector({ factory: function JsonpModule_Facto
  * @deprecated see https://angular.io/guide/http
  * \@publicApi
   @type {?} */
-const VERSION = new Version('7.1.0+128.sha-8e644d9');
+const VERSION = new Version('7.1.0+127.sha-1597886');
 
 /**
  * @fileoverview added by tsickle
