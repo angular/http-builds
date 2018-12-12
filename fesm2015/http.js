@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0-beta.1+26.sha-3290fc3
+ * @license Angular v7.2.0-beta.2+10.sha-7fabe44
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -10,7 +10,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * A backend for http that uses the `XMLHttpRequest` browser API.
@@ -25,7 +25,7 @@ class BrowserXhr {
     /**
      * @return {?}
      */
-    build() { return /** @type {?} */ ((new XMLHttpRequest())); }
+    build() { return (/** @type {?} */ ((new XMLHttpRequest()))); }
 }
 BrowserXhr.decorators = [
     { type: Injectable }
@@ -35,7 +35,7 @@ BrowserXhr.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -45,7 +45,7 @@ BrowserXhr.ctorParameters = () => [];
  * found in the LICENSE file at https://angular.io/license
  */
 /** @enum {number} */
-var RequestMethod = {
+const RequestMethod = {
     Get: 0,
     Post: 1,
     Put: 2,
@@ -62,7 +62,7 @@ RequestMethod[RequestMethod.Options] = 'Options';
 RequestMethod[RequestMethod.Head] = 'Head';
 RequestMethod[RequestMethod.Patch] = 'Patch';
 /** @enum {number} */
-var ReadyState = {
+const ReadyState = {
     Unsent: 0,
     Open: 1,
     HeadersReceived: 2,
@@ -77,7 +77,7 @@ ReadyState[ReadyState.Loading] = 'Loading';
 ReadyState[ReadyState.Done] = 'Done';
 ReadyState[ReadyState.Cancelled] = 'Cancelled';
 /** @enum {number} */
-var ResponseType = {
+const ResponseType = {
     Basic: 0,
     Cors: 1,
     Default: 2,
@@ -90,7 +90,7 @@ ResponseType[ResponseType.Default] = 'Default';
 ResponseType[ResponseType.Error] = 'Error';
 ResponseType[ResponseType.Opaque] = 'Opaque';
 /** @enum {number} */
-var ContentType = {
+const ContentType = {
     NONE: 0,
     JSON: 1,
     FORM: 2,
@@ -107,7 +107,7 @@ ContentType[ContentType.TEXT] = 'TEXT';
 ContentType[ContentType.BLOB] = 'BLOB';
 ContentType[ContentType.ARRAY_BUFFER] = 'ARRAY_BUFFER';
 /** @enum {number} */
-var ResponseContentType = {
+const ResponseContentType = {
     Text: 0,
     Json: 1,
     ArrayBuffer: 2,
@@ -120,7 +120,7 @@ ResponseContentType[ResponseContentType.Blob] = 'Blob';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -160,6 +160,7 @@ ResponseContentType[ResponseContentType.Blob] = 'Blob';
  * \@publicApi
  */
 class Headers {
+    // TODO(vicb): any -> string|string[]
     /**
      * @param {?=} headers
      */
@@ -293,6 +294,7 @@ class Headers {
      * Returns string of all headers.
      * @return {?}
      */
+    // TODO(vicb): returns {[name: string]: string[]}
     toJSON() {
         /** @type {?} */
         const serialized = {};
@@ -300,7 +302,7 @@ class Headers {
             /** @type {?} */
             const split = [];
             values.forEach(v => split.push(...v.split(',')));
-            serialized[/** @type {?} */ ((this._normalizedNames.get(name)))] = split;
+            serialized[(/** @type {?} */ (this._normalizedNames.get(name)))] = split;
         });
         return serialized;
     }
@@ -332,7 +334,7 @@ class Headers {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * Creates a response options object to be optionally provided when instantiating a
@@ -477,7 +479,7 @@ BaseResponseOptions.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -519,7 +521,7 @@ class XSRFStrategy {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * @param {?} method
@@ -576,7 +578,7 @@ function stringToArrayBuffer(input) {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -730,6 +732,12 @@ class URLSearchParams {
         list.push(val);
         this.paramsMap.set(param, list);
     }
+    // A merge operation
+    // For each name-values pair in `searchParams`, perform `set(name, values[0])`
+    //
+    // E.g: "a=[1,2,3], c=[8]" + "a=[4,5,6], b=[7]" = "a=[4], c=[8], b=[7]"
+    //
+    // TODO(@caitp): document this better
     /**
      * @param {?} searchParams
      * @return {?}
@@ -756,6 +764,13 @@ class URLSearchParams {
         list.push(val);
         this.paramsMap.set(param, list);
     }
+    // A merge operation
+    // For each name-values pair in `searchParams`, perform `append(name, value)`
+    // for each value in `values`.
+    //
+    // E.g: "a=[1,2], c=[8]" + "a=[3,4], b=[7]" = "a=[1,2,3,4], c=[8], b=[7]"
+    //
+    // TODO(@caitp): document this better
     /**
      * @param {?} searchParams
      * @return {?}
@@ -770,6 +785,13 @@ class URLSearchParams {
             this.paramsMap.set(param, list);
         });
     }
+    // A merge operation
+    // For each name-values pair in `searchParams`, perform `delete(name)`,
+    // followed by `set(name, values)`
+    //
+    // E.g: "a=[1,2,3], c=[8]" + "a=[4,5,6], b=[7]" = "a=[4,5,6], c=[8], b=[7]"
+    //
+    // TODO(@caitp): document this better
     /**
      * @param {?} searchParams
      * @return {?}
@@ -805,7 +827,7 @@ class URLSearchParams {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * HTTP request body used by both {\@link Request} and {\@link Response}
@@ -819,7 +841,7 @@ class Body {
      */
     json() {
         if (typeof this._body === 'string') {
-            return JSON.parse(/** @type {?} */ (this._body));
+            return JSON.parse((/** @type {?} */ (this._body)));
         }
         if (this._body instanceof ArrayBuffer) {
             return JSON.parse(this.text());
@@ -849,9 +871,9 @@ class Body {
         if (this._body instanceof ArrayBuffer) {
             switch (encodingHint) {
                 case 'legacy':
-                    return String.fromCharCode.apply(null, new Uint16Array(/** @type {?} */ (this._body)));
+                    return String.fromCharCode.apply(null, new Uint16Array((/** @type {?} */ (this._body))));
                 case 'iso-8859':
-                    return String.fromCharCode.apply(null, new Uint8Array(/** @type {?} */ (this._body)));
+                    return String.fromCharCode.apply(null, new Uint8Array((/** @type {?} */ (this._body))));
                 default:
                     throw new Error(`Invalid value for encodingHint: ${encodingHint}`);
             }
@@ -870,7 +892,7 @@ class Body {
      */
     arrayBuffer() {
         if (this._body instanceof ArrayBuffer) {
-            return /** @type {?} */ (this._body);
+            return (/** @type {?} */ (this._body));
         }
         return stringToArrayBuffer(this.text());
     }
@@ -880,7 +902,7 @@ class Body {
      */
     blob() {
         if (this._body instanceof Blob) {
-            return /** @type {?} */ (this._body);
+            return (/** @type {?} */ (this._body));
         }
         if (this._body instanceof ArrayBuffer) {
             return new Blob([this._body]);
@@ -891,7 +913,7 @@ class Body {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * Creates `Response` instances from provided values.
@@ -922,12 +944,12 @@ class Response extends Body {
     constructor(responseOptions) {
         super();
         this._body = responseOptions.body;
-        this.status = /** @type {?} */ ((responseOptions.status));
+        this.status = (/** @type {?} */ (responseOptions.status));
         this.ok = (this.status >= 200 && this.status <= 299);
         this.statusText = responseOptions.statusText;
         this.headers = responseOptions.headers;
-        this.type = /** @type {?} */ ((responseOptions.type));
-        this.url = /** @type {?} */ ((responseOptions.url));
+        this.type = (/** @type {?} */ (responseOptions.type));
+        this.url = (/** @type {?} */ (responseOptions.url));
     }
     /**
      * @return {?}
@@ -939,7 +961,7 @@ class Response extends Body {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /** @type {?} */
 let _nextRequestId = 0;
@@ -958,7 +980,9 @@ function _getJsonpConnections() {
     }
     return _jsonpConnections;
 }
+// Make sure not to evaluate this in a non-browser environment!
 class BrowserJsonp {
+    // Construct a <script> element with the specified URL
     /**
      * @param {?} url
      * @return {?}
@@ -997,18 +1021,20 @@ class BrowserJsonp {
         const connections = _getJsonpConnections();
         connections[id] = null;
     }
+    // Attach the <script> element to the DOM
     /**
      * @param {?} node
      * @return {?}
      */
-    send(node) { document.body.appendChild(/** @type {?} */ ((node))); }
+    send(node) { document.body.appendChild((/** @type {?} */ ((node)))); }
+    // Remove <script> element from the DOM
     /**
      * @param {?} node
      * @return {?}
      */
     cleanup(node) {
         if (node.parentNode) {
-            node.parentNode.removeChild(/** @type {?} */ ((node)));
+            node.parentNode.removeChild((/** @type {?} */ ((node))));
         }
     }
 }
@@ -1018,7 +1044,7 @@ BrowserJsonp.decorators = [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /** @type {?} */
 const JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
@@ -1050,6 +1076,8 @@ class JSONPConnection {
             /** @type {?} */
             const id = this._id = _dom.nextRequestID();
             _dom.exposeConnection(id, this);
+            // Workaround Dart
+            // url = url.replace(/=JSONP_CALLBACK(&|$)/, `generated method`);
             /** @type {?} */
             const callback = _dom.requestCallback(this._id);
             /** @type {?} */
@@ -1160,7 +1188,7 @@ JSONPBackend.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /** @type {?} */
 const XSSI_PREFIX = /^\)\]\}',?\n/;
@@ -1190,8 +1218,10 @@ class XHRConnection {
             if (req.withCredentials != null) {
                 _xhr.withCredentials = req.withCredentials;
             }
+            // load event handler
             /** @type {?} */
             const onLoad = () => {
+                // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
                 /** @type {?} */
                 let status = _xhr.status === 1223 ? 204 : _xhr.status;
                 /** @type {?} */
@@ -1215,6 +1245,7 @@ class XHRConnection {
                 }
                 /** @type {?} */
                 const headers = Headers.fromResponseHeaderString(_xhr.getAllResponseHeaders());
+                // IE 9 does not provide the way to get URL of response
                 /** @type {?} */
                 const url = getResponseURL(_xhr) || req.url;
                 /** @type {?} */
@@ -1235,6 +1266,7 @@ class XHRConnection {
                 }
                 responseObserver.error(response);
             };
+            // error event handler
             /** @type {?} */
             const onError = (err) => {
                 /** @type {?} */
@@ -1256,7 +1288,7 @@ class XHRConnection {
             if (!req.headers.has('Accept')) {
                 req.headers.append('Accept', 'application/json, text/plain, */*');
             }
-            req.headers.forEach((values, name) => _xhr.setRequestHeader(/** @type {?} */ ((name)), values.join(',')));
+            req.headers.forEach((values, name) => _xhr.setRequestHeader((/** @type {?} */ (name)), values.join(',')));
             // Select the correct buffer type to store the response
             if (req.responseType != null && _xhr.responseType != null) {
                 switch (req.responseType) {
@@ -1412,7 +1444,7 @@ XHRBackend.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * Creates a request options object to be optionally provided when instantiating a
@@ -1451,6 +1483,7 @@ class RequestOptions {
      * @return {?}
      */
     set search(params) { this.params = params; }
+    // TODO(Dzmitry): remove search when this.search is removed
     /**
      * @param {?=} opts
      */
@@ -1600,8 +1633,9 @@ BaseRequestOptions.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
+// TODO(jeffbcross): properly implement body accessors
 /**
  * Creates `Request` instances from provided values.
  *
@@ -1648,9 +1682,10 @@ class Request extends Body {
      */
     constructor(requestOptions) {
         super();
+        // TODO: assert that url is present
         /** @type {?} */
         const url = requestOptions.url;
-        this.url = /** @type {?} */ ((requestOptions.url));
+        this.url = (/** @type {?} */ (requestOptions.url));
         /** @type {?} */
         const paramsArg = requestOptions.params || requestOptions.search;
         if (paramsArg) {
@@ -1673,13 +1708,13 @@ class Request extends Body {
             }
         }
         this._body = requestOptions.body;
-        this.method = normalizeMethodName(/** @type {?} */ ((requestOptions.method)));
+        this.method = normalizeMethodName((/** @type {?} */ (requestOptions.method)));
         // TODO(jeffbcross): implement behavior
         // Defaults to 'omit', consistent with browser
         this.headers = new Headers(requestOptions.headers);
         this.contentType = this.detectContentType();
-        this.withCredentials = /** @type {?} */ ((requestOptions.withCredentials));
-        this.responseType = /** @type {?} */ ((requestOptions.responseType));
+        this.withCredentials = (/** @type {?} */ (requestOptions.withCredentials));
+        this.responseType = (/** @type {?} */ (requestOptions.responseType));
     }
     /**
      * Returns the content type enum based on header options.
@@ -1777,15 +1812,15 @@ const noop = function () { };
 /** @type {?} */
 const w = typeof window == 'object' ? window : noop;
 /** @type {?} */
-const FormData = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['FormData'] || noop;
+const FormData = ((/** @type {?} */ (w)))['FormData'] || noop;
 /** @type {?} */
-const Blob$1 = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['Blob'] || noop;
+const Blob$1 = ((/** @type {?} */ (w)))['Blob'] || noop;
 /** @type {?} */
-const ArrayBuffer$1 = (/** @type {?} */ (w /** TODO #9100 */) /** TODO #9100 */)['ArrayBuffer'] || noop;
+const ArrayBuffer$1 = ((/** @type {?} */ (w)))['ArrayBuffer'] || noop;
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * @param {?} backend
@@ -1807,7 +1842,7 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
     const newOptions = defaultOpts;
     if (providedOpts) {
         // Hack so Dart can used named parameters
-        return /** @type {?} */ (newOptions.merge(new RequestOptions({
+        return (/** @type {?} */ (newOptions.merge(new RequestOptions({
             method: providedOpts.method || method,
             url: providedOpts.url || url,
             search: providedOpts.search,
@@ -1816,9 +1851,9 @@ function mergeOptions(defaultOpts, providedOpts, method, url) {
             body: providedOpts.body,
             withCredentials: providedOpts.withCredentials,
             responseType: providedOpts.responseType
-        })));
+        }))));
     }
-    return /** @type {?} */ (newOptions.merge(new RequestOptions({ method, url })));
+    return (/** @type {?} */ (newOptions.merge(new RequestOptions({ method, url }))));
 }
 /**
  * Performs http requests using `XMLHttpRequest` as the default backend.
@@ -1905,7 +1940,7 @@ class Http {
         /** @type {?} */
         let responseObservable;
         if (typeof url === 'string') {
-            responseObservable = httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, /** @type {?} */ (url))));
+            responseObservable = httpRequest(this._backend, new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, (/** @type {?} */ (url)))));
         }
         else if (url instanceof Request) {
             responseObservable = httpRequest(this._backend, url);
@@ -2024,7 +2059,7 @@ class Jsonp extends Http {
         let responseObservable;
         if (typeof url === 'string') {
             url =
-                new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, /** @type {?} */ (url)));
+                new Request(mergeOptions(this._defaultOptions, options, RequestMethod.Get, (/** @type {?} */ (url))));
         }
         if (url instanceof Request) {
             if (url.method !== RequestMethod.Get) {
@@ -2049,7 +2084,7 @@ Jsonp.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * @return {?}
@@ -2119,28 +2154,28 @@ JsonpModule.decorators = [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
-/** *
+/**
  * @deprecated see https://angular.io/guide/http
  * \@publicApi
-  @type {?} */
-const VERSION = new Version('7.2.0-beta.1+26.sha-3290fc3');
+ * @type {?}
+ */
+const VERSION = new Version('7.2.0-beta.2+10.sha-7fabe44');
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
-// This file only reexports content of the `src` folder. Keep it that way.
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
 /**
