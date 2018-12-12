@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0-beta.2+6.sha-28ceca0
+ * @license Angular v7.2.0-beta.2+9.sha-37c05bd
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -11,7 +11,7 @@ import { take } from 'rxjs/operators';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -52,7 +52,7 @@ class MockConnection {
      * @param {?} req
      */
     constructor(req) {
-        this.response = /** @type {?} */ (new ReplaySubject(1).pipe(take(1)));
+        this.response = (/** @type {?} */ (new ReplaySubject(1).pipe(take(1))));
         this.readyState = ReadyState.Open;
         this.request = req;
     }
@@ -85,6 +85,7 @@ class MockConnection {
         //   this.request.downloadObserver.onCompleted();
         // }
     }
+    // TODO(jeffbcross): consider using Response type
     /**
      * Emits the provided error object as an error to the {\@link Response} {\@link EventEmitter}
      * returned
@@ -187,6 +188,7 @@ class MockConnection {
  * \@publicApi
  */
 class MockBackend {
+    // Subject<MockConnection>
     constructor() {
         this.connectionsArray = [];
         this.connections = new Subject();
@@ -244,17 +246,17 @@ MockBackend.ngInjectableDef = defineInjectable({ token: MockBackend, factory: fu
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
 export { MockConnection, MockBackend };
