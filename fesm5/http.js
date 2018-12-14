@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0-beta.2+38.sha-a954345
+ * @license Angular v7.2.0-beta.2+36.sha-7fae911
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -33,7 +33,7 @@ var BrowserXhr = /** @class */ (function () {
 }());
 /*@__PURE__*/ ɵsetClassMetadata(BrowserXhr, [{
         type: Injectable
-    }], function () { return []; }, null);
+    }], [], null);
 
 /**
  * @license
@@ -419,7 +419,7 @@ var BaseResponseOptions = /** @class */ (function (_super) {
 }(ResponseOptions));
 /*@__PURE__*/ ɵsetClassMetadata(BaseResponseOptions, [{
         type: Injectable
-    }], function () { return []; }, null);
+    }], [], null);
 
 /**
  * @license
@@ -990,11 +990,11 @@ var JSONPBackend = /** @class */ (function (_super) {
 }(ConnectionBackend));
 /*@__PURE__*/ ɵsetClassMetadata(JSONPBackend, [{
         type: Injectable
-    }], function () { return [{
+    }], [{
         type: BrowserJsonp
     }, {
         type: ResponseOptions
-    }]; }, null);
+    }], null);
 
 /**
  * @license
@@ -1213,13 +1213,13 @@ var XHRBackend = /** @class */ (function () {
 }());
 /*@__PURE__*/ ɵsetClassMetadata(XHRBackend, [{
         type: Injectable
-    }], function () { return [{
+    }], [{
         type: BrowserXhr
     }, {
         type: ResponseOptions
     }, {
         type: XSRFStrategy
-    }]; }, null);
+    }], null);
 
 /**
  * Creates a request options object to be optionally provided when instantiating a
@@ -1391,7 +1391,7 @@ var BaseRequestOptions = /** @class */ (function (_super) {
 }(RequestOptions));
 /*@__PURE__*/ ɵsetClassMetadata(BaseRequestOptions, [{
         type: Injectable
-    }], function () { return []; }, null);
+    }], [], null);
 
 /**
  * @license
@@ -1719,11 +1719,11 @@ var Http = /** @class */ (function () {
 }());
 /*@__PURE__*/ ɵsetClassMetadata(Http, [{
         type: Injectable
-    }], function () { return [{
+    }], [{
         type: ConnectionBackend
     }, {
         type: RequestOptions
-    }]; }, null);
+    }], null);
 /**
  * @deprecated see https://angular.io/guide/http
  * @publicApi
@@ -1769,11 +1769,11 @@ var Jsonp = /** @class */ (function (_super) {
 }(Http));
 /*@__PURE__*/ ɵsetClassMetadata(Jsonp, [{
         type: Injectable
-    }], function () { return [{
+    }], [{
         type: ConnectionBackend
     }, {
         type: RequestOptions
-    }]; }, null);
+    }], null);
 
 /**
  * @license
@@ -1875,7 +1875,7 @@ var JsonpModule = /** @class */ (function () {
  * @deprecated see https://angular.io/guide/http
  * @publicApi
  */
-var VERSION = new Version('7.2.0-beta.2+38.sha-a954345');
+var VERSION = new Version('7.2.0-beta.2+36.sha-7fae911');
 
 /**
  * @license
