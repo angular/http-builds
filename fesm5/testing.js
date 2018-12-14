@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0-beta.2+36.sha-7fae911
+ * @license Angular v7.2.0-beta.2+39.sha-d0d351c
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -220,7 +220,7 @@ var MockBackend = /** @class */ (function () {
 }());
 /*@__PURE__*/ ɵsetClassMetadata(MockBackend, [{
         type: Injectable
-    }], [], null);
+    }], function () { return []; }, null);
 
 /**
  * @license

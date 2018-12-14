@@ -255,7 +255,7 @@ MockBackend.ctorParameters = () => [];
 MockBackend.ngInjectableDef = i0.defineInjectable({ token: MockBackend, factory: function MockBackend_Factory(t) { return new (t || MockBackend)(); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(MockBackend, [{
         type: Injectable
-    }], [], null);
+    }], function () { return []; }, null);
 if (false) {
     /**
      * {\@link EventEmitter}

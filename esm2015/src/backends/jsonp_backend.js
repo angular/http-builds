@@ -188,11 +188,11 @@ JSONPBackend.ctorParameters = () => [
 JSONPBackend.ngInjectableDef = i0.defineInjectable({ token: JSONPBackend, factory: function JSONPBackend_Factory(t) { return new (t || JSONPBackend)(i0.inject(BrowserJsonp), i0.inject(ResponseOptions)); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(JSONPBackend, [{
         type: Injectable
-    }], [{
+    }], function () { return [{
         type: BrowserJsonp
     }, {
         type: ResponseOptions
-    }], null);
+    }]; }, null);
 if (false) {
     /** @type {?} */
     JSONPBackend.prototype._browserJSONP;

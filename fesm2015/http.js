@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0-beta.2+36.sha-7fae911
+ * @license Angular v7.2.0-beta.2+39.sha-d0d351c
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -42,7 +42,7 @@ BrowserXhr.ctorParameters = () => [];
 BrowserXhr.ngInjectableDef = defineInjectable({ token: BrowserXhr, factory: function BrowserXhr_Factory(t) { return new (t || BrowserXhr)(); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(BrowserXhr, [{
         type: Injectable
-    }], [], null);
+    }], function () { return []; }, null);
 
 /**
  * @fileoverview added by tsickle
@@ -497,7 +497,7 @@ BaseResponseOptions.ctorParameters = () => [];
 BaseResponseOptions.ngInjectableDef = defineInjectable({ token: BaseResponseOptions, factory: function BaseResponseOptions_Factory(t) { return new (t || BaseResponseOptions)(); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(BaseResponseOptions, [{
         type: Injectable
-    }], [], null);
+    }], function () { return []; }, null);
 
 /**
  * @fileoverview added by tsickle
@@ -1228,11 +1228,11 @@ JSONPBackend.ctorParameters = () => [
 JSONPBackend.ngInjectableDef = defineInjectable({ token: JSONPBackend, factory: function JSONPBackend_Factory(t) { return new (t || JSONPBackend)(inject(BrowserJsonp), inject(ResponseOptions)); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(JSONPBackend, [{
         type: Injectable
-    }], [{
+    }], function () { return [{
         type: BrowserJsonp
     }, {
         type: ResponseOptions
-    }], null);
+    }]; }, null);
 
 /**
  * @fileoverview added by tsickle
@@ -1499,13 +1499,13 @@ XHRBackend.ctorParameters = () => [
 XHRBackend.ngInjectableDef = defineInjectable({ token: XHRBackend, factory: function XHRBackend_Factory(t) { return new (t || XHRBackend)(inject(BrowserXhr), inject(ResponseOptions), inject(XSRFStrategy)); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(XHRBackend, [{
         type: Injectable
-    }], [{
+    }], function () { return [{
         type: BrowserXhr
     }, {
         type: ResponseOptions
     }, {
         type: XSRFStrategy
-    }], null);
+    }]; }, null);
 
 /**
  * @fileoverview added by tsickle
@@ -1705,7 +1705,7 @@ BaseRequestOptions.ctorParameters = () => [];
 BaseRequestOptions.ngInjectableDef = defineInjectable({ token: BaseRequestOptions, factory: function BaseRequestOptions_Factory(t) { return new (t || BaseRequestOptions)(); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(BaseRequestOptions, [{
         type: Injectable
-    }], [], null);
+    }], function () { return []; }, null);
 
 /**
  * @fileoverview added by tsickle
@@ -2111,11 +2111,11 @@ Http.ctorParameters = () => [
 Http.ngInjectableDef = defineInjectable({ token: Http, factory: function Http_Factory(t) { return new (t || Http)(inject(ConnectionBackend), inject(RequestOptions)); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(Http, [{
         type: Injectable
-    }], [{
+    }], function () { return [{
         type: ConnectionBackend
     }, {
         type: RequestOptions
-    }], null);
+    }]; }, null);
 /**
  * @deprecated see https://angular.io/guide/http
  * \@publicApi
@@ -2175,11 +2175,11 @@ Jsonp.ctorParameters = () => [
 Jsonp.ngInjectableDef = defineInjectable({ token: Jsonp, factory: function Jsonp_Factory(t) { return new (t || Jsonp)(inject(ConnectionBackend), inject(RequestOptions)); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(Jsonp, [{
         type: Injectable
-    }], [{
+    }], function () { return [{
         type: ConnectionBackend
     }, {
         type: RequestOptions
-    }], null);
+    }]; }, null);
 
 /**
  * @module
@@ -2323,7 +2323,7 @@ JsonpModule.ngInjectorDef = defineInjector({ factory: function JsonpModule_Facto
  * \@publicApi
  * @type {?}
  */
-const VERSION = new Version('7.2.0-beta.2+36.sha-7fae911');
+const VERSION = new Version('7.2.0-beta.2+39.sha-d0d351c');
 
 /**
  * @fileoverview added by tsickle
