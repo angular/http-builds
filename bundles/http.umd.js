@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0-beta.2+33.sha-d528e30
+ * @license Angular v7.2.0-beta.2+38.sha-a954345
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -34,7 +34,7 @@
     }());
     /*@__PURE__*/ i0.ɵsetClassMetadata(BrowserXhr, [{
             type: i0.Injectable
-        }], [], null);
+        }], function () { return []; }, null);
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -445,7 +445,7 @@
     }(ResponseOptions));
     /*@__PURE__*/ i0.ɵsetClassMetadata(BaseResponseOptions, [{
             type: i0.Injectable
-        }], [], null);
+        }], function () { return []; }, null);
 
     /**
      * @license
@@ -1016,11 +1016,11 @@
     }(ConnectionBackend));
     /*@__PURE__*/ i0.ɵsetClassMetadata(JSONPBackend, [{
             type: i0.Injectable
-        }], [{
+        }], function () { return [{
             type: BrowserJsonp
         }, {
             type: ResponseOptions
-        }], null);
+        }]; }, null);
 
     /**
      * @license
@@ -1239,13 +1239,13 @@
     }());
     /*@__PURE__*/ i0.ɵsetClassMetadata(XHRBackend, [{
             type: i0.Injectable
-        }], [{
+        }], function () { return [{
             type: BrowserXhr
         }, {
             type: ResponseOptions
         }, {
             type: XSRFStrategy
-        }], null);
+        }]; }, null);
 
     /**
      * Creates a request options object to be optionally provided when instantiating a
@@ -1417,7 +1417,7 @@
     }(RequestOptions));
     /*@__PURE__*/ i0.ɵsetClassMetadata(BaseRequestOptions, [{
             type: i0.Injectable
-        }], [], null);
+        }], function () { return []; }, null);
 
     /**
      * @license
@@ -1745,11 +1745,11 @@
     }());
     /*@__PURE__*/ i0.ɵsetClassMetadata(Http, [{
             type: i0.Injectable
-        }], [{
+        }], function () { return [{
             type: ConnectionBackend
         }, {
             type: RequestOptions
-        }], null);
+        }]; }, null);
     /**
      * @deprecated see https://angular.io/guide/http
      * @publicApi
@@ -1795,11 +1795,11 @@
     }(Http));
     /*@__PURE__*/ i0.ɵsetClassMetadata(Jsonp, [{
             type: i0.Injectable
-        }], [{
+        }], function () { return [{
             type: ConnectionBackend
         }, {
             type: RequestOptions
-        }], null);
+        }]; }, null);
 
     /**
      * @license
@@ -1901,7 +1901,7 @@
      * @deprecated see https://angular.io/guide/http
      * @publicApi
      */
-    var VERSION = new i0.Version('7.2.0-beta.2+33.sha-d528e30');
+    var VERSION = new i0.Version('7.2.0-beta.2+38.sha-a954345');
 
     /**
      * @license
