@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.1.0+202.sha-3fa2a5f
+ * @license Angular v7.2.0-beta.2+63.sha-19508c4
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -11,7 +11,7 @@ import { take } from 'rxjs/operators';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 /**
  *
@@ -45,7 +45,7 @@ class MockConnection {
      * @param {?} req
      */
     constructor(req) {
-        this.response = /** @type {?} */ (new ReplaySubject(1).pipe(take(1)));
+        this.response = (/** @type {?} */ (new ReplaySubject(1).pipe(take(1))));
         this.readyState = ReadyState.Open;
         this.request = req;
     }
@@ -78,6 +78,7 @@ class MockConnection {
         //   this.request.downloadObserver.onCompleted();
         // }
     }
+    // TODO(jeffbcross): consider using Response type
     /**
      * Emits the provided error object as an error to the {\@link Response} {\@link EventEmitter}
      * returned
@@ -180,6 +181,7 @@ class MockConnection {
  * \@publicApi
  */
 class MockBackend {
+    // Subject<MockConnection>
     constructor() {
         this.connectionsArray = [];
         this.connections = new Subject();
@@ -233,17 +235,17 @@ MockBackend.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
 /**
