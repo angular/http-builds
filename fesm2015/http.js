@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0-beta.2+83.sha-b04bc5d
+ * @license Angular v7.2.0-beta.2+89.sha-69198ba
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -10,7 +10,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -46,7 +46,7 @@ BrowserXhr.ngInjectableDef = defineInjectable({ token: BrowserXhr, factory: func
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -131,7 +131,7 @@ ResponseContentType[ResponseContentType.Blob] = 'Blob';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -331,6 +331,7 @@ class Headers {
      */
     entries() { throw new Error('"entries" method is not implemented on Headers class'); }
     /**
+     * @private
      * @param {?} name
      * @return {?}
      */
@@ -345,7 +346,7 @@ class Headers {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -501,7 +502,7 @@ BaseResponseOptions.ngInjectableDef = defineInjectable({ token: BaseResponseOpti
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -543,7 +544,7 @@ class XSRFStrategy {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @param {?} method
@@ -600,7 +601,7 @@ function stringToArrayBuffer(input) {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -849,7 +850,7 @@ class URLSearchParams {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * HTTP request body used by both {\@link Request} and {\@link Response}
@@ -935,7 +936,7 @@ class Body {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * Creates `Response` instances from provided values.
@@ -983,7 +984,7 @@ class Response extends Body {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1077,7 +1078,7 @@ BrowserJsonp.ngInjectableDef = defineInjectable({ token: BrowserJsonp, factory: 
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1236,7 +1237,7 @@ JSONPBackend.ngInjectableDef = defineInjectable({ token: JSONPBackend, factory: 
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1509,7 +1510,7 @@ XHRBackend.ngInjectableDef = defineInjectable({ token: XHRBackend, factory: func
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1608,6 +1609,7 @@ class RequestOptions {
         });
     }
     /**
+     * @private
      * @param {?=} params
      * @return {?}
      */
@@ -1623,6 +1625,7 @@ class RequestOptions {
         return this._parseParams(params);
     }
     /**
+     * @private
      * @param {?=} objParams
      * @return {?}
      */
@@ -1642,6 +1645,7 @@ class RequestOptions {
         return params;
     }
     /**
+     * @private
      * @param {?} key
      * @param {?} value
      * @param {?} params
@@ -1709,7 +1713,7 @@ BaseRequestOptions.ngInjectableDef = defineInjectable({ token: BaseRequestOption
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 // TODO(jeffbcross): properly implement body accessors
 /**
@@ -1896,7 +1900,7 @@ const ArrayBuffer$1 = ((/** @type {?} */ (w)))['ArrayBuffer'] || noop;
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -2189,7 +2193,7 @@ Jsonp.ngInjectableDef = defineInjectable({ token: Jsonp, factory: function Jsonp
  */
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -2316,28 +2320,28 @@ JsonpModule.ngInjectorDef = defineInjector({ factory: function JsonpModule_Facto
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @deprecated see https://angular.io/guide/http
  * \@publicApi
  * @type {?}
  */
-const VERSION = new Version('7.2.0-beta.2+83.sha-b04bc5d');
+const VERSION = new Version('7.2.0-beta.2+89.sha-69198ba');
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 export { BrowserXhr, JSONPBackend, JSONPConnection, CookieXSRFStrategy, XHRBackend, XHRConnection, BaseRequestOptions, RequestOptions, BaseResponseOptions, ResponseOptions, ReadyState, RequestMethod, ResponseContentType, ResponseType, Headers, Http, Jsonp, HttpModule, JsonpModule, Connection, ConnectionBackend, XSRFStrategy, Request, Response, QueryEncoder, URLSearchParams, VERSION };
