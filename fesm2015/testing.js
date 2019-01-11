@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0+126.sha-df292c2
+ * @license Angular v7.2.0+132.sha-0c6fa1d
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -239,7 +239,7 @@ MockBackend.decorators = [
 ];
 /** @nocollapse */
 MockBackend.ctorParameters = () => [];
-MockBackend.ngInjectableDef = defineInjectable({ token: MockBackend, factory: function MockBackend_Factory(t) { return new (t || MockBackend)(); }, providedIn: null });
+/** @nocollapse */ MockBackend.ngInjectableDef = defineInjectable({ token: MockBackend, factory: function MockBackend_Factory(t) { return new (t || MockBackend)(); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(MockBackend, [{
         type: Injectable
     }], function () { return []; }, null);

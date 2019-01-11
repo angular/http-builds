@@ -252,7 +252,7 @@ MockBackend.decorators = [
 ];
 /** @nocollapse */
 MockBackend.ctorParameters = () => [];
-MockBackend.ngInjectableDef = i0.defineInjectable({ token: MockBackend, factory: function MockBackend_Factory(t) { return new (t || MockBackend)(); }, providedIn: null });
+/** @nocollapse */ MockBackend.ngInjectableDef = i0.defineInjectable({ token: MockBackend, factory: function MockBackend_Factory(t) { return new (t || MockBackend)(); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(MockBackend, [{
         type: Injectable
     }], function () { return []; }, null);
