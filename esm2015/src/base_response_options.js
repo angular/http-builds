@@ -183,7 +183,7 @@ BaseResponseOptions.decorators = [
 ];
 /** @nocollapse */
 BaseResponseOptions.ctorParameters = () => [];
-BaseResponseOptions.ngInjectableDef = i0.defineInjectable({ token: BaseResponseOptions, factory: function BaseResponseOptions_Factory(t) { return new (t || BaseResponseOptions)(); }, providedIn: null });
+/** @nocollapse */ BaseResponseOptions.ngInjectableDef = i0.defineInjectable({ token: BaseResponseOptions, factory: function BaseResponseOptions_Factory(t) { return new (t || BaseResponseOptions)(); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(BaseResponseOptions, [{
         type: Injectable
     }], function () { return []; }, null);

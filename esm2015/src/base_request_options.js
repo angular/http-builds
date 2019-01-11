@@ -237,7 +237,7 @@ BaseRequestOptions.decorators = [
 ];
 /** @nocollapse */
 BaseRequestOptions.ctorParameters = () => [];
-BaseRequestOptions.ngInjectableDef = i0.defineInjectable({ token: BaseRequestOptions, factory: function BaseRequestOptions_Factory(t) { return new (t || BaseRequestOptions)(); }, providedIn: null });
+/** @nocollapse */ BaseRequestOptions.ngInjectableDef = i0.defineInjectable({ token: BaseRequestOptions, factory: function BaseRequestOptions_Factory(t) { return new (t || BaseRequestOptions)(); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(BaseRequestOptions, [{
         type: Injectable
     }], function () { return []; }, null);

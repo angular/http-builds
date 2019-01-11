@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0+122.sha-8c3f98f
+ * @license Angular v7.2.0+128.sha-091a8a6
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -39,7 +39,7 @@ BrowserXhr.decorators = [
 ];
 /** @nocollapse */
 BrowserXhr.ctorParameters = () => [];
-BrowserXhr.ngInjectableDef = defineInjectable({ token: BrowserXhr, factory: function BrowserXhr_Factory(t) { return new (t || BrowserXhr)(); }, providedIn: null });
+/** @nocollapse */ BrowserXhr.ngInjectableDef = defineInjectable({ token: BrowserXhr, factory: function BrowserXhr_Factory(t) { return new (t || BrowserXhr)(); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(BrowserXhr, [{
         type: Injectable
     }], function () { return []; }, null);
@@ -495,7 +495,7 @@ BaseResponseOptions.decorators = [
 ];
 /** @nocollapse */
 BaseResponseOptions.ctorParameters = () => [];
-BaseResponseOptions.ngInjectableDef = defineInjectable({ token: BaseResponseOptions, factory: function BaseResponseOptions_Factory(t) { return new (t || BaseResponseOptions)(); }, providedIn: null });
+/** @nocollapse */ BaseResponseOptions.ngInjectableDef = defineInjectable({ token: BaseResponseOptions, factory: function BaseResponseOptions_Factory(t) { return new (t || BaseResponseOptions)(); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(BaseResponseOptions, [{
         type: Injectable
     }], function () { return []; }, null);
@@ -1071,7 +1071,7 @@ class BrowserJsonp {
 BrowserJsonp.decorators = [
     { type: Injectable },
 ];
-BrowserJsonp.ngInjectableDef = defineInjectable({ token: BrowserJsonp, factory: function BrowserJsonp_Factory(t) { return new (t || BrowserJsonp)(); }, providedIn: null });
+/** @nocollapse */ BrowserJsonp.ngInjectableDef = defineInjectable({ token: BrowserJsonp, factory: function BrowserJsonp_Factory(t) { return new (t || BrowserJsonp)(); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(BrowserJsonp, [{
         type: Injectable
     }], null, null);
@@ -1226,7 +1226,7 @@ JSONPBackend.ctorParameters = () => [
     { type: BrowserJsonp },
     { type: ResponseOptions }
 ];
-JSONPBackend.ngInjectableDef = defineInjectable({ token: JSONPBackend, factory: function JSONPBackend_Factory(t) { return new (t || JSONPBackend)(inject(BrowserJsonp), inject(ResponseOptions)); }, providedIn: null });
+/** @nocollapse */ JSONPBackend.ngInjectableDef = defineInjectable({ token: JSONPBackend, factory: function JSONPBackend_Factory(t) { return new (t || JSONPBackend)(inject(BrowserJsonp), inject(ResponseOptions)); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(JSONPBackend, [{
         type: Injectable
     }], function () { return [{
@@ -1497,7 +1497,7 @@ XHRBackend.ctorParameters = () => [
     { type: ResponseOptions },
     { type: XSRFStrategy }
 ];
-XHRBackend.ngInjectableDef = defineInjectable({ token: XHRBackend, factory: function XHRBackend_Factory(t) { return new (t || XHRBackend)(inject(BrowserXhr), inject(ResponseOptions), inject(XSRFStrategy)); }, providedIn: null });
+/** @nocollapse */ XHRBackend.ngInjectableDef = defineInjectable({ token: XHRBackend, factory: function XHRBackend_Factory(t) { return new (t || XHRBackend)(inject(BrowserXhr), inject(ResponseOptions), inject(XSRFStrategy)); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(XHRBackend, [{
         type: Injectable
     }], function () { return [{
@@ -1706,7 +1706,7 @@ BaseRequestOptions.decorators = [
 ];
 /** @nocollapse */
 BaseRequestOptions.ctorParameters = () => [];
-BaseRequestOptions.ngInjectableDef = defineInjectable({ token: BaseRequestOptions, factory: function BaseRequestOptions_Factory(t) { return new (t || BaseRequestOptions)(); }, providedIn: null });
+/** @nocollapse */ BaseRequestOptions.ngInjectableDef = defineInjectable({ token: BaseRequestOptions, factory: function BaseRequestOptions_Factory(t) { return new (t || BaseRequestOptions)(); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(BaseRequestOptions, [{
         type: Injectable
     }], function () { return []; }, null);
@@ -2112,7 +2112,7 @@ Http.ctorParameters = () => [
     { type: ConnectionBackend },
     { type: RequestOptions }
 ];
-Http.ngInjectableDef = defineInjectable({ token: Http, factory: function Http_Factory(t) { return new (t || Http)(inject(ConnectionBackend), inject(RequestOptions)); }, providedIn: null });
+/** @nocollapse */ Http.ngInjectableDef = defineInjectable({ token: Http, factory: function Http_Factory(t) { return new (t || Http)(inject(ConnectionBackend), inject(RequestOptions)); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(Http, [{
         type: Injectable
     }], function () { return [{
@@ -2176,7 +2176,7 @@ Jsonp.ctorParameters = () => [
     { type: ConnectionBackend },
     { type: RequestOptions }
 ];
-Jsonp.ngInjectableDef = defineInjectable({ token: Jsonp, factory: function Jsonp_Factory(t) { return new (t || Jsonp)(inject(ConnectionBackend), inject(RequestOptions)); }, providedIn: null });
+/** @nocollapse */ Jsonp.ngInjectableDef = defineInjectable({ token: Jsonp, factory: function Jsonp_Factory(t) { return new (t || Jsonp)(inject(ConnectionBackend), inject(RequestOptions)); }, providedIn: null });
 /*@__PURE__*/ ɵsetClassMetadata(Jsonp, [{
         type: Injectable
     }], function () { return [{
@@ -2246,8 +2246,8 @@ HttpModule.decorators = [
                 ],
             },] },
 ];
-HttpModule.ngModuleDef = ɵdefineNgModule({ type: HttpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
-HttpModule.ngInjectorDef = defineInjector({ factory: function HttpModule_Factory(t) { return new (t || HttpModule)(); }, providers: [
+/** @nocollapse */ HttpModule.ngModuleDef = ɵdefineNgModule({ type: HttpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+/** @nocollapse */ HttpModule.ngInjectorDef = defineInjector({ factory: function HttpModule_Factory(t) { return new (t || HttpModule)(); }, providers: [
         // TODO(pascal): use factory type annotations once supported in DI
         // issue: https://github.com/angular/angular/issues/3183
         { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
@@ -2293,8 +2293,8 @@ JsonpModule.decorators = [
                 ],
             },] },
 ];
-JsonpModule.ngModuleDef = ɵdefineNgModule({ type: JsonpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
-JsonpModule.ngInjectorDef = defineInjector({ factory: function JsonpModule_Factory(t) { return new (t || JsonpModule)(); }, providers: [
+/** @nocollapse */ JsonpModule.ngModuleDef = ɵdefineNgModule({ type: JsonpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+/** @nocollapse */ JsonpModule.ngInjectorDef = defineInjector({ factory: function JsonpModule_Factory(t) { return new (t || JsonpModule)(); }, providers: [
         // TODO(pascal): use factory type annotations once supported in DI
         // issue: https://github.com/angular/angular/issues/3183
         { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
@@ -2327,7 +2327,7 @@ JsonpModule.ngInjectorDef = defineInjector({ factory: function JsonpModule_Facto
  * \@publicApi
  * @type {?}
  */
-const VERSION = new Version('7.2.0+122.sha-8c3f98f');
+const VERSION = new Version('7.2.0+128.sha-091a8a6');
 
 /**
  * @fileoverview added by tsickle
