@@ -295,7 +295,7 @@ XHRBackend.ctorParameters = () => [
     { type: ResponseOptions },
     { type: XSRFStrategy }
 ];
-/** @nocollapse */ XHRBackend.ngInjectableDef = i0.defineInjectable({ token: XHRBackend, factory: function XHRBackend_Factory(t) { return new (t || XHRBackend)(i0.inject(BrowserXhr), i0.inject(ResponseOptions), i0.inject(XSRFStrategy)); }, providedIn: null });
+XHRBackend.ngInjectableDef = i0.defineInjectable({ token: XHRBackend, factory: function XHRBackend_Factory(t) { return new (t || XHRBackend)(i0.inject(BrowserXhr), i0.inject(ResponseOptions), i0.inject(XSRFStrategy)); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(XHRBackend, [{
         type: Injectable
     }], function () { return [{

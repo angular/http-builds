@@ -89,7 +89,7 @@ export class BrowserJsonp {
 BrowserJsonp.decorators = [
     { type: Injectable },
 ];
-/** @nocollapse */ BrowserJsonp.ngInjectableDef = i0.defineInjectable({ token: BrowserJsonp, factory: function BrowserJsonp_Factory(t) { return new (t || BrowserJsonp)(); }, providedIn: null });
+BrowserJsonp.ngInjectableDef = i0.defineInjectable({ token: BrowserJsonp, factory: function BrowserJsonp_Factory(t) { return new (t || BrowserJsonp)(); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(BrowserJsonp, [{
         type: Injectable
     }], null, null);

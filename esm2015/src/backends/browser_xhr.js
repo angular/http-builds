@@ -31,7 +31,7 @@ BrowserXhr.decorators = [
 ];
 /** @nocollapse */
 BrowserXhr.ctorParameters = () => [];
-/** @nocollapse */ BrowserXhr.ngInjectableDef = i0.defineInjectable({ token: BrowserXhr, factory: function BrowserXhr_Factory(t) { return new (t || BrowserXhr)(); }, providedIn: null });
+BrowserXhr.ngInjectableDef = i0.defineInjectable({ token: BrowserXhr, factory: function BrowserXhr_Factory(t) { return new (t || BrowserXhr)(); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(BrowserXhr, [{
         type: Injectable
     }], function () { return []; }, null);

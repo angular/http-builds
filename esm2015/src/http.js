@@ -218,7 +218,7 @@ Http.ctorParameters = () => [
     { type: ConnectionBackend },
     { type: RequestOptions }
 ];
-/** @nocollapse */ Http.ngInjectableDef = i0.defineInjectable({ token: Http, factory: function Http_Factory(t) { return new (t || Http)(i0.inject(ConnectionBackend), i0.inject(RequestOptions)); }, providedIn: null });
+Http.ngInjectableDef = i0.defineInjectable({ token: Http, factory: function Http_Factory(t) { return new (t || Http)(i0.inject(ConnectionBackend), i0.inject(RequestOptions)); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(Http, [{
         type: Injectable
     }], function () { return [{
@@ -294,7 +294,7 @@ Jsonp.ctorParameters = () => [
     { type: ConnectionBackend },
     { type: RequestOptions }
 ];
-/** @nocollapse */ Jsonp.ngInjectableDef = i0.defineInjectable({ token: Jsonp, factory: function Jsonp_Factory(t) { return new (t || Jsonp)(i0.inject(ConnectionBackend), i0.inject(RequestOptions)); }, providedIn: null });
+Jsonp.ngInjectableDef = i0.defineInjectable({ token: Jsonp, factory: function Jsonp_Factory(t) { return new (t || Jsonp)(i0.inject(ConnectionBackend), i0.inject(RequestOptions)); }, providedIn: null });
 /*@__PURE__*/ i0.ɵsetClassMetadata(Jsonp, [{
         type: Injectable
     }], function () { return [{

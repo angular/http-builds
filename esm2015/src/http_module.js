@@ -69,8 +69,8 @@ HttpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */ HttpModule.ngModuleDef = i0.ɵdefineNgModule({ type: HttpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
-/** @nocollapse */ HttpModule.ngInjectorDef = i0.defineInjector({ factory: function HttpModule_Factory(t) { return new (t || HttpModule)(); }, providers: [
+HttpModule.ngModuleDef = i0.ɵdefineNgModule({ type: HttpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+HttpModule.ngInjectorDef = i0.defineInjector({ factory: function HttpModule_Factory(t) { return new (t || HttpModule)(); }, providers: [
         // TODO(pascal): use factory type annotations once supported in DI
         // issue: https://github.com/angular/angular/issues/3183
         { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] },
@@ -116,8 +116,8 @@ JsonpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */ JsonpModule.ngModuleDef = i0.ɵdefineNgModule({ type: JsonpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
-/** @nocollapse */ JsonpModule.ngInjectorDef = i0.defineInjector({ factory: function JsonpModule_Factory(t) { return new (t || JsonpModule)(); }, providers: [
+JsonpModule.ngModuleDef = i0.ɵdefineNgModule({ type: JsonpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+JsonpModule.ngInjectorDef = i0.defineInjector({ factory: function JsonpModule_Factory(t) { return new (t || JsonpModule)(); }, providers: [
         // TODO(pascal): use factory type annotations once supported in DI
         // issue: https://github.com/angular/angular/issues/3183
         { provide: Jsonp, useFactory: jsonpFactory, deps: [JSONPBackend, RequestOptions] },
