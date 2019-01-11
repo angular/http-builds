@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.0+103.sha-885f1af
+ * @license Angular v7.2.0+104.sha-b78351c
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -7,8 +7,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs'), require('@angular/platform-browser')) :
     typeof define === 'function' && define.amd ? define('@angular/http', ['exports', '@angular/core', 'rxjs', '@angular/platform-browser'], factory) :
-    (factory((global.ng = global.ng || {}, global.ng.http = {}),global.ng.core,global.rxjs,global.ng.platformBrowser));
-}(this, (function (exports,i0,rxjs,platformBrowser) { 'use strict';
+    (global = global || self, factory((global.ng = global.ng || {}, global.ng.http = {}), global.ng.core, global.rxjs, global.ng.platformBrowser));
+}(this, function (exports, i0, rxjs, platformBrowser) { 'use strict';
 
     /**
      * @license
@@ -1901,7 +1901,7 @@
      * @deprecated see https://angular.io/guide/http
      * @publicApi
      */
-    var VERSION = new i0.Version('7.2.0+103.sha-885f1af');
+    var VERSION = new i0.Version('7.2.0+104.sha-b78351c');
 
     /**
      * @license
@@ -1954,5 +1954,5 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=http.umd.js.map
