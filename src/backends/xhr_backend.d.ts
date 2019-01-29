@@ -1,11 +1,3 @@
-import * as i0 from '@angular/core';
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Observable } from 'rxjs';
 import { ResponseOptions } from '../base_response_options';
 import { ReadyState } from '../enums';
@@ -13,6 +5,7 @@ import { Connection, ConnectionBackend, XSRFStrategy } from '../interfaces';
 import { Request } from '../static_request';
 import { Response } from '../static_response';
 import { BrowserXhr } from './browser_xhr';
+import * as i0 from "@angular/core";
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified
  * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the

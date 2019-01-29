@@ -1,15 +1,8 @@
-import * as i0 from '@angular/core';
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { JSONPBackend } from './backends/jsonp_backend';
 import { CookieXSRFStrategy, XHRBackend } from './backends/xhr_backend';
 import { RequestOptions } from './base_request_options';
 import { Http, Jsonp } from './http';
+import * as i0 from "@angular/core";
 export declare function _createDefaultCookieXSRFStrategy(): CookieXSRFStrategy;
 export declare function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions): Http;
 export declare function jsonpFactory(jsonpBackend: JSONPBackend, requestOptions: RequestOptions): Jsonp;

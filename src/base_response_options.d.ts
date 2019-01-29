@@ -1,13 +1,6 @@
-import * as i0 from '@angular/core';
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Headers } from './headers';
 import { ResponseOptionsArgs } from './interfaces';
+import * as i0 from "@angular/core";
 /**
  * Creates a response options object to be optionally provided when instantiating a
  * {@link Response}.
