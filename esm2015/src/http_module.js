@@ -69,7 +69,7 @@ HttpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */ HttpModule.ngModuleDef = i0.ɵdefineNgModule({ type: HttpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+/** @nocollapse */ HttpModule.ngModuleDef = i0.ɵdefineNgModule({ type: HttpModule });
 /** @nocollapse */ HttpModule.ngInjectorDef = i0.defineInjector({ factory: function HttpModule_Factory(t) { return new (t || HttpModule)(); }, providers: [
         // TODO(pascal): use factory type annotations once supported in DI
         // issue: https://github.com/angular/angular/issues/3183
@@ -116,7 +116,7 @@ JsonpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */ JsonpModule.ngModuleDef = i0.ɵdefineNgModule({ type: JsonpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+/** @nocollapse */ JsonpModule.ngModuleDef = i0.ɵdefineNgModule({ type: JsonpModule });
 /** @nocollapse */ JsonpModule.ngInjectorDef = i0.defineInjector({ factory: function JsonpModule_Factory(t) { return new (t || JsonpModule)(); }, providers: [
         // TODO(pascal): use factory type annotations once supported in DI
         // issue: https://github.com/angular/angular/issues/3183

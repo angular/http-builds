@@ -39,7 +39,7 @@ export function jsonpFactory(jsonpBackend, requestOptions) {
 var HttpModule = /** @class */ (function () {
     function HttpModule() {
     }
-    HttpModule.ngModuleDef = i0.ɵdefineNgModule({ type: HttpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+    HttpModule.ngModuleDef = i0.ɵdefineNgModule({ type: HttpModule });
     HttpModule.ngInjectorDef = i0.defineInjector({ factory: function HttpModule_Factory(t) { return new (t || HttpModule)(); }, providers: [
             // TODO(pascal): use factory type annotations once supported in DI
             // issue: https://github.com/angular/angular/issues/3183
@@ -77,7 +77,7 @@ export { HttpModule };
 var JsonpModule = /** @class */ (function () {
     function JsonpModule() {
     }
-    JsonpModule.ngModuleDef = i0.ɵdefineNgModule({ type: JsonpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+    JsonpModule.ngModuleDef = i0.ɵdefineNgModule({ type: JsonpModule });
     JsonpModule.ngInjectorDef = i0.defineInjector({ factory: function JsonpModule_Factory(t) { return new (t || JsonpModule)(); }, providers: [
             // TODO(pascal): use factory type annotations once supported in DI
             // issue: https://github.com/angular/angular/issues/3183

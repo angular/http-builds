@@ -1,5 +1,5 @@
 /**
- * @license Angular v8.0.0-beta.1+68.sha-6e16338
+ * @license Angular v8.0.0-beta.1+83.sha-e18a52e
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -2246,7 +2246,7 @@ HttpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */ HttpModule.ngModuleDef = ɵdefineNgModule({ type: HttpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+/** @nocollapse */ HttpModule.ngModuleDef = ɵdefineNgModule({ type: HttpModule });
 /** @nocollapse */ HttpModule.ngInjectorDef = defineInjector({ factory: function HttpModule_Factory(t) { return new (t || HttpModule)(); }, providers: [
         // TODO(pascal): use factory type annotations once supported in DI
         // issue: https://github.com/angular/angular/issues/3183
@@ -2293,7 +2293,7 @@ JsonpModule.decorators = [
                 ],
             },] },
 ];
-/** @nocollapse */ JsonpModule.ngModuleDef = ɵdefineNgModule({ type: JsonpModule, bootstrap: [], declarations: [], imports: [], exports: [] });
+/** @nocollapse */ JsonpModule.ngModuleDef = ɵdefineNgModule({ type: JsonpModule });
 /** @nocollapse */ JsonpModule.ngInjectorDef = defineInjector({ factory: function JsonpModule_Factory(t) { return new (t || JsonpModule)(); }, providers: [
         // TODO(pascal): use factory type annotations once supported in DI
         // issue: https://github.com/angular/angular/issues/3183
@@ -2327,7 +2327,7 @@ JsonpModule.decorators = [
  * \@publicApi
  * @type {?}
  */
-const VERSION = new Version('8.0.0-beta.1+68.sha-6e16338');
+const VERSION = new Version('8.0.0-beta.1+83.sha-e18a52e');
 
 /**
  * @fileoverview added by tsickle
