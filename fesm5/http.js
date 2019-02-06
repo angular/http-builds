@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.4+10.sha-c378402
+ * @license Angular v7.2.4+11.sha-be8a403
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -1862,7 +1862,7 @@ var JsonpModule = /** @class */ (function () {
  * @deprecated see https://angular.io/guide/http
  * @publicApi
  */
-var VERSION = new Version('7.2.4+10.sha-c378402');
+var VERSION = new Version('7.2.4+11.sha-be8a403');
 
 /**
  * @license
