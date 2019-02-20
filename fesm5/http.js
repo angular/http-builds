@@ -1,5 +1,5 @@
 /**
- * @license Angular v8.0.0-beta.4+44.sha-1eccf64
+ * @license Angular v8.0.0-beta.4+45.sha-669b441
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -1875,7 +1875,7 @@ var JsonpModule = /** @class */ (function () {
  * @deprecated see https://angular.io/guide/http
  * @publicApi
  */
-var VERSION = new Version('8.0.0-beta.4+44.sha-1eccf64');
+var VERSION = new Version('8.0.0-beta.4+45.sha-669b441');
 
 /**
  * @license
