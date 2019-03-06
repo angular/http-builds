@@ -1,5 +1,5 @@
 /**
- * @license Angular v8.0.0-beta.6+85.sha-20a9dbe.with-local-changes
+ * @license Angular v8.0.0-beta.6+86.sha-881807d.with-local-changes
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -990,11 +990,7 @@ var JSONPBackend = /** @class */ (function (_super) {
 }(ConnectionBackend));
 /*@__PURE__*/ ɵsetClassMetadata(JSONPBackend, [{
         type: Injectable
-    }], function () { return [{
-        type: BrowserJsonp
-    }, {
-        type: ResponseOptions
-    }]; }, null);
+    }], function () { return [{ type: BrowserJsonp }, { type: ResponseOptions }]; }, null);
 
 /**
  * @license
@@ -1213,13 +1209,7 @@ var XHRBackend = /** @class */ (function () {
 }());
 /*@__PURE__*/ ɵsetClassMetadata(XHRBackend, [{
         type: Injectable
-    }], function () { return [{
-        type: BrowserXhr
-    }, {
-        type: ResponseOptions
-    }, {
-        type: XSRFStrategy
-    }]; }, null);
+    }], function () { return [{ type: BrowserXhr }, { type: ResponseOptions }, { type: XSRFStrategy }]; }, null);
 
 /**
  * Creates a request options object to be optionally provided when instantiating a
@@ -1719,11 +1709,7 @@ var Http = /** @class */ (function () {
 }());
 /*@__PURE__*/ ɵsetClassMetadata(Http, [{
         type: Injectable
-    }], function () { return [{
-        type: ConnectionBackend
-    }, {
-        type: RequestOptions
-    }]; }, null);
+    }], function () { return [{ type: ConnectionBackend }, { type: RequestOptions }]; }, null);
 /**
  * @deprecated see https://angular.io/guide/http
  * @publicApi
@@ -1769,11 +1755,7 @@ var Jsonp = /** @class */ (function (_super) {
 }(Http));
 /*@__PURE__*/ ɵsetClassMetadata(Jsonp, [{
         type: Injectable
-    }], function () { return [{
-        type: ConnectionBackend
-    }, {
-        type: RequestOptions
-    }]; }, null);
+    }], function () { return [{ type: ConnectionBackend }, { type: RequestOptions }]; }, null);
 
 /**
  * @license
@@ -1875,7 +1857,7 @@ var JsonpModule = /** @class */ (function () {
  * @deprecated see https://angular.io/guide/http
  * @publicApi
  */
-var VERSION = new Version('8.0.0-beta.6+85.sha-20a9dbe.with-local-changes');
+var VERSION = new Version('8.0.0-beta.6+86.sha-881807d.with-local-changes');
 
 /**
  * @license
