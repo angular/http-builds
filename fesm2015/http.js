@@ -1,5 +1,5 @@
 /**
- * @license Angular v8.0.0-beta.8+8.sha-9a7f560.with-local-changes
+ * @license Angular v8.0.0-beta.8+11.sha-7b20cec.with-local-changes
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -10,7 +10,7 @@ import { ɵgetDOM } from '@angular/platform-browser';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * A backend for http that uses the `XMLHttpRequest` browser API.
@@ -35,7 +35,7 @@ BrowserXhr.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -120,7 +120,7 @@ ResponseContentType[ResponseContentType.Blob] = 'Blob';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -177,17 +177,34 @@ class Headers {
             return;
         }
         if (headers instanceof Headers) {
-            headers.forEach((values, name) => {
-                values.forEach(value => this.append(name, value));
-            });
+            headers.forEach((/**
+             * @param {?} values
+             * @param {?} name
+             * @return {?}
+             */
+            (values, name) => {
+                values.forEach((/**
+                 * @param {?} value
+                 * @return {?}
+                 */
+                value => this.append(name, value)));
+            }));
             return;
         }
-        Object.keys(headers).forEach((name) => {
+        Object.keys(headers).forEach((/**
+         * @param {?} name
+         * @return {?}
+         */
+        (name) => {
             /** @type {?} */
             const values = Array.isArray(headers[name]) ? headers[name] : [headers[name]];
             this.delete(name);
-            values.forEach(value => this.append(name, value));
-        });
+            values.forEach((/**
+             * @param {?} value
+             * @return {?}
+             */
+            value => this.append(name, value)));
+        }));
     }
     /**
      * Returns a new Headers instance from the given DOMString of Response Headers
@@ -197,7 +214,11 @@ class Headers {
     static fromResponseHeaderString(headersString) {
         /** @type {?} */
         const headers = new Headers();
-        headersString.split('\n').forEach(line => {
+        headersString.split('\n').forEach((/**
+         * @param {?} line
+         * @return {?}
+         */
+        line => {
             /** @type {?} */
             const index = line.indexOf(':');
             if (index > 0) {
@@ -207,7 +228,7 @@ class Headers {
                 const value = line.slice(index + 1).trim();
                 headers.set(name, value);
             }
-        });
+        }));
         return headers;
     }
     /**
@@ -242,7 +263,12 @@ class Headers {
      * @return {?}
      */
     forEach(fn) {
-        this._headers.forEach((values, lcName) => fn(values, this._normalizedNames.get(lcName), this._headers));
+        this._headers.forEach((/**
+         * @param {?} values
+         * @param {?} lcName
+         * @return {?}
+         */
+        (values, lcName) => fn(values, this._normalizedNames.get(lcName), this._headers)));
     }
     /**
      * Returns first header that matches given name.
@@ -298,12 +324,21 @@ class Headers {
     toJSON() {
         /** @type {?} */
         const serialized = {};
-        this._headers.forEach((values, name) => {
+        this._headers.forEach((/**
+         * @param {?} values
+         * @param {?} name
+         * @return {?}
+         */
+        (values, name) => {
             /** @type {?} */
             const split = [];
-            values.forEach(v => split.push(...v.split(',')));
+            values.forEach((/**
+             * @param {?} v
+             * @return {?}
+             */
+            v => split.push(...v.split(','))));
             serialized[(/** @type {?} */ (this._normalizedNames.get(name)))] = split;
-        });
+        }));
         return serialized;
     }
     /**
@@ -335,7 +370,7 @@ class Headers {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * Creates a response options object to be optionally provided when instantiating a
@@ -480,7 +515,7 @@ BaseResponseOptions.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -522,7 +557,7 @@ class XSRFStrategy {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @param {?} method
@@ -550,7 +585,11 @@ function normalizeMethodName(method) {
     throw new Error(`Invalid request method. The method "${method}" is not supported.`);
 }
 /** @type {?} */
-const isSuccess = (status) => (status >= 200 && status < 300);
+const isSuccess = (/**
+ * @param {?} status
+ * @return {?}
+ */
+(status) => (status >= 200 && status < 300));
 /**
  * @param {?} xhr
  * @return {?}
@@ -579,7 +618,7 @@ function stringToArrayBuffer(input) {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -598,7 +637,11 @@ function paramParser(rawParams = '') {
     if (rawParams.length > 0) {
         /** @type {?} */
         const params = rawParams.split('&');
-        params.forEach((param) => {
+        params.forEach((/**
+         * @param {?} param
+         * @return {?}
+         */
+        (param) => {
             /** @type {?} */
             const eqIdx = param.indexOf('=');
             const [key, val] = eqIdx == -1 ? [param, ''] : [param.slice(0, eqIdx), param.slice(eqIdx + 1)];
@@ -606,7 +649,7 @@ function paramParser(rawParams = '') {
             const list = map.get(key) || [];
             list.push(val);
             map.set(key, list);
-        });
+        }));
     }
     return map;
 }
@@ -744,13 +787,18 @@ class URLSearchParams {
      * @return {?}
      */
     setAll(searchParams) {
-        searchParams.paramsMap.forEach((value, param) => {
+        searchParams.paramsMap.forEach((/**
+         * @param {?} value
+         * @param {?} param
+         * @return {?}
+         */
+        (value, param) => {
             /** @type {?} */
             const list = this.paramsMap.get(param) || [];
             list.length = 0;
             list.push(value[0]);
             this.paramsMap.set(param, list);
-        });
+        }));
     }
     /**
      * @param {?} param
@@ -777,14 +825,19 @@ class URLSearchParams {
      * @return {?}
      */
     appendAll(searchParams) {
-        searchParams.paramsMap.forEach((value, param) => {
+        searchParams.paramsMap.forEach((/**
+         * @param {?} value
+         * @param {?} param
+         * @return {?}
+         */
+        (value, param) => {
             /** @type {?} */
             const list = this.paramsMap.get(param) || [];
             for (let i = 0; i < value.length; ++i) {
                 list.push(value[i]);
             }
             this.paramsMap.set(param, list);
-        });
+        }));
     }
     // A merge operation
     // For each name-values pair in `searchParams`, perform `delete(name)`,
@@ -798,7 +851,12 @@ class URLSearchParams {
      * @return {?}
      */
     replaceAll(searchParams) {
-        searchParams.paramsMap.forEach((value, param) => {
+        searchParams.paramsMap.forEach((/**
+         * @param {?} value
+         * @param {?} param
+         * @return {?}
+         */
+        (value, param) => {
             /** @type {?} */
             const list = this.paramsMap.get(param) || [];
             list.length = 0;
@@ -806,7 +864,7 @@ class URLSearchParams {
                 list.push(value[i]);
             }
             this.paramsMap.set(param, list);
-        });
+        }));
     }
     /**
      * @return {?}
@@ -814,9 +872,18 @@ class URLSearchParams {
     toString() {
         /** @type {?} */
         const paramsList = [];
-        this.paramsMap.forEach((values, k) => {
-            values.forEach(v => paramsList.push(this.queryEncoder.encodeKey(k) + '=' + this.queryEncoder.encodeValue(v)));
-        });
+        this.paramsMap.forEach((/**
+         * @param {?} values
+         * @param {?} k
+         * @return {?}
+         */
+        (values, k) => {
+            values.forEach((/**
+             * @param {?} v
+             * @return {?}
+             */
+            v => paramsList.push(this.queryEncoder.encodeKey(k) + '=' + this.queryEncoder.encodeValue(v))));
+        }));
         return paramsList.join('&');
     }
     /**
@@ -828,7 +895,7 @@ class URLSearchParams {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * HTTP request body used by both {\@link Request} and {\@link Response}
@@ -914,7 +981,7 @@ class Body {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * Creates `Response` instances from provided values.
@@ -962,7 +1029,7 @@ class Response extends Body {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 let _nextRequestId = 0;
@@ -1045,7 +1112,7 @@ BrowserJsonp.decorators = [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const JSONP_ERR_NO_CALLBACK = 'JSONP injected script did not invoke callback.';
@@ -1072,7 +1139,11 @@ class JSONPConnection {
             throw new TypeError(JSONP_ERR_WRONG_METHOD);
         }
         this.request = req;
-        this.response = new Observable((responseObserver) => {
+        this.response = new Observable((/**
+         * @param {?} responseObserver
+         * @return {?}
+         */
+        (responseObserver) => {
             this.readyState = ReadyState.Loading;
             /** @type {?} */
             const id = this._id = _dom.nextRequestID();
@@ -1092,7 +1163,11 @@ class JSONPConnection {
             /** @type {?} */
             const script = this._script = _dom.build(url);
             /** @type {?} */
-            const onLoad = (event) => {
+            const onLoad = (/**
+             * @param {?} event
+             * @return {?}
+             */
+            (event) => {
                 if (this.readyState === ReadyState.Cancelled)
                     return;
                 this.readyState = ReadyState.Done;
@@ -1113,9 +1188,13 @@ class JSONPConnection {
                 }
                 responseObserver.next(new Response(responseOptions));
                 responseObserver.complete();
-            };
+            });
             /** @type {?} */
-            const onError = (error) => {
+            const onError = (/**
+             * @param {?} error
+             * @return {?}
+             */
+            (error) => {
                 if (this.readyState === ReadyState.Cancelled)
                     return;
                 this.readyState = ReadyState.Done;
@@ -1126,17 +1205,20 @@ class JSONPConnection {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }
                 responseObserver.error(new Response(responseOptions));
-            };
+            });
             script.addEventListener('load', onLoad);
             script.addEventListener('error', onError);
             _dom.send(script);
-            return () => {
+            return (/**
+             * @return {?}
+             */
+            () => {
                 this.readyState = ReadyState.Cancelled;
                 script.removeEventListener('load', onLoad);
                 script.removeEventListener('error', onError);
                 this._dom.cleanup(script);
-            };
-        });
+            });
+        }));
     }
     /**
      * Callback called when the JSONP request completes, to notify the application
@@ -1189,7 +1271,7 @@ JSONPBackend.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const XSSI_PREFIX = /^\)\]\}',?\n/;
@@ -1212,7 +1294,11 @@ class XHRConnection {
      */
     constructor(req, browserXHR, baseResponseOptions) {
         this.request = req;
-        this.response = new Observable((responseObserver) => {
+        this.response = new Observable((/**
+         * @param {?} responseObserver
+         * @return {?}
+         */
+        (responseObserver) => {
             /** @type {?} */
             const _xhr = browserXHR.build();
             _xhr.open(RequestMethod[req.method].toUpperCase(), req.url);
@@ -1221,7 +1307,10 @@ class XHRConnection {
             }
             // load event handler
             /** @type {?} */
-            const onLoad = () => {
+            const onLoad = (/**
+             * @return {?}
+             */
+            () => {
                 // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
                 /** @type {?} */
                 let status = _xhr.status === 1223 ? 204 : _xhr.status;
@@ -1266,10 +1355,14 @@ class XHRConnection {
                     return;
                 }
                 responseObserver.error(response);
-            };
+            });
             // error event handler
             /** @type {?} */
-            const onError = (err) => {
+            const onError = (/**
+             * @param {?} err
+             * @return {?}
+             */
+            (err) => {
                 /** @type {?} */
                 let responseOptions = new ResponseOptions({
                     body: err,
@@ -1281,7 +1374,7 @@ class XHRConnection {
                     responseOptions = baseResponseOptions.merge(responseOptions);
                 }
                 responseObserver.error(new Response(responseOptions));
-            };
+            });
             this.setDetectedContentType(req, _xhr);
             if (req.headers == null) {
                 req.headers = new Headers();
@@ -1289,7 +1382,12 @@ class XHRConnection {
             if (!req.headers.has('Accept')) {
                 req.headers.append('Accept', 'application/json, text/plain, */*');
             }
-            req.headers.forEach((values, name) => _xhr.setRequestHeader((/** @type {?} */ (name)), values.join(',')));
+            req.headers.forEach((/**
+             * @param {?} values
+             * @param {?} name
+             * @return {?}
+             */
+            (values, name) => _xhr.setRequestHeader((/** @type {?} */ (name)), values.join(','))));
             // Select the correct buffer type to store the response
             if (req.responseType != null && _xhr.responseType != null) {
                 switch (req.responseType) {
@@ -1312,12 +1410,15 @@ class XHRConnection {
             _xhr.addEventListener('load', onLoad);
             _xhr.addEventListener('error', onError);
             _xhr.send(this.request.getBody());
-            return () => {
+            return (/**
+             * @return {?}
+             */
+            () => {
                 _xhr.removeEventListener('load', onLoad);
                 _xhr.removeEventListener('error', onError);
                 _xhr.abort();
-            };
-        });
+            });
+        }));
     }
     /**
      * @param {?} req
@@ -1445,7 +1546,7 @@ XHRBackend.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * Creates a request options object to be optionally provided when instantiating a
@@ -1560,16 +1661,24 @@ class RequestOptions {
     _parseParams(objParams = {}) {
         /** @type {?} */
         const params = new URLSearchParams();
-        Object.keys(objParams).forEach((key) => {
+        Object.keys(objParams).forEach((/**
+         * @param {?} key
+         * @return {?}
+         */
+        (key) => {
             /** @type {?} */
             const value = objParams[key];
             if (Array.isArray(value)) {
-                value.forEach((item) => this._appendParam(key, item, params));
+                value.forEach((/**
+                 * @param {?} item
+                 * @return {?}
+                 */
+                (item) => this._appendParam(key, item, params)));
             }
             else {
                 this._appendParam(key, value, params);
             }
-        });
+        }));
         return params;
     }
     /**
@@ -1637,7 +1746,7 @@ BaseRequestOptions.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 // TODO(jeffbcross): properly implement body accessors
 /**
@@ -1799,20 +1908,31 @@ class Request extends Body {
 function urlEncodeParams(params) {
     /** @type {?} */
     const searchParams = new URLSearchParams();
-    Object.keys(params).forEach(key => {
+    Object.keys(params).forEach((/**
+     * @param {?} key
+     * @return {?}
+     */
+    key => {
         /** @type {?} */
         const value = params[key];
         if (value && Array.isArray(value)) {
-            value.forEach(element => searchParams.append(key, element.toString()));
+            value.forEach((/**
+             * @param {?} element
+             * @return {?}
+             */
+            element => searchParams.append(key, element.toString())));
         }
         else {
             searchParams.append(key, value.toString());
         }
-    });
+    }));
     return searchParams;
 }
 /** @type {?} */
-const noop = function () { };
+const noop = (/**
+ * @return {?}
+ */
+function () { });
 /** @type {?} */
 const w = typeof window == 'object' ? window : noop;
 /** @type {?} */
@@ -1824,7 +1944,7 @@ const ArrayBuffer$1 = ((/** @type {?} */ (w)))['ArrayBuffer'] || noop;
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @param {?} backend
@@ -2088,7 +2208,7 @@ Jsonp.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @return {?}
@@ -2158,28 +2278,28 @@ JsonpModule.decorators = [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @deprecated see https://angular.io/guide/http
  * \@publicApi
  * @type {?}
  */
-const VERSION = new Version('8.0.0-beta.8+8.sha-9a7f560.with-local-changes');
+const VERSION = new Version('8.0.0-beta.8+11.sha-7b20cec.with-local-changes');
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
