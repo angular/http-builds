@@ -1,5 +1,5 @@
 /**
- * @license Angular v8.0.0-beta.8+1.sha-940fbf7.with-local-changes
+ * @license Angular v8.0.0-beta.8+9.sha-75748d6.with-local-changes
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -11,7 +11,7 @@ import { take } from 'rxjs/operators';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  *
@@ -185,7 +185,11 @@ class MockBackend {
     constructor() {
         this.connectionsArray = [];
         this.connections = new Subject();
-        this.connections.subscribe((connection) => this.connectionsArray.push(connection));
+        this.connections.subscribe((/**
+         * @param {?} connection
+         * @return {?}
+         */
+        (connection) => this.connectionsArray.push(connection)));
         this.pendingConnections = new Subject();
     }
     /**
@@ -197,7 +201,11 @@ class MockBackend {
     verifyNoPendingRequests() {
         /** @type {?} */
         let pending = 0;
-        this.pendingConnections.subscribe((c) => pending++);
+        this.pendingConnections.subscribe((/**
+         * @param {?} c
+         * @return {?}
+         */
+        (c) => pending++));
         if (pending > 0)
             throw new Error(`${pending} pending connections to be resolved`);
     }
@@ -208,7 +216,11 @@ class MockBackend {
      * This method only exists in the mock implementation, not in real Backends.
      * @return {?}
      */
-    resolveAllConnections() { this.connections.subscribe((c) => c.readyState = 4); }
+    resolveAllConnections() { this.connections.subscribe((/**
+     * @param {?} c
+     * @return {?}
+     */
+    (c) => c.readyState = 4)); }
     /**
      * Creates a new {\@link MockConnection}. This is equivalent to calling `new
      * MockConnection()`, except that it also will emit the new `Connection` to the `connections`
@@ -235,17 +247,17 @@ MockBackend.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
