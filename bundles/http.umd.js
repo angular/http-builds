@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.2.9+19.sha-ee49bbe.with-local-changes
+ * @license Angular v7.2.9+20.sha-08f6a64.with-local-changes
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -1866,7 +1866,7 @@
     /**
      * The module that includes jsonp's providers
      *
-     * @deprecated see https://angular.io/guide/http
+     * @deprecated see https://angular.io/api/common/http/HttpClient#jsonp
      * @publicApi
      */
     var JsonpModule = /** @class */ (function () {
@@ -1899,7 +1899,7 @@
      * @deprecated see https://angular.io/guide/http
      * @publicApi
      */
-    var VERSION = new core.Version('7.2.9+19.sha-ee49bbe.with-local-changes');
+    var VERSION = new core.Version('7.2.9+20.sha-08f6a64.with-local-changes');
 
     /**
      * @license

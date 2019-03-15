@@ -23,7 +23,7 @@ export declare class HttpModule {
 /**
  * The module that includes jsonp's providers
  *
- * @deprecated see https://angular.io/guide/http
+ * @deprecated see https://angular.io/api/common/http/HttpClient#jsonp
  * @publicApi
  */
 export declare class JsonpModule {
